@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Quadro Comparativo - Planejamento do Quadro</title>
+
+        <!-- Jquery -->         
+        <script src="js/jquery-1.9.0.js"></script>
+        <script src="js/jquery-ui-1.10.0.custom.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js_qc/qc_misc.js"></script>
+        <script type="text/javascript" src="js_qc/menu.js"></script>
+        <script type="text/javascript" src="js_qc/visualizacao.js"></script>
+
+
+        <!--- Estilos --->
+        <link rel="stylesheet" href="css/demo_table.css" type="text/css" media="all"/>
+        <link href="css/template.css" rel="stylesheet" type="text/css" />        
+        <link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <!---Loading--->
+        <div id="loading"><img src="images/load.gif"><br><br><h3>Carregando visualização.</h3></div>
+        <div id="fade" class="black_overlay"></div>
+        <script type="text/javascript">
+            //Loadin dos textos e Correlações
+            $('#loading').show();
+            $('#fade').show();
+            
+        </script>
+        <!---Loading--->
+
+
+
+        <div id="layout1">
+            <script type="text/javascript">
+                print_menu();
+                $('#menuCorrelacoes').hide();                
+            </script>
+
+            <div id="content1">
+
+                <div id="tituloQuadro">
+                    <h2 id="nomeQuadro">Visualização da correlação</h2>
+                </div>
+
+
+
+                <div id="htmlVisualizacaoServidor">
+
+					<!-- INCIO SERVIDOR -->
+                    <table>
+                    	<tr>
+                    		<td>CONTEÚDO DO SERVIDOR VEM AQUI.</td>
+                    	</tr>
+                    </table>
+                    <!-- FIM SERVIDOR -->
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div id="dialog-open" title="Abrir quadro comparativo">
+            <table id="qcOpenTable" class="display dataTable" style="width: 680px; margin: 20px 0; clear: both;">
+            </table>
+        </div>
+
+        <div id="dialog-confirm" title="Confirmação">
+            <div id="confirm-text"></div>
+        </div>        
+            
+
+        <script>
+            
+            var qcid = getURLParameter('qcid');
+            
+            $(document).ready(function() {
+
+                getVisualizacao(qcid, function(tableVisualizacao) {
+                    $("#htmlVisualizacaoServidor").html(tableVisualizacao);
+                    $('#htmlVisualizacaoServidor').show();
+
+                    //Encerra loading
+                    $('#loading').hide();
+                    $('#fade').hide();
+
+                });
+
+            });
+        </script>              
+
+    </body>
+</html>

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuracao xmlns="http://www.lexml.gov.br/schema/qc/configuracao-urn" 
+              xmlns:xml="http://www.w3.org/XML/1998/namespace"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.lexml.gov.br/schema/qc/configuracao-urn ../../src/main/schemas/configuracao-urn.xsd">
+    <Categorias>
+        <Categoria xmlid="legislacao">
+            <Nome>Legislação</Nome>
+        </Categoria>
+        <Categoria xmlid="proposicoes.legislativas.substitutivos">
+            <Nome>Proposições Legislativas e Substitutivos</Nome>
+        </Categoria>
+        <Categoria xmlid="emendas">
+            <Nome>Emendas</Nome>
+        </Categoria>
+        <Categoria xmlid="destaques">
+            <Nome>Destaques</Nome>
+        </Categoria>
+    </Categorias>
+    <Localidades>
+        <Localidade xmlid="br">
+            <Nome>Brasil</Nome>
+        </Localidade>
+        <Localidade xmlid="br;minas.gerais">
+            <Nome>Minas Gerais</Nome>
+        </Localidade>
+        <Localidade xmlid="br;minas.gerais;belo.horizonte">
+            <Nome>Belo Horizonte (MG)</Nome>
+        </Localidade>
+    </Localidades>
+    <Autoridades>
+        <Autoridade xmlid="federal">
+            <Nome>Federal</Nome>
+        </Autoridade>
+        <Autoridade xmlid="estadual">
+            <Nome>Estadual</Nome>
+        </Autoridade>
+        <Autoridade xmlid="municipal">
+            <Nome>Municipal</Nome>
+        </Autoridade>
+        <Autoridade xmlid="distrital">
+            <Nome>Distrital</Nome>
+        </Autoridade>
+        <Autoridade xmlid="congresso.nacional">
+            <Nome>Congresso Nacional</Nome>
+            <SiglaColegiado urn="cn">CN</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="congresso.nacional;senado.federal">
+            <Nome>Senado Federal</Nome>
+            <SiglaColegiado urn="sf">SF</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="congresso.nacional;camara.deputados">
+            <Nome>Câmara dos Deputados</Nome>
+            <SiglaColegiado urn="cd">CD</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal">
+            <Nome>Senado Federal</Nome>
+            <SiglaColegiado urn="sf">SF</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados">
+            <Nome>Câmara dos Deputados</Nome>
+            <SiglaColegiado urn="cd">CD</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="assembleia.legislativa">
+            <Nome>Assembleia Legislativa</Nome>
+        </Autoridade>
+        <Autoridade xmlid="camara.municipal">
+            <Nome>Câmara Municipal</Nome>
+        </Autoridade>
+        
+        <Autoridade xmlid="senado.federal;plenario">
+            <Nome>Plenário</Nome>
+            <SiglaColegiado urn="plen">PLEN</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.assuntos.economicos">
+            <Nome>Comissão de Assuntos Econômicos</Nome>
+            <SiglaColegiado urn="cae">CAE</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.assuntos.sociais">
+            <Nome>Comissão de Assuntos Sociais</Nome>
+            <SiglaColegiado urn="cas">CAS</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.constituicao.justica.cidadania">
+            <Nome>Comissão de Constituição, Justiça e Cidadania</Nome>
+            <SiglaColegiado urn="ccj">CCJ</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.educacao.cultura.esporte">
+            <Nome>Comissão de Educação, Cultura e Esporte</Nome>
+            <SiglaColegiado urn="ce">CE</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle">
+            <Nome>Comissão de Meio Ambiente, Defesa do Consumidor e Fiscalização e Controle</Nome>
+            <SiglaColegiado urn="cma">CMA</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.direitos.humanos.legislacao.participativa">
+            <Nome>Comissão de Direitos Humanos e Legislação Participativa</Nome>
+            <SiglaColegiado urn="cdh">CDH</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.relacoes.exteriores.defesa.nacional">
+            <Nome>Comissão de Relações Exteriores e Defesa Nacional</Nome>
+            <SiglaColegiado urn="cre">CRE</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.servicos.infraestrutura">
+            <Nome>Comissão de Serviços de Infraestrutura</Nome>
+            <SiglaColegiado urn="ci">CI</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.desenvolvimento.reginoal.turismo">
+            <Nome>Comissão de Desenvolvimento Regional e Turismo</Nome>
+            <SiglaColegiado urn="cdr">CDR</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.agricultura.reforma.agraria">
+            <Nome>Comissão de Agricultura e Reforma Agrária</Nome>
+            <SiglaColegiado urn="cra">CRA</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica">
+            <Nome>Comissão de Ciência, Tecnologia, Inovação, Comunicação e Informática</Nome>
+            <SiglaColegiado urn="cct">CCT</SiglaColegiado>
+        </Autoridade>
+        
+
+        <Autoridade xmlid="camara.deputados;plenario">
+            <Nome>Plenário</Nome>
+            <SiglaColegiado urn="plen">PLEN</SiglaColegiado>
+        </Autoridade>
+        
+        <Autoridade xmlid="camara.deputados;comissao.constituicao.justica.cidadania">
+            <Nome>Comissão Constituição Justiça e Cidadania</Nome>
+            <SiglaColegiado urn="ccjc">CCJC</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.viacao.transporte">
+            <Nome>Comissão Viação e Transporte</Nome>
+            <SiglaColegiado urn="cvt">CVT</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional">
+            <Nome>Comissão da Amazônia, Integração Nacional e de Desenvolvimento Regional</Nome>
+            <SiglaColegiado urn="caindr">CAINDR</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural">
+            <Nome>Comissão de Agricultura, Pecuária, Abastecimento e Desenvolvimento Rural</Nome>
+            <SiglaColegiado urn="capadr">CAPADR</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica">
+            <Nome>Comissão de Ciência e Tecnologia, Comunicação e Informática</Nome>
+            <SiglaColegiado urn="cctci">CCTCI</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.defesa.consumidor">
+            <Nome>Comissão de Defesa do Consumidor</Nome>
+            <SiglaColegiado urn="cdc">CDC</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.desenvolvimento.economico.industria.comercio">
+            <Nome>Comissão de Desenvolvimento Econômico, Indústria e Comércio</Nome>
+            <SiglaColegiado urn="cdeic">CDEIC</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.desenvolvimento.urbano">
+            <Nome>Comissão de Desenvolvimento Urbano</Nome>
+            <SiglaColegiado urn="cdu">CDU</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.direitos.humanos.minorias">
+            <Nome>Comissão de Direitos Humanos e Minorias</Nome>
+            <SiglaColegiado urn="cdhm">CDHM</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.educacao.cultura">
+            <Nome>Comissão de Educação e Cultura</Nome>
+            <SiglaColegiado urn="cec">CEC</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.financas.tributacao">
+            <Nome>Comissão de Finanças e Tributação</Nome>
+            <SiglaColegiado urn="cft">CFT</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.fiscalizacao.financeira.controle">
+            <Nome>Comissão de Fiscalização Financeira e Controle</Nome>
+            <SiglaColegiado urn="cffc">CFFC</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.legislacao.participativa">
+            <Nome>Comissão de Legislação Participativa</Nome>
+            <SiglaColegiado urn="clp">CLP</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel">
+            <Nome>Comissão de Meio Ambiente e Desenvolvimento Sustentável</Nome>
+            <SiglaColegiado urn="cmads">CMADS</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.minas.energia">
+            <Nome>Comissão de Minas e Energia</Nome>
+            <SiglaColegiado urn="cme">CME</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.relacoes.exteriores.defesa.nacional">
+            <Nome>Comissão de Relações Exteriores e de Defesa Nacional</Nome>
+            <SiglaColegiado urn="credn">CREDN</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.seguranca.publica.combate.crime.organizado">
+            <Nome>Comissão de Segurança Pública e Combate ao Crime Organizado</Nome>
+            <SiglaColegiado urn="cspcco">CSPCCO</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.seguridade.social.familia">
+            <Nome>Comissão de Seguridade Social e Família</Nome>
+            <SiglaColegiado urn="cssf">CSSF</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.trabalho.administracao.servico.publico">
+            <Nome>Comissão de Trabalho, de Administração e Serviço Público</Nome>
+            <SiglaColegiado urn="ctasp">CTASP</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.turismo.desporto">
+            <Nome>Comissão de Turismo e Desporto</Nome>
+            <SiglaColegiado urn="ctd">CTD</SiglaColegiado>
+        </Autoridade>
+        <Autoridade xmlid="camara.deputados;comissao.especial" requerSigla="true">
+            <Nome>Comissão Especial</Nome>
+        </Autoridade>
+    </Autoridades>
+    <TiposDocumentos>
+        <TipoDocumento xmlid="constituicao">
+            <Nome>Constituição</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="lei.organica">
+            <Nome>Lei Orgânica</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="emenda.constitucional">
+            <Nome>Emenda Constitucional</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="emenda.lei.organica">
+            <Nome>Emenda à Lei Orgânica</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="ato.disposicoes.constitucionais.transitorias">
+            <Nome>Ato das Disposições Constitucionais Transitórias</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="lei.complementar">
+            <Nome>Lei Complementar</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="lei">
+            <Nome>Lei</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="lei.delegada">
+            <Nome>Lei Delegada</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="decreto">
+            <Nome>Decreto</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="decreto.legislativo">
+            <Nome>Decreto Legislativo</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="medida.provisoria">
+            <Nome>Medida Provisória</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="decreto.lei">
+            <Nome>Decreto-Lei</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="resolucao">
+            <Nome>Resolução</Nome>
+        </TipoDocumento>
+        
+
+        <TipoDocumento xmlid="proposta.emenda.constituicao">
+            <Nome>Proposta de Emenda à Constituição</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:proposta.emenda.constituicao;pec">
+            <Nome>Proposta de Emenda à Constituição</Nome>
+            <SiglaDocumento>PEC</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:proposta.emenda.constituicao;pec">
+            <Nome>Proposta de Emenda à Constituição</Nome>
+            <SiglaDocumento>PEC</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="projeto.lei">
+            <Nome>Projeto de Lei</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:projeto.lei;pls">
+            <Nome>Projeto de Lei do Senado Federal</Nome>
+            <SiglaDocumento urn="pls">PLS</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:projeto.lei;plc">
+            <Nome>Projeto de Lei da Câmara dos Deputados</Nome>
+            <SiglaDocumento urn="plc">PLC</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:projeto.lei;pln">
+            <Nome>Projeto de Lei do Congresso Nacional</Nome>
+            <SiglaDocumento urn="pln">PLC</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:projeto.lei;pl">
+            <Nome>Projeto de Lei</Nome>
+            <SiglaDocumento urn="pl">PL</SiglaDocumento>
+        </TipoDocumento>
+
+        <TipoDocumento xmlid="projeto.lei.complementar">
+            <Nome>Projeto de Lei Complementar</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:projeto.lei.complementar;plp">
+            <Nome>Projeto de Lei Complementar</Nome>
+            <SiglaDocumento>PLP</SiglaDocumento>
+        </TipoDocumento>
+
+        <TipoDocumento xmlid="projeto.lei.conversao">
+            <Nome>Projeto de Lei de Conversão</Nome>
+        </TipoDocumento>
+
+        <TipoDocumento xmlid="projeto.decreto.legislativo">
+            <Nome>Projeto de Decreto Legislativo</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:projeto.decreto.legislativo;pds">
+            <Nome>Projeto de Decreto Legislativo</Nome>
+            <SiglaDocumento urn="pds">PDS</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:projeto.decreto.legislativo;pdc">
+            <Nome>Projeto de Decreto Legislativo</Nome>
+            <SiglaDocumento urn="pdc">PDC</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="projeto.resolucao">
+            <Nome>Projeto de Resolução</Nome>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:senado.federal:projeto.resolucao;prs">
+            <Nome>Projeto de Resolução</Nome>
+            <SiglaDocumento urn="prs">PRS</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:projeto.resolucao;pdc">
+            <Nome>Projeto de Resolução</Nome>
+            <SiglaDocumento urn="pdc">PDC</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:sugestao.iniciativa.legislativa;sug">
+            <Nome>Sugestão de Iniciativa Legislativa</Nome>
+            <SiglaDocumento urn="sug">SUG</SiglaDocumento>
+        </TipoDocumento>
+        <TipoDocumento xmlid="br:camara.deputados:anteprojeto;ant">
+            <Nome>Anteprojeto</Nome>
+            <SiglaDocumento urn="ant">ANT</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:senado.federal:substitutivo.camara.deputados.projeto.lei.senado;scd">
+            <Nome>Substitutivo da Câmara dos Deputados ao Projeto de Lei do Senado</Nome>
+            <SiglaDocumento urn="scd">SCD</SiglaDocumento>
+        </TipoDocumento>
+
+        <TipoDocumento xmlid="br:senado.federal:substitutivo.camara.deputados.projeto.decreto.legislativo;sds">
+            <Nome>Substitutivo da Câmara dos Deputados ao Projeto de Decreto Legislativo</Nome>
+            <SiglaDocumento urn="sds">SDS</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:senado.federal:emenda">
+            <Nome>Emenda</Nome>
+            <SiglaDocumento urn="emd">EMD</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:senado.federal:destaque">
+            <Nome>Emenda</Nome>
+            <SiglaDocumento urn="emd">EMD</SiglaDocumento>
+        </TipoDocumento>
+                
+        <TipoDocumento xmlid="br:camara.deputados:destaque">
+            <Nome>Destaque</Nome>
+            <SiglaDocumento urn="dtq">DTQ</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:redacao.final">
+            <Nome>Redação Final</Nome>
+            <SiglaDocumento urn="rdf">RDF</SiglaDocumento>
+        </TipoDocumento>
+               
+        <TipoDocumento xmlid="br:camara.deputados:substitutivo">
+            <Nome>Substitutivo</Nome>
+            <SiglaDocumento urn="sbt">SBT</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.substitutiva.plenario">
+            <Nome>Emenda Substitutiva de Plenário</Nome>
+            <SiglaDocumento urn="esp">ESP</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.substitutiva.aglutinativa.global">
+            <Nome>Emenda Substitutiva Aglutinativa Global</Nome>
+            <SiglaDocumento urn="eag">EAG</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.substitutivo.senado">
+            <Nome>Emenda/Substitutivo do Senado</Nome>
+            <SiglaDocumento urn="eag">EMS</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.aglutinativa.plenario">
+            <Nome>Emenda Aglutinativa de Plenário</Nome>
+            <SiglaDocumento urn="ema">EMA</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.comissao">
+            <Nome>Emenda de Comissão</Nome>
+            <SiglaDocumento urn="emc">EMC</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.plenario">
+            <Nome>Emenda de Plenário</Nome>
+            <SiglaDocumento urn="emp">EMP</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.relator">
+            <Nome>Emenda de Relator</Nome>
+            <SiglaDocumento urn="emr">EMR</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.relator.parcial">
+            <Nome>Emenda de Relator Parcial</Nome>
+            <SiglaDocumento urn="emrp">EMRP</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.substitutivo">
+            <Nome>Emenda ao Subtitutivo</Nome>
+            <SiglaDocumento urn="emsb">EMSB</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:emenda.redacao">
+            <Nome>Emenda de Redação</Nome>
+            <SiglaDocumento urn="erd">ERD</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:subemenda">
+            <Nome>Subemenda</Nome>
+            <SiglaDocumento urn="sbe">SBE</SiglaDocumento>
+        </TipoDocumento>
+        
+        <TipoDocumento xmlid="br:camara.deputados:subemenda.substitutiva.plenario">
+            <Nome>Subemenda Substitutiva de Plenário</Nome>
+            <SiglaDocumento urn="sbe">SSP</SiglaDocumento>
+        </TipoDocumento>
+        
+    </TiposDocumentos>
+    <Versoes>
+        <Versao xmlid="versao.original" requerData="false">
+            <Nome>Versão Original</Nome>
+        </Versao>
+        <Versao xmlid="versao.vigente.em" requerData="true">
+            <Nome>Versão Vigente em</Nome>
+        </Versao>
+        <Versao xmlid="versao.alterada.em" requerData="true">
+            <Nome>Versão Alterada em</Nome>
+        </Versao>
+    </Versoes>
+    <Eventos>
+        <Evento xmlid="leitura"  requerData="true">
+            <Nome>Leitura</Nome>
+        </Evento>
+        <Evento xmlid="apresentacao.substitutivo" requerData="true">
+            <Nome>Apresentação de Substitutivo</Nome>
+        </Evento>
+        <Evento xmlid="aprovacao.substitutivo.decisao.terminativa" requerData="true">
+            <Nome>Aprovação de Substitutivo em Decisão Terminativa</Nome>
+        </Evento>
+        <Evento xmlid="aprovacao.substitutivo" requerData="true">
+            <Nome>Aprovação de Substitutivo</Nome>
+        </Evento>
+    </Eventos>
+    
+    <Correlacoes>
+        <Correlacao categoria="legislacao" localidade="br" autoridade="federal" tipoDocumento="constituicao,emenda.constitucional,ato.disposicoes.constitucionais.transitorias,lei.complementar,lei,lei.delegada,decreto,decreto.legislativo,medida.provisoria,decreto.lei" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br" autoridade="congresso.nacional" tipoDocumento="resolucao" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br" autoridade="senado.federal" tipoDocumento="resolucao" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br" autoridade="camara.deputados" tipoDocumento="resolucao" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br;minas.gerais" autoridade="estadual" tipoDocumento="constituicao,emenda.constitucional,lei.complementar,lei,lei.delegada,decreto,decreto.legislativo,medida.provisoria,decreto.lei" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br;minas.gerais" autoridade="assembleia.legislativa" tipoDocumento="resolucao"  versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br;minas.gerais;belo.horizonte" autoridade="municipal" tipoDocumento="lei.organica,emenda.lei.organica,lei.complementar,lei,lei.delegada,decreto,decreto.legislativo" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        <Correlacao categoria="legislacao" localidade="br;minas.gerais;belo.horizonte" autoridade="camara.municipal" tipoDocumento="resolucao" versao="versao.original,versao.vigente.em,versao.alterada.em"/>
+        
+        <!-- urn:lex:br:federal:lei:2012-12-01;12400@versao.vigente.em;2012-12-03 -->
+        <!-- urn:lex:LOCALIDADE:AUTORIDADE:TIPODOCUMENTO:DESCRITOR_DATA_OU_ANO;DESCRITOR_NUMERO@VERSAO;DATA_VERSAO -->
+        
+        <Correlacao categoria="proposicoes.legislativas.substitutivos" localidade="br" autoridade="congresso.nacional,congresso.nacional;camara.deputados,congresso.nacional;senado.federal" 
+            tipoDocumento="medida.provisoria,projeto.lei.conversao" 
+            componenteDocumento="br:camara.deputados:substitutivo,br:camara.deputados:redacao.final,br:camara.deputados:emenda.substitutiva.plenario,br:camara.deputados:emenda.substitutiva.aglutinativa.global,br:camara.deputados:emenda.substitutivo.senado" 
+            componenteColegiado="camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto"/>
+        <!-- idem CD -->
+
+
+        <Correlacao categoria="proposicoes.legislativas.substitutivos" localidade="br" autoridade="senado.federal,senado.federal;plenario,senado.federal;comissao.assuntos.economicos,senado.federal;comissao.assuntos.sociais,senado.federal;comissao.constituicao.justica.cidadania,senado.federal;comissao.educacao.cultura.esporte,senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle,senado.federal;comissao.direitos.humanos.legislacao.participativa,senado.federal;comissao.relacoes.exteriores.defesa.nacional,senado.federal;comissao.servicos.infraestrutura,senado.federal;comissao.desenvolvimento.reginoal.turismo,senado.federal;comissao.agricultura.reforma.agraria,senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica"
+            tipoDocumento="br:senado.federal:proposta.emenda.constituicao;pec,br:senado.federal:projeto.lei;pls,br:senado.federal:projeto.lei;plc,br:senado.federal:projeto.lei;pln,br:senado.federal:projeto.decreto.legislativo;pds,br:senado.federal:projeto.resolucao;prs,br:senado.federal:substitutivo.camara.deputados.projeto.lei.senado;scd,br:senado.federal:substitutivo.camara.deputados.projeto.decreto.legislativo;sds"
+            evento="leitura,apresentacao.substitutivo,aprovacao.substitutivo.decisao.terminativa,aprovacao.substitutivo"
+        />
+            <!-- urn:lex:br:senado.federal:projeto.lei;pls:2012;14@2012-05-03;leitura;2012-05-03-->
+            <!-- urn:lex:LOCALIDADE:AUTORIDADE:TIPODOCUMENTO:DESCRITOR_ANO_OU_DATA;DESCRITOR_NUMERO@DATA-EVENTO;EVENTO;DATA-EVENTO -->
+
+        
+            
+        <Correlacao categoria="emendas" localidade="br" autoridade="senado.federal,senado.federal;plenario,senado.federal;comissao.assuntos.economicos,senado.federal;comissao.assuntos.sociais,senado.federal;comissao.constituicao.justica.cidadania,senado.federal;comissao.educacao.cultura.esporte,senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle,senado.federal;comissao.direitos.humanos.legislacao.participativa,senado.federal;comissao.relacoes.exteriores.defesa.nacional,senado.federal;comissao.servicos.infraestrutura,senado.federal;comissao.desenvolvimento.reginoal.turismo,senado.federal;comissao.agricultura.reforma.agraria,senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica"
+            tipoDocumento="br:senado.federal:proposta.emenda.constituicao;pec,br:senado.federal:projeto.lei;pls,br:senado.federal:projeto.lei;plc,br:senado.federal:projeto.lei;pln,br:senado.federal:projeto.decreto.legislativo;pds,br:senado.federal:projeto.resolucao;prs"
+            componenteDocumento="br:senado.federal:emenda"
+            componenteColegiado="senado.federal;plenario,senado.federal;comissao.assuntos.economicos,senado.federal;comissao.assuntos.sociais,senado.federal;comissao.constituicao.justica.cidadania,senado.federal;comissao.educacao.cultura.esporte,senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle,senado.federal;comissao.direitos.humanos.legislacao.participativa,senado.federal;comissao.relacoes.exteriores.defesa.nacional,senado.federal;comissao.servicos.infraestrutura,senado.federal;comissao.desenvolvimento.reginoal.turismo,senado.federal;comissao.agricultura.reforma.agraria,senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica"/>
+        <!-- idem CD -->
+ 
+        <Correlacao categoria="destaque" localidade="br" autoridade="senado.federal,senado.federal;plenario,senado.federal;comissao.assuntos.economicos,senado.federal;comissao.assuntos.sociais,senado.federal;comissao.constituicao.justica.cidadania,senado.federal;comissao.educacao.cultura.esporte,senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle,senado.federal;comissao.direitos.humanos.legislacao.participativa,senado.federal;comissao.relacoes.exteriores.defesa.nacional,senado.federal;comissao.servicos.infraestrutura,senado.federal;comissao.desenvolvimento.reginoal.turismo,senado.federal;comissao.agricultura.reforma.agraria,senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica"
+            tipoDocumento="br:senado.federal:proposta.emenda.constituicao;pec,br:senado.federal:projeto.lei;pls,br:senado.federal:projeto.lei;plc,br:senado.federal:projeto.lei;pln,br:senado.federal:projeto.decreto.legislativo;pds,br:senado.federal:projeto.resolucao;prs"
+            componenteDocumento="br:senado.federal:destaque"
+            componenteColegiado="senado.federal;plenario,senado.federal;comissao.assuntos.economicos,senado.federal;comissao.assuntos.sociais,senado.federal;comissao.constituicao.justica.cidadania,senado.federal;comissao.educacao.cultura.esporte,senado.federal;comissao.meio.ambiente.defesa.consumidor.fiscalizacao.controle,senado.federal;comissao.direitos.humanos.legislacao.participativa,senado.federal;comissao.relacoes.exteriores.defesa.nacional,senado.federal;comissao.servicos.infraestrutura,senado.federal;comissao.desenvolvimento.reginoal.turismo,senado.federal;comissao.agricultura.reforma.agraria,senado.federal;comissao.ciencia.tecnologia.inovacao.comunicacao.informatica"/>
+        <!-- idem CD -->
+       
+        <Correlacao categoria="proposicoes.legislativas.substitutivos" localidade="br" autoridade="camara.deputados,camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial" 
+            tipoDocumento="br:camara.deputados:proposta.emenda.constituicao;pec:br:camara.deputados:projeto.lei;pl,br:camara.deputados:projeto.lei.complementar;plp,br:camara.deputados:projeto.decreto.legislativo;pdc,br:camara.deputados:sugestao.iniciativa.legislativa;sug,br:camara.deputados:anteprojeto;ant" 
+            componenteDocumento="br:camara.deputados:substitutivo,br:camara.deputados:redacao.final,br:camara.deputados:emenda.substitutiva.plenario,br:camara.deputados:emenda.substitutiva.aglutinativa.global,br:camara.deputados:emenda.substitutivo.senado" 
+            componenteColegiado="camara.deputados;plenario,camara.deputados;comissao.constituicao.justica/.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial"/>
+            <!-- urn:lex:br:camara.deputados:projeto.lei;pl:2007;2125;ems.2007.2125-->
+            <!-- urn:lex:LOCALIDADE:AUTORIDADE:TIPODOCUMENTO:DESCRITOR_ANO_OU_DATA;DESCRITOR_NUMERO;COMPONENTE_DOCUMENTO_SIGLA.COMPONENTE_ANO.COMPONENTE_NUMERO.COMPONENTE.COLEGIADO_SIGLA -->
+            <!-- EXEMPLO RECURSIVO - neste caso, repete-se o componente separando por ";" - urn:lex:br:camara.deputados;comissao.especial;pl803510:projeto.lei;pl:2010;8035;sbt.1.pl803510;esb.439.pl803510 -->
+
+
+
+
+        <Correlacao categoria="emendas" localidade="br" autoridade="camara.deputados,camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial" 
+            tipoDocumento="br:camara.deputados:proposta.emenda.constituicao;pec:br:camara.deputados:projeto.lei;pl,br:camara.deputados:projeto.lei.complementar;plp,br:camara.deputados:projeto.decreto.legislativo;pdc,br:camara.deputados:sugestao.iniciativa.legislativa;sug,br:camara.deputados:anteprojeto;ant"  
+            componenteDocumento="br:camara.deputados:emenda.comissao,br:camara.deputados:emenda.plenario,br:camara.deputados:emenda.relator,br:camara.deputados:emenda.relator.parcial,br:camara.deputados:emenda.substitutivo,br:camara.deputados:emenda.redacao,br:camara.deputados:subemenda,br:camara.deputados:subemenda.substitutiva.plenario" 
+            componenteColegiado="camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial"/>
+       <!-- idem CD -->
+        
+        <Correlacao categoria="destaques" localidade="br" autoridade="camara.deputados,camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial" 
+            tipoDocumento="br:camara.deputados:proposta.emenda.constituicao;pec:br:camara.deputados:projeto.lei;pl,br:camara.deputados:projeto.lei.complementar;plp,br:camara.deputados:projeto.decreto.legislativo;pdc,br:camara.deputados:sugestao.iniciativa.legislativa;sug,br:camara.deputados:anteprojeto;ant" 
+            componenteDocumento="br:camara.deputados:destaque"
+            componenteColegiado="camara.deputados;plenario,camara.deputados;comissao.constituicao.justica.cidadania,camara.deputados;comissao.viacao.transporte,camara.deputados;comissao.amazonia.integracao.nacional.desenvolvimento.regional,camara.deputados;comissao.agricultura.pecuaria.abastecimento.desenvolvimento.rural,camara.deputados;comissao.ciencia.tecnologia.comunicacao.informatica,camara.deputados;comissao.defesa.consumidor,camara.deputados;comissao.desenvolvimento.economico.industria.comercio,camara.deputados;comissao.desenvolvimento.urbano,camara.deputados;comissao.direitos.humanos.minorias,camara.deputados;comissao.educacao.cultura,camara.deputados;comissao.financas.tributacao,camara.deputados;comissao.fiscalizacao.financeira.controle,camara.deputados;comissao.legislacao.participativa,camara.deputados;comissao.meio.ambiente.desenvolvimento.sustentavel,camara.deputados;comissao.minas.energia,camara.deputados;comissao.relacoes.exteriores.defesa.nacional,camara.deputados;comissao.seguranca.publica.combate.crime.organizado,camara.deputados;comissao.seguridade.social.familia,camara.deputados;comissao.trabalho.administracao.servico.publico,camara.deputados;comissao.turismo.desporto,camara.deputados;comissao.especial"/>
+       <!-- idem CD -->
+        
+    </Correlacoes>
+</Configuracao>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TipoComentario>
+    <Tipos>
+        <Tipo xmlid="nota">
+            <Nome>Nota</Nome>
+        </Tipo>
+        <Tipo xmlid="observacao">
+            <Nome>Observação</Nome>
+        </Tipo>       
+    </Tipos>    
+</TipoComentario>

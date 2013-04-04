@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.lexml.gov.br/schema/qc/configuracao-urn"
+	xmlns:tns="http://www.lexml.gov.br/schema/qc/configuracao-urn"
+	elementFormDefault="qualified">
+
+	<element name="Configuracao" type="tns:Configuracao"></element>
+	<complexType name="Configuracao">
+		<sequence>
+			<element name="Categorias" type="tns:Categorias"></element>
+			<element name="Localidades" type="tns:Localidades"></element>
+			<element name="Autoridades" type="tns:Autoridades"></element>
+			<element name="TiposDocumentos" type="tns:TiposDocumentos">
+			</element>
+			<element name="Versoes" type="tns:Versoes"></element>
+			<element name="Eventos" type="tns:Eventos"></element>
+			<element name="Correlacoes" type="tns:Correlacoes"></element>
+		</sequence>
+	</complexType>
+	<complexType name="Categorias">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Categoria" type="tns:Categoria"></element>
+		</sequence>
+	</complexType>
+	<complexType name="Localidades">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Localidade" type="tns:Localidade" />
+		</sequence>
+	</complexType>
+	<complexType name="Autoridades">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Autoridade" type="tns:Autoridade" />
+		</sequence>
+	</complexType>
+	<complexType name="TiposDocumentos">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="TipoDocumento" type="tns:TipoDocumento" />
+		</sequence>
+	</complexType>
+	<complexType name="Versoes">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Versao" type="tns:Versao" />
+		</sequence>
+	</complexType>
+	<complexType name="Eventos">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Evento" type="tns:Evento" />
+		</sequence>
+	</complexType>
+	<complexType name="Correlacoes">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="Correlacao" type="tns:Correlacao" />
+		</sequence>
+	</complexType>
+	<complexType name="Categoria">
+		<complexContent>
+			<extension base="tns:Vocabulo"></extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Localidade">
+		<complexContent>
+			<extension base="tns:Vocabulo"></extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Autoridade">
+		<complexContent>
+			<extension base="tns:Vocabulo">
+				<sequence>
+					<element name="SiglaColegiado" type="tns:Sigla" maxOccurs="1"
+						minOccurs="0"></element>					
+				</sequence>
+				<attribute name="requerSigla" type="boolean" default="false"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="TipoDocumento">
+		<complexContent>
+			<extension base="tns:Vocabulo">
+				<sequence>
+					<element name="SiglaDocumento" type="tns:Sigla" maxOccurs="1"
+						minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Versao">
+		<complexContent>
+			<extension base="tns:Vocabulo">
+				<attribute name="requerData" type="boolean" default="false" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Evento">
+		<complexContent>
+			<extension base="tns:Vocabulo">
+			<attribute name="requerData" type="boolean" default="false"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Correlacao">
+		<attribute name="categoria" type="string" use="required"/>
+		<attribute name="localidade" type="string" use="required"/>
+		<attribute name="autoridade" type="string" use="required"/>
+		<attribute name="tipoDocumento" type="string" use="required"/>
+		<attribute name="versao" type="string" use="optional"/>
+		<attribute name="evento" type="string" use="optional"/>
+		<attribute name="componenteColegiado" type="string" use="optional"/>
+		<attribute name="componenteDocumento" type="string" use="optional"/>
+	</complexType>
+
+	<complexType name="Vocabulo" abstract="true">
+		<sequence>
+			<element name="Nome" type="string"></element>
+		</sequence>
+		<attribute name="xmlid" type="string" use="required"></attribute>
+	</complexType>
+
+
+
+	<complexType name="Sigla">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="urn" type="anyURI"></attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

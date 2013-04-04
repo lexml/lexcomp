@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<quadroComparativo>
+    <colunas>
+        <textos>
+            <anoComponente></anoComponente>
+            <autoridades>federal</autoridades>
+            <categorias>legislacao</categorias>
+            <comissaoespecial></comissaoespecial>
+            <componenteDocumento></componenteDocumento>
+            <dataAssinatura>2005</dataAssinatura>
+            <dataEvento></dataEvento>
+            <dataVigente></dataVigente>
+            <documentoParseado>false</documentoParseado>
+            <fecho>dfdfvbdfg</fecho>
+            <incluidoVisualizacao>true</incluidoVisualizacao>
+            <localidades>br</localidades>
+            <numero>123</numero>
+            <numeroComponente></numeroComponente>
+            <order>0</order>
+            <preambulo>11223</preambulo>
+            <tiposDocumento>lei.delegada</tiposDocumento>
+            <titulo>Lei Delegada nº 123/2005&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei.delegada:2005;123</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_delegada_2005_123</urnIdDIV>
+            <versao></versao>
+        </textos>
+        <id>20130404164432096-1</id>
+        <order>0</order>
+        <titulo>Nova Coluna</titulo>
+    </colunas>
+    <colunas>
+        <textos>
+            <anoComponente></anoComponente>
+            <autoridades>federal</autoridades>
+            <categorias>legislacao</categorias>
+            <comissaoespecial></comissaoespecial>
+            <componenteDocumento></componenteDocumento>
+            <dataAssinatura>2006</dataAssinatura>
+            <dataEvento></dataEvento>
+            <dataVigente></dataVigente>
+            <documentoParseado>false</documentoParseado>
+            <fecho>fgh fgh fgh</fecho>
+            <incluidoVisualizacao>false</incluidoVisualizacao>
+            <localidades>br</localidades>
+            <numero>456</numero>
+            <numeroComponente></numeroComponente>
+            <order>1</order>
+            <preambulo>dfdfdfgdfg</preambulo>
+            <tiposDocumento>lei</tiposDocumento>
+            <titulo>Lei nº 456/2006&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei:2006;456</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_2006_456</urnIdDIV>
+            <versao></versao>
+        </textos>
+        <id>20130404164432096-2</id>
+        <order>1</order>
+        <titulo>Nova Coluna</titulo>
+    </colunas>
+    <conexoes>
+        <sourceId>urn_lex_br_federal_lei_delegada_2005_123</sourceId>
+        <targetId>urn_lex_br_federal_lei_2006_456</targetId>
+    </conexoes>
+    <correlacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>8</alvo>
+            <id>1</id>
+            <origem>8</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
+                <noneUsuario>0</noneUsuario>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>11</alvo>
+            <id>2</id>
+            <origem>11</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
+                <noneUsuario>0</noneUsuario>
+            </proveniencia>
+        </relacoes>
+        <urn1>urn:lex:br:federal:lei.delegada:2005;123</urn1>
+        <urn2>urn:lex:br:federal:lei:2006;456</urn2>
+    </correlacoes>
+    <currentPosition>26</currentPosition>
+    <id>20130404164432096</id>
+    <titulo>Novo nome</titulo>
+</quadroComparativo>
