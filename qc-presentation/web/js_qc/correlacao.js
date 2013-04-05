@@ -513,20 +513,44 @@ function comentaRelacao(id){
 
 function editaTipoRelacao(src, relacao_id){   
     
-    var target_conn = jsPlumb.getConnections({source: src.attr("id")});
-    var source_conn = jsPlumb.getConnections({target: src.attr("id")});
+    var relacao;
     
-    var tipos = getTiposCorrelacao(source_conn.length, target_conn.length);
+    $.each(relacoes, function (index, rel) {
+            
+        if (rel.id == relacao_id) {
+            relacao = rel;
+            return;
+        }
+    });
+    
+    var tipos = getTiposCorrelacao(relacao.origem.length, relacao.alvo.length);
     
     $('select[id="tiposCorrelacao"]').html("");
-    $('select[id="tiposCorrelacao"]').append("<option>-- Selecione --</option>");
     
     $.each(tipos, function (key, tipo) {               
          $('<option value="'+ key +'"></option>').html(tipo).appendTo('select[id="tiposCorrelacao"]');                     
     });   
  
     $("#dialog-tiporelacao").dialog({
-        modal:true,draggable:false,width:600, height:150});
+        modal:true, draggable:false, width:600, height:150,
+        buttons: {
+            "OK": function() {
+                $( this ).dialog( "close" );
+                
+                var tipoRelacao = $('select[id="tiposCorrelacao"]').find('option:selected').val();    
+                if (tipoRelacao) {
+                    relacao.refTipo = {};
+                    relacao.refTipo.nomeTipo = tipoRelacao;
+                }
+
+                saveRelacao(qcid, urn1, urn2, relacao, relacaoSaved);
+            },
+            "Cancelar": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+        
+    });
 }
 
 function relacaoSaved(res) {
