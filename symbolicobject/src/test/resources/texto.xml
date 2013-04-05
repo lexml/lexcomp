@@ -1,0 +1,1642 @@
+<LexML xsi:schemaLocation="http://www.lexml.gov.br/1.0 ../xsd/lexml-br-rigido.xsd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.lexml.gov.br/1.0">
+      <!--       xsi:schemaLocation="http://www.lexml.gov.br/1.0 http://projeto.lexml.gov.br/esquemas/lexml-br-rigido.xsd" > -->
+      <Metadado>
+      <Identificacao URN="urn:lex:br:senado.federal:projeto.lei;plc:2011;98@data.evento;apresentacao.substitutivo;2011-11-01t00.00"></Identificacao>
+    </Metadado>
+      <ProjetoNorma>
+        <Norma>
+          <ParteInicial>
+      <Epigrafe id="epigrafe">SUBSTITUTIVO APRESENTADO NA CAS AO PROJETO DE LEI DA CÂMARA 98, DE 2011</Epigrafe>
+      <Ementa id="ementa">Institui o Estatuto da Juventude, para dispor sobre os direitos dos jovens, os princípios e diretrizes das políticas públicas de juventude e o estabelecimento do Sistema Nacional de Juventude.</Ementa>
+      <Preambulo id="preambulo"><p>O CONGRESSO NACIONAL decreta:</p></Preambulo>
+    </ParteInicial>
+          <Articulacao><Titulo    id="tit1" >
+            
+            
+            <Rotulo>TÍTULO I</Rotulo>
+            <NomeAgrupador>Dos Direitos e das Políticas Públicas de Juventude</NomeAgrupador>
+            <Capitulo    id="tit1_cap1" >
+            
+            
+            <Rotulo>CAPÍTULO I</Rotulo>
+            <NomeAgrupador>Dos Princípios e Diretrizes das Políticas Públicas de Juventude</NomeAgrupador>
+            <Artigo    id="art1" >
+            
+            
+            <Rotulo>Art. 1º</Rotulo>
+            
+            <Caput    id="art1_cpt" >
+            
+            
+            
+            <p>Esta Lei institui o Estatuto da Juventude, para dispor sobre os direitos dos jovens, os princípios e diretrizes das políticas públicas de juventude e o estabelecimento do Sistema Nacional de Juventude.</p>
+            
+          </Caput><Paragrafo    id="art1_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>Para os efeitos desta Lei, são consideradas jovens as pessoas com idade entre dezoito e vinte e nove anos.</p>
+            
+          </Paragrafo>
+          </Artigo><Secao    id="tit1_cap1_sec1" >
+            
+            
+            <Rotulo>SEÇÃO I</Rotulo>
+            <NomeAgrupador>Dos Princípios</NomeAgrupador>
+            <Artigo    id="art2" >
+            
+            
+            <Rotulo>Art. 2º</Rotulo>
+            
+            <Caput    id="art2_cpt" >
+            
+            
+            
+            <p>O disposto nesta Lei e as políticas públicas de juventude são regidos pelos seguintes princípios:</p>
+            <Inciso    id="art2_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>respeito à dignidade e à autonomia do jovem;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>não discriminação;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>respeito pela diferença e aceitação da juventude como parte da diversidade da condição humana, considerado o ciclo de vida;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>igualdade de oportunidades;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>desenvolvimento de ações conjuntas, intersetoriais e articuladas entre os entes federados e a sociedade, de modo a assegurar a plena participação dos jovens nos espaços decisórios;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>promoção e valorização da pluralidade da participação juvenil, inclusive por meio de suas representações;</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>estabelecimento de instrumentos legais e operacionais que assegurem ao jovem o pleno exercício de seus direitos e que propiciem a sua plena integração comunitária e o seu bem-estar pessoal, social e econômico; e</p>
+            
+          </Inciso><Inciso    id="art2_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>regionalização das políticas públicas de juventude.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap1_sec2" >
+            
+            
+            <Rotulo>SEÇÃO II</Rotulo>
+            <NomeAgrupador>Diretrizes Gerais</NomeAgrupador>
+            <Artigo    id="art3" >
+            
+            
+            <Rotulo>Art. 3º</Rotulo>
+            
+            <Caput    id="art3_cpt" >
+            
+            
+            
+            <p>Os agentes públicos ou privados envolvidos com políticas públicas de juventude devem observar as seguintes diretrizes:</p>
+            <Inciso    id="art3_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>estabelecer mecanismos que favoreçam o desenvolvimento juvenil;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>desenvolver programas setoriais e intersetoriais destinados ao atendimento das necessidades específicas do jovem, considerando a diversidade da juventude;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>adotar estratégias de articulação entre órgãos públicos e entidades privadas, com organismos internacionais e estrangeiros para a implantação de parcerias para a execução das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>integrar as ações de órgãos e entidades públicos e privados nas áreas de saúde, sexualidade, planejamento familiar, educação, trabalho, transporte, assistência social, previdência social, habitação, cultura, desporto e lazer, visando à promoção do desenvolvimento juvenil e à integração intergeracional e social do jovem;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>promover a mais ampla inclusão do jovem, respeitadas as suas peculiaridades, em todas as iniciativas governamentais;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>incentivar a ampla participação juvenil na formulação, implementação e avaliação das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>ampliar as alternativas de inserção social do jovem, promovendo programas que priorizem a sua educação, qualificação profissional e participação ativa nos espaços decisórios;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>promover o acesso do jovem a todos os serviços públicos oferecidos à comunidade;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc9" >
+            
+            
+            <Rotulo>IX –</Rotulo>
+            <p>proporcionar atendimento individualizado nos órgãos públicos e privados prestadores de serviços à população, visando ao gozo de direitos educacionais, políticos, econômicos, sociais, culturais e ambientais;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc10" >
+            
+            
+            <Rotulo>X –</Rotulo>
+            <p>ofertar serviços educacionais que promovam o pleno desenvolvimento físico e mental do jovem, bem como seu preparo para o exercício da cidadania;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc11" >
+            
+            
+            <Rotulo>XI –</Rotulo>
+            <p>divulgar e aplicar a legislação antidiscriminatória, assim como promover a revogação de normas discriminatórias;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc12" >
+            
+            
+            <Rotulo>XII –</Rotulo>
+            <p>garantir a efetividade dos programas, ações e projetos de juventude;</p>
+            
+          </Inciso><Inciso    id="art3_cpt_inc13" >
+            
+            
+            <Rotulo>XIII –</Rotulo>
+            <p>garantir a integração das políticas de juventude com os Poderes Legislativo e Judiciário e com o Ministério Público.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao>
+          </Capitulo><Capitulo    id="tit1_cap2" >
+            
+            
+            <Rotulo>CAPÍTULO II</Rotulo>
+            <NomeAgrupador>Dos Direitos dos Jovens</NomeAgrupador>
+            <Secao    id="tit1_cap2_sec1" >
+            
+            
+            <Rotulo>SEÇÃO I</Rotulo>
+            <NomeAgrupador>Do Direito à Cidadania, à Participação Social e Política e à Representação Juvenil</NomeAgrupador>
+            <Artigo    id="art4" >
+            
+            
+            <Rotulo>Art. 4º</Rotulo>
+            
+            <Caput    id="art4_cpt" >
+            
+            
+            
+            <p>O Estado e a sociedade promoverão a participação juvenil na elaboração de políticas públicas para a juventude e nos espaços públicos de tomada de decisão.</p>
+            
+          </Caput><Paragrafo    id="art4_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>Entende-se por participação juvenil:</p>
+            <Inciso    id="art4_par1u_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>a inclusão do jovem nos espaços públicos e comunitários a partir da sua concepção como pessoa ativa, livre, responsável e digna de ocupar uma posição central nos processos políticos e sociais;</p>
+            
+          </Inciso><Inciso    id="art4_par1u_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>a ação, a interlocução e o posicionamento do jovem com respeito ao conhecimento e a sua aquisição responsável e necessária à sua formação e crescimento como cidadão;</p>
+            
+          </Inciso><Inciso    id="art4_par1u_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>o envolvimento ativo dos jovens em ações de políticas públicas que tenham por objetivo seu próprio benefício, o de suas comunidades, cidades e regiões, e o do País;</p>
+            
+          </Inciso><Inciso    id="art4_par1u_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>a participação do jovem em ações que contemplem a procura pelo bem comum nos estabelecimentos de ensino e na sociedade;</p>
+            
+          </Inciso><Inciso    id="art4_par1u_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>a efetiva inclusão dos jovens, no que couber, nos espaços públicos de decisão com direito a voz e voto.</p>
+            
+          </Inciso>
+          </Paragrafo>
+          </Artigo><Artigo    id="art5" >
+            
+            
+            <Rotulo>Art. 5º</Rotulo>
+            
+            <Caput    id="art5_cpt" >
+            
+            
+            
+            <p>A interlocução da juventude com o poder público pode se realizar por intermédio de associações e organizações juvenis.</p>
+            
+          </Caput><Paragrafo    id="art5_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>É dever do poder público incentivar o associativismo juvenil.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art6" >
+            
+            
+            <Rotulo>Art. 6º</Rotulo>
+            
+            <Caput    id="art6_cpt" >
+            
+            
+            
+            <p>São diretrizes da interlocução institucional juvenil:</p>
+            <Inciso    id="art6_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>a definição de órgão governamental específico para a gestão das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art6_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>incentivar a organização de conselhos de juventude em todos os entes da Federação.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec2" >
+            
+            
+            <Rotulo>SEÇÃO II</Rotulo>
+            <NomeAgrupador>Do Direito à Educação</NomeAgrupador>
+            <Artigo    id="art7" >
+            
+            
+            <Rotulo>Art. 7º</Rotulo>
+            
+            <Caput    id="art7_cpt" >
+            
+            
+            
+            <p>Todo jovem tem direito à educação de qualidade, com a garantia de educação básica, obrigatória e gratuita, inclusive para os que a ela não tiveram acesso na idade adequada.</p>
+            
+          </Caput><Paragrafo    id="art7_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>O ensino fundamental regular será ministrado em língua portuguesa, assegurada aos jovens índios e quilombolas, nessa etapa e, se possível, no ensino médio, a utilização de suas línguas maternas e de processos próprios de aprendizagem.</p>
+            
+          </Paragrafo><Paragrafo    id="art7_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>É dever do Estado oferecer aos jovens que não concluíram a educação básica programas na modalidade da educação de jovens e adultos, adaptados às necessidades e especificidades da juventude, inclusive no período noturno.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art8" >
+            
+            
+            <Rotulo>Art. 8º</Rotulo>
+            
+            <Caput    id="art8_cpt" >
+            
+            
+            
+            <p>O jovem tem direito à educação superior, em instituições públicas ou privadas, com variados graus de abrangência do saber ou especialização do conhecimento, observadas as regras de acesso de cada instituição.</p>
+            
+          </Caput><Paragrafo    id="art8_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>É assegurado aos jovens com deficiência, aos jovens negros, indígenas e alunos oriundos da escola pública o acesso ao ensino superior nas instituições públicas por meio de políticas afirmativas, nos termos da lei.</p>
+            
+          </Paragrafo><Paragrafo    id="art8_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>É dever do Estado promover programas de expansão da oferta de educação superior nas instituições públicas, de financiamento estudantil e de bolsas de estudos nas instituições privadas, com prioridade para jovens com deficiência, negros, indígenas e alunos oriundos da escola pública</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art9" >
+            
+            
+            <Rotulo>Art. 9º</Rotulo>
+            
+            <Caput    id="art9_cpt" >
+            
+            
+            
+            <p>O jovem tem direito à educação profissional e tecnológica, integrada aos diferentes níveis e modalidades de educação, ao trabalho, à ciência e à tecnologia.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art10" >
+            
+            
+            <Rotulo>Art. 10.</Rotulo>
+            
+            <Caput    id="art10_cpt" >
+            
+            
+            
+            <p>É dever do Estado assegurar ao jovem com deficiência o atendimento educacional especializado gratuito, preferencialmente, na rede regular de ensino.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art11" >
+            
+            
+            <Rotulo>Art. 11.</Rotulo>
+            
+            <Caput    id="art11_cpt" >
+            <!--Link: urn:lex:br:federal:lei:1996-12-20;9394!art4-->
+            
+            
+            <p>O direito ao programa suplementar de transporte escolar de que trata o <span xlink:href="urn:lex:br:federal:lei:1996-12-20;9394!art4">art. 4º da Lei nº 9.394, de 20 de dezembro de 1996</span>, será progressivamente estendido ao jovem estudante do ensino fundamental, do ensino médio e da educação superior, no campo e na cidade.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art12" >
+            
+            
+            <Rotulo>Art. 12.</Rotulo>
+            
+            <Caput    id="art12_cpt" >
+            
+            
+            
+            <p>É garantida a participação efetiva do segmento juvenil na gestão democrática do ensino público.</p>
+            
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec3" >
+            
+            
+            <Rotulo>SEÇÃO III</Rotulo>
+            <NomeAgrupador>Do Direito à Profissionalização, ao Trabalho e à Renda</NomeAgrupador>
+            <Artigo    id="art13" >
+            
+            
+            <Rotulo>Art. 13.</Rotulo>
+            
+            <Caput    id="art13_cpt" >
+            
+            
+            
+            <p>Os empregadores devem elaborar horários de trabalho específicos para os jovens estudantes, com flexibilidade ajustável à frequência das aulas e ao deslocamento para os respectivos estabelecimentos de ensino.</p>
+            
+          </Caput><Paragrafo    id="art13_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>Quando não for possível a aplicação do regime previsto no <i>caput</i>, o jovem estudante será dispensado até quatro horas semanais, sem prejuízo da remuneração, se assim o exigir o horário escolar.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art14" >
+            
+            
+            <Rotulo>Art. 14.</Rotulo>
+            
+            <Caput    id="art14_cpt" >
+            
+            
+            
+            <p>A jornada de trabalho do jovem trabalhador não pode ser superior a oito horas diárias e quarenta e quatro horas semanais, nelas compreendidas o serviço extraordinário, ressalvados os casos de força maior.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art15" >
+            
+            
+            <Rotulo>Art. 15.</Rotulo>
+            
+            <Caput    id="art15_cpt" >
+            
+            
+            
+            <p>Ao jovem trabalhador é assegurado o direito de ausentar-se do trabalho, sem prejuízo de sua remuneração, para prestação de provas de avaliação nos seguintes termos:</p>
+            <Inciso    id="art15_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>até dois dias para cada prova de avaliação, sendo um o da realização da prova, e o outro o imediatamente anterior, incluindo sábados domingos e feriados;</p>
+            
+          </Inciso><Inciso    id="art15_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>o número de dias de ausência não pode exceder o total de quatro por mês.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo><Artigo    id="art16" >
+            
+            
+            <Rotulo>Art. 16.</Rotulo>
+            
+            <Caput    id="art16_cpt" >
+            
+            
+            
+            <p>Aos jovens estudantes devem ser oferecidas oportunidades de promoção profissional compatível com a escolarização ou especialização concluídas, não sendo obrigatória a reclassificação profissional em razão da conclusão dos cursos.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art17" >
+            
+            
+            <Rotulo>Art. 17.</Rotulo>
+            
+            <Caput    id="art17_cpt" >
+            
+            
+            
+            <p>Será criada linha de crédito especial para os jovens empreendedores.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art18" >
+            
+            
+            <Rotulo>Art. 18.</Rotulo>
+            
+            <Caput    id="art18_cpt" >
+            
+            
+            
+            <p>A ação do poder público na efetivação do direito do jovem trabalhador rural compreenderá o apoio na organização da produção da agricultura familiar e dos empreendimentos familiares rurais, por meio das seguintes ações:</p>
+            <Inciso    id="art18_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>estímulo à produção e à diversificação de produtos;</p>
+            
+          </Inciso><Inciso    id="art18_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>fomento à produção sustentável baseada na agroecologia, nas agroindústrias familiares, na integração entre lavoura, pecuária e floresta, e no extrativismo sustentável;</p>
+            
+          </Inciso><Inciso    id="art18_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>investimento em pesquisa de tecnologias apropriadas à agricultura familiar e aos empreendimentos familiares rurais;</p>
+            
+          </Inciso><Inciso    id="art18_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>estímulo à comercialização direta da produção da agricultura familiar, aos empreendimentos familiares rurais e à formação de cooperativas.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec4" >
+            
+            
+            <Rotulo>SEÇÃO IV</Rotulo>
+            <NomeAgrupador>Do Direito à Igualdade</NomeAgrupador>
+            <Artigo    id="art19" >
+            
+            
+            <Rotulo>Art. 19.</Rotulo>
+            
+            <Caput    id="art19_cpt" >
+            
+            
+            
+            <p>O direito à igualdade assegura que o jovem não será discriminado por motivo de:</p>
+            <Inciso    id="art19_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>etnia, raça, cor da pele, cultura, origem, idade e sexo;</p>
+            
+          </Inciso><Inciso    id="art19_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>orientação sexual, idioma ou religião;</p>
+            
+          </Inciso><Inciso    id="art19_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>opiniões, condição social, aptidões físicas ou condição econômica.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo><Artigo    id="art20" >
+            
+            
+            <Rotulo>Art. 20.</Rotulo>
+            
+            <Caput    id="art20_cpt" >
+            
+            
+            
+            <p>O direito à igualdade compreende:</p>
+            <Inciso    id="art20_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>a adoção, no âmbito federal, do Distrito Federal, estadual e municipal, de programas governamentais destinados a assegurar a igualdade de direitos aos jovens de todas as raças e etnias, independentemente de sua origem, relativamente à educação, à profissionalização, ao trabalho e renda, à cultura, à saúde, à segurança, à cidadania e ao acesso à justiça;</p>
+            
+          </Inciso><Inciso    id="art20_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>a capacitação dos professores dos ensinos fundamental e médio para a aplicação das Diretrizes Curriculares Nacionais no que se refere ao enfrentamento de todas as formas de discriminação;</p>
+            
+          </Inciso><Inciso    id="art20_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>a inclusão de temas sobre questões étnicas, raciais, de gênero e de violência doméstica e sexual praticada contra mulheres na formação dos profissionais de educação, de saúde, de segurança pública e dos operadores do Direito;</p>
+            
+          </Inciso><Inciso    id="art20_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>a observância das diretrizes curriculares para a educação indígena como forma de preservação dessa cultura;</p>
+            
+          </Inciso><Inciso    id="art20_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>a inclusão, nos conteúdos curriculares, de informações sobre a discriminação na sociedade brasileira e sobre o direito de todos os grupos e indivíduos a um tratamento igualitário perante a lei;</p>
+            
+          </Inciso><Inciso    id="art20_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>a inclusão de temas relacionados à sexualidade nos conteúdos curriculares, respeitando a diversidade de valores e crenças.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec5" >
+            
+            
+            <Rotulo>SEÇÃO V</Rotulo>
+            <NomeAgrupador>Do Direito à Atenção Integral à Saúde</NomeAgrupador>
+            <Artigo    id="art21" >
+            
+            
+            <Rotulo>Art. 21.</Rotulo>
+            
+            <Caput    id="art21_cpt" >
+            
+            
+            
+            <p>Todos os jovens têm direito à assistência integral e de qualidade à saúde, entendida como o conjunto articulado e contínuo de ações e serviços voltados para a promoção, prevenção, proteção e recuperação da saúde.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art22" >
+            
+            
+            <Rotulo>Art. 22.</Rotulo>
+            
+            <Caput    id="art22_cpt" >
+            
+            
+            
+            <p>A política pública de atenção à saúde do jovem será desenvolvida em consonância com as seguintes diretrizes:</p>
+            <Inciso    id="art22_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>acesso universal a serviços de saúde humanizados e de qualidade;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>atenção integral à saúde, com especial ênfase ao atendimento e à prevenção dos agravos mais prevalentes nos jovens;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>desenvolvimento de ações articuladas entre os serviços de saúde e os estabelecimentos de ensino, a sociedade e a família, para a prevenção de agravos à saúde dos jovens;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>garantia da inclusão de temas relativos ao consumo de álcool e de outras drogas, à aids e às outras doenças sexualmente transmissíveis, ao planejamento familiar e à saúde sexual e reprodutiva, nos conteúdos curriculares dos diversos níveis de ensino;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>reconhecimento do impacto da gravidez desejada ou indesejada, sob os aspectos médico, psicológico, social e econômico;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>capacitação dos profissionais de saúde, em uma perspectiva multiprofissional, para lidar com temas relativos à saúde sexual e reprodutiva dos jovens e ao abuso de álcool e de outras drogas pelos jovens;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>capacitação de professores para a identificação de problemas relacionados com a ingestão abusiva ou dependência de álcool ou outras drogas e o devido encaminhamento dos jovens aos serviços de saúde;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>valorização das parcerias com instituições religiosas, associações e organizações não governamentais na abordagem das questões relativas ao uso de drogas entre os jovens;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc9" >
+            
+            
+            <Rotulo>IX –</Rotulo>
+            <p>veiculação de campanhas educativas relativas ao álcool como droga causadora de dependência, que destaque os malefícios do uso nocivo do produto, sobretudo por jovens;</p>
+            
+          </Inciso><Inciso    id="art22_cpt_inc10" >
+            
+            
+            <Rotulo>X –</Rotulo>
+            <p>articulação das instâncias de saúde e de justiça no enfrentamento do abuso de drogas entre os jovens, inclusive de esteróides anabolizantes.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec6" >
+            
+            
+            <Rotulo>SEÇÃO VI</Rotulo>
+            <NomeAgrupador>Dos Direitos à Cultura, à Comunicação e à Liberdade de Expressão</NomeAgrupador>
+            <Artigo    id="art23" >
+            
+            
+            <Rotulo>Art. 23.</Rotulo>
+            
+            <Caput    id="art23_cpt" >
+            <!--Link: urn:lex:br:federal:constituicao:1988-10-05;1988!art215_cpt-->
+            
+            
+            <p>É assegurado ao jovem o exercício dos direitos culturais, conforme disposto no <i><span xlink:href="urn:lex:br:federal:constituicao:1988-10-05;1988!art215_cpt">caput</span></i><span xlink:href="urn:lex:br:federal:constituicao:1988-10-05;1988!art215_cpt"> do art. 215 da Constituição Federal</span>.</p>
+            
+          </Caput><Paragrafo    id="art23_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>Incluem-se entre os direitos culturais o direito à livre criação, o acesso aos bens e serviços culturais, a participação nas decisões de política cultural, o direito à identidade e à diversidade cultural e o direito à memória social.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art24" >
+            
+            
+            <Rotulo>Art. 24.</Rotulo>
+            
+            <Caput    id="art24_cpt" >
+            
+            
+            
+            <p>O jovem tem direito à livre expressão, a produzir conhecimento, individual e coletivamente, e a ter acesso às tecnologias de comunicação e informação.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art25" >
+            
+            
+            <Rotulo>Art. 25.</Rotulo>
+            
+            <Caput    id="art25_cpt" >
+            
+            
+            
+            <p>Na consecução dos direitos culturais da juventude, compete ao poder público:</p>
+            <Inciso    id="art25_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>garantir ao jovem a participação no processo de produção, reelaboração e fruição dos bens culturais;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>propiciar ao jovem o acesso aos locais e eventos culturais, mediante preços reduzidos, em âmbito nacional;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>incentivar os movimentos de jovens a desenvolver atividades artístico-culturais e ações voltadas à preservação do patrimônio histórico;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>valorizar a capacidade criativa do jovem, mediante o desenvolvimento de programas e projetos culturais;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>propiciar ao jovem o conhecimento da diversidade cultural, regional e étnica do País;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>promover programas educativos e culturais voltados para a problemática do jovem nas emissoras de rádio e televisão e demais meios de comunicação de massa;</p>
+            
+          </Inciso><Inciso    id="art25_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>promover a inclusão digital dos jovens, por meio do acesso às novas tecnologias da informação e comunicação.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo><Artigo    id="art26" >
+            
+            
+            <Rotulo>Art. 26.</Rotulo>
+            
+            <Caput    id="art26_cpt" >
+            
+            
+            
+            <p>Fica assegurado aos jovens estudantes e aos jovens comprovadamente carentes, na forma do regulamento, o acesso a salas de cinema, cineclubes, teatros, espetáculos musicais e circenses, eventos educativos, esportivos, de lazer e entretenimento, em todo o território nacional, promovidos por quaisquer entidades e realizados em estabelecimentos públicos ou particulares, mediante pagamento da metade do preço do ingresso cobrado do público em geral.</p>
+            
+          </Caput><Paragrafo    id="art26_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>O benefício previsto no <i>caput</i> não será cumulativo com quaisquer promoções e convênios e não se aplica ao valor de serviços adicionais eventualmente oferecidos em camarotes, áreas e cadeiras especiais.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par2" >
+            <!--Link: urn:lex:br:federal:lei:1996-12-20;9394-->
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>Terão direito ao benefício previsto no <i>caput</i> os estudantes regularmente matriculados nos níveis e modalidades de educação e ensino previstos no Título V da <span xlink:href="urn:lex:br:federal:lei:1996-12-20;9394">Lei nº 9.394, de 20 de dezembro de 1996</span>, que comprovem sua condição de discente, mediante apresentação, no momento da aquisição do ingresso e na portaria do local de realização do evento, da Carteira de Identificação Estudantil.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par3" >
+            
+            
+            <Rotulo>§ 3º</Rotulo>
+            <p>A Carteira de Identificação Estudantil será expedida preferencialmente pela Associação Nacional de Pós-Graduandos, pela União Nacional dos Estudantes, pela União Brasileira dos Estudantes Secundaristas e por entidades estudantis estaduais e municipais a elas filiadas.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par4" >
+            
+            
+            <Rotulo>§ 4º</Rotulo>
+            <p>É garantida a gratuidade na expedição da Carteira de Identificação Estudantil (CIE) para estudantes comprovadamente carentes, nos termos do regulamento.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par5" >
+            
+            
+            <Rotulo>§ 5º</Rotulo>
+            <p>A Carteira de Identificação Estudantil conterá selo de segurança personalizado, segundo padrão único definido pelas entidades nacionais mencionadas no § 3º deste artigo e será por elas distribuída.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par6" >
+            
+            
+            <Rotulo>§ 6º</Rotulo>
+            <p>As entidades mencionadas no § 3º deste artigo deverão tornar disponível, para eventuais consultas pelo Poder Público e pelos estabelecimentos referidos no <i>caput</i>, banco de dados com o nome e o número de registro dos estudantes portadores da Carteira de Identificação Estudantil, expedida nos termos dos §§ 3º a 5º deste artigo.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par7" >
+            
+            
+            <Rotulo>§ 7º</Rotulo>
+            <p>A Carteira de Identificação Estudantil terá validade até o dia 31 de março do ano subsequente à data de sua expedição.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par8" >
+            
+            
+            <Rotulo>§ 8º</Rotulo>
+            <p>As entidades mencionadas no § 3º deste artigo ficam obrigadas a manter o documento comprobatório do vínculo do aluno com o estabelecimento escolar, pelo mesmo prazo de validade da respectiva Carteira de Identificação Estudantil.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par9" >
+            
+            
+            <Rotulo>§ 9º</Rotulo>
+            <p>A concessão do benefício da meia-entrada previsto no <i>caput</i>, sem prejuízo para outras faixas etárias e categorias contempladas com descontos no preço do ingresso, corresponderá a, no mínimo:</p>
+            <Inciso    id="art26_par9_inc1" >
+            <!--Link: urn:lex:br:federal:lei:1991-12-23;8313-->
+            
+            <Rotulo>I –</Rotulo>
+            <p>50% do total de ingressos disponíveis para cada evento, no caso de eventos que contem com financiamento ou patrocínio do Programa Nacional de Cultura, nos termos do regulamento da <span xlink:href="urn:lex:br:federal:lei:1991-12-23;8313">Lei n° 8.313, de 23 de dezembro de 1991</span>;</p>
+            
+          </Inciso><Inciso    id="art26_par9_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>40% do total de ingressos nos demais eventos.</p>
+            
+          </Inciso>
+          </Paragrafo><Paragrafo    id="art26_par10" >
+            
+            
+            <Rotulo>§ 10.</Rotulo>
+            <p>O cumprimento dos percentuais de que trata o § 9º deste artigo será aferido pela Agência Nacional do Cinema (ANCINE) no caso de exibições cinematográficas e, para os demais setores, por meio de instrumento de controle que faculte ao público o acesso a informações atualizadas referentes ao quantitativo de ingressos de meia-entrada disponíveis para cada sessão.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par11" >
+            
+            
+            <Rotulo>§ 11.</Rotulo>
+            <p>As produtoras de eventos deverão divulgar:</p>
+            <Inciso    id="art26_par11_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>o número total de ingressos e o número de ingressos disponíveis para usuários da meia-entrada, em todos os pontos de venda de ingressos, de forma visível e clara;</p>
+            
+          </Inciso><Inciso    id="art26_par11_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>aviso de que se esgotaram os ingressos disponíveis aos usuários da meia-entrada, quando for o caso, em todos os pontos de venda de ingressos, de forma visível e clara.</p>
+            
+          </Inciso>
+          </Paragrafo><Paragrafo    id="art26_par12" >
+            
+            
+            <Rotulo>§ 12.</Rotulo>
+            <p>Na prestação de contas relativa a eventos que contem com financiamento de entes públicos ou que veiculem obras ou produtos beneficiados com financiamento de entes públicos, o cumprimento da disponibilização de percentual de ingressos para a meia-entrada deverá ser utilizado como critério de avaliação pelo Poder Público.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par13" >
+            
+            
+            <Rotulo>§ 13.</Rotulo>
+            <p>Os estabelecimentos referidos no <i>caput</i> deverão tornar disponível, para eventuais consultas das entidades mencionadas no § 3º ou do Poder Público, relatório da venda de ingressos de cada evento, auditado por instituição idônea.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par14" >
+            
+            
+            <Rotulo>§ 14.</Rotulo>
+            <p>Os estabelecimentos referidos no <i>caput</i> deverão afixar cartazes em local visível da bilheteria e da portaria de cada evento com as condições estabelecidas para o gozo da meia-entrada e os dados de contato dos órgãos responsáveis pela fiscalização do que dispõe este artigo, inclusive os de defesa do consumidor.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par15" >
+            <!--Link: urn:lex:br:federal:lei:2004-01-09;10836-->
+            
+            <Rotulo>§ 15.</Rotulo>
+            <p>Até que seja expedido o regulamento previsto no <i>caput</i>, serão considerados jovens comprovadamente carentes, para fins desta Lei, os que sejam oriundos de famílias beneficiárias do Programa Bolsa Família, a que se refere a <span xlink:href="urn:lex:br:federal:lei:2004-01-09;10836">Lei nº 10.836, de 9 de janeiro de 2004</span>, mediante apresentação, no ato da compra do ingresso e na portaria do evento, do cartão do Programa Bolsa Família, acompanhado de documento de identificação com foto que comprove o seu grau de parentesco com o/a titular do cartão.</p>
+            
+          </Paragrafo><Paragrafo    id="art26_par16" >
+            
+            
+            <Rotulo>§ 16.</Rotulo>
+            <p>Caberá aos órgãos públicos competentes federais, do Distrito Federal, estaduais e municipais a fiscalização do cumprimento do disposto neste artigo e a aplicação das sanções cabíveis, nos termos do regulamento.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art27" >
+            
+            
+            <Rotulo>Art. 27.</Rotulo>
+            
+            <Caput    id="art27_cpt" >
+            
+            
+            
+            <p>O poder público destinará, no âmbito dos respectivos orçamentos, recursos financeiros para o fomento dos projetos culturais destinados aos jovens e por eles produzidos.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art28" >
+            
+            
+            <Rotulo>Art. 28.</Rotulo>
+            
+            <Caput    id="art28_cpt" >
+            <!--Link: urn:lex:br:federal:lei:1991-12-23;8313-->
+            
+            
+            <p>Na destinação dos recursos do Fundo Nacional de Cultura (FNC), de que trata a <span xlink:href="urn:lex:br:federal:lei:1991-12-23;8313">Lei nº 8.313, de 23 de dezembro de 1991</span>, serão consideradas as necessidades específicas dos jovens em relação à ampliação do acesso à cultura e à melhoria das condições para o exercício do protagonismo no campo da produção cultural.</p>
+            
+          </Caput><Paragrafo    id="art28_par1u" >
+            <!--Link: urn:lex:br:federal:lei:1991-12-23;8313-->
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>As pessoas físicas ou jurídicas poderão optar pela aplicação de parcelas do imposto sobre a renda a título de doações ou patrocínios, de que trata a <span xlink:href="urn:lex:br:federal:lei:1991-12-23;8313">Lei nº 8.313, de 23 de dezembro de 1991</span>, no apoio a projetos culturais apresentados por entidades juvenis legalmente constituídas há, pelo menos, um ano.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art29" >
+            
+            
+            <Rotulo>Art. 29.</Rotulo>
+            
+            <Caput    id="art29_cpt" >
+            <!--Link: urn:lex:br:federal:constituicao:1988-10-05;1988!art221-->
+            
+            
+            <p>A produção e a programação das emissoras de rádio e televisão deverão destinar espaços ou horários especiais voltados à realidade social do jovem, com finalidade informativa, educativa, artística e cultural, conforme disposto no <span xlink:href="urn:lex:br:federal:constituicao:1988-10-05;1988!art221">art. 221 da Constituição Federal</span>.</p>
+            
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec7" >
+            
+            
+            <Rotulo>SEÇÃO VII</Rotulo>
+            <NomeAgrupador>Do Direito ao Desporto e ao Lazer</NomeAgrupador>
+            <Artigo    id="art30" >
+            
+            
+            <Rotulo>Art. 30.</Rotulo>
+            
+            <Caput    id="art30_cpt" >
+            
+            
+            
+            <p>O jovem tem direito à prática desportiva destinada a seu pleno desenvolvimento, com prioridade para o desporto de participação.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art31" >
+            
+            
+            <Rotulo>Art. 31.</Rotulo>
+            
+            <Caput    id="art31_cpt" >
+            
+            
+            
+            <p>A política pública de desporto e lazer destinada ao jovem deverá considerar:</p>
+            <Inciso    id="art31_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>a realização de diagnóstico e estudos estatísticos oficiais acerca da educação física e dos desportos e dos equipamentos de lazer no Brasil;</p>
+            
+          </Inciso><Inciso    id="art31_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>a adoção de lei de incentivo fiscal para o esporte, com critérios que priorizem a juventude e promovam equidade;</p>
+            
+          </Inciso><Inciso    id="art31_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>a valorização do desporto educacional;</p>
+            
+          </Inciso><Inciso    id="art31_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>a oferta de equipamentos comunitários que permitam a prática desportiva, cultural e de lazer.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo><Artigo    id="art32" >
+            
+            
+            <Rotulo>Art. 32.</Rotulo>
+            
+            <Caput    id="art32_cpt" >
+            
+            
+            
+            <p>Todas as escolas deverão buscar, pelo menos, um local apropriado para a prática de atividades poliesportivas.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art33" >
+            
+            
+            <Rotulo>Art. 33.</Rotulo>
+            
+            <Caput    id="art33_cpt" >
+            
+            
+            
+            <p>No sistema de transporte coletivo interestadual observar-se-á, nos termos da legislação específica:</p>
+            <Inciso    id="art33_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>a reserva de duas vagas gratuitas por veículo para jovens com idade entre dezoito anos e vinte e nove anos comprovadamente carentes;</p>
+            
+          </Inciso><Inciso    id="art33_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>a reserva de duas vagas por veículo com desconto de cinquenta por cento, no mínimo, no valor das passagens, para jovens com idade entre dezoito anos e vinte e nove anos comprovadamente carentes, a serem utilizadas depois de esgotadas as vagas previstas no inciso I.</p>
+            
+          </Inciso>
+          </Caput><Paragrafo    id="art33_par1u" >
+            
+            
+            <Rotulo>Parágrafo único.</Rotulo>
+            <p>Os procedimentos e os critérios para o exercício dos direitos previstos nos incisos I e II serão definidos em regulamento.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art34" >
+            
+            
+            <Rotulo>Art. 34.</Rotulo>
+            
+            <Caput    id="art34_cpt" >
+            
+            
+            
+            <p>A União envidará esforços, em articulação com os Estados, o Distrito Federal e os Municípios, para promover a oferta de transporte público subsidiado para os jovens, com prioridade para os jovens comprovadamente carentes, na forma do regulamento.</p>
+            
+          </Caput>
+          </Artigo>
+          </Secao><Secao    id="tit1_cap2_sec8" >
+            
+            
+            <Rotulo>SEÇÃO VIII</Rotulo>
+            <NomeAgrupador>Do Direito ao Meio Ambiente Ecologicamente Equilibrado</NomeAgrupador>
+            <Artigo    id="art35" >
+            
+            
+            <Rotulo>Art. 35.</Rotulo>
+            
+            <Caput    id="art35_cpt" >
+            
+            
+            
+            <p>O jovem tem direito ao meio ambiente ecologicamente equilibrado, bem de uso comum do povo, essencial à sadia qualidade de vida, e o dever de defendê-lo e preservá-lo para a presente e as futuras gerações.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art36" >
+            
+            
+            <Rotulo>Art. 36.</Rotulo>
+            
+            <Caput    id="art36_cpt" >
+            
+            
+            
+            <p>O Estado promoverá, em todos os níveis de ensino, a educação ambiental voltada para a preservação do meio ambiente e a sustentabilidade.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art37" >
+            
+            
+            <Rotulo>Art. 37.</Rotulo>
+            
+            <Caput    id="art37_cpt" >
+            
+            
+            
+            <p>Na implementação de políticas públicas que incorporem a dimensão ambiental, o poder público deverá considerar:</p>
+            <Inciso    id="art37_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>o estímulo e o fortalecimento de organizações, movimentos, redes e outros coletivos de juventude que atuem no âmbito das questões ambientais e em prol do desenvolvimento sustentável;</p>
+            
+          </Inciso><Inciso    id="art37_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>o incentivo à participação dos jovens na elaboração das políticas públicas de meio ambiente;</p>
+            
+          </Inciso><Inciso    id="art37_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>a criação de programas de educação ambiental destinados aos jovens;</p>
+            
+          </Inciso><Inciso    id="art37_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>o incentivo à participação dos jovens em projetos de geração de trabalho e renda que visem ao desenvolvimento sustentável nos âmbitos rural e urbano.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo>
+          </Secao>
+          </Capitulo>
+          </Titulo><Titulo    id="tit2" >
+            
+            
+            <Rotulo>TÍTULO II</Rotulo>
+            <NomeAgrupador>Da Rede e do Sistema Nacionais de Juventude</NomeAgrupador>
+            <Capitulo    id="tit2_cap1" >
+            
+            
+            <Rotulo>CAPÍTULO I</Rotulo>
+            <NomeAgrupador>Da Rede Nacional de Juventude</NomeAgrupador>
+            <Artigo    id="art38" >
+            
+            
+            <Rotulo>Art. 38.</Rotulo>
+            
+            <Caput    id="art38_cpt" >
+            
+            
+            
+            <p>A União, os Estados, o Distrito Federal e os Municípios promoverão a formação e articulação da Rede Nacional de Juventude, com o objetivo de fortalecer a interação de organizações formais e não formais de juventude e consolidar o exercício dos direitos dos jovens.</p>
+            
+          </Caput><Paragrafo    id="art38_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>Para os efeitos desta Lei, rede de juventude é entendida como um sistema organizacional, integrado por indivíduos, comunidades, instituições públicas e privadas que se articulam com o objetivo de contribuir para o cumprimento dos objetivos das políticas públicas de juventude.</p>
+            
+          </Paragrafo><Paragrafo    id="art38_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>A formação da Rede Nacional de Juventude obedece aos seguintes princípios:</p>
+            <Inciso    id="art38_par2_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>independência entre os participantes;</p>
+            
+          </Inciso><Inciso    id="art38_par2_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>foco nas diretrizes das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art38_par2_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>realização conjunta e articulada dos programas, ações e projetos das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art38_par2_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>interligação entre as unidades da rede pelo Sistema Nacional de Juventude; e</p>
+            
+          </Inciso><Inciso    id="art38_par2_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>descentralização da coordenação.</p>
+            
+          </Inciso>
+          </Paragrafo><Paragrafo    id="art38_par3" >
+            
+            
+            <Rotulo>§ 3º</Rotulo>
+            <p>Cada conselho de juventude constitui polo de coordenação da Rede de que trata o <i>caput</i> no respectivo ente federado.</p>
+            
+          </Paragrafo>
+          </Artigo>
+          </Capitulo><Capitulo    id="tit2_cap2" >
+            
+            
+            <Rotulo>CAPÍTULO II</Rotulo>
+            <NomeAgrupador>Do Sistema Nacional de Juventude (SINAJUVE)</NomeAgrupador>
+            <Artigo    id="art39" >
+            
+            
+            <Rotulo>Art. 39.</Rotulo>
+            
+            <Caput    id="art39_cpt" >
+            
+            
+            
+            <p>Ficam instituídos o Sistema Nacional de Juventude (SINAJUVE), o Subsistema Nacional de Informação sobre a Juventude e o Subsistema Nacional de Acompanhamento e Avaliação das Políticas Públicas de Juventude, cuja composição, organização, competência e funcionamento serão definidos em regulamento.</p>
+            
+          </Caput>
+          </Artigo><Artigo    id="art40" >
+            
+            
+            <Rotulo>Art. 40.</Rotulo>
+            
+            <Caput    id="art40_cpt" >
+            
+            
+            
+            <p>O financiamento das ações e atividades realizadas no âmbito do Sistema Nacional de Juventude será definido em regulamento.</p>
+            
+          </Caput>
+          </Artigo>
+          </Capitulo><Capitulo    id="tit2_cap3" >
+            
+            
+            <Rotulo>CAPÍTULO III</Rotulo>
+            <NomeAgrupador>Das Competências</NomeAgrupador>
+            <Artigo    id="art41" >
+            
+            
+            <Rotulo>Art. 41.</Rotulo>
+            
+            <Caput    id="art41_cpt" >
+            
+            
+            
+            <p>Compete à União:</p>
+            <Inciso    id="art41_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>formular e coordenar a execução da Política Nacional de Juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>formular, instituir, coordenar e manter o Sistema Nacional de Juventude (Sinajuve);</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>estabelecer diretrizes sobre a organização e funcionamento do Sinajuve;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>elaborar o Plano Nacional de Políticas de Juventude, em parceria com os Estados, o Distrito Federal, os Municípios e a sociedade, em especial a juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>prestar assistência técnica e suplementação financeira aos Estados, ao Distrito Federal e aos Municípios para o desenvolvimento de seus sistemas de juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>instituir e manter o Subsistema Nacional de Informações sobre a Juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>contribuir para a qualificação e ação em rede dos sistemas de juventude em âmbito federal, estadual e municipal;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>instituir e manter o Subsistema Nacional de Acompanhamento e Avaliação das Políticas Públicas de Juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc9" >
+            
+            
+            <Rotulo>IX –</Rotulo>
+            <p>financiar, com os demais entes federados, a execução das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc10" >
+            
+            
+            <Rotulo>X –</Rotulo>
+            <p>estabelecer formas de colaboração com os Estados, o Distrito Federal e os Municípios para a execução das políticas públicas de juventude; e</p>
+            
+          </Inciso><Inciso    id="art41_cpt_inc11" >
+            
+            
+            <Rotulo>XI –</Rotulo>
+            <p>garantir a publicidade de informações sobre repasses de recursos para financiamento das políticas públicas de juventude aos conselhos e gestores estaduais, do Distrito Federal e municipais.</p>
+            
+          </Inciso>
+          </Caput><Paragrafo    id="art41_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>Ao Conselho Nacional de Juventude (CONJUVE) competem as funções consultiva, de avaliação e de fiscalização do Sinajuve, nos termos desta Lei.</p>
+            
+          </Paragrafo><Paragrafo    id="art41_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>As funções executiva e de gestão do Sinajuve competem ao órgão a ser designado no Plano de que trata o inciso IV do <i>caput</i> deste artigo.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art42" >
+            
+            
+            <Rotulo>Art. 42.</Rotulo>
+            
+            <Caput    id="art42_cpt" >
+            
+            
+            
+            <p>Compete aos Estados:</p>
+            <Inciso    id="art42_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>formular, instituir, coordenar e manter os respectivos sistemas estaduais de juventude, respeitadas as diretrizes fixadas pela União;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>elaborar os respectivos planos estaduais de juventude, em conformidade com o Plano Nacional e em colaboração com a sociedade, em especial com a juventude;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>criar, desenvolver e manter programas, ações e projetos para a execução das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>editar normas complementares para a organização e funcionamento do seu sistema de juventude e dos sistemas municipais;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>estabelecer com a União e os Municípios formas de colaboração para a execução das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>prestar assistência técnica e suplementação financeira aos Municípios para o desenvolvimento de seus sistemas de juventude;</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>operar o Sistema Nacional de Informações sobre a Juventude e inserir regularmente os dados necessários para sua manutenção e permanente atualização; e</p>
+            
+          </Inciso><Inciso    id="art42_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>cofinanciar, com os demais entes federados, a execução de programas, ações e projetos das políticas públicas de juventude.</p>
+            
+          </Inciso>
+          </Caput><Paragrafo    id="art42_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>Compete aos conselhos estaduais de juventude as funções consultivas de avaliação e fiscalização dos respectivos sistemas estaduais de juventude, nos termos desta Lei, além daquelas definidas na legislação estadual ou distrital.</p>
+            
+          </Paragrafo><Paragrafo    id="art42_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>Compete ao órgão a ser designado nos planos de que trata o inciso II do <i>caput</i> deste artigo as funções executiva e de gestão de cada sistema estadual de juventude.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art43" >
+            
+            
+            <Rotulo>Art. 43.</Rotulo>
+            
+            <Caput    id="art43_cpt" >
+            
+            
+            
+            <p>Compete aos Municípios:</p>
+            <Inciso    id="art43_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>formular, instituir, coordenar e manter os respectivos sistemas municipais de juventude, respeitadas as diretrizes fixadas pela União e pelo respectivo Estado;</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>elaborar os respectivos planos municipais de juventude, em conformidade com o Plano Nacional e com o respectivo plano estadual, em colaboração com a sociedade, em especial com a juventude local;</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>criar, desenvolver e manter programas, ações e projetos para a execução das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>editar normas complementares para a organização e o funcionamento do seu sistema de juventude;</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>operar o Sistema Nacional de Informações sobre a Juventude e fornecer regularmente os dados necessários à alimentação e à atualização do sistema;</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>cofinanciar, com os demais entes federados, a execução de programas, ações e projetos das políticas públicas de juventude; e</p>
+            
+          </Inciso><Inciso    id="art43_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>estabelecer mecanismos de cooperação com os Estados e a União para a execução das políticas públicas de juventude.</p>
+            
+          </Inciso>
+          </Caput><Paragrafo    id="art43_par1" >
+            <!--Link: urn:lex:br:federal:lei:2005-04-06;11107-->
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>Para garantir a articulação federativa com vistas ao efetivo cumprimento das políticas públicas de juventude, os Municípios podem instituir os consórcios de que trata a <span xlink:href="urn:lex:br:federal:lei:2005-04-06;11107">Lei nº 11.107, de 6 de abril de 2005</span>, ou qualquer outro instrumento jurídico adequado, como forma de compartilhar responsabilidades.</p>
+            
+          </Paragrafo><Paragrafo    id="art43_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>Compete aos conselhos municipais de juventude as funções consultivas de avaliação e fiscalização do respectivo sistema municipal de juventude, nos termos desta Lei, além daquelas definidas na legislação municipal.</p>
+            
+          </Paragrafo><Paragrafo    id="art43_par3" >
+            
+            
+            <Rotulo>§ 3º</Rotulo>
+            <p>Compete ao órgão a ser designado nos planos de que trata o inciso II do <i>caput</i> deste artigo as funções executiva e de gestão de cada sistema municipal de juventude.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art44" >
+            
+            
+            <Rotulo>Art. 44.</Rotulo>
+            
+            <Caput    id="art44_cpt" >
+            
+            
+            
+            <p>As competências dos Estados e Municípios são atribuídas, cumulativamente, ao Distrito Federal.</p>
+            
+          </Caput>
+          </Artigo>
+          </Capitulo><Capitulo    id="tit2_cap4" >
+            
+            
+            <Rotulo>CAPÍTULO IV</Rotulo>
+            <NomeAgrupador>Dos Conselhos de Juventude</NomeAgrupador>
+            <Artigo    id="art45" >
+            
+            
+            <Rotulo>Art. 45.</Rotulo>
+            
+            <Caput    id="art45_cpt" >
+            
+            
+            
+            <p>Os conselhos de juventude são órgãos permanentes e autônomos, não jurisdicionais, encarregados de tratar das políticas públicas de juventude e da garantia do exercício dos direitos do jovem, com os seguintes objetivos:</p>
+            <Inciso    id="art45_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>auxiliar na elaboração de políticas públicas de juventude que promovam o amplo exercício dos direitos dos jovens estabelecidos nesta Lei;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>utilizar instrumentos de forma a buscar que o Estado garanta aos jovens o exercício dos seus direitos;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>colaborar com os órgãos da administração no planejamento e na implementação das políticas de juventude;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>estudar, analisar, elaborar, discutir e propor a celebração de instrumentos de cooperação, visando à elaboração de programas, projetos e ações voltados para a juventude;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>promover a realização de estudos relativos à juventude, objetivando subsidiar o planejamento das políticas públicas de juventude;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>estudar, analisar, elaborar, discutir e propor políticas públicas que permitam e garantam a integração e a participação do jovem no processo social, econômico, político e cultural no respectivo ente federado;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc7" >
+            
+            
+            <Rotulo>VII –</Rotulo>
+            <p>propor a criação de formas de participação da juventude nos órgãos da administração pública;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc8" >
+            
+            
+            <Rotulo>VIII –</Rotulo>
+            <p>promover e participar de seminários, cursos, congressos e eventos correlatos para o debate de temas relativos à juventude;</p>
+            
+          </Inciso><Inciso    id="art45_cpt_inc9" >
+            
+            
+            <Rotulo>IX –</Rotulo>
+            <p>desenvolver outras atividades relacionadas às políticas públicas de juventude.</p>
+            
+          </Inciso>
+          </Caput><Paragrafo    id="art45_par1" >
+            
+            
+            <Rotulo>§ 1º</Rotulo>
+            <p>A lei, em âmbito federal, estadual, do Distrito Federal e municipal, disporá sobre a organização, o funcionamento e a composição dos conselhos de juventude, observada a paridade entre os representantes do poder público e da sociedade civil.</p>
+            
+          </Paragrafo><Paragrafo    id="art45_par2" >
+            
+            
+            <Rotulo>§ 2º</Rotulo>
+            <p>Constará da lei orçamentária federal, estadual, do Distrito Federal e municipal previsão dos recursos necessários ao funcionamento do conselho de juventude do respectivo ente federado.</p>
+            
+          </Paragrafo>
+          </Artigo><Artigo    id="art46" >
+            
+            
+            <Rotulo>Art. 46.</Rotulo>
+            
+            <Caput    id="art46_cpt" >
+            
+            
+            
+            <p>São atribuições dos conselhos de juventude:</p>
+            <Inciso    id="art46_cpt_inc1" >
+            
+            
+            <Rotulo>I –</Rotulo>
+            <p>encaminhar ao Ministério Público notícia de fato que constitua infração administrativa ou penal contra os direitos do jovem garantidos na legislação;</p>
+            
+          </Inciso><Inciso    id="art46_cpt_inc2" >
+            
+            
+            <Rotulo>II –</Rotulo>
+            <p>encaminhar à autoridade judiciária os casos de sua competência;</p>
+            
+          </Inciso><Inciso    id="art46_cpt_inc3" >
+            
+            
+            <Rotulo>III –</Rotulo>
+            <p>expedir notificações;</p>
+            
+          </Inciso><Inciso    id="art46_cpt_inc4" >
+            
+            
+            <Rotulo>IV –</Rotulo>
+            <p>solicitar informações das autoridades públicas;</p>
+            
+          </Inciso><Inciso    id="art46_cpt_inc5" >
+            
+            
+            <Rotulo>V –</Rotulo>
+            <p>elaborar relatório anual sobre as políticas públicas de juventude no respectivo ente federado;</p>
+            
+          </Inciso><Inciso    id="art46_cpt_inc6" >
+            
+            
+            <Rotulo>VI –</Rotulo>
+            <p>assessorar o Poder Executivo local na elaboração dos planos, programas, projetos, ações e da proposta orçamentária das políticas públicas de juventude.</p>
+            
+          </Inciso>
+          </Caput>
+          </Artigo><Artigo    id="art47" >
+            
+            
+            <Rotulo>Art. 47.</Rotulo>
+            
+            <Caput    id="art47_cpt" >
+            
+            
+            
+            <p>Esta Lei entra em vigor cento e oitenta dias após sua publicação.</p>
+            
+          </Caput>
+          </Artigo>
+          </Capitulo>
+          </Titulo></Articulacao>
+        </Norma>
+      </ProjetoNorma>
+    </LexML>
