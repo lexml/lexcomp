@@ -523,8 +523,7 @@ function configuraQuadro() {
             
         var urn = $(this).parent().attr("urn");
         var titulo = $(this).siblings(".tituloTexto").html();
-        
-        console.log("### TEXTO sem TAGs:" + titulo);
+        titulo = titulo.replace(/<\/?[^>]+(>|$)/g, "");        
         var texto, coluna = null;
             
         $.each(quadro.colunas, function (ic, col) {
