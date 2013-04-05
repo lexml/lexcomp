@@ -510,6 +510,7 @@ function configuraQuadro() {
     // edita conteudo dos textos
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
+        console.log('Edita texto');
         event.preventDefault();
             
         $("#preambulo-textarea").val(null);
@@ -522,7 +523,7 @@ function configuraQuadro() {
             
         var urn = $(this).parent().attr("urn");
         var titulo = $(this).siblings(".tituloTexto").html();
-        titulo = $(titulo).text();
+        
         console.log("### TEXTO sem TAGs:" + titulo);
         var texto, coluna = null;
             
