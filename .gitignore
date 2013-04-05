@@ -4,4 +4,9 @@
 *.jar
 *.war
 *.ear
-/qc-presentation/target/
+
+.settings
+.classpath
+.project
+.cache
+target
