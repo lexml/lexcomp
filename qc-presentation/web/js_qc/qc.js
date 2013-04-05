@@ -611,6 +611,8 @@ function configuraQuadro() {
                         $("#texto-textarea").removeAttr('readonly');
                         $("#fecho-textarea").val(res.fecho);
                         
+                       
+                        
                         
                     //nicEditors.findEditor("preambulo-textarea").setContent(res.preambulo);
                     //nicEditors.findEditor("texto-textarea").setContent(res.articulacao);
@@ -625,9 +627,13 @@ function configuraQuadro() {
                         //alert("Bad thing happend! " + res.statusText);
                     }
                 });
+            },close: function (evt, ui) {
+                document.location.reload();
             }
         });
-            
+        
+        
+        
     });
     
 }
@@ -729,6 +735,7 @@ function removeColumn(params) {
         } else {
             colunas.push(coluna);
         }
+        document.location.reload();
     });
 
     quadro.conexoes = conexoes;
