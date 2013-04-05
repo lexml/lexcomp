@@ -179,7 +179,7 @@
 		<dependency>
 			<groupId>br.gov.lexml</groupId>
 			<artifactId>lexmldiff</artifactId>
-			<version>1.0.6-SNAPSHOT</version>
+			<version>1.0.6</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

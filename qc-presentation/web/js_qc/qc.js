@@ -510,6 +510,9 @@ function configuraQuadro() {
     // edita conteudo dos textos
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
+        
+        console.log('Edita texto');
+        
         event.preventDefault();
             
         $("#preambulo-textarea").val(null);
@@ -522,6 +525,7 @@ function configuraQuadro() {
             
         var urn = $(this).parent().attr("urn");
         var titulo = $(this).siblings(".tituloTexto").html();
+        titulo = titulo.replace(/<\/?[^>]+(>|$)/g, "");        
         var texto, coluna = null;
             
         $.each(quadro.colunas, function (ic, col) {
@@ -541,9 +545,13 @@ function configuraQuadro() {
         });
         
         if ($("#dialog-edit-text").attr("title") != "") {
+            
+            
+            
             $("#dialog-edit-text").dialog('option', 'title', "Editar texto - " + titulo);
         
         } else {
+            
             $("#dialog-edit-text").attr("title", "Editar texto - " + titulo);
         }
         
