@@ -148,6 +148,12 @@
 
                  getCorrelacao(qcid, urn1, urn2, function(correlacao) {
                      
+                        
+            //quantDispRelacionados
+            //quantDispNaoRelacionados
+            //quantDispTotal
+                     
+                     
                     relacoes = correlacao.relacoes;
                     tiposRelacao = correlacao.tiposRelacao;
                      
@@ -162,8 +168,9 @@
                     $("#colunaComparacaoA").html(divDoc);
                     $("#colunaComparacaoB").html(divDoc2);
                     
-                    $("#colunaComparacaoA").prepend("<p>Dispositivos correlacionados: 5; Não correlacionados: 3; Total: 8.</p>");
-                    $("#colunaComparacaoB").prepend("<p>Dispositivos correlacionados: 5; Não correlacionados: 3; Total: 8.</p>");
+                    $("#colunaComparacaoA").prepend('<p>Dispositivos correlacionados:'+correlacao.estatisticaTexto1.quantDispRelacionados+'; Não correlacionados: '+correlacao.estatisticaTexto1.quantDispNaoRelacionados+'; Total: '+correlacao.estatisticaTexto1.quantDispTotal+'.</p>');
+                    $("#colunaComparacaoB").prepend('<p>Dispositivos correlacionados:'+correlacao.estatisticaTexto2.quantDispRelacionados+'; Não correlacionados: '+correlacao.estatisticaTexto2.quantDispNaoRelacionados+'; Total: '+correlacao.estatisticaTexto2.quantDispTotal+'.</p>');
+                    
 
                     $('#colunaComparacaoA').show();
                     $('#colunaComparacaoB').show();
