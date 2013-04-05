@@ -522,6 +522,8 @@ function configuraQuadro() {
             
         var urn = $(this).parent().attr("urn");
         var titulo = $(this).siblings(".tituloTexto").html();
+        titulo = $(titulo).text();
+        console.log("### TEXTO sem TAGs:" + titulo);
         var texto, coluna = null;
             
         $.each(quadro.colunas, function (ic, col) {
@@ -541,9 +543,13 @@ function configuraQuadro() {
         });
         
         if ($("#dialog-edit-text").attr("title") != "") {
+            
+            
+            
             $("#dialog-edit-text").dialog('option', 'title', "Editar texto - " + titulo);
         
         } else {
+            
             $("#dialog-edit-text").attr("title", "Editar texto - " + titulo);
         }
         
