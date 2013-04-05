@@ -729,6 +729,7 @@ function removeColumn(params) {
         } else {
             colunas.push(coluna);
         }
+        document.location.reload();
     });
 
     quadro.conexoes = conexoes;
