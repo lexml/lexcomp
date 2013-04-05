@@ -3,6 +3,17 @@
     <colunas>
         <textos>
             <anoComponente></anoComponente>
+            <articulacao>PROJETO DE LEI DA CÂMARA Nº 315, DE 2009
+Altera o art. 1º da Lei nº 8.001, de 13 de março de 1990, regulamentado pelo Decreto Federal nº 1, de 11 de janeiro de 1991, que trata da parcela pertencente aos Estados e Municípios do produto da Compensação Financeira dos Recursos Hídricos -CFRH.
+O CONGRESSO NACIONAL decreta:
+
+Art. 1º Os incisos I e II do art. 1º da Lei nº 8.001, de 13 de março de 1990, passam a vigorar com a seguinte redação:
+“Art. 1º ........................................................................................................
+I – 25% (vinte e cinco por cento) aos Estados;
+II – 65% (sessenta e cinco por cento) aos Municípios;
+............................................................................................................” (NR)
+Art. 2º Esta Lei entra em vigor na data de sua publicação.
+</articulacao>
             <autoridades>federal</autoridades>
             <categorias>legislacao</categorias>
             <comissaoespecial></comissaoespecial>
@@ -10,14 +21,154 @@
             <dataAssinatura>2005</dataAssinatura>
             <dataEvento></dataEvento>
             <dataVigente></dataVigente>
+            <documento>
+                <objetoSimbolico xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>raiz_documento</nomeTipo>
+                    </refTipo>
+                    <id>28</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>articulacao</nomeTipo>
+                            </refTipo>
+                            <id>29</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_artigo</nomeTipo>
+    </refTipo>
+    <id>31</id>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_caput</nomeTipo>
+            </refTipo>
+            <id>32</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>33</id>
+                    <representacao>Os &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc1&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;incisos I&lt;/span&gt; e &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc2&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;II do art. 1º da Lei nº 8.001, de 13 de março de 1990&lt;/span&gt;, passam a vigorar com a seguinte redação:</representacao>
+                    <xhtmlFragment>Os &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc1&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;incisos I&lt;/span&gt; e &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc2&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;II do art. 1º da Lei nº 8.001, de 13 de março de 1990&lt;/span&gt;, passam a vigorar com a seguinte redação:</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{cpt}</representacao>
+            <nomeRole>cpt</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{art[1]}</representacao>
+    <nomeRole>art</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_artigo</nomeTipo>
+    </refTipo>
+    <id>34</id>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_caput</nomeTipo>
+            </refTipo>
+            <id>35</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>36</id>
+                    <representacao>Esta Lei entra em vigor na data de sua publicação.</representacao>
+                    <xhtmlFragment>Esta Lei entra em vigor na data de sua publicação.</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{cpt}</representacao>
+            <nomeRole>cpt</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{art[2]}</representacao>
+    <nomeRole>art</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{articulacao}</representacao>
+                            <nomeRole>articulacao</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objetoSimbolico>
+                <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
+                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei.delegada:2005;123</representacao>
+                    <rotulo xsi:type="rotuloClassificadoImpl">
+                        <refTipo>
+                            <nomeTipo>rotulo_classificado</nomeTipo>
+                        </refTipo>
+                        <representacao>urn;urn:lex:br:federal:lei.delegada:2005;123</representacao>
+                        <nomeRole>urn</nomeRole>
+                        <classificacao>urn:lex:br:federal:lei.delegada:2005;123</classificacao>
+                    </rotulo>
+                    <sobreNome xsi:type="nomeContextoImpl">
+                        <representacao>todos_documentos</representacao>
+                        <refTipoContexto>
+                            <nomeTipo>todos_documentos</nomeTipo>
+                        </refTipoContexto>
+                    </sobreNome>
+                </nome>
+                <refTipo>
+                    <nomeTipo>doc_proj_lei</nomeTipo>
+                </refTipo>
+                <id>27</id>
+            </documento>
             <documentoParseado>false</documentoParseado>
-            <fecho>dfdfvbdfg</fecho>
+            <fecho></fecho>
             <incluidoVisualizacao>true</incluidoVisualizacao>
             <localidades>br</localidades>
             <numero>123</numero>
             <numeroComponente></numeroComponente>
             <order>0</order>
-            <preambulo>11223</preambulo>
+            <preambulo></preambulo>
             <tiposDocumento>lei.delegada</tiposDocumento>
             <titulo>Lei Delegada nº 123/2005&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
             <urn>urn:lex:br:federal:lei.delegada:2005;123</urn>
@@ -31,6 +182,17 @@
     <colunas>
         <textos>
             <anoComponente></anoComponente>
+            <articulacao>PROJETO DE LEI DA CÂMARA Nº 315, DE 2009
+Altera o art. 1º da Lei nº 8.001, de 13 de março de 1990, regulamentado pelo Decreto Federal nº 1, de 11 de janeiro de 1991, que trata da parcela pertencente aos Estados e Municípios do produto da Compensação Financeira dos Recursos Hídricos -CFRH.
+O CONGRESSO NACIONAL decreta:
+
+Art. 1º Os incisos I e II do art. 1º da Lei nº 8.001, de 13 de março de 1990, passam a vigorar com a seguinte redação:
+“Art. 1º ........................................................................................................
+I – 25% (vinte e cinco por cento) aos Estados;
+II – 65% (sessenta e cinco por cento) aos Municípios;
+............................................................................................................” (NR)
+Art. 2º Esta Lei entra em vigor na data de sua publicação.
+</articulacao>
             <autoridades>federal</autoridades>
             <categorias>legislacao</categorias>
             <comissaoespecial></comissaoespecial>
@@ -38,14 +200,154 @@
             <dataAssinatura>2006</dataAssinatura>
             <dataEvento></dataEvento>
             <dataVigente></dataVigente>
+            <documento>
+                <objetoSimbolico xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>raiz_documento</nomeTipo>
+                    </refTipo>
+                    <id>38</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>articulacao</nomeTipo>
+                            </refTipo>
+                            <id>39</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_artigo</nomeTipo>
+    </refTipo>
+    <id>41</id>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_caput</nomeTipo>
+            </refTipo>
+            <id>42</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>43</id>
+                    <representacao>Os &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc1&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;incisos I&lt;/span&gt; e &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc2&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;II do art. 1º da Lei nº 8.001, de 13 de março de 1990&lt;/span&gt;, passam a vigorar com a seguinte redação:</representacao>
+                    <xhtmlFragment>Os &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc1&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;incisos I&lt;/span&gt; e &lt;span xlink:href=&quot;urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc2&quot; xmlns=&quot;http://www.lexml.gov.br/1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;II do art. 1º da Lei nº 8.001, de 13 de março de 1990&lt;/span&gt;, passam a vigorar com a seguinte redação:</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{cpt}</representacao>
+            <nomeRole>cpt</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{art[1]}</representacao>
+    <nomeRole>art</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_artigo</nomeTipo>
+    </refTipo>
+    <id>44</id>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_caput</nomeTipo>
+            </refTipo>
+            <id>45</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>46</id>
+                    <representacao>Esta Lei entra em vigor na data de sua publicação.</representacao>
+                    <xhtmlFragment>Esta Lei entra em vigor na data de sua publicação.</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{cpt}</representacao>
+            <nomeRole>cpt</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{art[2]}</representacao>
+    <nomeRole>art</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{articulacao}</representacao>
+                            <nomeRole>articulacao</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objetoSimbolico>
+                <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
+                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei:2006;456</representacao>
+                    <rotulo xsi:type="rotuloClassificadoImpl">
+                        <refTipo>
+                            <nomeTipo>rotulo_classificado</nomeTipo>
+                        </refTipo>
+                        <representacao>urn;urn:lex:br:federal:lei:2006;456</representacao>
+                        <nomeRole>urn</nomeRole>
+                        <classificacao>urn:lex:br:federal:lei:2006;456</classificacao>
+                    </rotulo>
+                    <sobreNome xsi:type="nomeContextoImpl">
+                        <representacao>todos_documentos</representacao>
+                        <refTipoContexto>
+                            <nomeTipo>todos_documentos</nomeTipo>
+                        </refTipoContexto>
+                    </sobreNome>
+                </nome>
+                <refTipo>
+                    <nomeTipo>doc_proj_lei</nomeTipo>
+                </refTipo>
+                <id>37</id>
+            </documento>
             <documentoParseado>false</documentoParseado>
-            <fecho>fgh fgh fgh</fecho>
+            <fecho></fecho>
             <incluidoVisualizacao>false</incluidoVisualizacao>
             <localidades>br</localidades>
             <numero>456</numero>
             <numeroComponente></numeroComponente>
             <order>1</order>
-            <preambulo>dfdfdfgdfg</preambulo>
+            <preambulo></preambulo>
             <tiposDocumento>lei</tiposDocumento>
             <titulo>Lei nº 456/2006&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
             <urn>urn:lex:br:federal:lei:2006;456</urn>
@@ -65,20 +367,9 @@
             <refTipo>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
-            <alvo>8</alvo>
+            <alvo>46</alvo>
             <id>1</id>
-            <origem>8</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
-                <noneUsuario>0</noneUsuario>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_diferenca</nomeTipo>
-            </refTipo>
-            <alvo>11</alvo>
-            <id>2</id>
-            <origem>11</origem>
+            <origem>33</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
                 <noneUsuario>0</noneUsuario>
             </proveniencia>
@@ -86,7 +377,7 @@
         <urn1>urn:lex:br:federal:lei.delegada:2005;123</urn1>
         <urn2>urn:lex:br:federal:lei:2006;456</urn2>
     </correlacoes>
-    <currentPosition>26</currentPosition>
+    <currentPosition>46</currentPosition>
     <id>20130404164432096</id>
     <titulo>Novo nome</titulo>
 </quadroComparativo>

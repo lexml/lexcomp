@@ -354,18 +354,7 @@ function configuraQuadro() {
         });
         
     });
-    
-    
        
-    //Importar texto
-    $('.importarTexto').unbind('click');
-    $('.importarTexto').click(function(event){
-        event.preventDefault();
-        alert('Realiza importação de texto...');        
-    });
-    
-    
-    
     $("#sbLegislacao").click(function(event) {           
         event.preventDefault();        
         //urnAtualModal = "urnXXXX";
@@ -511,8 +500,6 @@ function configuraQuadro() {
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
         
-        console.log('Edita texto');
-        
         event.preventDefault();
             
         $("#preambulo-textarea").val(null);
@@ -527,6 +514,12 @@ function configuraQuadro() {
         var titulo = $(this).siblings(".tituloTexto").html();
         titulo = titulo.replace(/<\/?[^>]+(>|$)/g, "");        
         var texto, coluna = null;
+        
+        $('a#linkImportaTexto').click(function(event) {
+        
+            event.preventDefault();
+            searchText(urn);
+        });
             
         $.each(quadro.colunas, function (ic, col) {
                    
@@ -559,8 +552,6 @@ function configuraQuadro() {
             urn = urn.replace(";", "__");
         }
         
-        //urn = urn.replace(/:/g, "_");
-            
         $("#dialog-edit-text").dialog({
             resizable: false,
             modal: true,
@@ -599,43 +590,35 @@ function configuraQuadro() {
             },
             open: function (evt, ui) {
                 
-                $("#texto-textarea").attr('readonly','readonly');
-                $("#texto-textarea").val('Buscando texto...');
-                $.ajax({
-                    url: '/api/texto/' + urn + '/qc/' + quadro.id,
-                    type:'GET',
-                    contentType: "application/json; charset=utf-8",
-                    success:function(res){
-                        $("#preambulo-textarea").val(res.preambulo);
-                        $("#texto-textarea").val(strip(res.articulacao));
-                        $("#texto-textarea").removeAttr('readonly');
-                        $("#fecho-textarea").val(res.fecho);
-                        
-                       
-                        
-                        
-                    //nicEditors.findEditor("preambulo-textarea").setContent(res.preambulo);
-                    //nicEditors.findEditor("texto-textarea").setContent(res.articulacao);
-                    //nicEditors.findEditor("fecho-textarea").setContent(res.fecho);
-                    },
-                    error:function(res){
-                        showConfirmDialog("Não foi possível recuperar texto remotamente.");
-                        $("#texto-textarea").removeAttr('readonly');
-                        $("#texto-textarea").val('');
-                        
-                        
-                        //alert("Bad thing happend! " + res.statusText);
-                    }
-                });
             },close: function (evt, ui) {
                 document.location.reload();
             }
         });
         
-        
-        
     });
     
+}
+
+function searchText(urn) {
+    
+    $("#texto-textarea").attr('readonly','readonly');
+    $("#texto-textarea").val('Buscando texto...');
+    $.ajax({
+        url: '/api/texto/' + urn + '/qc/' + quadro.id,
+        type:'GET',
+        contentType: "application/json; charset=utf-8",
+        success:function(res){
+            $("#preambulo-textarea").val(res.preambulo);
+            $("#texto-textarea").val(strip(res.articulacao));
+            $("#texto-textarea").removeAttr('readonly');
+            $("#fecho-textarea").val(res.fecho);
+        },
+        error:function(res){
+            showConfirmDialog("Não foi possível recuperar texto remotamente.");
+            $("#texto-textarea").removeAttr('readonly');
+            $("#texto-textarea").val('');
+        }
+    });
 }
 
 function tituloQuadroEdited(src, value) {
