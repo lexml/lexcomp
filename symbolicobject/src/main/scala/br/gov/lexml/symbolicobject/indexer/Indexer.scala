@@ -19,9 +19,18 @@ import br.gov.lexml.symbolicobject.parser.IdSource
 import org.scalastuff.proto.JsonFormat
 import br.gov.lexml.{ symbolicobject => S }
 
-abstract sealed class Direction
-case object SourceToTarget extends Direction
-case object TargetToSource extends Direction
+abstract sealed class Direction {
+  def to(r : Relacao[_]) : Set[Long]
+  def from(r : Relacao[_]) : Set[Long]
+}
+case object SourceToTarget extends Direction {
+  def to(r : Relacao[_]) : Set[Long] = r.alvo
+  def from(r : Relacao[_]) : Set[Long] = r.origem
+}
+case object TargetToSource extends Direction {
+  def to(r : Relacao[_]) : Set[Long] = r.origem
+  def from(r : Relacao[_]) : Set[Long] = r.alvo
+}
 
 final case class Contexto(
   caminho: Caminho = Caminho(),
@@ -126,17 +135,19 @@ final class Indexer extends IIndexer {
     val rel1 = for {
       rel <- parRel
       src <- rel.origem
-      tgt <- rel.origem
+      tgt <- rel.alvo
     } yield (rel.id, src, tgt)
     val s2t = for {
       rel <- rel1
       (r, s, t) = rel
       d <- docsPerObject.getOrElse(t, Set())
+      _ = println("s2t: s = " + s + ", t = " + t, " d = " + d + ", r = " + r)
     } yield (s, (d, (SourceToTarget, Set(r))))
     val t2s = for {
       rel <- rel1
       (r, s, t) = rel
       d <- docsPerObject.getOrElse(s, Set())
+      _ = println("t2s: t = " + t + ", s = " + s + ", d = " + d + ", r = " + r)
     } yield (t, (d, (TargetToSource, Set(r))))
     val relsL: Seq[(Long, (Long, (Direction, Set[Long])))] = s2t.seq ++ t2s.seq
     val rels = relsL.groupBy1on2with(_.groupBy1on2with(_.groupBy1on2with(_.flatten.toSet)))

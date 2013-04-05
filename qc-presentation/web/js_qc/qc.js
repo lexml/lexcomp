@@ -77,7 +77,7 @@ function htmlTexto(idDiv, urn, titulo, incluidoVisualizacao){
                         <div class="window" id="' + idDiv + '" urn="' + urn + '">\
                             <h2 class="tituloTexto">' + titulo + '</h2>\
                             <a href="" class="removeItem">Remover</a> - \
-                            <a href="" class="editText">Editar texto</a> - \
+                            <a href="" class="editText">Alterar texto</a> - \
                             <a href="" class="editURN">Editar URN</a> - \
                             <a href="http://www.lexml.gov.br/urn/' + urn + '" class="linkLexml" target="_blank">LexML</a><br><br>\
                             <input type="checkbox" title="Incluir na visualização" name="visualizacao" value="1" onclick="incluiTextoVisualizacao(this, \'' + urn + '\')" class="checkIncluiTexto" ' + checked + '> Incluir na visualização\
@@ -541,11 +541,11 @@ function configuraQuadro() {
             
             
             
-            $("#dialog-edit-text").dialog('option', 'title', "Editar texto - " + titulo);
+            $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);
         
         } else {
             
-            $("#dialog-edit-text").attr("title", "Editar texto - " + titulo);
+            $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
         }
         
         while(urn.match(";")) {
