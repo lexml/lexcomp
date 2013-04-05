@@ -81,7 +81,7 @@ final case class Posicao[+A](rotulo : Rotulo,objeto : ObjetoSimbolico[A]) extend
      case _ => None
   }
 
-  override def toString : String = "Posicao = rotulo : {" + rotulo + "}"
+  override def toString : String = "Posicao {rotulo: " + rotulo + ", objid: " + objeto.id + "}"
 }
 
 object Posicao {
@@ -295,7 +295,15 @@ final case class Documento[+A](id : SymbolicObjectId, tipo : STipo, nome : Nome,
 
 object Documento {
   def fromDocumento(d : I.Documento) : Documento[Unit] = d match {    
-    case _ => Documento(d.getId, Tipos.tipos.get(d.getRefTipo.getNomeTipo).get,Nome.fromNome(d.getNome),ObjetoSimbolico.fromObjetoSimbolico(d.getObjetoSimbolico))
+    case _ => Documento(
+        d.getId, 
+        Tipos.tipos.get(
+            d.getRefTipo
+             .getNomeTipo)
+         .get,
+         Nome.fromNome(d.getNome),
+         ObjetoSimbolico.fromObjetoSimbolico(
+             d.getObjetoSimbolico))
   }
 }
 

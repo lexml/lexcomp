@@ -68,16 +68,16 @@ class Visualizacao(indexer : IIndexer) {
   def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]]): String = {
 
     def produceRootCorrelations : List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] = {
-      println("columns: " + columns)
+      
       //preparing plan
       val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
       val plan = Plan(indexOrder, cols: _*)
 
-      println("plan = " + plan)
+      
       
       //creating rootCorrelations
       val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
-      println("rootCorrelations = " + rootCorrelations + ", todosNaoCitados: " + todosNaoCitados)
+      
 
       def eitherPosicao(pos: PosicaoComCtx): List[Either[PosicaoComCtx, NodeSeq]] =
         Left(pos) :: pos.objetoSimbolico.get.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
@@ -88,11 +88,7 @@ class Visualizacao(indexer : IIndexer) {
       //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
 
       val novoRootCorrelations: List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] =
-        rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))
-
-      println("novoRootCorrelations:  " + novoRootCorrelations)
-        
-      rootCorrelations.foreach(println)
+        rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))                    
 
       novoRootCorrelations
     }
@@ -100,7 +96,7 @@ class Visualizacao(indexer : IIndexer) {
 
 
     val table = Transforms.rootCorrelationToTable(produceRootCorrelations)
-    println("table = " + table)
+
     val result = table.renderTable(List("css-vis-table"))
 
     val resHtml =
