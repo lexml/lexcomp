@@ -36,6 +36,16 @@ public class QuadroComparativo implements Serializable, IdSource{
     private List<Correlacao> correlacoes;
     private long currentPosition = 0;
     
+    private boolean articulacoesExcluidas = false;
+    
+    public void setArticulacoesExcluidas(boolean articulacoesExcluidas) {
+		this.articulacoesExcluidas = articulacoesExcluidas;
+	}
+    
+    public boolean isArticulacoesExcluidas() {
+		return articulacoesExcluidas;
+	}
+    
 	public QuadroComparativo() {
         this.id = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
     }
@@ -146,24 +156,17 @@ public class QuadroComparativo implements Serializable, IdSource{
         return "qc-" + id + ".xml";
     }
     
-    public Texto getTexto(String urn) {
-        
-        if (getColunas() != null) {
-            for (Coluna col : getColunas()) {
-                
-                if (col.getTextos() != null) {
-                    for (Texto txt : col.getTextos()) {
+	public Texto getTexto(String urn) {
 
-                        if (txt.getUrn()!= null && txt.getUrn().equals(urn)) {
-                            return txt;
-                        }
-                    }
-                }
-            }
-        }
-        
-        return null;
-    }
+		for (Texto txt : getAllTextos()) {
+
+			if (txt.getUrn() != null && txt.getUrn().equals(urn)) {
+				return txt;
+			}
+		}
+
+		return null;
+	}
     
     public Texto getTexto(String colId, String urn) {
         
@@ -224,14 +227,21 @@ public class QuadroComparativo implements Serializable, IdSource{
     public List<Documento> getAllDocumentos(){
    		List<Documento> r = new ArrayList<Documento>();
    		
+   		for (Texto txt : getAllTextos()) {
+   			r.add(txt.getDocumento());
+   		}
+    		
+   		return r;
+    }
+    
+    private List<Texto> getAllTextos(){
+   		List<Texto> r = new ArrayList<Texto>();
+   		
    		if (getColunas() != null) {
             for (Coluna col : getColunas()) {
                 
-                if (col.getTextos() != null) {
-                    for (Texto txt : col.getTextos()) {
-                    	r.add(txt.getDocumento());
-                    }
-                }
+            	r.addAll(col.getTextos());
+            	
             }
    		}
     		

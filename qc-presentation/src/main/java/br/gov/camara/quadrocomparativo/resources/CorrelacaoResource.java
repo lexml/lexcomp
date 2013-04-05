@@ -4,20 +4,12 @@
  */
 package br.gov.camara.quadrocomparativo.resources;
 
-import br.gov.camara.quadrocomparativo.model.ConfiguracaoImpl;
-import br.gov.camara.quadrocomparativo.model.Correlacao;
-import br.gov.camara.quadrocomparativo.model.ProvenienciaUsuarioImpl;
-import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
-import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
-import br.gov.camara.quadrocomparativo.model.Texto;
-import br.gov.lexml.symbolicobject.Relacao;
-import com.sun.jersey.api.NotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,6 +21,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import br.gov.camara.quadrocomparativo.model.ConfiguracaoImpl;
+import br.gov.camara.quadrocomparativo.model.Correlacao;
+import br.gov.camara.quadrocomparativo.model.ProvenienciaUsuarioImpl;
+import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
+import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
+import br.gov.camara.quadrocomparativo.model.Texto;
+import br.gov.lexml.symbolicobject.Relacao;
+
+import com.sun.jersey.api.NotFoundException;
 
 // The class registers its methods for the HTTP GET request using the @GET annotation. 
 // Using the @Produces annotation, it defines that it can deliver several MIME types,
@@ -137,7 +139,7 @@ public class CorrelacaoResource {
         
         correl.addRelacao(relacao);
        
-        QuadroComparativoController.saveQuadroComparativo(request, qc, false);
+        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
         
         String result = "Relacao saved: " + relacao;
         return Response.status(201).entity(result).build();
@@ -162,7 +164,7 @@ public class CorrelacaoResource {
         
         correl.removeRelacao(idRelacao);
         
-        QuadroComparativoController.saveQuadroComparativo(request, qc, false);
+        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
         
         String result = "Relacao deleted: " + idRelacao;
         return Response.status(200).entity(result).build();
@@ -224,7 +226,7 @@ public class CorrelacaoResource {
 
         correl.setConfiguracao(config);
        
-        QuadroComparativoController.saveQuadroComparativo(request, qc, false);
+        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
         
         String result = "Config saved: " + config;
         return Response.status(201).entity(result).build();
