@@ -510,7 +510,9 @@ function configuraQuadro() {
     // edita conteudo dos textos
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
+        
         console.log('Edita texto');
+        
         event.preventDefault();
             
         $("#preambulo-textarea").val(null);
