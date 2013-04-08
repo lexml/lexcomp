@@ -156,6 +156,10 @@ public class Correlacao implements Serializable {
             relacoes.remove(rel);
         }
     }
+    
+    public void removeAllRelacoes(){
+    	relacoes.clear();
+    }
 
     @XmlElement
     public ConfiguracaoImpl getConfiguracao() {

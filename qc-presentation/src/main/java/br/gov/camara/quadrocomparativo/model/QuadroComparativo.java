@@ -213,9 +213,11 @@ public class QuadroComparativo implements Serializable, IdSource{
         if (getCorrelacoes() != null) {
             
             for (Correlacao cor : getCorrelacoes()) {
-
-                if (cor.getUrn1() != null && cor.getUrn1().equals(urn1)
-                        && cor.getUrn2() != null && cor.getUrn2().equals(urn2)) {
+            	
+            	if (cor.getUrn1() != null && cor.getUrn2() != null && (
+            			(cor.getUrn1().equals(urn1) && cor.getUrn2().equals(urn2)) ||
+            			 cor.getUrn1().equals(urn2) && cor.getUrn2().equals(urn1))) {
+            	
                     return cor;
                 }
             }
@@ -224,6 +226,7 @@ public class QuadroComparativo implements Serializable, IdSource{
         return null;
     }
     
+    @XmlTransient
     public List<Documento> getAllDocumentos(){
    		List<Documento> r = new ArrayList<Documento>();
    		
@@ -234,7 +237,8 @@ public class QuadroComparativo implements Serializable, IdSource{
    		return r;
     }
     
-    private List<Texto> getAllTextos(){
+    @XmlTransient
+    public List<Texto> getAllTextos(){
    		List<Texto> r = new ArrayList<Texto>();
    		
    		if (getColunas() != null) {
