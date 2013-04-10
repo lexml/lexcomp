@@ -3,17 +3,23 @@
     margin: auto;
 }
 
-.css-vis-texto-obj-simbolico_css-vis-os-articulacao{
+
+.css-vis-texto-obj-simbolico{
+    
+}
+
+
+.css-vis-os-articulacao{
     font-weight: bold;
 }
 
 
-.css-vis-texto-obj-simbolico_css-vis-os-os_artigo{
+.css-vis-os-os_artigo{
     font-weight: bold;
 }
 
 
-.css-vis-texto-obj-simbolico_css-vis-os-os_caput{
+.css-vis-os-os_caput{
     font-style: italic;
     color: #666;
 }
