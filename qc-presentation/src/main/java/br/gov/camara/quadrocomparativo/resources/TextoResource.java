@@ -7,7 +7,9 @@ package br.gov.camara.quadrocomparativo.resources;
 // POJO, no interface no extends
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,11 +28,13 @@ import scala.runtime.BoxedUnit;
 import scalaz.Validation;
 import br.gov.camara.quadrocomparativo.lexml.DocumentoLexmlUtil;
 import br.gov.camara.quadrocomparativo.lexml.LexmlFile;
+import br.gov.camara.quadrocomparativo.model.Correlacao;
 import br.gov.camara.quadrocomparativo.model.DocumentoImpl;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.parser.pl.ArticulacaoParser;
 import br.gov.lexml.renderer.plaintext.RendererPlainText;
+import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.InputDocument;
 import br.gov.lexml.symbolicobject.parser.LexMLDocument;
 import br.gov.lexml.symbolicobject.parser.Parser;
@@ -77,6 +81,52 @@ public class TextoResource {
     }
     
     @GET
+    @Path("/quantrel/{urn}/qc/{qcid}/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public int getQuantRelacoes(@PathParam("qcid") String qcId, @PathParam("urn") String urn){
+        
+    	//obtem quadro comparativo e texto
+    	QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
+    	Texto texto = qc.getTexto(urn);
+    	
+    	//produzindo o conjunto de objetos simbólicos do texto
+    	Set<Long> osTextoIds = texto.getDocumento().getObjetoSimbolicoIdSet();
+    	
+    	//produzindo conjunto com todos os objetos simbólicos que possuem relações 
+    	//de todas as correlações do texto atual 
+    	Set<Long> osAllIdsRelacionados = new HashSet<Long>();
+		for (Relacao r : produceListRelacaoByTexto(qc, texto)){
+			osAllIdsRelacionados.addAll(r.getAlvo());
+			osAllIdsRelacionados.addAll(r.getOrigem());
+		}
+    	
+    	//produzindo um conjunto com os objetos simbólicos do texto que participam de alguma relação
+    	Set<Long> osTextoIdsComRelacao = new HashSet<Long>();
+    	for (Long l : osTextoIds){
+    		if (osAllIdsRelacionados.contains(l)){
+    			osTextoIdsComRelacao.add(l);
+    		}
+    	}
+    	
+    	//retorna a quantidade de relações
+    	return osTextoIdsComRelacao.size();
+    }
+    
+    private List<Relacao> produceListRelacaoByTexto(QuadroComparativo qc, Texto texto){
+    
+    	//produzindo conjunto com todos os objetos simbólicos que possuem relações 
+    	//de todas as correlações do texto atual 
+    	List<Relacao> result = new ArrayList<Relacao>();
+    	for (Correlacao c : qc.getCorrelacoes()){
+    		if (c.getTexto1().getUrn().equals(texto.getUrn()) || c.getTexto2().getUrn().equals(texto.getUrn())){
+    			result.addAll(c.getRelacoes());
+    		}
+    	}
+    	
+    	return result;
+    }
+    
+    @GET
     @Path("/{urn}/qc/{qcid}/")
     @Produces(MediaType.APPLICATION_JSON)
     public Texto getTextoInQuadro(@PathParam("qcid") String qcId,
@@ -91,8 +141,7 @@ public class TextoResource {
 
         urn = urn.replaceAll("__", ";");
 
-        QuadroComparativo qc = QuadroComparativoController
-                .getQuadroComparativo(request, qcId);
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
 
         Texto texto = qc.getTexto(urn);
 
@@ -209,8 +258,7 @@ public class TextoResource {
     public Response saveTexto(Texto texto, @PathParam("qcid") String qcId,
             @PathParam("colid") String colId) {
 
-        QuadroComparativo qc = QuadroComparativoController
-                .getQuadroComparativo(request, qcId);
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
 
         // texto.setArticulacaoXML(getArticulacaoXML(texto));
         
@@ -228,10 +276,28 @@ public class TextoResource {
 
         qc.addTexto(colId, texto);
         QuadroComparativoController.saveQuadroComparativo(request, qc);
+        
+        //exclui todas as eventuais relações existentes
+        removeRelacoes(qc, texto);
 
         String result = "Texto saved: " + texto;
         return Response.status(201).entity(result).build();
     }
+    
+    /**
+     * Remove todas as relações de um texto no Quadro
+     * @param qc
+     * @param texto
+     */
+    private void removeRelacoes(QuadroComparativo qc, Texto texto){
+    	for (Texto t : qc.getAllTextos()){
+    		Correlacao c = qc.getCorrelacao(texto.getUrn(), t.getUrn());
+    		if (c != null){
+    			c.removeAllRelacoes();
+    		}
+    	}
+    }
+
     
     private String cleanString(String str) {
         

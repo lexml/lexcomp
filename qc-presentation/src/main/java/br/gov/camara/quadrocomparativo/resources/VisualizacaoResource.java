@@ -87,8 +87,6 @@ public class VisualizacaoResource {
 
             for (Correlacao c : qc.getCorrelacoes()) {
 
-            	System.out.println("QUANT: "+qc.getAllDocumentos().size());
-            	
                     // documentos
                     for (Documento d : qc.getAllDocumentos()) {
                             indexer.addDocumento(d);

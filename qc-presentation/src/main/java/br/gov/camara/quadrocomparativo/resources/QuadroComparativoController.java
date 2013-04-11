@@ -3,7 +3,6 @@ package br.gov.camara.quadrocomparativo.resources;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,13 +34,13 @@ public class QuadroComparativoController {
     		SessionController.save(request, id, quadro);
     	} 
     	
-    	if(quadro == null) {
-    		Enumeration<String> e = request.getAttributeNames();
-    		StringBuilder sb = new StringBuilder();
-    		while(e.hasMoreElements()) {
-    			sb.append(", " + e.nextElement());
-    		}
-    	}
+//    	if(quadro == null) {
+//    		Enumeration<String> e = request.getAttributeNames();
+//    		StringBuilder sb = new StringBuilder();
+//    		while(e.hasMoreElements()) {
+//    			sb.append(", " + e.nextElement());
+//    		}
+//    	}
         
     	return quadro;
     }
@@ -98,6 +97,8 @@ public class QuadroComparativoController {
             }
         }
         
+        novoQC.setArticulacoesExcluidas(true);
+        
     	return novoQC;
     }
     
@@ -113,14 +114,10 @@ public class QuadroComparativoController {
     }
     
     static boolean saveQuadroComparativo(HttpServletRequest request, QuadroComparativo qc){
-    	return saveQuadroComparativo(request, qc, true);
-    }
-    
-    static boolean saveQuadroComparativo(HttpServletRequest request, QuadroComparativo qc, boolean restauraArticulacoes){
     	QuadroComparativo qcAtual = getQuadroComparativo(request, qc.getId());
     	
     	boolean ok = true;
-    	if (restauraArticulacoes){
+    	if (qc.isArticulacoesExcluidas()){
     		ok = restauraArticulacoes(qc, qcAtual);    		
     	}
     	
@@ -157,6 +154,8 @@ public class QuadroComparativoController {
                 }
             }
         }
+        
+        qcAtual.setArticulacoesExcluidas(false);
         
         return true;
     }
