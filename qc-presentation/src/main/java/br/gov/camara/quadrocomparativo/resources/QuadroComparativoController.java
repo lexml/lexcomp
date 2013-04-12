@@ -132,7 +132,7 @@ public class QuadroComparativoController {
     
     private static boolean restauraArticulacoes(QuadroComparativo quadro, QuadroComparativo qcAtual){
         // recupera articulacoes salvas anteriormente
-        if (qcAtual != null) {
+        if (qcAtual != null) { //FIXME: O que fazer se o qcAtual for nulo? 
             
             if (quadro.getColunas() != null) {
                 for (Coluna col : quadro.getColunas()) {
@@ -155,7 +155,7 @@ public class QuadroComparativoController {
             }
         }
         
-        qcAtual.setArticulacoesExcluidas(false);
+        qcAtual.setArticulacoesExcluidas(false); //FIXME: Se o qcAtual == null, ocorre NullPointerException
         
         return true;
     }

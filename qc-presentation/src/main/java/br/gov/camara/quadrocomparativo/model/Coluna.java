@@ -25,7 +25,7 @@ public class Coluna implements Serializable{
 	private String id;
     private String titulo;
     @XmlElement
-    private List<Texto> textos;
+    private List<Texto> textos = new ArrayList<Texto>();
     private String order;
     private boolean colunaPrincipal;
 
