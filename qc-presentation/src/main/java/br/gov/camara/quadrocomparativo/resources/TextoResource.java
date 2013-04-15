@@ -54,10 +54,12 @@ public class TextoResource {
     HttpServletRequest request;
     private static Logger log = Logger.getLogger(TextoResource.class.getName());
 
+    /*
     @GET
     @Path("/{urn}/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Texto importarTexto(@PathParam("urn") String urn) {
+    */
+    private Texto importarTexto(@PathParam("urn") String urn) {
 
         Texto t = new Texto(urn, null);
 
@@ -275,10 +277,11 @@ public class TextoResource {
         texto.setArticulacaoXML(null);
 
         qc.addTexto(colId, texto);
-        QuadroComparativoController.saveQuadroComparativo(request, qc);
         
         //exclui todas as eventuais relações existentes
         removeRelacoes(qc, texto);
+        
+        QuadroComparativoController.saveQuadroComparativo(request, qc);
 
         String result = "Texto saved: " + texto;
         return Response.status(201).entity(result).build();

@@ -170,10 +170,6 @@ public class Correlacao implements Serializable {
         this.configuracao = configuracao;
     }
 
-    public Map<String, Map<String, String>> getTiposRelacao() {
-        return RelacaoImpl.TiposRelacao.mapsTiposRelacao;
-    }
-
     @Override
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
