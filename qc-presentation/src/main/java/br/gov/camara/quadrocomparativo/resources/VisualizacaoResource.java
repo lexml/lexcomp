@@ -32,10 +32,12 @@ public class VisualizacaoResource {
 	@Produces(MediaType.TEXT_HTML)
 	public String getVisualizacao(@PathParam("qcid") String idQuadro) {
 
-		System.out.println("ID DO QUADRO: " + idQuadro);
-
 		QuadroComparativo qc = QuadroComparativoController
 				.getQuadroComparativo(request, idQuadro);
+		
+		if (qc == null){
+			return "Falha ao obter o quadro comparativo.";
+		}
 
 		// monta as colunas nos documentos
 		List<List<Documento>> colunas = new ArrayList<List<Documento>>();
@@ -67,15 +69,15 @@ public class VisualizacaoResource {
 	 */
 	private List<Integer> getIndexOrder(QuadroComparativo qc) {
 
-		List<Integer> res= new ArrayList<Integer>();
-		
+		List<Integer> res = new ArrayList<Integer>();
+
 		for (int i = 0; i < qc.getColunas().size(); i++) {
 			if (qc.getColunas().get(i).getColunaPrincipal()) {
 				res.add(i);
 			}
 		}
-		
-		if (res.isEmpty()){
+
+		if (res.isEmpty()) {
 			res.add(0);
 		}
 
@@ -83,31 +85,36 @@ public class VisualizacaoResource {
 	}
 
 	private Indexer makeIndexer(QuadroComparativo qc) {
+
+		if (qc == null) {
+			return null;
+		}
+
 		Indexer indexer = new Indexer();
 
-            for (Correlacao c : qc.getCorrelacoes()) {
+		for (Correlacao c : qc.getCorrelacoes()) {
 
-                    // documentos
-                    for (Documento d : qc.getAllDocumentos()) {
-                            indexer.addDocumento(d);
-                    }
+			// documentos
+			for (Documento d : qc.getAllDocumentos()) {
+				indexer.addDocumento(d);
+			}
 
-                    // relações
-                    if (c.getRelacoes() != null){
-                            for (Relacao r : c.getRelacoes()) {
-                                    indexer.addRelacao(r);
-                            }
-                    }
+			// relações
+			if (c.getRelacoes() != null) {
+				for (Relacao r : c.getRelacoes()) {
+					indexer.addRelacao(r);
+				}
+			}
 
-                    // comentários
-                    if (c.getComentarios() != null) {
-                            for (Comentario m : c.getComentarios()) {
-                                    indexer.addComentario(m);
-                            }
-                    }
-            }
+			// comentários
+			if (c.getComentarios() != null) {
+				for (Comentario m : c.getComentarios()) {
+					indexer.addComentario(m);
+				}
+			}
+		}
 
-            return indexer;
+		return indexer;
 	}
 
 }

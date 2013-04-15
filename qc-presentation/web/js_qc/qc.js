@@ -516,11 +516,10 @@ function configuraQuadro() {
         var texto, coluna = null;
         
         $('a#linkImportaTexto').click(function(event) {
-        
             event.preventDefault();
             searchText(urn);
         });
-            
+        
         $.each(quadro.colunas, function (ic, col) {
                    
             if (col.textos) {
@@ -538,13 +537,8 @@ function configuraQuadro() {
         });
         
         if ($("#dialog-edit-text").attr("title") != "") {
-            
-            
-            
             $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);
-        
         } else {
-            
             $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
         }
         
@@ -594,6 +588,9 @@ function configuraQuadro() {
                 document.location.reload();
             }
         });
+        
+        // abrindo o texto inicial
+        $('a#linkImportaTexto').click();
         
     });
     
