@@ -1,8 +1,10 @@
 package br.gov.camara.quadrocomparativo.resources;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,6 +13,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
+import org.apache.commons.io.FileUtils;
 
 import util.clone.DeepCopy;
 import br.gov.camara.quadrocomparativo.model.Coluna;
@@ -31,7 +35,9 @@ public class QuadroComparativoController {
     			quadro = getQuadroComparativo(f);
             }
     		
-    		SessionController.save(request, id, quadro);
+    		if (quadro != null){
+    			SessionController.save(request, id, quadro);
+    		}
     	} 
     	
 //    	if(quadro == null) {
@@ -47,14 +53,22 @@ public class QuadroComparativoController {
     
     static QuadroComparativo getQuadroComparativo(File file) {
         
-        try {
-            
-            JAXBContext jc = JAXBContext.newInstance(QuadroComparativo.class);
-            Unmarshaller u = jc.createUnmarshaller();
-                
-            return (QuadroComparativo) u.unmarshal(file);
-        } catch (JAXBException ex) {
-        	log.log(Level.SEVERE, null, ex);
+    	
+    	
+    	if (file.exists()){
+	        try {
+	        	
+	        	byte[] bs = FileUtils.readFileToByteArray(file);
+	            
+	            JAXBContext jc = JAXBContext.newInstance(QuadroComparativo.class);
+	            Unmarshaller u = jc.createUnmarshaller();
+	                
+	            return (QuadroComparativo) u.unmarshal(new ByteArrayInputStream(bs));
+	        } catch (JAXBException ex) {
+	        	log.log(Level.SEVERE, null, ex);
+	        } catch (IOException e) {
+	        	log.log(Level.SEVERE, "IOException ...", e);
+			}
         }
         
         return null;
@@ -132,7 +146,7 @@ public class QuadroComparativoController {
     
     private static boolean restauraArticulacoes(QuadroComparativo quadro, QuadroComparativo qcAtual){
         // recupera articulacoes salvas anteriormente
-        if (qcAtual != null) { //FIXME: O que fazer se o qcAtual for nulo? 
+        if (qcAtual != null) {  
             
             if (quadro.getColunas() != null) {
                 for (Coluna col : quadro.getColunas()) {
@@ -153,9 +167,9 @@ public class QuadroComparativoController {
                     }
                 }
             }
+            qcAtual.setArticulacoesExcluidas(false);
         }
         
-        qcAtual.setArticulacoesExcluidas(false); //FIXME: Se o qcAtual == null, ocorre NullPointerException
         
         return true;
     }
