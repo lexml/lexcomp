@@ -1019,5 +1019,3 @@ function deleteRelacao(qcid, urn1, urn2, idRelacao, callback) {
     });
     
 }
-
-//Teste GIT
