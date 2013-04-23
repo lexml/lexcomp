@@ -118,15 +118,11 @@ function formModalOpen(urn, onCloseCallback){
 
                     //Modifica o título do novo texto
                     $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
-                    
-                    
                 
                 }else{
                     $("#URNTEXTONOVO").remove();                    
-                    showConfirmDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
                 }
-                
-               
                 
             }
             
@@ -138,8 +134,7 @@ function formModalOpen(urn, onCloseCallback){
 
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '='
-        + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g,
-        '%20')) || null;
+        + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g,'%20')) || null;
 }
 
 function saveQuadro() {

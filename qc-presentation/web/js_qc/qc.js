@@ -355,7 +355,7 @@ function configuraQuadro() {
                 saveQuadro();
                 
                 }else{
-                    showConfirmDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");                    
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");                    
                 }
             }
 
@@ -545,7 +545,7 @@ function configuraQuadro() {
         });
         
         if ($("#dialog-edit-text").attr("title") != "") {
-            $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);
+            $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);            
         } else {
             $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
         }
@@ -570,8 +570,8 @@ function configuraQuadro() {
                     texto.preambulo = $("#preambulo-textarea").val();
                     texto.articulacao = $("#texto-textarea").val();
                     texto.fecho = $("#fecho-textarea").val();
-                            
-                    $.ajax({
+                    
+                   $.ajax({
                         url: '/api/texto/qc/' + quadro.id + '/col/' + coluna.id + "/",
                         type: 'POST',
                         data: JSON.stringify(texto),
@@ -584,14 +584,16 @@ function configuraQuadro() {
                             //showAlertDialog("Falha ao salvar texto: " + res.statusText);
                             dialog.dialog("close");
                         }
-                    });
+                    }); 
                 },
                 "Cancelar": function() {
                     $( this ).dialog( "close" );
                 }
             },
             open: function (evt, ui) {
-                
+                if(texto.articulacao){
+                    showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
+                }
             },close: function (evt, ui) {
                 document.location.reload();
             }
