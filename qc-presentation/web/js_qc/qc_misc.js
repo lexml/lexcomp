@@ -101,19 +101,36 @@ function formModalOpen(urn, onCloseCallback){
                 onCloseCallback();
             }
             
-            if(textoAtualModal){    
-                var urn = textoAtualModal.urnIdDIV;
-                $("#"+ urn).attr({urn: textoAtualModal.urn});
-                                
-                //Modifica o ID do Texto originário          
-                $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);
+            if(textoAtualModal){
                 
-                addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
+                //Só adiciona um novo texto se não existir uma URN igual
+                if($("#"+textoAtualModal.urnIdDIV).length == 0){
+                    
+                    var urn = textoAtualModal.urnIdDIV;                
+
+                    $("#"+ urn).attr({urn: textoAtualModal.urn});                                
+
+                    //Modifica o ID do Texto originário          
+                    $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);                
+
+                    //Adiciona os Endpoints do Plumb na criação do novo texto
+                    addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
+
+                    //Modifica o título do novo texto
+                    $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
+                    
+                    
                 
-                //Modifica o título do texto novo            
-                $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
+                }else{
+                    $("#URNTEXTONOVO").remove();                    
+                    showConfirmDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
+                }
+                
+               
                 
             }
+            
+            
               
         }
     });

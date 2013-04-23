@@ -340,16 +340,26 @@ function configuraQuadro() {
         formModalOpen(urnTextoNovo, function() {
             
             if(textoAtualModal) {
+               
+               
+               if($("#"+textoAtualModal.urnIdDIV).length == 0){
+                
                 //Cria novo texto para a coluna
                 var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);                
                 //Adiciona o novo texto na coluna em questão
                 $('#' + idColuna + ' ul').append(novoTextoVazio);
+                
+                //Ajusta a altura do Body
+                ajustaBodyH(110);
+                configuraQuadro();
+                saveQuadro();
+                
+                }else{
+                    showConfirmDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");                    
+                }
             }
 
-            //Ajusta a altura do Body
-            ajustaBodyH(110);
-            configuraQuadro();
-            saveQuadro();
+            
         });
         
     });
@@ -591,6 +601,18 @@ function configuraQuadro() {
         $('a#linkImportaTexto').click();
         
     });
+    
+    
+    
+    //Remove divs de Texto que por ventura estejam cuplicados, evitando assim efeitos inesperados no plumb
+    $('.window[id]').each(function () {
+        var ids = $('.window[id=' + this.id + ']');
+        if (ids.length > 1 && ids[0] == this) {
+            $(ids[1]).remove();
+        }
+    });
+
+    
     
 }
 
