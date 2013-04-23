@@ -100,25 +100,19 @@ function formModalOpen(urn, onCloseCallback){
             if (onCloseCallback) {
                 onCloseCallback();
             }
-          
+            
             if(textoAtualModal){    
                 var urn = textoAtualModal.urnIdDIV;
-                $("#"+ urn).attr({
-                    urn: textoAtualModal.urn
-                });
-                
+                $("#"+ urn).attr({urn: textoAtualModal.urn});
+                                
                 //Modifica o ID do Texto originário          
-                $("#"+urn).attr({
-                    id: textoAtualModal.urnIdDIV
-                });
+                $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);
+                
+                addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
                 
                 //Modifica o título do texto novo            
                 $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
                 
-                if (urn == urnTextoNovo) {
-                    //Adiciona os Endpoints (jsPlumb) ao texto novo
-                    addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
-                }
             }
               
         }
