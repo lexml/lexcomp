@@ -341,8 +341,7 @@ function configuraQuadro() {
             
             if(textoAtualModal) {
                 //Cria novo texto para a coluna
-                var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);
-
+                var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);                
                 //Adiciona o novo texto na coluna em questão
                 $('#' + idColuna + ' ul').append(novoTextoVazio);
             }
@@ -380,7 +379,7 @@ function configuraQuadro() {
                 } else {
                     
                     texto.incluidoVisualizacao = true;
-                    textoAtualModal = texto;
+                    textoAtualModal = texto;                    
 
                     $.each(quadro.colunas, function (icol, coluna) {
                         //console.log(coluna.id + " --> " + colId);
@@ -395,7 +394,6 @@ function configuraQuadro() {
                         }
                     });
                 }
-                
                 saveQuadro();
                 $("#modalForm").dialog("close");
 
