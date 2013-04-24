@@ -600,7 +600,7 @@ function configuraQuadro() {
         });
         
         // abrindo o texto inicial
-        $('a#linkImportaTexto').click();
+        //$('a#linkImportaTexto').click();
         
     });
     
