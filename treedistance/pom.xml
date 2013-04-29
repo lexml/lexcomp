@@ -13,6 +13,19 @@
 		<developerConnection>scm:git:https://github.com/laurocesar/lexcomp.git</developerConnection>
 		<url>https://github.com/laurocesar/lexcomp.git</url>
 	</scm>
+  
+	<distributionManagement>
+		<repository>
+			<id>sfmvnrepo</id>
+			<name>sfmvnrepo-releases</name>
+			<url>http://www20.senado.gov.br/artifactory/libs-releases-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>sfmvnrepo</id>
+			<name>sfmvnrepo-snapshots</name>
+			<url>http://www20.senado.gov.br/artifactory/libs-snapshots-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<build>
 		<sourceDirectory>src/main/scala</sourceDirectory>
