@@ -23,36 +23,54 @@ import Scalaz._
 import NonEmptyList._
 import br.gov.lexml.symbolicobject.impl.Documento
 
-final case class Node(nd: NodeData, subForest: List[Node] = List()) 
+final case class Node(nd: NodeData, subForest: List[Node] = List())
 
 object Node {
-  
-  def fromObjetoSimbolicoComplexo(os : ObjetoSimbolicoComplexo[_],path : NonEmptyList[Rotulo]) =  
-    Node(NodeData.fromObjetoSimbolicoComplexo(os, path),
-        os.posicoes.toList.flatMap(fromPosicao(_,path.list)))
-  
-  def fromPosicao(p : Posicao[_], parentPath : List[Rotulo]) : Option[Node] = p.objeto match {
-    case os : ObjetoSimbolicoComplexo[_] => Some(fromObjetoSimbolicoComplexo(os,nel(p.rotulo,parentPath)))
-    case _ => None
+
+  def fromObjetoSimbolicoComplexo(os: ObjetoSimbolicoComplexo[_], path: NonEmptyList[Rotulo]): ValidationNel[String, Node] = {
+    val posicoes = os.posicoes.toList
+    val subNodes = posicoes.map(fromPosicao(_, path.list).map(List(_))).concatenate.map(_.flatten)
+    val node = subNodes.map(sns => Node(NodeData.fromObjetoSimbolicoComplexo(os, path), sns))
+    node
   }
-  
-  def fromArticulacao(d : Documento[_]) = (d.os / "articulacao").result.headOption.flatMap(fromPosicao(_,Nil))
+
+  def fromPosicao(p: Posicao[_], parentPath: List[Rotulo]): ValidationNel[String, Option[Node]] = p.objeto match {
+    case os: ObjetoSimbolicoComplexo[_] => fromObjetoSimbolicoComplexo(os, nel(p.rotulo, parentPath)).map(Some(_))
+    case _ => None.successNel[String] //("fromPosicao: expecting ObjetoSimbolicoComplexo, got:  " + p.objeto).failNel[Node]
+  }
+
+  def fromArticulacao(d: Documento[_]): ValidationNel[String, Node] =
+    (d.os / "articulacao")
+      .result
+      .headOption
+      .toSuccess("Articulação não encontrada em :  " + d)
+      .toValidationNel[String, Posicao[_]]
+      .flatMap(fromPosicao(_, Nil)).map(_.get)
+   
 }
 
 final case class NodeData(
   id: Long,
   path: NonEmptyList[Rotulo],
   tipo: STipo,
-  texto: Option[(Long, NodeSeq)] = None) 
+  texto: Option[(Long, NodeSeq)] = None) {
+  override def toString() = "[%s:%d] %s".format(
+    tipo.nomeTipo, id, texto.map(x => ": \"" + x._2.toString.take(12) + "\"").getOrElse(""))
+  override def hashCode() = id.toInt
+  override def equals(a : Any) = a match {
+    case nd : NodeData => id == nd.id
+    case _ => false
+  }  
+}
 
 object NodeData {
-  def fromObjetoSimbolicoComplexo(os : ObjetoSimbolicoComplexo[_], path : NonEmptyList[Rotulo]) = {
-    val texto : Option[(Long,NodeSeq)] = 
-      (os / "texto").result.headOption.map(_.objeto).collect { 
-        	case t : TextoPuro[_] => (t.id,Text(t.texto))
-        	case t : TextoFormatado[_] => (t.id,t.frag)
-    }
-    NodeData(os.id,path,os.tipo,texto)
+  def fromObjetoSimbolicoComplexo(os: ObjetoSimbolicoComplexo[_], path: NonEmptyList[Rotulo]) = {
+    val texto: Option[(Long, NodeSeq)] =
+      (os / "texto").result.headOption.map(_.objeto).collect {
+        case t: TextoPuro[_] => (t.id, Text(t.texto))
+        case t: TextoFormatado[_] => (t.id, t.frag)
+      }
+    NodeData(os.id, path, os.tipo, texto)
   }
 }
 
@@ -74,6 +92,12 @@ case class NodeTEDParams(
 }
 
 class NodeTED(val params: NodeTEDParams) extends TED {
+  
+  val doDebug = false
+      
+  def debug(msg : => String) = if(doDebug) { println(msg) } else { }
+    
+  
   type A = NodeData
   type T = Node
   override implicit val treeOps = new TreeOps[Node, NodeData] {
@@ -128,9 +152,15 @@ class NodeTED(val params: NodeTEDParams) extends TED {
   def replaceCost(ol: Option[NodeSeq], or: Option[NodeSeq]): Double = {
     val leftText = normalize(ol.map(_.text).getOrElse(""))
     val rightText = normalize(or.map(_.text).getOrElse(""))
-    val diff = LexmlDiff.diff(leftText, rightText, params.maxPartialDiff, params.diffIgnoreCase)
-    val proportion = LexmlDiff.proportionL(diff)
-    if (proportion >= 0.0) { 1.0 } else { 1.0 / proportion }
+    LexmlDiff.diff(leftText, rightText, params.maxPartialDiff, params.diffIgnoreCase) match {
+      case Nil => debug("          empty diff") ; 0.0
+      case diff => 
+        	debug("           diff = " + diff)
+      		val proportion = (1 - LexmlDiff.proportionL(diff))*2.0      		
+      		debug("           proportion =  "+ proportion)
+      		//if (proportion >= 0.0) { 1.0 } else { 1.0 / proportion }
+        	proportion
+    }       
   }
 
   def replaceAverage(tipo: Double, rotulo: Double, diff: Double) = {
@@ -138,17 +168,59 @@ class NodeTED(val params: NodeTEDParams) extends TED {
       params.totalWeight * params.replaceFactor
   }
 
-  override def propositionCost(value: NodeData, prop: Proposition): Double = prop match {
-    case OnlyRight => params.onlyOnRightCost
-    case OnlyLeft => params.onlyOnLeftCost
-    case OnBoth(other: NodeData) => {
-      replaceAverage(replaceCost(value.tipo, other.tipo),
-        replaceCost(value.path.head, other.path.head),
-        replaceCost(value.texto.map(_._2), other.texto.map(_._2)))
+  import TED._
+
+  val cache = scala.collection.mutable.Map[(Long,Proposition[Long]),Double]()
+  
+  override def propCost(value: NodeData, prop: Proposition[NodeData]): Double = {
+    val id = value.id
+    val prop1 = prop.map(_.id)
+    val k = (id,prop1)
+    cache.get(k) match {
+      case Some(v) => v
+      case None => 
+        val v = propCost_(value,prop)
+        cache.put(k,v)
+        v
     }
+  } 
+  
+  var totalCount = 0L
+  var propCostCount = 0
+  var lastTime : Option[Long] = None
+  
+  def propCost_(value: NodeData, prop: Proposition[NodeData]): Double = {
+    propCostCount = propCostCount + 1
+    if(propCostCount == 1000) {
+      totalCount = totalCount + 1000L
+      val ct = System.nanoTime()
+      val ellapsed = lastTime.map(ct - _)      
+      ellapsed.foreach(x => println("total: " + totalCount + ", speed: " + (1000.0 / (x.toDouble / 1e9)) + " costs/sec"))
+      propCostCount = 0
+      lastTime = Some(ct)
+    }
+    
+    
+    val cost = prop match {
+      case OnlyRight => params.onlyOnRightCost
+      case OnlyLeft => params.onlyOnLeftCost
+      case OnBoth(other: NodeData) => {
+        val v1 = replaceCost(value.tipo, other.tipo)
+        debug("    v1 = " + v1)
+        val v2 = replaceCost(value.path.head, other.path.head)
+        debug("    v2 = " + v2)
+        debug("       value.texto.map(_._2.take(10)) = " + value.texto.map(_._2.take(10))) 
+        debug("       other.texto.map(_._2.take(10)) = " + other.texto.map(_._2.take(10)))
+        val v3 = replaceCost(value.texto.map(_._2), other.texto.map(_._2))                     
+        debug("    v3 = " + v3)
+        replaceAverage(v1,v2,v3)
+      }
+    }
+    debug("propCost: value = "+ value + ", prop = " + prop + ", cost = " + cost)
+    cost
   }
-}    
+}
 
 object NodeTED {
-  
+
 }

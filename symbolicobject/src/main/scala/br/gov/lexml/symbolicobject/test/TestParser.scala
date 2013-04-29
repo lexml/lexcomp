@@ -39,7 +39,7 @@ object TestParser extends App {
 	    
 	    val inputDocument = InputDocument(Tipos.DocProjetoLei,pars,"urn:lex:br:federal:lei:2006-12-01;11380")
 	    println("Parágrafos:")
-	    pars.paragrafos.zipWithIndex.foreach(l => println("   " +  l))
+	    pars.paragrafos.toList.zipWithIndex.foreach(l => println("   " +  l))
 	    println("Blocks:")
 	    pars.blocks.foreach(x => x.zipWithIndex.foreach(y => println("   " + y)))
 	    println("XML:")

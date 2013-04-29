@@ -39,7 +39,7 @@ final case class TextoArticulacao(streamSource: StreamSource, mime: String) exte
 
 final case class TextoCompleto(streamSource: StreamSource, mime: String, metadado: Metadado) extends HasStreamSource with StreamToBlocks with BlocksToXMLCompleto
 
-final case class Paragrafos(paragrafos: Iterable[String]) extends ParagrafosSource with ParagrafosToBlocks with BlocksToXMLSomenteArticulacao {
+final case class Paragrafos(paragrafos: TraversableOnce[String]) extends ParagrafosSource with ParagrafosToBlocks with BlocksToXMLSomenteArticulacao {
   def this(c: java.util.Collection[String]) = this(scala.collection.JavaConverters.collectionAsScalaIterableConverter(c).asScala)
 }
 
@@ -76,12 +76,12 @@ trait StreamToBlocks extends BlockSource {
 }
 
 trait ParagrafosSource {
-  def paragrafos: Iterable[String]
+  def paragrafos: TraversableOnce[String]
 }
 
 trait ParagrafosToBlocks extends BlockSource {
   self: ParagrafosSource =>
-  def paragrafos: Iterable[String]
+  def paragrafos: TraversableOnce[String]
   override final def blocks() =
     Success(paragrafos.map((x: String) => Paragraph(Seq(Text(x)))).toList)
 }

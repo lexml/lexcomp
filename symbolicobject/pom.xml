@@ -6,7 +6,7 @@
 	<version>0.0.5-SNAPSHOT</version>
 	<properties>
 		<scala.version>2.10</scala.version>
-		<scala.lib.version>${scala.version}.0</scala.lib.version>
+		<scala.lib.version>${scala.version}.1</scala.lib.version>
 	</properties>
 	<scm>
 		<connection>scm:svn:https://dsvp/svn/lexmltools/symbolicobject/trunk</connection>
@@ -40,8 +40,8 @@
 		</repository>
 	</repositories>
 	<build>
-	     <sourceDirectory>src/main/scala</sourceDirectory>
-	     <testSourceDirectory>src/test/scala</testSourceDirectory>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
 
 		<plugins>
 			<plugin>
@@ -62,7 +62,7 @@
 						<goals>
 							<goal>compile</goal>
 							<goal>testCompile</goal>
-						</goals>
+						</goals>						
 					</execution>
 				</executions>
 				<configuration>
@@ -130,7 +130,7 @@
 		<dependency>
 			<groupId>org.scalaz</groupId>
 			<artifactId>scalaz-core_${scala.version}</artifactId>
-			<version>7.0.0-M8</version>
+			<version>7.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -160,7 +160,7 @@
 			<groupId>com.dyuproject.protostuff</groupId>
 			<artifactId>protostuff-core</artifactId>
 			<version>1.0.7</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.scalastuff</groupId>
 			<artifactId>scalabeans</artifactId>
@@ -179,7 +179,12 @@
 		<dependency>
 			<groupId>br.gov.lexml</groupId>
 			<artifactId>lexmldiff</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.7-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>breeze-math_2.10</artifactId>
+			<version>0.2.3</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
