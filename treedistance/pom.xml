@@ -3,42 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.gov.lexml</groupId>
 	<artifactId>treedistance</artifactId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.2</version>
 	<properties>
 		<scala.version>2.10</scala.version>
-		<scala.lib.version>${scala.version}.0</scala.lib.version>
+		<scala.lib.version>${scala.version}.1</scala.lib.version>
 	</properties>
 	<scm>
-		<connection>scm:svn:https://dsvp/svn/lexmltools/treedistance/trunk</connection>
-		<developerConnection>scm:svn:https://dsvp/svn/lexmltools/treedistance/trunk</developerConnection>
-		<url>https://dsvp/svn/lexmltools/treedistance/trunk</url>
+		<connection>scm:git:https://github.com/laurocesar/lexcomp.git</connection>
+		<developerConnection>scm:git:https://github.com/laurocesar/lexcomp.git</developerConnection>
+		<url>https://github.com/laurocesar/lexcomp.git</url>
 	</scm>
-	<distributionManagement>
-		<repository>
-			<id>sfmvnrepo</id>
-			<name>sfmvnrepo-releases</name>
-			<url>http://www20.senado.gov.br/artifactory/libs-releases-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>sfmvnrepo</id>
-			<name>sfmvnrepo-snapshots</name>
-			<url>http://www20.senado.gov.br/artifactory/libs-snapshots-local</url>
-		</snapshotRepository>
-	</distributionManagement>
 
-	<repositories>
-		<repository>
-			<id>prova</id>
-			<name>Prova repository</name>
-			<url>http://prova.ws/maven2</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<build>
 		<sourceDirectory>src/main/scala</sourceDirectory>
 		<testSourceDirectory>src/test/scala</testSourceDirectory>
@@ -72,21 +47,8 @@
 						<jvmArg>-Xmx1024m</jvmArg>
 					</jvmArgs>
 					<scalaVersion>${scala.version}</scalaVersion>
-					<!-- <javaRebelPath>/home/joao/jrebel/jrebel.jar</javaRebelPath> -->
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<tagBase>https://dsvp/svn/lexmltools/treedistance/tags</tagBase>
-				</configuration>
-			</plugin>
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>buildnumber-maven-plugin</artifactId> 
-				<version>1.2</version> <executions> <execution> <phase>validate</phase> <goals> 
-				<goal>create</goal> </goals> </execution> </executions> <configuration> <doCheck>false</doCheck> 
-				<doUpdate>false</doUpdate> </configuration> </plugin> -->
 		</plugins>
 	</build>
 	<dependencies>
@@ -106,7 +68,7 @@
 		<dependency>
 			<groupId>org.scalaz</groupId>
 			<artifactId>scalaz-core_${scala.version}</artifactId>
-			<version>7.0.0-M8</version>
+			<version>7.0.0</version>
 		</dependency>
 	</dependencies>
 </project>

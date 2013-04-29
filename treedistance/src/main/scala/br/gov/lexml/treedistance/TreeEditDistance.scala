@@ -54,6 +54,76 @@ trait TreeOps[T,A] {
     def subForest(t : T) : List[T]    
 }
 
+abstract sealed trait Proposition[+A] {
+  def map[B](f : A => B) : Proposition[B]
+}
+
+final case object OnlyLeft extends Proposition[Nothing] {
+  override def map[B](f : Nothing => B) : Proposition[B] = OnlyLeft
+  override def hashCode() = 0
+}
+  
+final case object OnlyRight extends Proposition[Nothing] {
+  override def map[B](f : Nothing => B) : Proposition[B] = OnlyRight
+  override def hashCode() = 1  
+}
+
+final case class OnBoth[A](other : A) extends Proposition[A] {
+  override def map[B](f : A => B) : Proposition[B] = OnBoth(f(other))
+  val _hash = other.hashCode | 2
+  override def hashCode() = _hash
+  override def equals(a : Any)  = a match {
+    case OnBoth(c) => other == c
+    case _ => false
+  }
+}
+  
+trait PropCostFunc[-A] {
+  def propositionCost(value : A, prop : Proposition[A]) : Double
+}
+
+final case class PropSet[A](
+    positive : Map[A,Set[Proposition[A]]] = Map[A,Set[Proposition[A]]](),
+    negative : Map[A,Set[Proposition[A]]] = Map[A,Set[Proposition[A]]]()
+    )(implicit costFunc : PropCostFunc[A]) {
+  lazy val cost = positive.toSeq.flatMap{ case(k,l) => (l.toSeq.map(p => costFunc.propositionCost(k,p)))}.sum[Double]
+  lazy val isConsistent = positive.forall { case (k,ps) =>
+     ps.size <= 1 && 
+     negative.getOrElse(k,Set()).intersect(ps).isEmpty
+  }
+  lazy val neg = PropSet[A](Map(), positive)
+  import TED._
+  def &&(ps : PropSet[A]) = PropSet(
+	  positive = mergeMaps(positive,ps.positive),
+	  negative = mergeMaps(negative,ps.negative))
+  override def toString() = "pos: " + positive + "\nneg: " + negative 
+}
+
+final case class TEDTheory[A](
+      psLeft : PropSet[A],
+      psRight : PropSet[A])(implicit costFunc : PropCostFunc[A]) {
+  lazy val cost = psLeft.cost + psRight.cost
+  lazy val isConsistent = psLeft.isConsistent && psRight.isConsistent
+  lazy val neg = TEDTheory(psLeft.neg,psRight.neg)
+  def &&(t : TEDTheory[A]) = TEDTheory(
+   		psLeft = psLeft && t.psLeft,
+   		psRight = psRight && t.psRight)
+  override def toString() = "Theory: cost = "+ cost + ", psLeft = " + psLeft + ", psRight = " + psRight   		
+}
+
+object TEDTheory {
+    def emptyM[A] = Map[A,Set[Proposition[A]]]()
+    def theory[A](psLeft : Option[PropSet[A]] = None, psRight : Option[PropSet[A]] = None)(implicit costFunc : PropCostFunc[A]) : TEDTheory[A] =
+      TEDTheory(psLeft getOrElse PropSet[A](emptyM[A],emptyM[A]), psRight getOrElse PropSet[A](emptyM[A],emptyM[A]) )
+}
+
+object TED {    
+  def mergeMaps[K,V](m1 : Map[K,Set[V]], m2 : Map[K,Set[V]]) : Map[K,Set[V]] = 
+    (m1.toSeq ++ m2.toSeq).
+    	groupBy(_._1).
+    	mapValues(_.map(_._2).foldLeft(Set[V]())(_ ++ _))  
+}
+
 trait TED {
 
   type A
@@ -64,62 +134,28 @@ trait TED {
   
   import treeOps._
   
-  abstract sealed class Proposition 
-
-  final case object OnlyLeft extends Proposition
+  import TED._  
   
-  final case object OnlyRight extends Proposition
-
-  final case class OnBoth(other : A) extends Proposition
+  def propCost(value : A, prop : Proposition[A]) : Double
   
-  def propositionCost(value : A, prop : Proposition) : Double
-  
-  def mergeMaps[K,V](m1 : Map[K,Set[V]], m2 : Map[K,Set[V]]) : Map[K,Set[V]] = 
-    (m1.toSeq ++ m2.toSeq).
-    	groupBy(_._1).
-    	mapValues(_.map(_._2).foldLeft(Set[V]())(_ ++ _))
-  
-  
-  final case class PropSet(
-      positive : Map[A,Set[Proposition]] = Map(),
-      negative : Map[A,Set[Proposition]] = Map()
-      ) {
-      lazy val cost = positive.toSeq.flatMap{ case(k,l) => (l.toSeq.map(p => propositionCost(k,p)))}.sum[Double]
-	  lazy val isConsistent = positive.forall { case (k,ps) =>
-	      ps.size <= 1 && 
-	      negative.getOrElse(k,Set()).intersect(ps).isEmpty
-	    }
-      lazy val neg = PropSet(Map(), positive)
-      def &&(ps : PropSet) = PropSet(
-    		  positive = mergeMaps(positive,ps.positive),
-    		  negative = mergeMaps(negative,ps.negative)
-          )
+  final implicit val costFunc : PropCostFunc[A] = new PropCostFunc[A] {
+    override def propositionCost(value : A, prop : Proposition[A]) : Double = propCost(value,prop)      
   }
   
-  final case class TEDTheory(
-      psLeft : PropSet = PropSet(),
-      psRight : PropSet = PropSet()) {
-    lazy val cost = psLeft.cost + psRight.cost
-    lazy val isConsistent = psLeft.isConsistent && psRight.isConsistent
-    lazy val neg = TEDTheory(psLeft.neg,psRight.neg)
-    def &&(t : TEDTheory) = TEDTheory(
-    		psLeft = psLeft && t.psLeft,
-    		psRight = psRight && t.psRight
-        )
-  }
   
-  def onLeft(v : A) = TEDTheory(psLeft = PropSet(Map(v -> Set(OnlyLeft))))
-  def onRight(v : A) = TEDTheory(psRight = PropSet(Map(v -> Set(OnlyRight))))
-  def onBoth(v1 : A,v2 : A) = TEDTheory(
-        psLeft = PropSet(Map(v1-> Set(OnBoth(v2)))),
-        psRight = PropSet(Map(v2-> Set(OnBoth(v1)))))
   
-  implicit object theoryInst extends Theory[TEDTheory] {
-    override val True = TEDTheory()    
-    def and(th1: TEDTheory, th2: TEDTheory) = th1 && th2
-    def neg(th: TEDTheory): TEDTheory = th.neg
-    def isConsistent(th: TEDTheory): Boolean = th.isConsistent      
-    def cost(th: TEDTheory): Double = th.cost
+  final def onLeft(v : A) = TEDTheory(PropSet(Map(v -> Set(OnlyLeft : Proposition[A]))),PropSet())
+  final def onRight(v : A) = TEDTheory(PropSet(),PropSet(Map(v -> Set(OnlyRight : Proposition[A]))))
+  final def onBoth(v1 : A,v2 : A) = TEDTheory(
+        PropSet(Map(v1-> Set(OnBoth(v2) : Proposition[A]))),
+        PropSet(Map(v2-> Set(OnBoth(v1) : Proposition[A]))))
+  
+  implicit object theoryInst extends Theory[TEDTheory[A]] {
+    override val True = TEDTheory(PropSet(),PropSet())    
+    def and(th1: TEDTheory[A], th2: TEDTheory[A]) = th1 && th2
+    def neg(th: TEDTheory[A]): TEDTheory[A] = th.neg
+    def isConsistent(th: TEDTheory[A]): Boolean = th.isConsistent      
+    def cost(th: TEDTheory[A]): Double = th.cost
   }
   
   final case class TEDProblem(left : List[T], right : List[T])
@@ -132,12 +168,12 @@ trait TED {
     case (l,c,r) => (value(c),l,subForest(c),r)
   }
   
-  implicit object problemInst extends Problem[TEDProblem,TEDTheory] {
+  implicit object problemInst extends Problem[TEDProblem,TEDTheory[A]] {
     override val theory = theoryInst
 
     import theoryInst._
 
-    def reduce(prob: TEDProblem): List[(TEDTheory, List[TEDProblem])] = prob match {
+    def reduce(prob: TEDProblem): List[(TEDTheory[A], List[TEDProblem])] = prob match {
       case TEDProblem(Nil,Nil) => List((True,Nil))
       case TEDProblem(left,right) => {
         val onlyLefts = for {
@@ -166,7 +202,7 @@ trait TED {
     }
   }
   
-  def solve(p : TEDProblem, th : Option[TEDTheory] = None) = Solver.solve(p,th)(problemInst)
+  def solve(p : TEDProblem, th : Option[TEDTheory[A]] = None) = Solver.solve(p,th)(problemInst)
 }
 
 case class MyTree[+A](value : A, subForest : List[MyTree[A]])
@@ -189,12 +225,16 @@ trait MyTreeTED[V] extends TED {
 }
 
 object TestTED extends MyTreeTED[String] {
- 
-  def propositionCost(v: String,prop : Proposition) : Double = prop match {    
-    case OnBoth(other) if v == other => 0.0
-    case OnBoth(_) => 2.1 
-    case _ => 1.0
-  }  
+  
+  import TED._
+  
+  override def propCost(v : String, prop : Proposition[A]) : Double = prop match {
+       case OnBoth(other) if v == other => 0.0
+       case OnBoth(_) => 2.1 
+       case _ => 1.0
+  }
+  
+    
   import MyTree._
   val t1 = node("A",node("B"),node("C"))
   val t2 = node("A",node("B"),node("D"))
