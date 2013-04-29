@@ -340,17 +340,26 @@ function configuraQuadro() {
         formModalOpen(urnTextoNovo, function() {
             
             if(textoAtualModal) {
+               
+               
+               if($("#"+textoAtualModal.urnIdDIV).length == 0){
+                
                 //Cria novo texto para a coluna
-                var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);
-
+                var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);                
                 //Adiciona o novo texto na coluna em questão
                 $('#' + idColuna + ' ul').append(novoTextoVazio);
+                
+                //Ajusta a altura do Body
+                ajustaBodyH(110);
+                configuraQuadro();
+                saveQuadro();
+                
+                }else{
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");                    
+                }
             }
 
-            //Ajusta a altura do Body
-            ajustaBodyH(110);
-            configuraQuadro();
-            saveQuadro();
+            
         });
         
     });
@@ -380,7 +389,7 @@ function configuraQuadro() {
                 } else {
                     
                     texto.incluidoVisualizacao = true;
-                    textoAtualModal = texto;
+                    textoAtualModal = texto;                    
 
                     $.each(quadro.colunas, function (icol, coluna) {
                         //console.log(coluna.id + " --> " + colId);
@@ -395,7 +404,6 @@ function configuraQuadro() {
                         }
                     });
                 }
-                
                 saveQuadro();
                 $("#modalForm").dialog("close");
 
@@ -537,7 +545,7 @@ function configuraQuadro() {
         });
         
         if ($("#dialog-edit-text").attr("title") != "") {
-            $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);
+            $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);            
         } else {
             $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
         }
@@ -562,8 +570,8 @@ function configuraQuadro() {
                     texto.preambulo = $("#preambulo-textarea").val();
                     texto.articulacao = $("#texto-textarea").val();
                     texto.fecho = $("#fecho-textarea").val();
-                            
-                    $.ajax({
+                    
+                   $.ajax({
                         url: '/api/texto/qc/' + quadro.id + '/col/' + coluna.id + "/",
                         type: 'POST',
                         data: JSON.stringify(texto),
@@ -576,23 +584,37 @@ function configuraQuadro() {
                             //showAlertDialog("Falha ao salvar texto: " + res.statusText);
                             dialog.dialog("close");
                         }
-                    });
+                    }); 
                 },
                 "Cancelar": function() {
                     $( this ).dialog( "close" );
                 }
             },
             open: function (evt, ui) {
-                
+                if(texto.articulacao){
+                    showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
+                }
             },close: function (evt, ui) {
                 document.location.reload();
             }
         });
         
         // abrindo o texto inicial
-        $('a#linkImportaTexto').click();
+        //$('a#linkImportaTexto').click();
         
     });
+    
+    
+    
+    //Remove divs de Texto que por ventura estejam cuplicados, evitando assim efeitos inesperados no plumb
+    $('.window[id]').each(function () {
+        var ids = $('.window[id=' + this.id + ']');
+        if (ids.length > 1 && ids[0] == this) {
+            $(ids[1]).remove();
+        }
+    });
+
+    
     
 }
 

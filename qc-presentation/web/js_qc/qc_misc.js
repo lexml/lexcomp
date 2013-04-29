@@ -100,26 +100,33 @@ function formModalOpen(urn, onCloseCallback){
             if (onCloseCallback) {
                 onCloseCallback();
             }
-          
-            if(textoAtualModal){    
-                var urn = textoAtualModal.urnIdDIV;
-                $("#"+ urn).attr({
-                    urn: textoAtualModal.urn
-                });
+            
+            if(textoAtualModal){
                 
-                //Modifica o ID do Texto originário          
-                $("#"+urn).attr({
-                    id: textoAtualModal.urnIdDIV
-                });
-                
-                //Modifica o título do texto novo            
-                $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
-                
-                if (urn == urnTextoNovo) {
-                    //Adiciona os Endpoints (jsPlumb) ao texto novo
+                //Só adiciona um novo texto se não existir uma URN igual
+                if($("#"+textoAtualModal.urnIdDIV).length == 0){
+                    
+                    var urn = textoAtualModal.urnIdDIV;                
+
+                    $("#"+ urn).attr({urn: textoAtualModal.urn});                                
+
+                    //Modifica o ID do Texto originário          
+                    $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);                
+
+                    //Adiciona os Endpoints do Plumb na criação do novo texto
                     addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
+
+                    //Modifica o título do novo texto
+                    $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
+                
+                }else{
+                    $("#URNTEXTONOVO").remove();                    
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
                 }
+                
             }
+            
+            
               
         }
     });
@@ -127,8 +134,7 @@ function formModalOpen(urn, onCloseCallback){
 
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '='
-        + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g,
-        '%20')) || null;
+        + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g,'%20')) || null;
 }
 
 function saveQuadro() {

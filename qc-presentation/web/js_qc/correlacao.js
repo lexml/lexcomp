@@ -341,7 +341,7 @@ function addDivRelacao(relacao) {
                             <a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a>&nbsp;\
                             <a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a>&nbsp;\
                             <a href="javascript:void(0);" id="linkEditaRelacao_' + relacao.id + '" class="linkEditaRelacao" style="margin: 1px;"><img src="images/edit_c.png" width="15" align="left" title="Editar"></a>\
-                            <a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="right" title="Tipos" style="top:-14px; position:relative; right:5px;"></a>\
+                            <a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="right" title="Tipos" style="position:relative; right:5px;"></a>\
                         </div>';
 
     var divRelacao = $(strDivRelacao);
@@ -1019,14 +1019,3 @@ function deleteRelacao(qcid, urn1, urn2, idRelacao, callback) {
     });
     
 }
-
-
-
-
-
-
-
-
-
-
-
