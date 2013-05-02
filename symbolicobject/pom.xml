@@ -56,7 +56,7 @@
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.1.3</version>
+				<version>3.1.4</version>
 				<executions>
 					<execution>
 						<goals>
@@ -136,7 +136,7 @@
 		<dependency>
 			<groupId>br.gov.lexml</groupId>
 			<artifactId>treedistance</artifactId>
-			<version>0.2-SNAPSHOT</version>
+			<version>0.2</version>
 		</dependency>
 
 		<dependency>
@@ -148,7 +148,7 @@
 		<dependency>
 			<groupId>br.gov.lexml.parser.pl</groupId>
 			<artifactId>parser-projeto-lei</artifactId>
-			<version>1.8.16</version>
+			<version>1.8.17</version>
 		</dependency>
 
 		<dependency>
@@ -179,12 +179,12 @@
 		<dependency>
 			<groupId>br.gov.lexml</groupId>
 			<artifactId>lexmldiff</artifactId>
-			<version>1.0.7-SNAPSHOT</version>
+			<version>1.0.7</version>
 		</dependency>
 		<dependency>
-			<groupId>org.scalanlp</groupId>
-			<artifactId>breeze-math_2.10</artifactId>
-			<version>0.2.3</version>
+			<groupId>com.googlecode.kiama</groupId>
+			<artifactId>kiama_2.10</artifactId>
+			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
