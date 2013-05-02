@@ -42,6 +42,7 @@ import br.gov.lexml.symbolicobject.parser.StringSource;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
 
 import com.sun.jersey.api.NotFoundException;
+import javax.ws.rs.QueryParam;
 
 // The class registers its methods for the HTTP GET request using the @GET annotation. 
 // Using the @Produces annotation, it defines that it can deliver several MIME types,
@@ -133,11 +134,11 @@ public class TextoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Texto getTextoInQuadro(@PathParam("qcid") String qcId,
             @PathParam("urn") String urn) {
-
+        System.out.println("--" + qcId);
         if (urn == null) {
             throw new NotFoundException();
 
-        } else if (qcId == null) {
+        } else if (qcId == null || "".equals(qcId)) {
             return importarTexto(urn);
         }
 

@@ -525,7 +525,7 @@ function configuraQuadro() {
         
         $('a#linkImportaTexto').click(function(event) {
             event.preventDefault();
-            searchText(urn);
+            searchText(urn, true);
         });
         
         $.each(quadro.colunas, function (ic, col) {
@@ -591,11 +591,14 @@ function configuraQuadro() {
                 }
             },
             open: function (evt, ui) {
-                if(texto.articulacao){
+                
+                searchText(urn, false);
+                if(texto && texto.articulacao){
                     showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
                 }
+                
             },close: function (evt, ui) {
-                document.location.reload();
+                //document.location.reload();
             }
         });
         
@@ -604,26 +607,28 @@ function configuraQuadro() {
         
     });
     
-    
-    
-    //Remove divs de Texto que por ventura estejam cuplicados, evitando assim efeitos inesperados no plumb
+    //Remove divs de Texto que por ventura estejam duplicados, evitando assim efeitos inesperados no plumb
     $('.window[id]').each(function () {
         var ids = $('.window[id=' + this.id + ']');
         if (ids.length > 1 && ids[0] == this) {
             $(ids[1]).remove();
         }
     });
-
-    
-    
 }
 
-function searchText(urn) {
+function searchText(urn, searchOnline) {
     
     $("#texto-textarea").attr('readonly','readonly');
     $("#texto-textarea").val('Buscando texto...');
+    
+    var url = '/api/texto/' + urn + '/qc/';
+    
+    if (!searchOnline) {
+        url += quadro.id;
+    }
+    
     $.ajax({
-        url: '/api/texto/' + urn + '/qc/' + quadro.id,
+        url: url,
         type:'GET',
         contentType: "application/json; charset=utf-8",
         success:function(res){
