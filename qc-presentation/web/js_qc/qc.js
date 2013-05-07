@@ -581,8 +581,8 @@ function configuraQuadro() {
                             dialog.dialog("close");
                         },
                         error:function(res){
-                            //showAlertDialog("Falha ao salvar texto: " + res.statusText);
-                            dialog.dialog("close");
+                            showAlertDialog("Falha ao salvar texto: " + res.statusText);
+                            //dialog.dialog("close");
                         }
                     }); 
                 },
