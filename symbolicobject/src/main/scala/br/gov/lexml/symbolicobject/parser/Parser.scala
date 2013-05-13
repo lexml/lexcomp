@@ -36,6 +36,7 @@ import br.gov.lexml.symbolicobject.{ tipos => T }
 import java.lang.{ Character => C }
 import scala.Option.option2Iterable
 import br.gov.lexml.symbolicobject.impl._
+import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
 
 trait IdSource {
   def nextId(tipo: STipo): Long
@@ -44,14 +45,6 @@ trait IdSource {
 class Parser(idSource: IdSource) {
 
   private val lexmlParser = new LexmlParser(idSource)
-
-  private def srcToXhtml(is: InputStream, mime: String): Option[List[Block]] =
-    pipeline(IOUtils.toByteArray(is), mime, defaultConverter).map(Block.fromNodes)
-
-  private def parseHtml(md: Metadado, blocks: List[Block]): Option[Elem] = {
-    val (mpl1, falhas) = new ProjetoLeiParser(md.profile).fromBlocks(md, blocks)
-    mpl1.map(LexmlRenderer.render).map(x => (x \\ "Articulacao").toSeq.collect({ case e: Elem => e }).head)
-  }
 
   def parse(source: InputDocument): Validation[String, Documento[Unit]] = {
     for {
@@ -95,7 +88,7 @@ class LexmlParser(idSource: IdSource) {
       case (_, "") => None
       case (_, t) =>
         val txtid = idSource.nextId(T.Tipos.TextoFormatado)
-        val o = TextoFormatado(txtid, NodeSeq fromSeq text, ())
+        val o = TextoFormatado(txtid, new WrappedNodeSeq(NodeSeq fromSeq text), ())
         Some(Posicao[Unit](RotuloRole("texto"), o))
     }
     val os = ObjetoSimbolicoComplexo(id, tipo, (), (posText.toSeq ++ posL).toIndexedSeq)

@@ -2,18 +2,6 @@ package br.gov.lexml.symbolicobject.impl
 
 import java.io.StringReader
 import scala.collection.{JavaConversions => JC}
-import scala.xml.NodeSeq
-import scala.xml.NodeSeq.seqToNodeSeq
-import scala.xml.XML
-import org.w3c.dom.DocumentFragment
-import org.w3c.dom.ProcessingInstruction
-import org.w3c.dom.ls.DOMImplementationLS
-import org.w3c.dom.ls.LSSerializerFilter
-import org.w3c.dom.traversal.NodeFilter
-import org.w3c.dom.traversal.NodeFilter.FILTER_ACCEPT
-import org.w3c.dom.traversal.NodeFilter.FILTER_REJECT
-import org.w3c.dom.traversal.NodeFilter.SHOW_ALL
-import org.xml.sax.InputSource
 import br.gov.lexml.{symbolicobject => I}
 import br.gov.lexml.symbolicobject.{pretty => P}
 import br.gov.lexml.symbolicobject.pretty.Doc.braces
@@ -35,6 +23,12 @@ import br.gov.lexml.symbolicobject.tipos.{Tipos => T}
 import br.gov.lexml.symbolicobject.tipos.Tipos
 import javax.xml.parsers.DocumentBuilderFactory
 import org.kiama.attribution.Attributable
+import br.gov.lexml.symbolicobject.xml._
+import org.w3c.dom.DocumentFragment
+import org.w3c.dom.ls.DOMImplementationLS
+import scala.xml.NodeSeq
+import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
+import scala.xml.XML
 
 
 trait PrettyPrintable {
@@ -52,18 +46,67 @@ trait Tipado extends I.Tipado {
   override final def getRefTipo() = tipo
 }
 
+object Strategies {
+  import org.kiama._   
+  import org.kiama.rewriting.Rewriter._
+  
+  def collects[T](s : Term ==> T) : Term => Stream[T] = collect[Stream,T](s)     
+  
+  import scala.collection.generic.CanBuildFrom
+  def collectbu[CC[U] <: Traversable[U], T](f : Term ==> T)(implicit cbf: CanBuildFrom[CC[T], T, CC[T]]): (Term) ⇒ CC[T] = { term =>
+    val b = cbf()
+    everywherebu { query { f andThen { b += _ } } } (term)
+    b.result()
+  }
+}
 
+object Attributes {
+  import org.kiama._   
+  import org.kiama.attribution.Attribution._
+  
+  val caminho : Attributable => Caminho = childAttr {
+    case o : ObjetoSimbolico[_] => {
+      case p : Posicao[_] => p -> caminho
+      case _ => Caminho()
+    }
+    case p : Posicao[_] => {
+      case o : ObjetoSimbolicoComplexo[_] => o -> caminho + p.rotulo
+    }
+  } 
+  
+  def objetoParente[T] : Attributable => Option[ObjetoSimbolicoComplexo[T]] = childAttr {
+    case o : ObjetoSimbolico[_] => {
+      case p : Posicao[_] => p -> objetoParente
+      case _ => None
+    }
+    case p : Posicao[_] => {
+      case o : ObjetoSimbolicoComplexo[T] => Some(o)
+    }
+  }
+  
+  val rotulo : Attributable => Option[Rotulo] = childAttr {
+    case o : ObjetoSimbolico[_] => {
+      case p : Posicao[_] => Some(p.rotulo)
+      case _ => None      
+    }
+    case _ => { case _ => None }
+  }
+}
 
 abstract sealed class ObjetoSimbolico[+A] extends I.ObjetoSimbolico with Tipado with Identificavel with PrettyPrintable with Attributable {
 
   val data : A
-  final def toStream : Stream[ObjetoSimbolico[A]] = this +: childrenStream
-  def childrenStream : Stream[ObjetoSimbolico[A]] = Stream.Empty
+  import Strategies._
   
-  def topDownMap[B,C](acc : B, f : (B,ObjetoSimbolico[A]) => (C,B), 
-                                  g : (B,Rotulo) => B) : ObjetoSimbolico[C] = 
-        ObjetosSimbolicos.topDownMap(acc,f,g,this).asInstanceOf[ObjetoSimbolico[C]]
+  def makeStream[T] : ObjetoSimbolico[T]  => Stream[ObjetoSimbolico[T]] = collects { 
+    	case o : ObjetoSimbolico[T] => o
+    }
+    
+  final def toStream : Stream[ObjetoSimbolico[A]] = makeStream(this)
+  final def childrenStream : Stream[ObjetoSimbolico[A]] = toStream.tail
+  
   def / (rs : RotuloSelector) : Query[A] = Query(this,IndexedSeq(rs))
+  def changeContext[B](f : ObjetoSimbolico[A] => B) : ObjetoSimbolico[B] 
 }
 
 object ObjetoSimbolico {
@@ -82,6 +125,7 @@ final case class Posicao[+A](rotulo : Rotulo,objeto : ObjetoSimbolico[A]) extend
   }
 
   override def toString : String = "Posicao {rotulo: " + rotulo + ", objid: " + objeto.id + "}"
+  def changeContext[B](f : ObjetoSimbolico[A] => B) : Posicao[B] = copy(objeto = objeto.changeContext(f))
 }
 
 object Posicao {
@@ -175,7 +219,8 @@ final case class ObjetoSimbolicoComplexo[+A](id : SymbolicObjectId, tipo : STipo
     val subels = hang(4,sep(punctuate(text(","),posicoes.toList.map { p => fillSep(List(p.rotulo.pretty,"=>",p.objeto.pretty)) }) :+ text(")")))  
     tipo.nomeTipo :: ("[" + id + "](") :: (if(posicoes.isEmpty) { empty } else { linebreak}) :: (text(data.toString)) :: subels    
   }
-  override def childrenStream = posicoes.map(_.objeto).toStream.flatMap(_.toStream)
+  override def changeContext[B](f : ObjetoSimbolico[A] => B) : ObjetoSimbolico[B] = 
+    copy(data = f(this), posicoes = posicoes.map(_.changeContext(f)))
 }
 
 object ObjetoSimbolicoComplexo {
@@ -200,7 +245,7 @@ object ObjetoSimbolicoSimples {
   }
 }
 
-final case class TextoFormatado[+A](id : SymbolicObjectId, frag : NodeSeq, data : A) extends ObjetoSimbolicoSimples[A] with I.TextoFormatado {
+final case class TextoFormatado[+A](id : SymbolicObjectId, frag : WrappedNodeSeq, data : A) extends ObjetoSimbolicoSimples[A] with I.TextoFormatado {
   override val tipo = T.TextoFormatado
   override def getRepresentacao() = xhtmlFragment
   lazy val xhtmlFragment = frag.toString
@@ -208,22 +253,13 @@ final case class TextoFormatado[+A](id : SymbolicObjectId, frag : NodeSeq, data 
   override lazy val pretty = {
     import P.Doc._
     ("XHTML["+id+"]") :: text(data.toString) :: brackets(hsep(frag.toString.split(" ").toList.map(text)))    
-  }  
+  }
+  override def changeContext[B](f : ObjetoSimbolico[A] => B) : ObjetoSimbolico[B] = copy(data = f(this))
 }
 
-object TextoFormatado {
-  val lsf = new LSSerializerFilter {
-    import NodeFilter._
-    override def getWhatToShow() : Int = SHOW_ALL  
-    override def acceptNode(n : org.w3c.dom.Node) = n match {
-      case _ : ProcessingInstruction => println("Rejecting: " + n) ; FILTER_REJECT      
-      case _ => println("Accepting : " + n) ; FILTER_ACCEPT
-    }
-  }
-
-        
+object TextoFormatado {        
   def fromTextoFormatado(tf : I.TextoFormatado) : TextoFormatado[Unit] = 
-		  TextoFormatado(tf.getId, XML.loadString("<a>" + tf.getXhtmlFragment() + "</a>").child, ())
+		  TextoFormatado(tf.getId, WrappedNodeSeq.fromString(tf.getXhtmlFragment()), ())
 }
 
 
@@ -236,6 +272,7 @@ final case class TextoPuro[+A](id : SymbolicObjectId, texto : String, data : A) 
     import P.Doc._
     ("XHTML["+id+"]") :: brackets(hsep(texto.split(" ").toList.map(text)))    
   }
+  override def changeContext[B](f : ObjetoSimbolico[A] => B) : ObjetoSimbolico[B] = copy(data = f(this))
 }
 
 object TextoPuro {
@@ -418,6 +455,26 @@ final case class RelacaoNParaN[+A](id: RelationId, origem : Set[SymbolicObjectId
 
 final case class Caminho(rotulos : IndexedSeq[Rotulo] = IndexedSeq()) {
   def +(r : Rotulo) = Caminho(rotulos :+ r)
+  def render : String = {
+    val l = rotulos.reverse.toList.takeWhile { 
+      case r : RotuloRole => r.nomeRole != "articulacao"
+      case _ => true
+    }.span {
+      case r : RotuloOrdenado => r.nomeRole != "art"
+      case _ => true
+    } match {
+      case (befArt,art::_) => befArt :+ art
+      case (x,_) => x
+    }
+    l.map {
+      case r : RotuloOrdenado => r.nomeRole + r.posicaoRole.map(_.toString).mkString("-")
+      case r : RotuloClassificado => r.nomeRole + (r.classificacao.toList match {
+        case "unico":: _ => "1u"
+        case _ => "??"
+      })
+      case r : RotuloRole => r.nomeRole      
+    }.reverse.mkString("_")
+  }
 }
 
 final case class Comentario(id : Long, tipo : STipo, alvo : Long, texto : NodeSeq) extends I.Comentario with Identificavel with Tipado {
@@ -429,74 +486,6 @@ final case class Comentario(id : Long, tipo : STipo, alvo : Long, texto : NodeSe
 object Comentario {
   def fromComentario(c : I.Comentario) : Comentario =
     Comentario(c.getId(),Tipos.tipos(c.getRefTipo.getNomeTipo),c.getAlvo,XML.loadString("<a>" + c.getXhtmlFragment + "</a>").child)
-}
-
-object ObjetosSimbolicos {
-  def topDownMap[A,B,C](acc : B, f : (B,ObjetoSimbolico[A]) => (C,B), 
-                                  g : (B,Rotulo) => B, o : ObjetoSimbolico[A]) : ObjetoSimbolico[C] = {
-    def td(acc : B, o : ObjetoSimbolico[A]) : ObjetoSimbolico[C] = {
-      val (thisData,nextAcc) = f(acc,o)
-      o match {
-        case t : TextoPuro[A] => t copy (data = thisData)
-        case t : TextoFormatado[A] => t copy (data = thisData)        
-        case oc : ObjetoSimbolicoComplexo[A] => oc copy (data = thisData, posicoes = oc.posicoes map {
-          p => Posicao(p.rotulo,td(g(nextAcc,p.rotulo),p.objeto))
-        })
-      }
-    }
-    td(acc,o)
-  }
-  
-  def toXmlFragment(frag : NodeSeq) : DocumentFragment = {
-    import javax.xml.parsers.DocumentBuilderFactory
-    import org.xml.sax.InputSource
-    import java.io.StringReader
-    
-    val f = DocumentBuilderFactory.newInstance()
-    val b = f.newDocumentBuilder()    
-    val src = (<a>{frag}</a>).toString
-    val srcDoc = b.parse(new InputSource(new StringReader(src)))
-    val tgtDoc = b.newDocument()
-    val xfrag = tgtDoc.createDocumentFragment()
-    val e = srcDoc.getDocumentElement()
-    while(e.hasChildNodes) {
-      xfrag.appendChild(e.removeChild(e.getFirstChild()))
-    }
-    xfrag
-  }
-  
-  def toXmlFragment(frag : String) : DocumentFragment = {
-    import javax.xml.parsers.DocumentBuilderFactory
-    import org.xml.sax.InputSource
-    import java.io.StringReader
-    
-    val f = DocumentBuilderFactory.newInstance()
-    val b = f.newDocumentBuilder()    
-    val src = "<a>" + frag + "</a>"
-    val srcDoc = b.parse(new InputSource(new StringReader(src)))
-    val tgtDoc = b.newDocument()
-    val xfrag = tgtDoc.createDocumentFragment()
-    val e = srcDoc.getDocumentElement()
-    while(e.hasChildNodes) {
-      xfrag.appendChild(e.removeChild(e.getFirstChild()))
-    }
-    xfrag
-  }
- 
-  lazy val lsImpl = DocumentBuilderFactory.newInstance().newDocumentBuilder().getDOMImplementation().asInstanceOf[DOMImplementationLS]
-  
-  def toXml(df : DocumentFragment) : NodeSeq = {
-    val res = toXmlString(df)
-    val x = XML.loadString("<a>" + res + "</a>")
-    x.child    
-  }
-  
-  def toXmlString(df : DocumentFragment) : String = {
-    val lsSerializer = lsImpl.createLSSerializer()
-    lsSerializer.getDomConfig().setParameter("xml-declaration",false)
-    lsSerializer.writeToString(df)
-  }
-  
 }
 
 abstract sealed class Proveniencia extends I.Proveniencia with Tipado
@@ -577,3 +566,4 @@ final case class RSFromRole(roleName : String) extends RotuloSelector {
     case _ => false
   }
 }
+
