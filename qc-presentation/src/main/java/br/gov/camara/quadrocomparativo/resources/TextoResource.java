@@ -33,6 +33,9 @@ import br.gov.camara.quadrocomparativo.model.DocumentoImpl;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.parser.pl.ArticulacaoParser;
+import br.gov.lexml.parser.pl.errors.ParseException;
+import br.gov.lexml.parser.pl.errors.ParseProblem;
+import br.gov.lexml.parser.pl.errors.ProblemType;
 import br.gov.lexml.renderer.plaintext.RendererPlainText;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.InputDocument;
@@ -134,7 +137,7 @@ public class TextoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Texto getTextoInQuadro(@PathParam("qcid") String qcId,
             @PathParam("urn") String urn) {
-        System.out.println("--" + qcId);
+        
         if (urn == null) {
             throw new NotFoundException();
 
@@ -221,7 +224,7 @@ public class TextoResource {
         return null;
     }
 
-    private DocumentoImpl getEstruturaTexto(QuadroComparativo qc, Texto texto) {
+    private DocumentoImpl getEstruturaTexto(QuadroComparativo qc, Texto texto) throws ParseException {
 
         if (texto.getDocumento() != null) {
             return texto.getDocumento();
@@ -251,8 +254,9 @@ public class TextoResource {
             return doc;
         } else {
             log.log(Level.SEVERE, "Validação não executada com sucesso.");
-        }
-        return null;
+            // FIXME como pegar ParseException do Parser?
+            throw new ParseException(null);
+        }        
     }
 
     @POST
@@ -274,7 +278,13 @@ public class TextoResource {
             texto.setArticulacao(getArticulacaoPlainText(articulacao));
         }
         
-        texto.setDocumento(getEstruturaTexto(qc, texto));
+        try {
+            texto.setDocumento(getEstruturaTexto(qc, texto));
+        } catch (ParseException ex) {
+            log.log(Level.SEVERE, "Erro ao parsear texto", ex);
+            throw new NotFoundException("Erro ao parsear texto");
+        }
+        
         texto.setArticulacaoXML(null);
 
         qc.addTexto(colId, texto);
