@@ -68,7 +68,7 @@ object NodeData {
     val texto: Option[(Long, NodeSeq)] =
       (os / "texto").result.headOption.map(_.objeto).collect {
         case t: TextoPuro[_] => (t.id, Text(t.texto))
-        case t: TextoFormatado[_] => (t.id, t.frag)
+        case t: TextoFormatado[_] => (t.id, t.frag.ns)
       }
     NodeData(os.id, path, os.tipo, texto)
   }

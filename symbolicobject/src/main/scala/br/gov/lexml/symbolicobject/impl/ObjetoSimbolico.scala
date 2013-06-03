@@ -29,6 +29,7 @@ import org.w3c.dom.ls.DOMImplementationLS
 import scala.xml.NodeSeq
 import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
 import scala.xml.XML
+import scala.xml.Elem
 
 
 trait PrettyPrintable {
@@ -49,6 +50,7 @@ trait Tipado extends I.Tipado {
 object Strategies {
   import org.kiama._   
   import org.kiama.rewriting.Rewriter._
+  type Term = Any
   
   def collects[T](s : Term ==> T) : Term => Stream[T] = collect[Stream,T](s)     
   
@@ -139,7 +141,6 @@ trait Representavel  {
   final lazy val repr = getRepresentacao()
 }
 
-
 abstract sealed class Rotulo extends I.Rotulo with Tipado with Representavel with PrettyPrintable
 
 object Rotulo {
@@ -165,6 +166,11 @@ final case class RotuloRole(nomeRole : String) extends Rotulo with I.RoleRotulo 
 
 object RotuloRole {
   def fromRoleRotulo(rr : I.RoleRotulo) = RotuloRole(rr.getNomeRole)
+  def fromXML : PartialFunction[Elem,RotuloRole] = {
+    case e : Elem if e.label == "RotuloRole" =>
+      val nomeRole = (e \\ "@nomeRole").text.trim()
+      RotuloRole(nomeRole)
+  }
 }
 
 /**
@@ -381,8 +387,8 @@ object Relacao {
     														Proveniencia.fromProveniencia(r.getProveniencia),())
     case Tipos.RelacaoDivisao => RelacaoDivisao(r.getId,r.getOrigem().iterator().next(),toScala(r.getAlvo),
     														Proveniencia.fromProveniencia(r.getProveniencia),())
-    case Tipos.RelacaoNParaN => RelacaoNParaN(r.getId,toScala(r.getOrigem),toScala(r.getAlvo),
-    														Proveniencia.fromProveniencia(r.getProveniencia),())
+/*    case Tipos.RelacaoNParaN => RelacaoNParaN(r.getId,toScala(r.getOrigem),toScala(r.getAlvo),
+    														Proveniencia.fromProveniencia(r.getProveniencia),()) */
   }
 }
 
@@ -428,7 +434,7 @@ final case class RelacaoAusenteNaOrigem[+A](id : RelationId, esq : SymbolicObjec
 
 final case class RelacaoFusao[+A](id: RelationId, origem : Set[SymbolicObjectId], dir : SymbolicObjectId, proveniencia : Proveniencia, data : A) extends Relacao[A] {
 	val alvo = Set(dir)
-	val tipo = Tipos.RelacaoAusenteNaOrigem
+	val tipo = Tipos.RelacaoFusao
 	override def setData[B](d : B) = copy(data = d)
 	override def setId(newId : Long) = copy(id = newId)
 	override def filterIds(f : SymbolicObjectId => Boolean) : Option[Relacao[A]] =
@@ -437,20 +443,20 @@ final case class RelacaoFusao[+A](id: RelationId, origem : Set[SymbolicObjectId]
 
 final case class RelacaoDivisao[+A](id: RelationId, esq : SymbolicObjectId, alvo : Set[SymbolicObjectId], proveniencia : Proveniencia, data : A) extends Relacao[A] {
   	val origem = Set(esq)
-	val tipo = Tipos.RelacaoAusenteNaOrigem
+	val tipo = Tipos.RelacaoDivisao
 	override def setData[B](d : B) = copy(data = d)
 	override def setId(newId : Long) = copy(id = newId)
 	override def filterIds(f : SymbolicObjectId => Boolean) : Option[Relacao[A]] =
 	  	if (f(esq) && !alvo.filter(f).isEmpty) { Some(this) } else { None }
 }
 
-final case class RelacaoNParaN[+A](id: RelationId, origem : Set[SymbolicObjectId], alvo : Set[SymbolicObjectId], proveniencia : Proveniencia, data : A) extends Relacao[A] {
-	val tipo = Tipos.RelacaoAusenteNaOrigem
+/*final case class RelacaoNParaN[+A](id: RelationId, origem : Set[SymbolicObjectId], alvo : Set[SymbolicObjectId], proveniencia : Proveniencia, data : A) extends Relacao[A] {
+	val tipo = Tipos.RelacaoNParaN
 	override def setData[B](d : B) = copy(data = d)
 	override def setId(newId : Long) = copy(id = newId)
 	override def filterIds(f : SymbolicObjectId => Boolean) : Option[Relacao[A]] =
 	  	if (!origem.filter(f).isEmpty && !alvo.filter(f).isEmpty) { Some(this) } else { None }
-}
+}*/
 
 
 final case class Caminho(rotulos : IndexedSeq[Rotulo] = IndexedSeq()) {

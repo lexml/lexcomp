@@ -25,20 +25,7 @@
 			<url>http://www20.senado.gov.br/artifactory/libs-snapshots-local</url>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>prova</id>
-			<name>Prova repository</name>
-			<url>http://prova.ws/maven2</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+	
 	<build>
 		<sourceDirectory>src/main/scala</sourceDirectory>
 		<testSourceDirectory>src/test/scala</testSourceDirectory>
@@ -148,7 +135,7 @@
 		<dependency>
 			<groupId>br.gov.lexml.parser.pl</groupId>
 			<artifactId>parser-projeto-lei</artifactId>
-			<version>1.8.17</version>
+			<version>1.8.18-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -183,8 +170,36 @@
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.kiama</groupId>
-			<artifactId>kiama_2.10</artifactId>
-			<version>1.4.0</version>
+			<artifactId>kiama_${scala.version}</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.debasishg</groupId>
+			<artifactId>sjson_${scala.version}</artifactId>
+			<version>0.19</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.clapper</groupId>
+			<artifactId>grizzled-slf4j_${scala.version}</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>br.gov.lexml</groupId>
+			<artifactId>scala-utils</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -194,11 +209,11 @@
 				<artifactId>commons-codec</artifactId>
 				<version>1.7</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>com.typesafe.akka</groupId>
 				<artifactId>akka-actor_${scala.version}</artifactId>
 				<version>2.1.0</version>
-			</dependency>
+			</dependency> -->
 		</dependencies>
 	</dependencyManagement>
 </project>

@@ -11,6 +11,7 @@ import org.w3c.dom.ls.DOMImplementationLS
 import org.w3c.dom.DocumentFragment
 
 abstract sealed class WrappedXML[T <: WrappedXML[T]] extends Rewritable {
+  type Term = Any
   final override def arity = 1
   final override def deconstruct : Seq[Term] = asText
   

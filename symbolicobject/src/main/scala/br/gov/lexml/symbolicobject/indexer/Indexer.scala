@@ -18,6 +18,7 @@ import br.gov.lexml.symbolicobject.parser.InputDocument
 import br.gov.lexml.symbolicobject.parser.IdSource
 import org.scalastuff.proto.JsonFormat
 import br.gov.lexml.{ symbolicobject => S }
+import br.gov.lexml.symbolicobject.impl.Attributes
 
 abstract sealed class Direction {
   def to(r : Relacao[_]) : Set[Long]
@@ -168,25 +169,32 @@ final class Indexer extends IIndexer {
   private def addContextoToRelacao(r: Relacao[_]): Relacao[ContextoRelacao] =
     r.setData(index.relacoes.get(r.id).map(d => ContextoRelacao(d.comentarios.toIndexedSeq.map(state.comentarios))).getOrElse(ContextoRelacao()))
 
-  private def addContextoToDocumento(d: Documento[_]): Documento[Contexto] = {
-    type Acc = (Caminho, Option[Long])
-    val acc0 = (Caminho(), None)
+  private def addContextoToDocumento(d: Documento[_]): Documento[Contexto] = {    
+    import org.kiama._
+    import org.kiama.rewriting.Rewriter._
+    import org.kiama.attribution.Attribution._
+    
+    import Attributes._
+    
+    val root = d.os
+    root.initTreeProperties
+    
     val osid0 = new ObjetoSimbolicoIndexData()
 
     def osid(id: Long) = index.objetosSimbolicos.getOrElse(id, osid0)
-
-    def f(acc: Acc, os: ObjetoSimbolico[_]): (Contexto, Acc) = {
-      val data = osid(os.id)
-      val ctx = Contexto(
-        acc._1,
-        acc._2,
-        data.relacoesPorDocumento.mapValues(_.mapValues(_.toIndexedSeq.map(
-          state.relations andThen addContextoToRelacao))),
-        data.comentarios.toIndexedSeq.map(state.comentarios))
-      (ctx, (acc._1, Some(os.id)))
+    
+    def changeFunc(o : ObjetoSimbolico[_]) : Contexto = {
+       val data = osid(o.id)
+	   Contexto (    
+	    	o -> caminho,
+	    	(o -> objetoParente).map(_.id),
+	    	data.relacoesPorDocumento.mapValues(_.mapValues(_.toIndexedSeq.map(
+	          state.relations andThen addContextoToRelacao))),
+	        data.comentarios.toIndexedSeq.map(state.comentarios)
+	   )	    	
     }
-    def g(acc: Acc, r: Rotulo): Acc = (acc._1 + r, acc._2)
-    d copy (os = d.os.topDownMap(acc0, f, g))
+    
+    d copy (os = root.changeContext(changeFunc))    
   }
 
   override def getDocumento(id: Long): Option[Documento[Contexto]] = state.documents.get(id).map(addContextoToDocumento _)
