@@ -343,14 +343,20 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
       case r : RelacaoFusao[_] => 
         val esq = r.origem.to[Seq]
         (Seq((esq.head,r.dir)),r.dir +: esq)
-    } unzip
+    } unzip    
     val base = pairs.flatten.toMap
+    println("objMap = " + objMap)
     var ctx = EqContext(objMap.mapValues(o => (o.caminho, o.textoLocal)), leftTopDownObjs.map(_.id), rightTopDownObjs.map(_.id), base, 
     				matched.flatten.toSet)
+    println("Initial context: " + ctx)    				
     ctx = ctx + equalByHash(ctx)
+    println("  after equal by hash: " + ctx)
     ctx = ctx + equalByTextSimiliarity(ctx)
-    ctx = ctx + equalByCommonChildren(ctx)            
+    println("  after equal by text similiarity: " + ctx)
+    ctx = ctx + equalByCommonChildren(ctx)    
+    println("  after equal by common children: " + ctx)
     val result = ctx.equalSoFar -- base.keySet
+    println("  result: " + result)
     result.toSeq.map { 
       case (l,r) =>  
         val lo = objMap(l)
