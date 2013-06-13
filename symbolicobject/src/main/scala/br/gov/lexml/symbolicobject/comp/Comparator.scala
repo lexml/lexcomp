@@ -330,7 +330,8 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
       }._1
   }
   
-  def compare(idSource : IdSource,rels : Seq[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
+  
+  def compare(idSource : IdSource,rels : Iterable[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
     val (pairs,matched) = rels map {
       case r : RelacaoAusenteNaOrigem[_] => (Seq(),Seq(r.dir))
       case r : RelacaoAusenteNoAlvo[_] => (Seq(),Seq(r.esq))
