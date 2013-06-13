@@ -23,6 +23,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import scala.runtime.BoxedUnit;
 import scalaz.Validation;
@@ -295,7 +296,8 @@ public class TextoResource {
         QuadroComparativoController.saveQuadroComparativo(request, qc);
 
         String result = "Texto saved: " + texto;
-        return Response.status(201).entity(result).build();
+        
+        return Response.status(Status.CREATED).entity(result).build();
     }
     
     /**

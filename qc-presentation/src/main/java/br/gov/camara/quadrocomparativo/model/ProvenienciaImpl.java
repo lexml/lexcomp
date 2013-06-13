@@ -11,6 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 import br.gov.lexml.symbolicobject.Proveniencia;
+import br.gov.lexml.symbolicobject.ProvenienciaUsuario;
 import br.gov.lexml.symbolicobject.RefTipo;
 
 /**
@@ -36,5 +37,17 @@ public abstract class ProvenienciaImpl implements Proveniencia {
 
     public void setRefTipo(RefTipoImpl refTipo) {
         this.refTipo = refTipo;
+    }
+    
+    public static ProvenienciaImpl newFromProveniencia(Proveniencia p){
+    	ProvenienciaImpl r;
+    	
+		if (p instanceof ProvenienciaUsuario){
+			r = new ProvenienciaUsuarioImpl();
+		} else {
+			r = new ProvenienciaSistemaImpl();
+		}
+		r.setRefTipo(new RefTipoImpl(p.getRefTipo()));
+		return r;
     }
 }

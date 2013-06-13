@@ -210,7 +210,7 @@
                              
                               
                     $.ajax({
-                        url: '/api/correlacao/relacao/config/' + qcid + '/' + urn1 + '/' + urn2 + '?' + $('#formConfiguracao').serialize(),                        
+                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '?' + $('#formConfiguracao').serialize(),                        
                         type:'POST',               
                         dataType: 'json',
                         contentType: "application/json; charset=utf-8",               

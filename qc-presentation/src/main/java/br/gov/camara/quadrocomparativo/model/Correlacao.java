@@ -158,7 +158,9 @@ public class Correlacao implements Serializable {
     }
     
     public void removeAllRelacoes(){
-    	relacoes.clear();
+    	if (relacoes != null){
+    		relacoes.clear();
+    	}
     }
 
     @XmlElement

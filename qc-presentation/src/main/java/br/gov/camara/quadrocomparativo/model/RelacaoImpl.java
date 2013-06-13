@@ -30,6 +30,18 @@ public class RelacaoImpl implements Relacao, Serializable {
     private long id;
     private ProvenienciaImpl proveniencia;
 
+    public static RelacaoImpl newFromRelacao(Relacao arg0){
+		RelacaoImpl r = new RelacaoImpl();
+		
+		r.setId(arg0.getId());
+		r.setOrigem(arg0.getOrigem());
+		r.setAlvo(arg0.getAlvo());
+		r.setRefTipo(new RefTipoImpl(arg0.getRefTipo()));
+		r.setProveniencia(ProvenienciaImpl.newFromProveniencia(arg0.getProveniencia()));
+		
+		return r;
+    }
+    
     @Override
     public RefTipo getRefTipo() {
         return refTipo;
@@ -131,4 +143,5 @@ public class RelacaoImpl implements Relacao, Serializable {
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
     }
+    
 }

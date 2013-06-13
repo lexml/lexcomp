@@ -22,13 +22,20 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import scala.collection.Seq;
+import scala.runtime.AbstractFunction1;
+import scala.runtime.BoxedUnit;
 import br.gov.camara.quadrocomparativo.model.ConfiguracaoImpl;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
+import br.gov.camara.quadrocomparativo.model.ProvenienciaImpl;
 import br.gov.camara.quadrocomparativo.model.ProvenienciaUsuarioImpl;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
+import br.gov.camara.quadrocomparativo.model.RefTipoImpl;
 import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.symbolicobject.Relacao;
+import br.gov.lexml.symbolicobject.comp.CompareProcess;
+import br.gov.lexml.symbolicobject.comp.CompareProcessConfiguration;
 
 import com.sun.jersey.api.NotFoundException;
 
@@ -206,30 +213,92 @@ public class CorrelacaoResource {
         return correlacao.getConfiguracao();
     }
     
-    @POST @Path("/config/{qcid}/{urn1}/{urn2}/")
+    @POST @Path("/processar/{qcid}/{urn1}/{urn2}/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveConfiguracao(ConfiguracaoImpl config,
+    public Response processar(/*ConfiguracaoImpl config,*/
         @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
         @PathParam("urn2") String urn2) {
         
+    	System.out.println("urn1 " + urn1 + " ; urn2 " + urn2);
+    	
         QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
         
         urn1 = urn1.replaceAll("__", ";");
         urn2 = urn2.replaceAll("__", ";");
+
         
+        br.gov.lexml.symbolicobject.impl.Documento<?> leftDoc = br.gov.lexml.symbolicobject.impl.Documento.fromDocumento(qc.getTexto(urn1).getDocumento());
+        br.gov.lexml.symbolicobject.impl.Documento<?> rightDoc = br.gov.lexml.symbolicobject.impl.Documento.fromDocumento(qc.getTexto(urn2).getDocumento()); 
+        
+        final Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        
+        List<br.gov.lexml.symbolicobject.impl.Relacao<?>> lRelacao = new ArrayList<br.gov.lexml.symbolicobject.impl.Relacao<?>>();
+        if (correlacao.getRelacoes() != null){
+	        for (Relacao r : correlacao.getRelacoes()){
+	        	System.out.println("Enviando: "+r);
+	        	lRelacao.add(br.gov.lexml.symbolicobject.impl.Relacao.fromRelacao(r));
+	        }
+        }
+        
+        CompareProcessConfiguration conf = new CompareProcessConfiguration(){
+        	@Override
+        	public double minSimilarity() {
+        		// TODO Obter da página
+        		return 0.75;
+        	}
+        };
+        
+        CompareProcess cp = new CompareProcess("CorrelacaoResource.class", leftDoc, rightDoc, conf);
+        
+        System.out.println("leftDoc "+leftDoc);  
+        System.out.println("rightDoc "+rightDoc); 
+        
+        
+        correlacao.removeAllRelacoes();        
+        
+        Seq<br.gov.lexml.symbolicobject.impl.Relacao<BoxedUnit>> b = cp.compare(qc, scala.collection.JavaConverters.asScalaIterableConverter(lRelacao).asScala());
+        System.out.println("tamanho: "+b.length());
+        
+        
+        cp.compare(qc, scala.collection.JavaConverters.asScalaIterableConverter(lRelacao).asScala()).foreach(
+        		new AbstractFunction1<br.gov.lexml.symbolicobject.impl.Relacao<BoxedUnit>, Void>(){
+
+					@Override
+					public Void apply(
+							br.gov.lexml.symbolicobject.impl.Relacao<BoxedUnit> arg0) {
+						
+						correlacao.addRelacao(RelacaoImpl.newFromRelacao(arg0));
+						
+						return null;
+					}
+        });
+        
+        QuadroComparativoController.saveQuadroComparativo(request, qc); 
+        
+        
+        
+        //Seq<br.gov.lexml.symbolicobject.Relacao<?>> compareRes = 
+        
+        
+        /*
         Correlacao correl = qc.getCorrelacao(urn1, urn2);
         
         if (correl == null) {
             correl = new Correlacao(urn1, urn2);
             qc.addCorrelacao(correl);
         }
-
+        */
+       /* 
         correl.setConfiguracao(config);
        
         QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
         
         String result = "Config saved: " + config;
+        */
+        String result = "Config saved: ";
         return Response.status(201).entity(result).build();
     }
+    
+
     
 }
