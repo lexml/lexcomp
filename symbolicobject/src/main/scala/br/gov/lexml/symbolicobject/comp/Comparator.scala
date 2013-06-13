@@ -68,8 +68,9 @@ final case class EqContext(objMap: Map[Long, (Caminho, String)], left: IndexedSe
     val numMatched = equalSoFar.size * 2
     val numUnmatched = total - numMatched
     val perMatched = numMatched.toDouble * 100.0 / total.toDouble
-    val perUnmatched = numUnmatched.toDouble * 100.0 / total.toDouble
-    f"EqContext: total = $total, left = $onLeft, right = $onRight, matched = $numMatched, unmatched=$numUnmatched, ($perMatched%03.2f%%/$perUnmatched%03.2f%%)" 
+    val perUnmatched = numUnmatched.toDouble * 100.0 / total.toDouble    
+    f"EqContext: total = $total, left = $onLeft, right = $onRight, matched = $numMatched, unmatched=$numUnmatched, ($perMatched%03.2f%%/$perUnmatched%03.2f%%)" +
+    f", equalSoFar: $equalSoFar, objMap = $objMap"
   } 
 }
 
@@ -345,7 +346,7 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
         (Seq((esq.head,r.dir)),r.dir +: esq)
     } unzip    
     val base = pairs.flatten.toMap
-    println("objMap = " + objMap)
+    //println("objMap = " + objMap)
     var ctx = EqContext(objMap.mapValues(o => (o.caminho, o.textoLocal)), leftTopDownObjs.map(_.id), rightTopDownObjs.map(_.id), base, 
     				matched.flatten.toSet)
     println("Initial context: " + ctx)    				
