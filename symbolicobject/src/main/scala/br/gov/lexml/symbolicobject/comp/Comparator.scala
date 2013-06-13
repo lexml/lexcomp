@@ -68,7 +68,7 @@ final case class EqContext(objMap: Map[Long, (Caminho, String)], left: IndexedSe
     val numUnmatched = total - numMatched
     val perMatched = numMatched.toDouble * 100.0 / total.toDouble
     val perUnmatched = numUnmatched.toDouble * 100.0 / total.toDouble
-    f"EqContext: total = $total, left = $onLeft, right = $onRight, matched = $numMatched, unmatched=$numUnmatched, ($perMatched%03.2f%/$perUnmatched%03.2f%)" 
+    f"EqContext: total = $total, left = $onLeft, right = $onRight, matched = $numMatched, unmatched=$numUnmatched, ($perMatched%03.2f%%/$perUnmatched%03.2f%%)" 
   } 
 }
 
