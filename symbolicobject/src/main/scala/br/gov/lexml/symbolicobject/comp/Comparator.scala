@@ -33,11 +33,12 @@ import br.gov.lexml.symbolicobject.parser.IdSource
 import br.gov.lexml.symbolicobject.impl.RelacaoIgualdade
 import br.gov.lexml.symbolicobject.impl.ProvenienciaSistema
 
-trait CompareProcessConfiguration {
+class CompareProcessConfiguration {
   def normalize(t: String): String = {
     import br.gov.lexml.parser.pl.text.normalizer
     normalizer.normalize(t.trim.replaceAll("\\s+"," ").replaceAll("\"","").replaceAll("[,.;]",".").replaceAll("[0-9]+", "#").toLowerCase())
   }
+  
   val minSimilarity = 0.75
   val maxDiff = 1.0 - minSimilarity
   val minRatio = maxDiff
