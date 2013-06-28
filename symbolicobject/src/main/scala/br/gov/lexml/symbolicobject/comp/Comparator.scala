@@ -32,6 +32,9 @@ import br.gov.lexml.symbolicobject.impl.RelacaoFusao
 import br.gov.lexml.symbolicobject.parser.IdSource
 import br.gov.lexml.symbolicobject.impl.RelacaoIgualdade
 import br.gov.lexml.symbolicobject.impl.ProvenienciaSistema
+import grizzled.slf4j.Logging
+import java.util.Collection
+import scala.collection.JavaConverters
 
 class CompareProcessConfiguration {
   def normalize(t: String): String = {
@@ -73,9 +76,7 @@ final case class EqContext(objMap: Map[Long, (Caminho, String)], left: IndexedSe
   } 
 }
 
-class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_], conf: CompareProcessConfiguration) {
-  lazy val logger = Logger(classOf[CompareProcess].getName() + "." + _desc )
-  import logger._ 
+class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: CompareProcessConfiguration) extends Logging {     
 
   import org.kiama.rewriting.Rewriter.{debug => _,_}
   import scala.util.hashing.MurmurHash3._
@@ -216,12 +217,8 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
   val parentOf: Map[Long, ObjectData] = objMap.values.flatMap { od => od.cpids.map(x => (x, od)) }.toMap
   
   def equalByHash(ctx : EqContext) = {
-    //println("leftBottomUpObjs: " + leftBottomUpObjs.map(_.id).sorted)
-    //println("ctx.unmatched: " + ctx.unmatched.toSeq.sorted)
     val leftBUObjs = leftBottomUpObjs.filter(ctx.unmatched contains _.id)
-    //println("equalByHash: leftBUObjs.length = " + leftBUObjs.length)
     val rightBUObjs = rightBottomUpObjs.filter(ctx.unmatched contains _.id)
-    //println("equalByHash: rightBUObjs.length = " + rightBUObjs.length)
     val allObjs = leftBUObjs ++ rightBUObjs
     val hashOf: Map[Long, Int] = allObjs.foldLeft(Map[Long, Int]()) {
 	    case (m, o) =>
@@ -231,11 +228,10 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
     val rightHashMap = rightTopDownObjs
     		.filter(ctx.unmatched contains _.id)
     		.groupBy(o => (o.nivel, hashOf(o.id)))
-    //println("rightHashMap = ")
+
     rightHashMap.foreach(x => println("    " + x))
     leftBUObjs.foldLeft(Map[Long, Long](), ctx.matched) {
       case ((em, um), lo) if !(em contains lo.id) =>
-        //println("   checking " + (lo.nivel, hashOf(lo.id)) + ":")
         rightHashMap.get((lo.nivel, hashOf(lo.id)))
           .flatMap(_.view.filterNot { um contains _.id }
             .filter(lo.equalBy(em, _)).headOption) match {
@@ -249,7 +245,6 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
                   if !(um contains rpid)
                 } yield (lpid, rpid)
               } else { None }
-              println("Adding " + lo.id + " -> "+ ro.id)
               (em + (lo.id -> ro.id) ++ parentPairs, um + ro.id ++ parentPairs.toList.flatMap(x => List(x._1, x._2)))
             }
           }
@@ -355,24 +350,16 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
         (Seq((esq.head,r.dir)),r.dir +: esq)
     } unzip    
     val base = pairs.flatten.toMap
-    //println("objMap = " + objMap)
-    //println("left objs = ")
     leftTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
-    //println("right objs = ")
     rightTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
     val matched2 = matched.flatten.toSet
     val unmatched = objMap.values.map(_.id).toSet -- matched2
     var ctx = EqContext(objMap.mapValues(o => (o.caminho, o.textoLocal)), leftTopDownObjs.map(_.id), rightTopDownObjs.map(_.id), base, 
     				unmatched)
-    //println("Initial context: " + ctx)    				
     ctx = ctx + equalByHash(ctx)
-    //println("  after equal by hash: " + ctx)
     ctx = ctx + equalByTextSimiliarity(ctx)
-    //println("  after equal by text similiarity: " + ctx)
     ctx = ctx + equalByCommonChildren(ctx)    
-    //println("  after equal by common children: " + ctx)
     val result = ctx.equalSoFar -- base.keySet
-    //println("  result: " + result)
     result.toSeq.map { 
       case (l,r) =>  
         val lo = objMap(l)
@@ -386,4 +373,20 @@ class CompareProcess(_desc : String,leftDoc: Documento[_], rightDoc: Documento[_
     } 
   }
 
+}
+
+object CompareProcess {
+  def compare(leftDoc: Documento[_], rightDoc: Documento[_], conf: CompareProcessConfiguration,idSource : IdSource,rels : Iterable[Relacao[_]]) = {
+    new CompareProcess(leftDoc,rightDoc,conf).compare(idSource,rels)
+  }
+  import br.gov.lexml.symbolicobject.{Documento => IDocumento,Relacao => IRelacao}
+  import java.util.{List => JList}
+  
+  def compareJ(leftDoc: IDocumento, rightDoc: IDocumento, conf: CompareProcessConfiguration,idSource : IdSource,rels : Collection[IRelacao]) : JList[IRelacao] = {
+	  val _leftDoc = Documento.fromDocumento(leftDoc)
+	  val _rightDoc = Documento.fromDocumento(rightDoc)
+	  val _rels = JavaConverters.collectionAsScalaIterableConverter(rels).asScala.map(Relacao.fromRelacao)
+	  val res = new CompareProcess(_leftDoc,_rightDoc,conf).compare(idSource,_rels)
+	  JavaConverters.seqAsJavaListConverter(res.map(_.asInstanceOf[IRelacao])).asJava
+  }
 }

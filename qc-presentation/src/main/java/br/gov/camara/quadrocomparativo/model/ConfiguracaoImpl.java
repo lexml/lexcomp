@@ -4,7 +4,7 @@
  */
 package br.gov.camara.quadrocomparativo.model;
 
-import br.gov.lexml.symbolicobject.ted.Configuracao;
+import br.gov.lexml.symbolicobject.comp.Configuracao;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
