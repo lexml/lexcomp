@@ -336,7 +336,7 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
   }
   
   
-  def compare(idSource : IdSource,rels : Iterable[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
+  def compare(idSource : IdSource,emmitOnlyForTexts : Boolean = false,rels : Iterable[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
     val (pairs,matched) = rels map {
       case r : RelacaoAusenteNaOrigem[_] => (Seq(),Seq(r.dir))
       case r : RelacaoAusenteNoAlvo[_] => (Seq(),Seq(r.esq))
@@ -359,7 +359,10 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
     ctx = ctx + equalByHash(ctx)
     ctx = ctx + equalByTextSimiliarity(ctx)
     ctx = ctx + equalByCommonChildren(ctx)    
-    val result = ctx.equalSoFar -- base.keySet
+    val result1 = ctx.equalSoFar -- base.keySet
+    val result = if (emmitOnlyForTexts) {
+    				result1.filter { case (id1,id2) => objMap(id1).isSimple && objMap(id2).isSimple }
+    			 } else { result1 }
     result.toSeq.map { 
       case (l,r) =>  
         val lo = objMap(l)
@@ -376,17 +379,17 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
 }
 
 object CompareProcess {
-  def compare(leftDoc: Documento[_], rightDoc: Documento[_], conf: CompareProcessConfiguration,idSource : IdSource,rels : Iterable[Relacao[_]]) = {
-    new CompareProcess(leftDoc,rightDoc,conf).compare(idSource,rels)
+  def compare(leftDoc: Documento[_], rightDoc: Documento[_], conf: CompareProcessConfiguration,idSource : IdSource,emmitOnlyForTexts : Boolean = false,rels : Iterable[Relacao[_]]) = {
+    new CompareProcess(leftDoc,rightDoc,conf).compare(idSource,emmitOnlyForTexts,rels)
   }
   import br.gov.lexml.symbolicobject.{Documento => IDocumento,Relacao => IRelacao}
   import java.util.{List => JList}
   
-  def compareJ(leftDoc: IDocumento, rightDoc: IDocumento, conf: CompareProcessConfiguration,idSource : IdSource,rels : Collection[IRelacao]) : JList[IRelacao] = {
+  def compareJ(leftDoc: IDocumento, rightDoc: IDocumento, conf: CompareProcessConfiguration,idSource : IdSource,emmitOnlyForTexts : Boolean = false,rels : Collection[IRelacao]) : JList[IRelacao] = {
 	  val _leftDoc = Documento.fromDocumento(leftDoc)
 	  val _rightDoc = Documento.fromDocumento(rightDoc)
 	  val _rels = JavaConverters.collectionAsScalaIterableConverter(rels).asScala.map(Relacao.fromRelacao)
-	  val res = new CompareProcess(_leftDoc,_rightDoc,conf).compare(idSource,_rels)
+	  val res = new CompareProcess(_leftDoc,_rightDoc,conf).compare(idSource,emmitOnlyForTexts,_rels)
 	  JavaConverters.seqAsJavaListConverter(res.map(_.asInstanceOf[IRelacao])).asJava
   }
 }

@@ -245,7 +245,7 @@ public class CorrelacaoResource {
         correlacao.removeAllRelacoes();        
         
         
-        List<Relacao> resultado = CompareProcess.compareJ(leftDoc, rightDoc, conf, qc, lRelacao);
+        List<Relacao> resultado = CompareProcess.compareJ(leftDoc, rightDoc, conf, qc, true, lRelacao);
         
         for(Relacao r : resultado) {
         	correlacao.addRelacao(RelacaoImpl.newFromRelacao(r));
