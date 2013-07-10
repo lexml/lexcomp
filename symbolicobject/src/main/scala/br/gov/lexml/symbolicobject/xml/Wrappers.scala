@@ -30,7 +30,8 @@ final class WrappedNodeSeq(val ns : NodeSeq) extends WrappedXML[WrappedNodeSeq] 
   override def buildXMLString(ss : String) = "<a>" + ss + "</a>"
   override def buildFromParsedElem(e : Elem) = new WrappedNodeSeq(e.child)    
   override lazy val asText = ns.toString
-  def toFragment : DocumentFragment = Helpers.toXmlFragment(ns)  
+  def toFragment : DocumentFragment = Helpers.toXmlFragment(ns)
+  override def toString : String = asText
 }
 
 object WrappedNodeSeq { 

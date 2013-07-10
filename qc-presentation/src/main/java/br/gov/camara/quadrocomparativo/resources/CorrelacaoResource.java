@@ -22,9 +22,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import scala.collection.Seq;
-import scala.runtime.AbstractFunction1;
-import scala.runtime.BoxedUnit;
 import br.gov.camara.quadrocomparativo.model.ConfiguracaoImpl;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
 import br.gov.camara.quadrocomparativo.model.ProvenienciaUsuarioImpl;
