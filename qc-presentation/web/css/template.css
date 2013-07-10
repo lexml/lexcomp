@@ -78,6 +78,13 @@ body,html {
     border-bottom: 1px #8b8b8b;
 }
 
+.logo{
+	z-index: 50;
+	position:fixed;
+	top:1px;
+	right:5px;
+}
+
 #miscmenu{
     width:100%;
     background-color:#F0F4F4;
