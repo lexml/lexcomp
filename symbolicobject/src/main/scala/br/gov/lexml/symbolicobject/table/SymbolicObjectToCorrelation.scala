@@ -10,15 +10,13 @@ final case class Column(docs: DocumentoComCtx*) {
   val s = docs
 }
 
-
-
 object PlanToCorrelation {
-
+  
   type CorrelationType = Correlation[PosicaoComCtx, RelacaoComCtx]
   type RelationType = Relation[PosicaoComCtx, RelacaoComCtx]
   type RootCorrelationType = RootCorrelation[PosicaoComCtx, RelacaoComCtx]
 
-  def traversal(column: Column): Stream[PosicaoComCtx] = {
+  private[this] def traversal(column: Column): Stream[PosicaoComCtx] = {
 
       def traversalP(posicao: PosicaoComCtx): Stream[PosicaoComCtx] = posicao.objetoSimbolico match {
         case Some(os: ObjetoSimbolicoSimples[_]) => Stream(posicao) 

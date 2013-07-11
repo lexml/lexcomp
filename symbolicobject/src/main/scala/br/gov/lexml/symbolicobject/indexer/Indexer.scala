@@ -1,24 +1,24 @@
 package br.gov.lexml.symbolicobject.indexer
 
-import javax.xml.transform.Source
-import scalaz.Validation
-import br.gov.lexml.symbolicobject.impl.Documento
-import br.gov.lexml.symbolicobject.impl.NomeRelativo
-import br.gov.lexml.symbolicobject.impl.Caminho
-import br.gov.lexml.symbolicobject.tipos.STipo
-import br.gov.lexml.symbolicobject.impl.Comentario
-import br.gov.lexml.symbolicobject.impl.ObjetoSimbolico
-import br.gov.lexml.symbolicobject.impl.Relacao
-import scala.ref.WeakReference
-import br.gov.lexml.symbolicobject.impl.Rotulo
-import br.gov.lexml.symbolicobject.impl.Posicao
-import br.gov.lexml.symbolicobject.util.CollectionUtils._
-import br.gov.lexml.symbolicobject.parser.Parser
-import br.gov.lexml.symbolicobject.parser.InputDocument
-import br.gov.lexml.symbolicobject.parser.IdSource
-import org.scalastuff.proto.JsonFormat
-import br.gov.lexml.{ symbolicobject => S }
+import scala.xml.NodeSeq
+import scala.xml.Text
+import br.gov.lexml.{symbolicobject => S}
 import br.gov.lexml.symbolicobject.impl.Attributes
+import br.gov.lexml.symbolicobject.impl.Caminho
+import br.gov.lexml.symbolicobject.impl.Comentario
+import br.gov.lexml.symbolicobject.impl.Documento
+import br.gov.lexml.symbolicobject.impl.ObjetoSimbolico
+import br.gov.lexml.symbolicobject.impl.Posicao
+import br.gov.lexml.symbolicobject.impl.Relacao
+import br.gov.lexml.symbolicobject.impl.RelacaoDiferenca
+import br.gov.lexml.symbolicobject.impl.TextoFormatado
+import br.gov.lexml.symbolicobject.impl.TextoPuro
+import br.gov.lexml.symbolicobject.impl.RelacaoDiferenca
+import br.gov.lexml.symbolicobject.parser.IdSource
+import br.gov.lexml.symbolicobject.parser.Parser
+import br.gov.lexml.symbolicobject.tipos.STipo
+import br.gov.lexml.symbolicobject.util.CollectionUtils._
+import br.gov.lexml.lexmldiff.LexmlDiff
 
 abstract sealed class Direction {
   def to(r : Relacao[_]) : Set[Long]
@@ -39,7 +39,7 @@ final case class Contexto(
   relacoes: Map[Long, Map[Direction, IndexedSeq[Relacao[ContextoRelacao]]]] = Map(),
   comentarios: IndexedSeq[Comentario] = IndexedSeq())
 
-final case class ContextoRelacao(comentarios: IndexedSeq[Comentario] = IndexedSeq())
+final case class ContextoRelacao(comentarios: IndexedSeq[Comentario] = IndexedSeq(), textos : Option[(NodeSeq,NodeSeq)] = None)
 
 final case class Relacoes(origemParaAlvo: IndexedSeq[Types.RelacaoComCtx], alvoParaOrigem: IndexedSeq[Types.RelacaoComCtx])
 
@@ -58,7 +58,9 @@ trait IIndexer {
   def removeComentario(idComentario: ComentarioId): Unit
   def getComentarios(idAlvo: Long): IndexedSeq[Comentario]
 
-  def getRelacoes(idObjetoSimbolico: ObjetoSimbolicoId, idDocumento: DocumentoId): Relacoes
+  //def getRelacoes(idObjetoSimbolico: ObjetoSimbolicoId, idDocumento: DocumentoId): Relacoes
+  
+  def getTexto(idObjetoSimbolico : ObjetoSimbolicoId) : Option[NodeSeq]
 
   def addRelacao(r: S.Relacao): Unit
   def removeRelacao(relId: RelacaoId): Unit
@@ -86,9 +88,10 @@ final case class RelacaoIndexData(
   comentarios: Set[Long] = Set())
 
 final case class DBIndex(
-  objetosSimbolicos: Map[Long, ObjetoSimbolicoIndexData] = Map(),
+  objSimbolicoIndexData: Map[Long, ObjetoSimbolicoIndexData] = Map(),
   comentariosPorAlvo: Map[Long, Set[Long]] = Map(),
-  relacoes: Map[Long, RelacaoIndexData] = Map())
+  relacoes: Map[Long, RelacaoIndexData] = Map(),
+  textos : Map[Long,NodeSeq] = Map())
 
 final class Indexer extends IIndexer {
 
@@ -125,6 +128,11 @@ final class Indexer extends IIndexer {
 	  val comentariosObjetos = 
 	    	comentariosObjetosI.map(_._2).seq.groupBy1on2with(x => ObjetoSimbolicoIndexData(comentarios = x.map(_.comentario.id).toSet))*/
 
+    val textos = state.documents.values.toStream.flatMap(_.os.toStream) collect {
+      case t : TextoPuro[_] => (t.id,Text(t.texto))
+      case t : TextoFormatado[_] => (t.id,t.frag.ns)
+    } toMap
+    
     val docsPerObject = (for {
       doc <- state.documents.values.toStream
       oid <- doc.os.toStream.collect { case o: ObjetoSimbolico[_] => o.id }
@@ -156,7 +164,7 @@ final class Indexer extends IIndexer {
     val comentariosObjetos = comentariosPorAlvo.filterKeys(docsPerObject.contains).mapValues(s => ObjetoSimbolicoIndexData(comentarios = s))
     val objIdx = mergeMapsWith((_: ObjetoSimbolicoIndexData) + (_: ObjetoSimbolicoIndexData))(Seq(relsIdx, comentariosObjetos, docsIdx))
     val relIdx = state.relations.map { case (rid, _) => (rid, RelacaoIndexData(comentarios = comentariosPorAlvo.getOrElse(rid, Set()))) }.toMap
-    DBIndex(objetosSimbolicos = objIdx, comentariosPorAlvo = comentariosPorAlvo, relacoes = relIdx)
+    DBIndex(objSimbolicoIndexData = objIdx, comentariosPorAlvo = comentariosPorAlvo, relacoes = relIdx, textos = textos)
   }
 
   override def addDocumento(d: S.Documento): Unit = {
@@ -166,8 +174,21 @@ final class Indexer extends IIndexer {
   private def addDocumento(d: Documento[Unit]) =
     changeState(st => Some(st copy (documents = state.documents + (d.id -> d))))
 
-  private def addContextoToRelacao(r: Relacao[_]): Relacao[ContextoRelacao] =
-    r.setData(index.relacoes.get(r.id).map(d => ContextoRelacao(d.comentarios.toIndexedSeq.map(state.comentarios))).getOrElse(ContextoRelacao()))
+  private def addContextoToRelacao(r: Relacao[_]): Relacao[ContextoRelacao] = {
+    val indexData = index.relacoes.get(r.id).map(d => ContextoRelacao(d.comentarios.toIndexedSeq.map(state.comentarios))).getOrElse(ContextoRelacao())
+    val indexData2 = r match {
+      case rd : RelacaoDiferenca[_] => 
+        val idDir = rd.dir
+        val idEsq = rd.esq
+        val textos = for {
+          textoDir <- index.textos.get(idDir)
+          textoEsq <- index.textos.get(idEsq)
+        } yield (textoDir,textoEsq)
+        indexData copy (textos = textos)
+      case _ => indexData
+    }
+    r.setData(indexData2)
+  }
 
   private def addContextoToDocumento(d: Documento[_]): Documento[Contexto] = {    
     import org.kiama._
@@ -181,7 +202,7 @@ final class Indexer extends IIndexer {
     
     val osid0 = new ObjetoSimbolicoIndexData()
 
-    def osid(id: Long) = index.objetosSimbolicos.getOrElse(id, osid0)
+    def osid(id: Long) = index.objSimbolicoIndexData.getOrElse(id, osid0)
     
     def changeFunc(o : ObjetoSimbolico[_]) : Contexto = {
        val data = osid(o.id)
@@ -203,7 +224,7 @@ final class Indexer extends IIndexer {
       val oids = d.os.toStream.collect { case o: ObjetoSimbolico[_] => o.id }.toSet
       val documents = state.documents - id
       val relations = state.relations.mapValues { _.filterIds(x => !oids(x)) }.filterNot(_._2.isDefined).mapValues(_.get)
-      val comentariosAremover = index.objetosSimbolicos.filterKeys(oids).values.flatMap(_.comentarios).toSet
+      val comentariosAremover = index.objSimbolicoIndexData.filterKeys(oids).values.flatMap(_.comentarios).toSet
       val comentarios = state.comentarios.filterKeys(comentariosAremover)
       DBState(documents = documents, relations = relations, comentarios = comentarios)
     }
@@ -222,8 +243,8 @@ final class Indexer extends IIndexer {
   }
   override def getComentarios(alvo: Long): IndexedSeq[Comentario] = index.comentariosPorAlvo.getOrElse(alvo, Set()).toIndexedSeq.map(state.comentarios)
 
-  override def getRelacoes(idObjetoSimbolico: Long, idDocumento: Long) = {
-    val r = index.objetosSimbolicos.get(idObjetoSimbolico)
+  /*override def getRelacoes(idObjetoSimbolico: Long, idDocumento: Long) = {
+    val r = index.objSimbolicoIndexData.get(idObjetoSimbolico)
       .flatMap(_.relacoesPorDocumento
         .get(idDocumento))
       .map(_.mapValues(_.toIndexedSeq.collect(state.relations).map(addContextoToRelacao)))
@@ -231,7 +252,7 @@ final class Indexer extends IIndexer {
     val s2t = r.getOrElse(SourceToTarget, IndexedSeq())
     val t2s = r.getOrElse(TargetToSource, IndexedSeq())
     Relacoes(s2t, t2s)
-  }
+  }*/
 
   def addRelacao(r: S.Relacao): Unit = changeState { state =>
     val r1 = Relacao.fromRelacao(r)
@@ -243,6 +264,8 @@ final class Indexer extends IIndexer {
       Some(state copy (relations = state.relations - relId))
     } else { None }
   }
+  
+   def getTexto(idObjetoSimbolico : ObjetoSimbolicoId) : Option[NodeSeq] = index.textos.get(idObjetoSimbolico)
 
 }
 

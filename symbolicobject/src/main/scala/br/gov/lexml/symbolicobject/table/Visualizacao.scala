@@ -11,6 +11,10 @@ import br.gov.lexml.symbolicobject.impl.TextoPuro
 import br.gov.lexml.symbolicobject.impl.RelacaoDiferenca
 import br.gov.lexml.symbolicobject.impl.TextoFormatado
 import br.gov.lexml.symbolicobject.indexer.IIndexer
+import br.gov.lexml.symbolicobject.indexer.ContextoRelacao
+import br.gov.lexml.lexmldiff.LexmlDiff
+import scala.xml.Null
+import scala.xml.Text
 
 
 
@@ -18,7 +22,7 @@ import br.gov.lexml.symbolicobject.indexer.IIndexer
 class Visualizacao(indexer : IIndexer) {
 
     // de SymbolicObject e outro de Relacao
-    implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
+    private implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
@@ -31,23 +35,29 @@ class Visualizacao(indexer : IIndexer) {
     }
 
     // de SymbolicObject e outro de Relacao
-    implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+    private implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
       def render(x: Either[RelacaoComCtx, NodeSeq]): RenderedCell = x match {
-        case Left(RelacaoDiferenca(_, _, _, diff, _,_)) => RenderedCell(<span>{ diff }</span>)
+        case Left(r : RelacaoDiferenca[ContextoRelacao]) => {
+          val diff : NodeSeq = r.data.textos.map { case (t1,t2) =>
+            val d = LexmlDiff.diffAsXML(t1.text, t2.text, 0.8, true)
+            d
+          } getOrElse(Text(""))
+          RenderedCell(<span> { diff }</span>)
+        }
         case Left(_) => RenderedCell()
         case Right(ns) => RenderedCell(ns)
       }
     }
 
-    implicit val cellRenderer =
+    private implicit val cellRenderer =
       CorrelationCellData.cellRenderer[Either[PosicaoComCtx, NodeSeq], Either[RelacaoComCtx, NodeSeq]]
   
   
-  def produceDocumentoComCtx(doc: I.Documento): DocumentoComCtx = 
+  private def produceDocumentoComCtx(doc: I.Documento): DocumentoComCtx = 
     		produceDocumentoComCtx(doc.getId())
    
   
-  def produceDocumentoComCtx(docId : Long): DocumentoComCtx = 
+  private def produceDocumentoComCtx(docId : Long): DocumentoComCtx = 
     indexer.getDocumento(docId).getOrElse(sys.error("Documento não encontrado: " + docId))
   
   
