@@ -36,13 +36,31 @@ class Visualizacao(indexer : IIndexer) {
 
     // de SymbolicObject e outro de Relacao
     private implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+      import br.gov.lexml.lexmldiff._
+      private[this] def renderDiffCase(dc : DiffCase) : NodeSeq = dc match {
+        case i : Insert => <span class="diff diffInsert">{i.text}</span>
+        case d : Delete => <span class="diff diffDelete">{d.text}</span>
+        case c : Change => Seq(<span class="diff diffDelete">{c.oldText}</span>,
+                               <span class="diff diffInsert">{c.newText}</span>)
+        case e : EqualOther => Text(e.text)
+        case EqualSpace => Text(" ")
+      }
+      private[this] def renderDiffCases(l : List[DiffCase]) : NodeSeq = l.toSeq.flatMap(renderDiffCase)
+      private[this] def diff(t1 : String, t2 : String) : Option[NodeSeq] = {
+        val dl = LexmlDiff.diff(t1, t2, 0.8, true)
+        
+        if(dl.exists(c => !c.isInstanceOf[Equal])) {
+          Some(renderDiffCases(dl))
+        } else {
+          None
+        }        
+      }
       def render(x: Either[RelacaoComCtx, NodeSeq]): RenderedCell = x match {
         case Left(r : RelacaoDiferenca[ContextoRelacao]) => {
-          val diff : NodeSeq = r.data.textos.map { case (t1,t2) =>
-            val d = LexmlDiff.diffAsXML(t1.text, t2.text, 0.8, true)
-            d
+          val d : NodeSeq = r.data.textos.flatMap { case (t1,t2) =>
+            diff(t1.text,t2.text)            
           } getOrElse(Text(""))
-          RenderedCell(<span> { diff }</span>)
+          RenderedCell(<span> { d }</span>)
         }
         case Left(_) => RenderedCell()
         case Right(ns) => RenderedCell(ns)
@@ -134,6 +152,12 @@ class Visualizacao(indexer : IIndexer) {
     		td {{
     		  border: 1px solid black;
     		}}
+            .diffDelete {{
+              color: red;
+            }}
+    		.diffInsert {{
+              color: blue;
+            }}
            </style>
          </head>
          <body>{ result }</body>

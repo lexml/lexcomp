@@ -2319,8 +2319,8 @@ Art. 245. A lei disporá sobre as hipóteses e condições em que o Poder Públi
 <nomeTipo>texto_formatado</nomeTipo>
                             </refTipo>
                             <id>20</id>
-                            <representacao>A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</representacao>
-                            <xhtmlFragment>A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</xhtmlFragment>
+                            <representacao>A República do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</representacao>
+                            <xhtmlFragment>A República do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</xhtmlFragment>
                         </objeto>
                         <rotulo xsi:type="roleRotuloImpl">
                             <refTipo>
@@ -69289,8 +69289,8 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
 <nomeTipo>texto_formatado</nomeTipo>
                             </refTipo>
                             <id>4099</id>
-                            <representacao>A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</representacao>
-                            <xhtmlFragment>A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</xhtmlFragment>
+                            <representacao>A República Federativa do Brasil, formada pela indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</representacao>
+                            <xhtmlFragment>A República Federativa do Brasil, formada pela indissolúvel dos Estados e Municípios, do Distrito Federal e dos Territórios, constitui-se em Estado Democrático de Direito e tem como fundamentos:</xhtmlFragment>
                         </objeto>
                         <rotulo xsi:type="roleRotuloImpl">
                             <refTipo>
