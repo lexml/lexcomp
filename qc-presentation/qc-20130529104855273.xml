@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <quadroComparativo>
-    <articulacoesExcluidas>false</articulacoesExcluidas>
+    <articulacoesExcluidas>true</articulacoesExcluidas>
     <colunas>
         <textos>
             <anoComponente></anoComponente>
@@ -69186,6 +69186,7 @@ Art. 245. A lei disporá sobre as hipóteses e condições em que o Poder Públi
             <localidades>br</localidades>
             <numero>1</numero>
             <numeroComponente></numeroComponente>
+            <order>0</order>
             <preambulo></preambulo>
             <tiposDocumento>lei</tiposDocumento>
             <titulo>Lei nº 1/1988&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
@@ -70171,6 +70172,7 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
             <localidades>br</localidades>
             <numero>2</numero>
             <numeroComponente></numeroComponente>
+            <order>1</order>
             <preambulo></preambulo>
             <tiposDocumento>lei</tiposDocumento>
             <titulo>Lei nº 2/1988&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
@@ -70188,43 +70190,12 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
     <correlacoes>
         <relacoes>
             <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4084</alvo>
-            <id>4192</id>
-            <origem>5</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4089</alvo>
-            <id>4193</id>
-            <origem>10</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4135</alvo>
-            <id>4194</id>
+            <id>4246</id>
             <origem>56</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70233,40 +70204,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4121</alvo>
-            <id>4195</id>
+            <id>4247</id>
             <origem>42</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4103</alvo>
-            <id>4196</id>
-            <origem>24</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4116</alvo>
-            <id>4197</id>
-            <origem>37</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70275,12 +70215,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4104</alvo>
-            <id>4198</id>
+            <id>4248</id>
             <origem>25</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70289,26 +70226,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4131</alvo>
-            <id>4199</id>
+            <id>4249</id>
             <origem>52</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4093</alvo>
-            <id>4200</id>
-            <origem>14</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70317,12 +70237,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4099</alvo>
-            <id>4201</id>
+            <id>4250</id>
             <origem>20</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70331,12 +70248,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4125</alvo>
-            <id>4202</id>
+            <id>4251</id>
             <origem>46</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70345,12 +70259,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4136</alvo>
-            <id>4203</id>
+            <id>4252</id>
             <origem>57</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70359,68 +70270,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4108</alvo>
-            <id>4204</id>
+            <id>4253</id>
             <origem>29</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4085</alvo>
-            <id>4205</id>
-            <origem>6</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4107</alvo>
-            <id>4206</id>
-            <origem>28</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4117</alvo>
-            <id>4207</id>
-            <origem>38</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4100</alvo>
-            <id>4208</id>
-            <origem>21</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70429,12 +70281,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4112</alvo>
-            <id>4209</id>
+            <id>4254</id>
             <origem>33</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70443,26 +70292,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4088</alvo>
-            <id>4210</id>
+            <id>4255</id>
             <origem>9</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4132</alvo>
-            <id>4211</id>
-            <origem>53</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70471,68 +70303,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4092</alvo>
-            <id>4212</id>
+            <id>4256</id>
             <origem>13</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4120</alvo>
-            <id>4213</id>
-            <origem>41</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4111</alvo>
-            <id>4214</id>
-            <origem>32</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4113</alvo>
-            <id>4215</id>
-            <origem>34</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4124</alvo>
-            <id>4216</id>
-            <origem>45</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70541,12 +70314,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4096</alvo>
-            <id>4217</id>
+            <id>4257</id>
             <origem>17</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70555,12 +70325,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4101</alvo>
-            <id>4218</id>
+            <id>4258</id>
             <origem>22</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70569,40 +70336,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4123</alvo>
-            <id>4219</id>
+            <id>4259</id>
             <origem>44</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4106</alvo>
-            <id>4220</id>
-            <origem>27</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4091</alvo>
-            <id>4221</id>
-            <origem>12</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70611,54 +70347,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4133</alvo>
-            <id>4222</id>
+            <id>4260</id>
             <origem>54</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4128</alvo>
-            <id>4223</id>
-            <origem>49</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4086</alvo>
-            <id>4224</id>
-            <origem>7</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4118</alvo>
-            <id>4225</id>
-            <origem>39</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70667,12 +70358,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4114</alvo>
-            <id>4226</id>
+            <id>4261</id>
             <origem>35</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70681,26 +70369,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4127</alvo>
-            <id>4227</id>
+            <id>4262</id>
             <origem>48</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4097</alvo>
-            <id>4228</id>
-            <origem>18</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70709,26 +70380,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4129</alvo>
-            <id>4229</id>
+            <id>4263</id>
             <origem>50</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4095</alvo>
-            <id>4230</id>
-            <origem>16</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70737,12 +70391,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4110</alvo>
-            <id>4231</id>
+            <id>4264</id>
             <origem>31</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70751,26 +70402,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4090</alvo>
-            <id>4232</id>
+            <id>4265</id>
             <origem>11</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4122</alvo>
-            <id>4233</id>
-            <origem>43</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70779,68 +70413,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4119</alvo>
-            <id>4234</id>
+            <id>4266</id>
             <origem>40</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4105</alvo>
-            <id>4235</id>
-            <origem>26</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4134</alvo>
-            <id>4236</id>
-            <origem>55</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4102</alvo>
-            <id>4237</id>
-            <origem>23</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4087</alvo>
-            <id>4238</id>
-            <origem>8</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70849,12 +70424,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4137</alvo>
-            <id>4239</id>
+            <id>4267</id>
             <origem>58</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70863,40 +70435,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4115</alvo>
-            <id>4240</id>
+            <id>4268</id>
             <origem>36</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4109</alvo>
-            <id>4241</id>
-            <origem>30</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4130</alvo>
-            <id>4242</id>
-            <origem>51</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70905,26 +70446,9 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4098</alvo>
-            <id>4243</id>
+            <id>4269</id>
             <origem>19</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
-                <noneSistema>1</noneSistema>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_igualdade</nomeTipo>
-            </refTipo>
-            <alvo>4126</alvo>
-            <id>4244</id>
-            <origem>47</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
@@ -70933,19 +70457,16 @@ IX - cooperação entre os povos para o progresso da humanidade.</articulacao>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>4094</alvo>
-            <id>4245</id>
+            <id>4270</id>
             <origem>15</origem>
             <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
-                <refTipo>
-                    <nomeTipo>proveniencia_sistema</nomeTipo>
-                </refTipo>
                 <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
         <urn1>urn:lex:br:federal:lei:1988;1</urn1>
         <urn2>urn:lex:br:federal:lei:1988;2</urn2>
     </correlacoes>
-    <currentPosition>4245</currentPosition>
+    <currentPosition>4270</currentPosition>
     <id>20130529104855273</id>
     <titulo>Novo quadro</titulo>
 </quadroComparativo>
