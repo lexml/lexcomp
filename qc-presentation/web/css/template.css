@@ -80,9 +80,10 @@ body,html {
 
 .logo{
 	z-index: 50;
-	position:fixed;
 	top:1px;
 	right:5px;
+	/* position:fixed; */
+	position:absolute;
 }
 
 #miscmenu{

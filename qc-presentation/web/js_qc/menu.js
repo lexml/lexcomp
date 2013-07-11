@@ -121,6 +121,7 @@ function print_menu() {
         <div id="menuCorrelacoes">\
         <a id="linkConfiguracao" href="#"><img src="images/config_rel.png" border="0" style="height:53px;" class="rollover"/></a>\
         </div>\
+    	<div id="divLogo" class="logo"><img src="images/icone_lexcomp_50x.png"></div>\
     </div>');
     
     document.write('<div id="dialog-open" title="Abrir quadro comparativo" style="display: none;">\
