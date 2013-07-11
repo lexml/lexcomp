@@ -11,6 +11,10 @@ import br.gov.lexml.symbolicobject.impl.TextoPuro
 import br.gov.lexml.symbolicobject.impl.RelacaoDiferenca
 import br.gov.lexml.symbolicobject.impl.TextoFormatado
 import br.gov.lexml.symbolicobject.indexer.IIndexer
+import br.gov.lexml.symbolicobject.indexer.ContextoRelacao
+import br.gov.lexml.lexmldiff.LexmlDiff
+import scala.xml.Null
+import scala.xml.Text
 
 
 
@@ -18,7 +22,7 @@ import br.gov.lexml.symbolicobject.indexer.IIndexer
 class Visualizacao(indexer : IIndexer) {
 
     // de SymbolicObject e outro de Relacao
-    implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
+    private implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
@@ -31,23 +35,47 @@ class Visualizacao(indexer : IIndexer) {
     }
 
     // de SymbolicObject e outro de Relacao
-    implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+    private implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+      import br.gov.lexml.lexmldiff._
+      private[this] def renderDiffCase(dc : DiffCase) : NodeSeq = dc match {
+        case i : Insert => <span class="diff diffInsert">{i.text}</span>
+        case d : Delete => <span class="diff diffDelete">{d.text}</span>
+        case c : Change => Seq(<span class="diff diffDelete">{c.oldText}</span>,
+                               <span class="diff diffInsert">{c.newText}</span>)
+        case e : EqualOther => Text(e.text)
+        case EqualSpace => Text(" ")
+      }
+      private[this] def renderDiffCases(l : List[DiffCase]) : NodeSeq = l.toSeq.flatMap(renderDiffCase)
+      private[this] def diff(t1 : String, t2 : String) : Option[NodeSeq] = {
+        val dl = LexmlDiff.diff(t1, t2, 0.8, true)
+        
+        if(dl.exists(c => !c.isInstanceOf[Equal])) {
+          Some(renderDiffCases(dl))
+        } else {
+          None
+        }        
+      }
       def render(x: Either[RelacaoComCtx, NodeSeq]): RenderedCell = x match {
-        case Left(RelacaoDiferenca(_, _, _, diff, _,_)) => RenderedCell(<span>{ diff }</span>)
+        case Left(r : RelacaoDiferenca[ContextoRelacao]) => {
+          val d : NodeSeq = r.data.textos.flatMap { case (t1,t2) =>
+            diff(t1.text,t2.text)            
+          } getOrElse(Text(""))
+          RenderedCell(<span> { d }</span>)
+        }
         case Left(_) => RenderedCell()
         case Right(ns) => RenderedCell(ns)
       }
     }
 
-    implicit val cellRenderer =
+    private implicit val cellRenderer =
       CorrelationCellData.cellRenderer[Either[PosicaoComCtx, NodeSeq], Either[RelacaoComCtx, NodeSeq]]
   
   
-  def produceDocumentoComCtx(doc: I.Documento): DocumentoComCtx = 
+  private def produceDocumentoComCtx(doc: I.Documento): DocumentoComCtx = 
     		produceDocumentoComCtx(doc.getId())
    
   
-  def produceDocumentoComCtx(docId : Long): DocumentoComCtx = 
+  private def produceDocumentoComCtx(docId : Long): DocumentoComCtx = 
     indexer.getDocumento(docId).getOrElse(sys.error("Documento não encontrado: " + docId))
   
   
@@ -124,6 +152,12 @@ class Visualizacao(indexer : IIndexer) {
     		td {{
     		  border: 1px solid black;
     		}}
+            .diffDelete {{
+              color: red;
+            }}
+    		.diffInsert {{
+              color: blue;
+            }}
            </style>
          </head>
          <body>{ result }</body>
