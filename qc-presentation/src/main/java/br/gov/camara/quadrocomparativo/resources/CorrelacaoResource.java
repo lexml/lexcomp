@@ -211,7 +211,7 @@ public class CorrelacaoResource {
     
     @POST @Path("/processar/{qcid}/{urn1}/{urn2}/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response processar(/*ConfiguracaoImpl config,*/
+    public Response processarRoboCorrelacao(/*ConfiguracaoImpl config,*/
         @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
         @PathParam("urn2") String urn2) {
         
@@ -229,7 +229,9 @@ public class CorrelacaoResource {
         final Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
         
         List<Relacao> lRelacao = correlacao.getRelacoes();
-        if(lRelacao == null) { lRelacao = new ArrayList<Relacao>(); }
+        if(lRelacao == null) { 
+        	lRelacao = new ArrayList<Relacao>(); 
+        }
         
         CompareProcessConfiguration conf = new CompareProcessConfiguration(){
         	@Override

@@ -960,7 +960,7 @@ function getCorrelacao(qcid, urn1, urn2, callback){
 
 function getRelacoes(qcid, urn1, urn2) {
     
-    var strLoading = "<div id='loadingRelacao' style='position: fixed; top: 50%; margin: 10px;'><img src='images/load2.gif'/></div>"
+    var strLoading = "<div id='loadingRelacao' style='position: fixed; top: 50%; margin: 10px;'><img src='images/icone_lexcomp_50x.png'/></div>"
     $("#divRelacoes").append($(strLoading));
     
     $.ajax({
