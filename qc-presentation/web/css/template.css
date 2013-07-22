@@ -80,9 +80,10 @@ body,html {
 
 .logo{
 	z-index: 50;
-	position:fixed;
 	top:1px;
 	right:5px;
+	/* position:fixed; */
+	position:absolute;
 }
 
 #miscmenu{
@@ -421,11 +422,12 @@ button, input, select, textarea {
 /*Estilos referentes à tela de correlação*/
 
 .colunaComparacao{
-    width: 45%; 
+    width: 42%; 
     background-color: #f7f7f7;
     padding: 5px;
     margin: 5px;
     border: 1px #8b8b8b solid;
+    
 }
 
 .colunaComparacao p{

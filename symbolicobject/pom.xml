@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>br.gov.lexml.parser.pl</groupId>
 			<artifactId>parser-projeto-lei</artifactId>
-			<version>1.8.18-SNAPSHOT</version>
+			<version>1.8.19</version>
 		</dependency>
 
 		<dependency>

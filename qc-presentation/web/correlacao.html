@@ -23,11 +23,11 @@
 
     </head>
 
-    <body onUnload="jsPlumb.unload();" data-library="jquery">  
+    <body onUnload="" data-library="jquery">  
               
 
         <!---Loading--->
-        <div id="loading"><img src="images/load.gif"><br><br><h3>Carregando Textos e Correlações.</h3></div>
+        <div id="loading"><img src="images/icone_lexcomp_50x.png"><br><br><h3>Carregando Textos e Correlações.</h3></div>
         <div id="fade" class="black_overlay"></div>
         <script type="text/javascript">
             //Loading dos textos e Correlações
@@ -229,7 +229,11 @@
                
                
                
-               
+                 //Repinta tela ao mudar a resolução ou tamano da janela
+ $(window).resize(function() {
+   jsPlumb.repaintEverything();
+});
+
                
                
 
