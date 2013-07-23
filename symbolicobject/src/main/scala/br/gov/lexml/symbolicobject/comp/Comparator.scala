@@ -35,6 +35,7 @@ import br.gov.lexml.symbolicobject.impl.ProvenienciaSistema
 import grizzled.slf4j.Logging
 import java.util.Collection
 import scala.collection.JavaConverters
+import br.gov.lexml.symbolicobject.ProvenienciaUsuario
 
 class CompareProcessConfiguration {
   def normalize(t: String): String = {
@@ -337,7 +338,8 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
   
   
   def compare(idSource : IdSource,emmitOnlyForTexts : Boolean = false,rels : Iterable[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
-    val (pairs,matched) = rels map {
+    val rels1 = rels filter  { _.proveniencia.isInstanceOf[ProvenienciaUsuario] }
+    val (pairs,matched) = rels1 map {
       case r : RelacaoAusenteNaOrigem[_] => (Seq(),Seq(r.dir))
       case r : RelacaoAusenteNoAlvo[_] => (Seq(),Seq(r.esq))
       case r : RelacaoIgualdade[_] => (Seq((r.esq,r.dir)),Seq(r.esq,r.dir))
@@ -350,8 +352,8 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
         (Seq((esq.head,r.dir)),r.dir +: esq)
     } unzip    
     val base = pairs.flatten.toMap
-    leftTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
-    rightTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
+    //leftTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
+    //rightTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
     val matched2 = matched.flatten.toSet
     val unmatched = objMap.values.map(_.id).toSet -- matched2
     var ctx = EqContext(objMap.mapValues(o => (o.caminho, o.textoLocal)), leftTopDownObjs.map(_.id), rightTopDownObjs.map(_.id), base, 
@@ -363,7 +365,7 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
     val result = if (emmitOnlyForTexts) {
     				result1.filter { case (id1,id2) => objMap(id1).isSimple && objMap(id2).isSimple }
     			 } else { result1 }
-    result.toSeq.map { 
+    val relacoes =  result.toSeq.map { 
       case (l,r) =>  
         val lo = objMap(l)
         val ro = objMap(r)
@@ -374,6 +376,11 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
           RelacaoDiferenca(idSource.nextId(Tipos.RelacaoIgualdade),lo.id,ro.id,diff,ProvenienciaSistema,())
         }
     } 
+    
+    val userRelIndex = rels1.map { r => (r.origem.toList.sorted,r.alvo.toList.sorted) }.toSet
+    def isNotSpecifiedByUser(r : Relacao[Unit]) : Boolean = !(userRelIndex contains (r.origem.toList.sorted,r.alvo.toList.sorted)) 
+    
+    rels1.map(_.setData(())).toSeq ++ relacoes.filter(isNotSpecifiedByUser)
   }
 
 }

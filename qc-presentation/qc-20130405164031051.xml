@@ -1,0 +1,2839 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<quadroComparativo>
+    <colunas>
+        <textos>
+            <anoComponente></anoComponente>
+            <articulacao>Título I
+
+Capítulo Único
+
+Das Disposições Preliminares
+
+        Art. 1o  Esta Lei institui o Regime Jurídico dos Servidores Públicos Civis da União, das autarquias, inclusive as em regime especial, e das fundações públicas federais.
+
+        Art. 2o  Para os efeitos desta Lei, servidor é a pessoa legalmente investida em cargo público.
+
+        Art. 3o  Cargo público é o conjunto de atribuições e responsabilidades previstas na estrutura organizacional que devem ser cometidas a um servidor.
+
+        Parágrafo único.  Os cargos públicos, acessíveis a todos os brasileiros, são criados por lei, com denominação própria e vencimento pago pelos cofres públicos, para provimento em caráter efetivo ou em comissão.
+
+        Art. 4o  É proibida a prestação de serviços gratuitos, salvo os casos previstos em lei.
+
+Título II
+
+Do Provimento, Vacância, Remoção, Redistribuição e Substituição
+
+Capítulo I
+
+Do Provimento
+
+Seção I
+
+Disposições Gerais
+
+        Art. 5o  São requisitos básicos para investidura em cargo público:
+
+        I - a nacionalidade brasileira;
+
+        II - o gozo dos direitos políticos;
+
+        III - a quitação com as obrigações militares e eleitorais;
+
+        IV - o nível de escolaridade exigido para o exercício do cargo;
+
+        V - a idade mínima de dezoito anos;
+
+        VI - aptidão física e mental.
+
+        § 1o  As atribuições do cargo podem justificar a exigência de outros requisitos estabelecidos em lei.
+
+        § 2o  Às pessoas portadoras de deficiência é assegurado o direito de se inscrever em concurso público para provimento de cargo cujas atribuições sejam compatíveis com a deficiência de que são portadoras; para tais pessoas serão reservadas até 20% (vinte por cento) das vagas oferecidas no concurso.
+
+        § 3o  As universidades e instituições de pesquisa científica e tecnológica federais poderão prover seus cargos com professores, técnicos e cientistas estrangeiros, de acordo com as normas e os procedimentos desta Lei. (Incluído pela Lei nº 9.515, de 20.11.97)
+
+        Art. 6o  O provimento dos cargos públicos far-se-á mediante ato da autoridade competente de cada Poder.
+
+        Art. 7o  A investidura em cargo público ocorrerá com a posse.
+
+        Art. 8o  São formas de provimento de cargo público:
+
+        I - nomeação;
+
+        II - promoção;
+
+        III - (Revogado pela Lei nº 9.527, de 10.12.97)
+
+        IV - (Revogado pela Lei nº 9.527, de 10.12.97)
+
+        V - readaptação;
+
+        VI - reversão;
+
+        VII - aproveitamento;
+
+        VIII - reintegração;
+
+        IX - recondução.</articulacao>
+            <autoridades>federal</autoridades>
+            <categorias>legislacao</categorias>
+            <comissaoespecial></comissaoespecial>
+            <componenteDocumento></componenteDocumento>
+            <dataAssinatura>1993</dataAssinatura>
+            <dataEvento></dataEvento>
+            <dataVigente></dataVigente>
+            <documento>
+                <objetoSimbolico xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>raiz_documento</nomeTipo>
+                    </refTipo>
+                    <id>314</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>articulacao</nomeTipo>
+                            </refTipo>
+                            <id>315</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_titulo</nomeTipo>
+    </refTipo>
+    <id>317</id>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_capitulo</nomeTipo>
+            </refTipo>
+            <id>318</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>333</id>
+                    <representacao>Das Disposições Preliminares</representacao>
+                    <xhtmlFragment>Das Disposições Preliminares</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>319</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>320</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>321</id>
+    <representacao> Esta Lei institui o Regime Jurídico dos Servidores Públicos Civis da União, das autarquias, inclusive as em regime especial, e das fundações públicas federais.</representacao>
+    <xhtmlFragment> Esta Lei institui o Regime Jurídico dos Servidores Públicos Civis da União, das autarquias, inclusive as em regime especial, e das fundações públicas federais.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[1]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>1</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>322</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>323</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>324</id>
+    <representacao> Para os efeitos desta Lei, servidor é a pessoa legalmente investida em cargo público.</representacao>
+    <xhtmlFragment> Para os efeitos desta Lei, servidor é a pessoa legalmente investida em cargo público.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[2]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>2</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>325</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>326</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>327</id>
+    <representacao> Cargo público é o conjunto de atribuições e responsabilidades previstas na estrutura organizacional que devem ser cometidas a um servidor.</representacao>
+    <xhtmlFragment> Cargo público é o conjunto de atribuições e responsabilidades previstas na estrutura organizacional que devem ser cometidas a um servidor.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>328</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>329</id>
+    <representacao> Os cargos públicos, acessíveis a todos os brasileiros, são criados por lei, com denominação própria e vencimento pago pelos cofres públicos, para provimento em caráter efetivo ou em comissão.</representacao>
+    <xhtmlFragment> Os cargos públicos, acessíveis a todos os brasileiros, são criados por lei, com denominação própria e vencimento pago pelos cofres públicos, para provimento em caráter efetivo ou em comissão.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloClassificadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_classificado</nomeTipo>
+                            </refTipo>
+                            <representacao>par;unico</representacao>
+                            <nomeRole>par</nomeRole>
+                            <classificacao>unico</classificacao>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[3]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>3</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>330</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>331</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>332</id>
+    <representacao> É proibida a prestação de serviços gratuitos, salvo os casos previstos em lei.</representacao>
+    <xhtmlFragment> É proibida a prestação de serviços gratuitos, salvo os casos previstos em lei.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[4]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>4</posicaoRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{cap[1]}</representacao>
+            <nomeRole>cap</nomeRole>
+            <posicaoRole>1</posicaoRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{tit[1]}</representacao>
+    <nomeRole>tit</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_titulo</nomeTipo>
+    </refTipo>
+    <id>334</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>387</id>
+            <representacao>Do Provimento, Vacância, Remoção, Redistribuição e Substituição</representacao>
+            <xhtmlFragment>Do Provimento, Vacância, Remoção, Redistribuição e Substituição</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_capitulo</nomeTipo>
+            </refTipo>
+            <id>335</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>386</id>
+                    <representacao>Do Provimento</representacao>
+                    <xhtmlFragment>Do Provimento</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_secao</nomeTipo>
+                    </refTipo>
+                    <id>336</id>
+                    <posicoes>
+                        <objeto xsi:type="textoFormatadoImpl">
+                            <refTipo>
+<nomeTipo>texto_formatado</nomeTipo>
+                            </refTipo>
+                            <id>385</id>
+                            <representacao>Disposições Gerais</representacao>
+                            <xhtmlFragment>Disposições Gerais</xhtmlFragment>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{texto}</representacao>
+                            <nomeRole>texto</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_artigo</nomeTipo>
+                            </refTipo>
+                            <id>337</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_caput</nomeTipo>
+    </refTipo>
+    <id>338</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>351</id>
+            <representacao> São requisitos básicos para investidura em cargo público:</representacao>
+            <xhtmlFragment> São requisitos básicos para investidura em cargo público:</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>339</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>340</id>
+                    <representacao>a nacionalidade brasileira;</representacao>
+                    <xhtmlFragment>a nacionalidade brasileira;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[1]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>1</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>341</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>342</id>
+                    <representacao>o gozo dos direitos políticos;</representacao>
+                    <xhtmlFragment>o gozo dos direitos políticos;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[2]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>2</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>343</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>344</id>
+                    <representacao>a quitação com as obrigações militares e eleitorais;</representacao>
+                    <xhtmlFragment>a quitação com as obrigações militares e eleitorais;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[3]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>3</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>345</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>346</id>
+                    <representacao>o nível de escolaridade exigido para o exercício do cargo;</representacao>
+                    <xhtmlFragment>o nível de escolaridade exigido para o exercício do cargo;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[4]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>4</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>347</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>348</id>
+                    <representacao>a idade mínima de dezoito anos;</representacao>
+                    <xhtmlFragment>a idade mínima de dezoito anos;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[5]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>5</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>349</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>350</id>
+                    <representacao>aptidão física e mental.</representacao>
+                    <xhtmlFragment>aptidão física e mental.</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[6]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>6</posicaoRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{cpt}</representacao>
+    <nomeRole>cpt</nomeRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_paragrafo</nomeTipo>
+    </refTipo>
+    <id>352</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>353</id>
+            <representacao> As atribuições do cargo podem justificar a exigência de outros requisitos estabelecidos em lei.</representacao>
+            <xhtmlFragment> As atribuições do cargo podem justificar a exigência de outros requisitos estabelecidos em lei.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{par[1]}</representacao>
+    <nomeRole>par</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_paragrafo</nomeTipo>
+    </refTipo>
+    <id>354</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>355</id>
+            <representacao> Às pessoas portadoras de deficiência é assegurado o direito de se inscrever em concurso público para provimento de cargo cujas atribuições sejam compatíveis com a deficiência de que são portadoras; para tais pessoas serão reservadas até 20% (vinte por cento) das vagas oferecidas no concurso.</representacao>
+            <xhtmlFragment> Às pessoas portadoras de deficiência é assegurado o direito de se inscrever em concurso público para provimento de cargo cujas atribuições sejam compatíveis com a deficiência de que são portadoras; para tais pessoas serão reservadas até 20% (vinte por cento) das vagas oferecidas no concurso.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{par[2]}</representacao>
+    <nomeRole>par</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_paragrafo</nomeTipo>
+    </refTipo>
+    <id>356</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>357</id>
+            <representacao> As universidades e instituições de pesquisa científica e tecnológica federais poderão prover seus cargos com professores, técnicos e cientistas estrangeiros, de acordo com as normas e os procedimentos desta Lei. (Incluído pela Lei nº 9.515, de 20.11.97)</representacao>
+            <xhtmlFragment> As universidades e instituições de pesquisa científica e tecnológica federais poderão prover seus cargos com professores, técnicos e cientistas estrangeiros, de acordo com as normas e os procedimentos desta Lei. (Incluído pela Lei nº 9.515, de 20.11.97)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{par[3]}</representacao>
+    <nomeRole>par</nomeRole>
+    <posicaoRole>3</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{art[5]}</representacao>
+                            <nomeRole>art</nomeRole>
+                            <posicaoRole>5</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_artigo</nomeTipo>
+                            </refTipo>
+                            <id>358</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_caput</nomeTipo>
+    </refTipo>
+    <id>359</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>360</id>
+            <representacao> O provimento dos cargos públicos far-se-á mediante ato da autoridade competente de cada Poder.</representacao>
+            <xhtmlFragment> O provimento dos cargos públicos far-se-á mediante ato da autoridade competente de cada Poder.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{cpt}</representacao>
+    <nomeRole>cpt</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{art[6]}</representacao>
+                            <nomeRole>art</nomeRole>
+                            <posicaoRole>6</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_artigo</nomeTipo>
+                            </refTipo>
+                            <id>361</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_caput</nomeTipo>
+    </refTipo>
+    <id>362</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>363</id>
+            <representacao> A investidura em cargo público ocorrerá com a posse.</representacao>
+            <xhtmlFragment> A investidura em cargo público ocorrerá com a posse.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{cpt}</representacao>
+    <nomeRole>cpt</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{art[7]}</representacao>
+                            <nomeRole>art</nomeRole>
+                            <posicaoRole>7</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_artigo</nomeTipo>
+                            </refTipo>
+                            <id>364</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_caput</nomeTipo>
+    </refTipo>
+    <id>365</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>384</id>
+            <representacao> São formas de provimento de cargo público:</representacao>
+            <xhtmlFragment> São formas de provimento de cargo público:</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>366</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>367</id>
+                    <representacao>nomeação;</representacao>
+                    <xhtmlFragment>nomeação;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[1]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>1</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>368</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>369</id>
+                    <representacao>promoção;</representacao>
+                    <xhtmlFragment>promoção;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[2]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>2</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>370</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>371</id>
+                    <representacao>(Revogado pela Lei nº 9.527, de 10.12.97)</representacao>
+                    <xhtmlFragment>(Revogado pela Lei nº 9.527, de 10.12.97)</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[3]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>3</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>372</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>373</id>
+                    <representacao>(Revogado pela Lei nº 9.527, de 10.12.97)</representacao>
+                    <xhtmlFragment>(Revogado pela Lei nº 9.527, de 10.12.97)</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[4]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>4</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>374</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>375</id>
+                    <representacao>readaptação;</representacao>
+                    <xhtmlFragment>readaptação;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[5]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>5</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>376</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>377</id>
+                    <representacao>reversão;</representacao>
+                    <xhtmlFragment>reversão;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[6]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>6</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>378</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>379</id>
+                    <representacao>aproveitamento;</representacao>
+                    <xhtmlFragment>aproveitamento;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[7]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>7</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>380</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>381</id>
+                    <representacao>reintegração;</representacao>
+                    <xhtmlFragment>reintegração;</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[8]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>8</posicaoRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_inciso</nomeTipo>
+            </refTipo>
+            <id>382</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>383</id>
+                    <representacao>recondução.</representacao>
+                    <xhtmlFragment>recondução.</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{inc[9]}</representacao>
+            <nomeRole>inc</nomeRole>
+            <posicaoRole>9</posicaoRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{cpt}</representacao>
+    <nomeRole>cpt</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{art[8]}</representacao>
+                            <nomeRole>art</nomeRole>
+                            <posicaoRole>8</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{sec[1]}</representacao>
+                    <nomeRole>sec</nomeRole>
+                    <posicaoRole>1</posicaoRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{cap[1]}</representacao>
+            <nomeRole>cap</nomeRole>
+            <posicaoRole>1</posicaoRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{tit[2]}</representacao>
+    <nomeRole>tit</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{articulacao}</representacao>
+                            <nomeRole>articulacao</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objetoSimbolico>
+                <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
+                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei:1993;8112@versao.original</representacao>
+                    <rotulo xsi:type="rotuloClassificadoImpl">
+                        <refTipo>
+                            <nomeTipo>rotulo_classificado</nomeTipo>
+                        </refTipo>
+                        <representacao>urn;urn:lex:br:federal:lei:1993;8112@versao.original</representacao>
+                        <nomeRole>urn</nomeRole>
+                        <classificacao>urn:lex:br:federal:lei:1993;8112@versao.original</classificacao>
+                    </rotulo>
+                    <sobreNome xsi:type="nomeContextoImpl">
+                        <representacao>todos_documentos</representacao>
+                        <refTipoContexto>
+                            <nomeTipo>todos_documentos</nomeTipo>
+                        </refTipoContexto>
+                    </sobreNome>
+                </nome>
+                <refTipo>
+                    <nomeTipo>doc_proj_lei</nomeTipo>
+                </refTipo>
+                <id>313</id>
+            </documento>
+            <documentoParseado>true</documentoParseado>
+            <fecho></fecho>
+            <incluidoVisualizacao>true</incluidoVisualizacao>
+            <localidades>br</localidades>
+            <numero>8112</numero>
+            <numeroComponente></numeroComponente>
+            <order>0</order>
+            <preambulo></preambulo>
+            <tiposDocumento>lei</tiposDocumento>
+            <titulo>Lei nº 8112/1993&lt;br&gt;&lt;p class=subtitulo&gt; Versão Original  [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei:1993;8112@versao.original</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_1993_8112_versao_original</urnIdDIV>
+            <versao>versao.original</versao>
+        </textos>
+        <id>20130405164031051-1</id>
+        <titulo>Nova Coluna</titulo>
+    </colunas>
+    <colunas>
+        <textos>
+            <anoComponente></anoComponente>
+            <articulacao>Capítulo I
+DAS DISPOSIÇÕES GERAIS
+
+Seção I
+Dos Princípios
+
+Art. 1o  Esta Lei estabelece normas gerais sobre licitações e contratos administrativos pertinentes a obras, serviços, inclusive de publicidade, compras, alienações e locações no âmbito dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios.
+
+Parágrafo único.  Subordinam-se ao regime desta Lei, além dos órgãos da administração direta, os fundos especiais, as autarquias, as fundações públicas, as empresas públicas, as sociedades de economia mista e demais entidades controladas direta ou indiretamente pela União, Estados, Distrito Federal e Municípios.
+
+Art. 2o  As obras, serviços, inclusive de publicidade, compras, alienações, concessões, permissões e locações da Administração Pública, quando contratadas com terceiros, serão necessariamente precedidas de licitação, ressalvadas as hipóteses previstas nesta Lei.
+
+Parágrafo único.  Para os fins desta Lei, considera-se contrato todo e qualquer ajuste entre órgãos ou entidades da Administração Pública e particulares, em que haja um acordo de vontades para a formação de vínculo e a estipulação de obrigações recíprocas, seja qual for a denominação utilizada.
+
+Art. 3o  A licitação destina-se a garantir a observância do princípio constitucional da isonomia, a seleção da proposta mais vantajosa para a administração e a promoção do desenvolvimento nacional sustentável e será processada e julgada em estrita conformidade com os princípios básicos da legalidade, da impessoalidade, da moralidade, da igualdade, da publicidade, da probidade administrativa, da vinculação ao instrumento convocatório, do julgamento objetivo e dos que lhes são correlatos. (Redação dada pela Lei nº 12.349, de 2010)  (Regulamento) (Regulamento) (Regulamento)
+
+§ 1o  É vedado aos agentes públicos:
+
+I - admitir, prever, incluir ou tolerar, nos atos de convocação, cláusulas ou condições que comprometam, restrinjam ou frustrem o seu caráter competitivo, inclusive nos casos de sociedades cooperativas, e estabeleçam preferências ou distinções em razão da naturalidade, da sede ou domicílio dos licitantes ou de qualquer outra circunstância impertinente ou irrelevante para o específico objeto do contrato, ressalvado o disposto nos §§ 5o a 12 deste artigo e no art. 3o da Lei no 8.248, de 23 de outubro de 1991; (Redação dada pela Lei nº 12.349, de 2010)
+
+II - estabelecer tratamento diferenciado de natureza comercial, legal, trabalhista, previdenciária ou qualquer outra, entre empresas brasileiras e estrangeiras, inclusive no que se refere a moeda, modalidade e local de pagamentos, mesmo quando envolvidos financiamentos de agências internacionais, ressalvado o disposto no parágrafo seguinte e no art. 3o da Lei no 8.248, de 23 de outubro de 1991.
+
+§ 2o  Em igualdade de condições, como critério de desempate, será assegurada preferência, sucessivamente, aos bens e serviços:
+
+        I - (Revogado pela Lei nº 12.349, de 2010)
+
+        II - produzidos no País;
+
+III - produzidos ou prestados por empresas brasileiras.
+
+IV - produzidos ou prestados por empresas que invistam em pesquisa e no desenvolvimento de tecnologia no País. (Incluído pela Lei nº 11.196, de 2005)
+
+§ 3o  A licitação não será sigilosa, sendo públicos e acessíveis ao público os atos de seu procedimento, salvo quanto ao conteúdo das propostas, até a respectiva abertura.
+
+§ 4º (Vetado). (Incluído pela Lei nº 8.883, de 1994)
+
+        § 5o  Nos processos de licitação previstos no caput, poderá ser estabelecido margem de preferência para produtos manufaturados e para serviços nacionais que atendam a normas técnicas brasileiras. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 6o  A margem de preferência de que trata o § 5o será estabelecida com base em estudos revistos periodicamente, em prazo não superior a 5 (cinco) anos, que levem em consideração: (Incluído pela Lei nº 12.349, de 2010)
+
+I - geração de emprego e renda; (Incluído pela Lei nº 12.349, de 2010)
+
+II - efeito na arrecadação de tributos federais, estaduais e municipais;  (Incluído pela Lei nº 12.349, de 2010)
+
+III - desenvolvimento e inovação tecnológica realizados no País; (Incluído pela Lei nº 12.349, de 2010)
+
+IV - custo adicional dos produtos e serviços; e (Incluído pela Lei nº 12.349, de 2010)
+
+V - em suas revisões, análise retrospectiva de resultados.  (Incluído pela Lei nº 12.349, de 2010)
+
+§ 7o  Para os produtos manufaturados e serviços nacionais resultantes de desenvolvimento e inovação tecnológica realizados no País, poderá ser estabelecido margem de preferência adicional àquela prevista no § 5o. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 8o  As margens de preferência por produto, serviço, grupo de produtos ou grupo de serviços, a que se referem os §§ 5o e 7o, serão definidas pelo Poder Executivo federal, não podendo a soma delas ultrapassar o montante de 25% (vinte e cinco por cento) sobre o preço dos produtos manufaturados e serviços estrangeiros. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 9o  As disposições contidas nos §§ 5o e 7o deste artigo não se aplicam aos bens e aos serviços cuja capacidade de produção ou prestação no País seja inferior: (Incluído pela Lei nº 12.349, de 2010)
+
+I - à quantidade a ser adquirida ou contratada; ou (Incluído pela Lei nº 12.349, de 2010)
+
+II - ao quantitativo fixado com fundamento no § 7o do art. 23 desta Lei, quando for o caso. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 10.  A margem de preferência a que se refere o § 5o poderá ser estendida, total ou parcialmente, aos bens e serviços originários dos Estados Partes do Mercado Comum do Sul - Mercosul. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 11.  Os editais de licitação para a contratação de bens, serviços e obras poderão, mediante prévia justificativa da autoridade competente, exigir que o contratado promova, em favor de órgão ou entidade integrante da administração pública ou daqueles por ela indicados a partir de processo isonômico, medidas de compensação comercial, industrial, tecnológica ou acesso a condições vantajosas de financiamento, cumulativamente ou não, na forma estabelecida pelo Poder Executivo federal. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 12.  Nas contratações destinadas à implantação, manutenção e ao aperfeiçoamento dos sistemas de tecnologia de informação e comunicação, considerados estratégicos em ato do Poder Executivo federal, a licitação poderá ser restrita a bens e serviços com tecnologia desenvolvida no País e produzidos de acordo com o processo produtivo básico de que trata a Lei no 10.176, de 11 de janeiro de 2001. (Incluído pela Lei nº 12.349, de 2010)
+
+§ 13.  Será divulgada na internet, a cada exercício financeiro, a relação de empresas favorecidas em decorrência do disposto nos §§ 5o, 7o, 10, 11 e 12 deste artigo, com indicação do volume de recursos destinados a cada uma delas. (Incluído pela Lei nº 12.349, de 2010)
+
+Art. 4o Todos quantos participem de licitação promovida pelos órgãos ou entidades a que se refere o art. 1º têm direito público subjetivo à fiel observância do pertinente procedimento estabelecido nesta lei, podendo qualquer cidadão acompanhar o seu desenvolvimento, desde que não interfira de modo a perturbar ou impedir a realização dos trabalhos.
+
+Parágrafo único. O procedimento licitatório previsto nesta lei caracteriza ato administrativo formal, seja ele praticado em qualquer esfera da Administração Pública.
+
+Art. 5o  Todos os valores, preços e custos utilizados nas licitações terão como expressão monetária a moeda corrente nacional, ressalvado o disposto no art. 42 desta Lei, devendo cada unidade da Administração, no pagamento das obrigações relativas ao fornecimento de bens, locações, realização de obras e prestação de serviços, obedecer, para cada fonte diferenciada de recursos, a estrita ordem cronológica das datas de suas exigibilidades, salvo quando presentes relevantes razões de interesse público e mediante prévia justificativa da autoridade competente, devidamente publicada.
+
+§ 1o  Os créditos a que se refere este artigo terão seus valores corrigidos por critérios previstos no ato convocatório e que lhes preservem o valor.
+
+§ 2o  A correção de que trata o parágrafo anterior cujo pagamento será feito junto com o principal, correrá à conta das mesmas dotações orçamentárias que atenderam aos créditos a que se referem. (Redação dada pela Lei nº 8.883, de 1994)
+
+§ 3o  Observados o disposto no caput, os pagamentos decorrentes de despesas cujos valores não ultrapassem o limite de qu</articulacao>
+            <autoridades>federal</autoridades>
+            <categorias>legislacao</categorias>
+            <comissaoespecial></comissaoespecial>
+            <componenteDocumento></componenteDocumento>
+            <dataAssinatura>1990</dataAssinatura>
+            <dataEvento></dataEvento>
+            <dataVigente></dataVigente>
+            <documento>
+                <objetoSimbolico xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>raiz_documento</nomeTipo>
+                    </refTipo>
+                    <id>77</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>articulacao</nomeTipo>
+                            </refTipo>
+                            <id>78</id>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_capitulo</nomeTipo>
+    </refTipo>
+    <id>80</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>162</id>
+            <representacao>DAS DISPOSIÇÕES GERAIS</representacao>
+            <xhtmlFragment>DAS DISPOSIÇÕES GERAIS</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+    <posicoes>
+        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+            <refTipo>
+                <nomeTipo>os_secao</nomeTipo>
+            </refTipo>
+            <id>81</id>
+            <posicoes>
+                <objeto xsi:type="textoFormatadoImpl">
+                    <refTipo>
+                        <nomeTipo>texto_formatado</nomeTipo>
+                    </refTipo>
+                    <id>161</id>
+                    <representacao>Dos Princípios</representacao>
+                    <xhtmlFragment>Dos Princípios</xhtmlFragment>
+                </objeto>
+                <rotulo xsi:type="roleRotuloImpl">
+                    <refTipo>
+                        <nomeTipo>role_rotulo</nomeTipo>
+                    </refTipo>
+                    <representacao>{texto}</representacao>
+                    <nomeRole>texto</nomeRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>82</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>83</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>84</id>
+    <representacao> Esta Lei estabelece normas gerais sobre licitações e contratos administrativos pertinentes a obras, serviços, inclusive de publicidade, compras, alienações e locações no âmbito dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios.</representacao>
+    <xhtmlFragment> Esta Lei estabelece normas gerais sobre licitações e contratos administrativos pertinentes a obras, serviços, inclusive de publicidade, compras, alienações e locações no âmbito dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>85</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>86</id>
+    <representacao> Subordinam-se ao regime desta Lei, além dos órgãos da administração direta, os fundos especiais, as autarquias, as fundações públicas, as empresas públicas, as sociedades de economia mista e demais entidades controladas direta ou indiretamente pela União, Estados, Distrito Federal e Municípios.</representacao>
+    <xhtmlFragment> Subordinam-se ao regime desta Lei, além dos órgãos da administração direta, os fundos especiais, as autarquias, as fundações públicas, as empresas públicas, as sociedades de economia mista e demais entidades controladas direta ou indiretamente pela União, Estados, Distrito Federal e Municípios.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloClassificadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_classificado</nomeTipo>
+                            </refTipo>
+                            <representacao>par;unico</representacao>
+                            <nomeRole>par</nomeRole>
+                            <classificacao>unico</classificacao>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[1]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>1</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>87</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>88</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>89</id>
+    <representacao> As obras, serviços, inclusive de publicidade, compras, alienações, concessões, permissões e locações da Administração Pública, quando contratadas com terceiros, serão necessariamente precedidas de licitação, ressalvadas as hipóteses previstas nesta Lei.</representacao>
+    <xhtmlFragment> As obras, serviços, inclusive de publicidade, compras, alienações, concessões, permissões e locações da Administração Pública, quando contratadas com terceiros, serão necessariamente precedidas de licitação, ressalvadas as hipóteses previstas nesta Lei.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>90</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>91</id>
+    <representacao> Para os fins desta Lei, considera-se contrato todo e qualquer ajuste entre órgãos ou entidades da Administração Pública e particulares, em que haja um acordo de vontades para a formação de vínculo e a estipulação de obrigações recíprocas, seja qual for a denominação utilizada.</representacao>
+    <xhtmlFragment> Para os fins desta Lei, considera-se contrato todo e qualquer ajuste entre órgãos ou entidades da Administração Pública e particulares, em que haja um acordo de vontades para a formação de vínculo e a estipulação de obrigações recíprocas, seja qual for a denominação utilizada.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloClassificadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_classificado</nomeTipo>
+                            </refTipo>
+                            <representacao>par;unico</representacao>
+                            <nomeRole>par</nomeRole>
+                            <classificacao>unico</classificacao>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[2]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>2</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>92</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>93</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>94</id>
+    <representacao> A licitação destina-se a garantir a observância do princípio constitucional da isonomia, a seleção da proposta mais vantajosa para a administração e a promoção do desenvolvimento nacional sustentável e será processada e julgada em estrita conformidade com os princípios básicos da legalidade, da impessoalidade, da moralidade, da igualdade, da publicidade, da probidade administrativa, da vinculação ao instrumento convocatório, do julgamento objetivo e dos que lhes são correlatos. (Redação dada pela Lei nº 12.349, de 2010)  (Regulamento) (Regulamento) (Regulamento)</representacao>
+    <xhtmlFragment> A licitação destina-se a garantir a observância do princípio constitucional da isonomia, a seleção da proposta mais vantajosa para a administração e a promoção do desenvolvimento nacional sustentável e será processada e julgada em estrita conformidade com os princípios básicos da legalidade, da impessoalidade, da moralidade, da igualdade, da publicidade, da probidade administrativa, da vinculação ao instrumento convocatório, do julgamento objetivo e dos que lhes são correlatos. (Redação dada pela Lei nº 12.349, de 2010)  (Regulamento) (Regulamento) (Regulamento)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>95</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>100</id>
+    <representacao> É vedado aos agentes públicos:</representacao>
+    <xhtmlFragment> É vedado aos agentes públicos:</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>96</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>97</id>
+            <representacao>admitir, prever, incluir ou tolerar, nos atos de convocação, cláusulas ou condições que comprometam, restrinjam ou frustrem o seu caráter competitivo, inclusive nos casos de sociedades cooperativas, e estabeleçam preferências ou distinções em razão da naturalidade, da sede ou domicílio dos licitantes ou de qualquer outra circunstância impertinente ou irrelevante para o específico objeto do contrato, ressalvado o disposto nos §§ 5o a 12 deste artigo e no art. 3o da Lei no 8.248, de 23 de outubro de 1991; (Redação dada pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>admitir, prever, incluir ou tolerar, nos atos de convocação, cláusulas ou condições que comprometam, restrinjam ou frustrem o seu caráter competitivo, inclusive nos casos de sociedades cooperativas, e estabeleçam preferências ou distinções em razão da naturalidade, da sede ou domicílio dos licitantes ou de qualquer outra circunstância impertinente ou irrelevante para o específico objeto do contrato, ressalvado o disposto nos §§ 5o a 12 deste artigo e no art. 3o da Lei no 8.248, de 23 de outubro de 1991; (Redação dada pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[1]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>98</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>99</id>
+            <representacao>estabelecer tratamento diferenciado de natureza comercial, legal, trabalhista, previdenciária ou qualquer outra, entre empresas brasileiras e estrangeiras, inclusive no que se refere a moeda, modalidade e local de pagamentos, mesmo quando envolvidos financiamentos de agências internacionais, ressalvado o disposto no parágrafo seguinte e no art. 3o da Lei no 8.248, de 23 de outubro de 1991.</representacao>
+            <xhtmlFragment>estabelecer tratamento diferenciado de natureza comercial, legal, trabalhista, previdenciária ou qualquer outra, entre empresas brasileiras e estrangeiras, inclusive no que se refere a moeda, modalidade e local de pagamentos, mesmo quando envolvidos financiamentos de agências internacionais, ressalvado o disposto no parágrafo seguinte e no art. 3o da Lei no 8.248, de 23 de outubro de 1991.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[2]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[1]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>1</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>101</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>110</id>
+    <representacao> Em igualdade de condições, como critério de desempate, será assegurada preferência, sucessivamente, aos bens e serviços:</representacao>
+    <xhtmlFragment> Em igualdade de condições, como critério de desempate, será assegurada preferência, sucessivamente, aos bens e serviços:</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>102</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>103</id>
+            <representacao>(Revogado pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>(Revogado pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[1]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>104</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>105</id>
+            <representacao>produzidos no País;</representacao>
+            <xhtmlFragment>produzidos no País;</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[2]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>106</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>107</id>
+            <representacao>produzidos ou prestados por empresas brasileiras.</representacao>
+            <xhtmlFragment>produzidos ou prestados por empresas brasileiras.</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[3]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>3</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>108</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>109</id>
+            <representacao>produzidos ou prestados por empresas que invistam em pesquisa e no desenvolvimento de tecnologia no País. (Incluído pela Lei nº 11.196, de 2005)</representacao>
+            <xhtmlFragment>produzidos ou prestados por empresas que invistam em pesquisa e no desenvolvimento de tecnologia no País. (Incluído pela Lei nº 11.196, de 2005)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[4]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>4</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[2]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>2</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>111</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>112</id>
+    <representacao> A licitação não será sigilosa, sendo públicos e acessíveis ao público os atos de seu procedimento, salvo quanto ao conteúdo das propostas, até a respectiva abertura.</representacao>
+    <xhtmlFragment> A licitação não será sigilosa, sendo públicos e acessíveis ao público os atos de seu procedimento, salvo quanto ao conteúdo das propostas, até a respectiva abertura.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[3]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>3</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>113</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>114</id>
+    <representacao>(Vetado). (Incluído pela Lei nº 8.883, de 1994)</representacao>
+    <xhtmlFragment>(Vetado). (Incluído pela Lei nº 8.883, de 1994)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[4]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>4</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>115</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>116</id>
+    <representacao> Nos processos de licitação previstos no caput, poderá ser estabelecido margem de preferência para produtos manufaturados e para serviços nacionais que atendam a normas técnicas brasileiras. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> Nos processos de licitação previstos no caput, poderá ser estabelecido margem de preferência para produtos manufaturados e para serviços nacionais que atendam a normas técnicas brasileiras. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[5]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>5</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>117</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>128</id>
+    <representacao> A margem de preferência de que trata o § 5o será estabelecida com base em estudos revistos periodicamente, em prazo não superior a 5 (cinco) anos, que levem em consideração: (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> A margem de preferência de que trata o § 5o será estabelecida com base em estudos revistos periodicamente, em prazo não superior a 5 (cinco) anos, que levem em consideração: (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>118</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>119</id>
+            <representacao>geração de emprego e renda; (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>geração de emprego e renda; (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[1]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>120</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>121</id>
+            <representacao>efeito na arrecadação de tributos federais, estaduais e municipais;  (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>efeito na arrecadação de tributos federais, estaduais e municipais;  (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[2]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>122</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>123</id>
+            <representacao>desenvolvimento e inovação tecnológica realizados no País; (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>desenvolvimento e inovação tecnológica realizados no País; (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[3]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>3</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>124</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>125</id>
+            <representacao>custo adicional dos produtos e serviços; e (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>custo adicional dos produtos e serviços; e (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[4]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>4</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>126</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>127</id>
+            <representacao>em suas revisões, análise retrospectiva de resultados.  (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>em suas revisões, análise retrospectiva de resultados.  (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[5]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>5</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[6]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>6</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>129</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>130</id>
+    <representacao> Para os produtos manufaturados e serviços nacionais resultantes de desenvolvimento e inovação tecnológica realizados no País, poderá ser estabelecido margem de preferência adicional àquela prevista no § 5o. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> Para os produtos manufaturados e serviços nacionais resultantes de desenvolvimento e inovação tecnológica realizados no País, poderá ser estabelecido margem de preferência adicional àquela prevista no § 5o. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[7]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>7</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>131</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>132</id>
+    <representacao> As margens de preferência por produto, serviço, grupo de produtos ou grupo de serviços, a que se referem os §§ 5o e 7o, serão definidas pelo Poder Executivo federal, não podendo a soma delas ultrapassar o montante de 25% (vinte e cinco por cento) sobre o preço dos produtos manufaturados e serviços estrangeiros. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> As margens de preferência por produto, serviço, grupo de produtos ou grupo de serviços, a que se referem os §§ 5o e 7o, serão definidas pelo Poder Executivo federal, não podendo a soma delas ultrapassar o montante de 25% (vinte e cinco por cento) sobre o preço dos produtos manufaturados e serviços estrangeiros. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[8]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>8</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>133</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>138</id>
+    <representacao> As disposições contidas nos §§ 5o e 7o deste artigo não se aplicam aos bens e aos serviços cuja capacidade de produção ou prestação no País seja inferior: (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> As disposições contidas nos §§ 5o e 7o deste artigo não se aplicam aos bens e aos serviços cuja capacidade de produção ou prestação no País seja inferior: (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>134</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>135</id>
+            <representacao>à quantidade a ser adquirida ou contratada; ou (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>à quantidade a ser adquirida ou contratada; ou (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[1]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                            <posicoes>
+<objeto xsi:type="objetoSimbolicoComplexoImpl">
+    <refTipo>
+        <nomeTipo>os_inciso</nomeTipo>
+    </refTipo>
+    <id>136</id>
+    <posicoes>
+        <objeto xsi:type="textoFormatadoImpl">
+            <refTipo>
+                <nomeTipo>texto_formatado</nomeTipo>
+            </refTipo>
+            <id>137</id>
+            <representacao>ao quantitativo fixado com fundamento no § 7o do art. 23 desta Lei, quando for o caso. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+            <xhtmlFragment>ao quantitativo fixado com fundamento no § 7o do art. 23 desta Lei, quando for o caso. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+        </objeto>
+        <rotulo xsi:type="roleRotuloImpl">
+            <refTipo>
+                <nomeTipo>role_rotulo</nomeTipo>
+            </refTipo>
+            <representacao>{texto}</representacao>
+            <nomeRole>texto</nomeRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{inc[2]}</representacao>
+    <nomeRole>inc</nomeRole>
+    <posicaoRole>2</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[9]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>9</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>139</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>140</id>
+    <representacao> A margem de preferência a que se refere o § 5o poderá ser estendida, total ou parcialmente, aos bens e serviços originários dos Estados Partes do Mercado Comum do Sul - Mercosul. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> A margem de preferência a que se refere o § 5o poderá ser estendida, total ou parcialmente, aos bens e serviços originários dos Estados Partes do Mercado Comum do Sul - Mercosul. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[10]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>10</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>141</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>142</id>
+    <representacao> Os editais de licitação para a contratação de bens, serviços e obras poderão, mediante prévia justificativa da autoridade competente, exigir que o contratado promova, em favor de órgão ou entidade integrante da administração pública ou daqueles por ela indicados a partir de processo isonômico, medidas de compensação comercial, industrial, tecnológica ou acesso a condições vantajosas de financiamento, cumulativamente ou não, na forma estabelecida pelo Poder Executivo federal. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> Os editais de licitação para a contratação de bens, serviços e obras poderão, mediante prévia justificativa da autoridade competente, exigir que o contratado promova, em favor de órgão ou entidade integrante da administração pública ou daqueles por ela indicados a partir de processo isonômico, medidas de compensação comercial, industrial, tecnológica ou acesso a condições vantajosas de financiamento, cumulativamente ou não, na forma estabelecida pelo Poder Executivo federal. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[11]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>11</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>143</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>144</id>
+    <representacao> Nas contratações destinadas à implantação, manutenção e ao aperfeiçoamento dos sistemas de tecnologia de informação e comunicação, considerados estratégicos em ato do Poder Executivo federal, a licitação poderá ser restrita a bens e serviços com tecnologia desenvolvida no País e produzidos de acordo com o processo produtivo básico de que trata a Lei no 10.176, de 11 de janeiro de 2001. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> Nas contratações destinadas à implantação, manutenção e ao aperfeiçoamento dos sistemas de tecnologia de informação e comunicação, considerados estratégicos em ato do Poder Executivo federal, a licitação poderá ser restrita a bens e serviços com tecnologia desenvolvida no País e produzidos de acordo com o processo produtivo básico de que trata a Lei no 10.176, de 11 de janeiro de 2001. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[12]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>12</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>145</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>146</id>
+    <representacao> Será divulgada na internet, a cada exercício financeiro, a relação de empresas favorecidas em decorrência do disposto nos §§ 5o, 7o, 10, 11 e 12 deste artigo, com indicação do volume de recursos destinados a cada uma delas. (Incluído pela Lei nº 12.349, de 2010)</representacao>
+    <xhtmlFragment> Será divulgada na internet, a cada exercício financeiro, a relação de empresas favorecidas em decorrência do disposto nos §§ 5o, 7o, 10, 11 e 12 deste artigo, com indicação do volume de recursos destinados a cada uma delas. (Incluído pela Lei nº 12.349, de 2010)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[13]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>13</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[3]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>3</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>147</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>148</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>149</id>
+    <representacao>Todos quantos participem de licitação promovida pelos órgãos ou entidades a que se refere o art. 1º têm direito público subjetivo à fiel observância do pertinente procedimento estabelecido nesta lei, podendo qualquer cidadão acompanhar o seu desenvolvimento, desde que não interfira de modo a perturbar ou impedir a realização dos trabalhos.</representacao>
+    <xhtmlFragment>Todos quantos participem de licitação promovida pelos órgãos ou entidades a que se refere o art. 1º têm direito público subjetivo à fiel observância do pertinente procedimento estabelecido nesta lei, podendo qualquer cidadão acompanhar o seu desenvolvimento, desde que não interfira de modo a perturbar ou impedir a realização dos trabalhos.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>150</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>151</id>
+    <representacao>O procedimento licitatório previsto nesta lei caracteriza ato administrativo formal, seja ele praticado em qualquer esfera da Administração Pública.</representacao>
+    <xhtmlFragment>O procedimento licitatório previsto nesta lei caracteriza ato administrativo formal, seja ele praticado em qualquer esfera da Administração Pública.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloClassificadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_classificado</nomeTipo>
+                            </refTipo>
+                            <representacao>par;unico</representacao>
+                            <nomeRole>par</nomeRole>
+                            <classificacao>unico</classificacao>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[4]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>4</posicaoRole>
+                </rotulo>
+            </posicoes>
+            <posicoes>
+                <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                    <refTipo>
+                        <nomeTipo>os_artigo</nomeTipo>
+                    </refTipo>
+                    <id>152</id>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_caput</nomeTipo>
+                            </refTipo>
+                            <id>153</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>154</id>
+    <representacao> Todos os valores, preços e custos utilizados nas licitações terão como expressão monetária a moeda corrente nacional, ressalvado o disposto no art. 42 desta Lei, devendo cada unidade da Administração, no pagamento das obrigações relativas ao fornecimento de bens, locações, realização de obras e prestação de serviços, obedecer, para cada fonte diferenciada de recursos, a estrita ordem cronológica das datas de suas exigibilidades, salvo quando presentes relevantes razões de interesse público e mediante prévia justificativa da autoridade competente, devidamente publicada.</representacao>
+    <xhtmlFragment> Todos os valores, preços e custos utilizados nas licitações terão como expressão monetária a moeda corrente nacional, ressalvado o disposto no art. 42 desta Lei, devendo cada unidade da Administração, no pagamento das obrigações relativas ao fornecimento de bens, locações, realização de obras e prestação de serviços, obedecer, para cada fonte diferenciada de recursos, a estrita ordem cronológica das datas de suas exigibilidades, salvo quando presentes relevantes razões de interesse público e mediante prévia justificativa da autoridade competente, devidamente publicada.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{cpt}</representacao>
+                            <nomeRole>cpt</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>155</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>156</id>
+    <representacao> Os créditos a que se refere este artigo terão seus valores corrigidos por critérios previstos no ato convocatório e que lhes preservem o valor.</representacao>
+    <xhtmlFragment> Os créditos a que se refere este artigo terão seus valores corrigidos por critérios previstos no ato convocatório e que lhes preservem o valor.</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[1]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>1</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>157</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>158</id>
+    <representacao> A correção de que trata o parágrafo anterior cujo pagamento será feito junto com o principal, correrá à conta das mesmas dotações orçamentárias que atenderam aos créditos a que se referem. (Redação dada pela Lei nº 8.883, de 1994)</representacao>
+    <xhtmlFragment> A correção de que trata o parágrafo anterior cujo pagamento será feito junto com o principal, correrá à conta das mesmas dotações orçamentárias que atenderam aos créditos a que se referem. (Redação dada pela Lei nº 8.883, de 1994)</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[2]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>2</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                    <posicoes>
+                        <objeto xsi:type="objetoSimbolicoComplexoImpl">
+                            <refTipo>
+<nomeTipo>os_paragrafo</nomeTipo>
+                            </refTipo>
+                            <id>159</id>
+                            <posicoes>
+<objeto xsi:type="textoFormatadoImpl">
+    <refTipo>
+        <nomeTipo>texto_formatado</nomeTipo>
+    </refTipo>
+    <id>160</id>
+    <representacao> Observados o disposto no caput, os pagamentos decorrentes de despesas cujos valores não ultrapassem o limite de qu</representacao>
+    <xhtmlFragment> Observados o disposto no caput, os pagamentos decorrentes de despesas cujos valores não ultrapassem o limite de qu</xhtmlFragment>
+</objeto>
+<rotulo xsi:type="roleRotuloImpl">
+    <refTipo>
+        <nomeTipo>role_rotulo</nomeTipo>
+    </refTipo>
+    <representacao>{texto}</representacao>
+    <nomeRole>texto</nomeRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="rotuloOrdenadoImpl">
+                            <refTipo>
+<nomeTipo>rotulo_ordenado</nomeTipo>
+                            </refTipo>
+                            <representacao>{par[3]}</representacao>
+                            <nomeRole>par</nomeRole>
+                            <posicaoRole>3</posicaoRole>
+                        </rotulo>
+                    </posicoes>
+                </objeto>
+                <rotulo xsi:type="rotuloOrdenadoImpl">
+                    <refTipo>
+                        <nomeTipo>rotulo_ordenado</nomeTipo>
+                    </refTipo>
+                    <representacao>{art[5]}</representacao>
+                    <nomeRole>art</nomeRole>
+                    <posicaoRole>5</posicaoRole>
+                </rotulo>
+            </posicoes>
+        </objeto>
+        <rotulo xsi:type="rotuloOrdenadoImpl">
+            <refTipo>
+                <nomeTipo>rotulo_ordenado</nomeTipo>
+            </refTipo>
+            <representacao>{sec[1]}</representacao>
+            <nomeRole>sec</nomeRole>
+            <posicaoRole>1</posicaoRole>
+        </rotulo>
+    </posicoes>
+</objeto>
+<rotulo xsi:type="rotuloOrdenadoImpl">
+    <refTipo>
+        <nomeTipo>rotulo_ordenado</nomeTipo>
+    </refTipo>
+    <representacao>{cap[1]}</representacao>
+    <nomeRole>cap</nomeRole>
+    <posicaoRole>1</posicaoRole>
+</rotulo>
+                            </posicoes>
+                        </objeto>
+                        <rotulo xsi:type="roleRotuloImpl">
+                            <refTipo>
+<nomeTipo>role_rotulo</nomeTipo>
+                            </refTipo>
+                            <representacao>{articulacao}</representacao>
+                            <nomeRole>articulacao</nomeRole>
+                        </rotulo>
+                    </posicoes>
+                </objetoSimbolico>
+                <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
+                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei:1990;8666@versao.original</representacao>
+                    <rotulo xsi:type="rotuloClassificadoImpl">
+                        <refTipo>
+                            <nomeTipo>rotulo_classificado</nomeTipo>
+                        </refTipo>
+                        <representacao>urn;urn:lex:br:federal:lei:1990;8666@versao.original</representacao>
+                        <nomeRole>urn</nomeRole>
+                        <classificacao>urn:lex:br:federal:lei:1990;8666@versao.original</classificacao>
+                    </rotulo>
+                    <sobreNome xsi:type="nomeContextoImpl">
+                        <representacao>todos_documentos</representacao>
+                        <refTipoContexto>
+                            <nomeTipo>todos_documentos</nomeTipo>
+                        </refTipoContexto>
+                    </sobreNome>
+                </nome>
+                <refTipo>
+                    <nomeTipo>doc_proj_lei</nomeTipo>
+                </refTipo>
+                <id>76</id>
+            </documento>
+            <documentoParseado>true</documentoParseado>
+            <fecho></fecho>
+            <incluidoVisualizacao>true</incluidoVisualizacao>
+            <localidades>br</localidades>
+            <numero>8666</numero>
+            <numeroComponente></numeroComponente>
+            <order>1</order>
+            <preambulo></preambulo>
+            <tiposDocumento>lei</tiposDocumento>
+            <titulo>Lei nº 8666/1990&lt;br&gt;&lt;p class=subtitulo&gt; Versão Original  [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei:1990;8666@versao.original</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_1990_8666_versao_original</urnIdDIV>
+            <versao>versao.original</versao>
+        </textos>
+        <id>20130405164031051-2</id>
+        <titulo>Nova Coluna</titulo>
+    </colunas>
+    <conexoes>
+        <sourceId>urn_lex_br_federal_lei_1993_8112_versao_original</sourceId>
+        <targetId>urn_lex_br_federal_lei_1990_8666_versao_original</targetId>
+    </conexoes>
+    <correlacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_divisao</nomeTipo>
+            </refTipo>
+            <alvo>84</alvo>
+            <alvo>86</alvo>
+            <id>1</id>
+            <origem>171</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
+                <noneUsuario>0</noneUsuario>
+            </proveniencia>
+        </relacoes>
+        <urn1>urn:lex:br:federal:lei:1993;8112@versao.original</urn1>
+        <urn2>urn:lex:br:federal:lei:1990;8666@versao.original</urn2>
+    </correlacoes>
+    <currentPosition>387</currentPosition>
+    <id>20130405164031051</id>
+    <titulo>Novo quadro Rudy</titulo>
+</quadroComparativo>

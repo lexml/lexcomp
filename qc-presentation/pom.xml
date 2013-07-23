@@ -139,7 +139,7 @@
         <dependency>
             <groupId>br.gov.lexml</groupId>
             <artifactId>symbolicobject</artifactId>
-            <version>0.0.5-SNAPSHOT</version>
+            <version>0.0.5</version>
         </dependency>
         <dependency>
             <groupId>jdom</groupId>

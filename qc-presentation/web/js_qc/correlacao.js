@@ -75,7 +75,15 @@ jsPlumb.ready(function() {
                 jsPlumb.detach(conn); 
                 atualizaConexoes(conn, 'remover');
             });
-    });   
+    }); 
+    
+    
+    
+    
+    
+  
+    
+    
 });
 
 // the definition of source endpoints (the small blue ones)
@@ -335,11 +343,11 @@ function addDivRelacaoPendente(id) {
 function addDivRelacao(relacao) {
     
     var relacaoId = "relacao_" + relacao.id;
-    var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" style="height: 20px; width: 86%; border: solid;" class="colunaComparacao relacao">\
+    var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" style="height: 20px; width: 75px; border: solid; margin:auto; margin-left:50%;" class="colunaComparacao relacao">\
                             <a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a>&nbsp;\
                             <a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a>&nbsp;\
                             <a href="javascript:void(0);" id="linkEditaRelacao_' + relacao.id + '" class="linkEditaRelacao" style="margin: 1px;"><img src="images/edit_c.png" width="15" align="left" title="Editar"></a>\
-                            <a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="right" title="Tipos" style="position:relative; right:5px;"></a>\
+                            <a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="left" title="Tipos" style="position:relative; right:-6px; top:-14px;"></a>\
                         </div>';
 
     var divRelacao = $(strDivRelacao);
