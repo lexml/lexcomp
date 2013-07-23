@@ -13,9 +13,9 @@ case class EdgeData[+Edge](value : Edge) extends CorrelationCellData[Nothing,Edg
 object CorrelationCellData {
   implicit def cellRenderer[Node,Edge](implicit nodeRenderer : CellRenderer[Node], edgeRenderer : CellRenderer[Edge]) : 
 	  				CellRenderer[CorrelationCellData[Node,Edge]] = 
-  		  new CellRenderer[CorrelationCellData[Node,Edge]] { 
+  		  new BaseRenderer[CorrelationCellData[Node,Edge]] { 
   			override def render(c : CorrelationCellData[Node,Edge]) = c match {  
-  				case NoData => RenderedCell(NodeSeq.Empty)
+  				case NoData => RenderedCell(NodeSeq.Empty,List("css-vis-diff-vazio"))
   				case NodeData(value) => nodeRenderer.render(value)
   				case EdgeData(value) => edgeRenderer.render(value)
   			}

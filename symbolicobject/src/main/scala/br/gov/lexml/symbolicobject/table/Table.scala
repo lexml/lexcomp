@@ -21,11 +21,24 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
                     (implicit cellRenderer : CellRenderer[A]) = {
     import Table._
     
+    def totalColSpan(r : List[Cell[A]]) = r.map(_.cs).sum
+    
+    val maxSpan = rows.map(totalColSpan).max
+       
+    
     addClassesId(
         <table> 
         { rows.map(row => {
-          <tr>{row.map(c => cellRenderer.render(c.content).td % new UnprefixedAttribute("colspan", c.cs.toString, Null) )}</tr>
-        })
+          val ts = totalColSpan(row)
+          val rs = maxSpan - ts
+          <tr>{
+            row.map(c => cellRenderer.render(c.content).td % new UnprefixedAttribute("colspan", c.cs.toString, Null) )
+            }
+            {
+            if(rs <= 0) { NodeSeq.Empty } else { cellRenderer.empty.td % new UnprefixedAttribute("colspan", rs.toString, Null) }
+            }
+            </tr>            
+          })
         }
     	</table>, cssClasses, id)
   }
@@ -44,6 +57,7 @@ final case class RenderedCell(
 
 trait CellRenderer[N] {
   def render(x : N) : RenderedCell
+  def empty : RenderedCell
 }
 
 object Table {  

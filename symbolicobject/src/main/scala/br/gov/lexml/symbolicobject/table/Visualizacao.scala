@@ -1,6 +1,7 @@
 package br.gov.lexml.symbolicobject.table
 
 import scala.xml.NodeSeq
+
 import br.gov.lexml.{symbolicobject => I}
 import br.gov.lexml.symbolicobject.indexer.Contexto
 import br.gov.lexml.symbolicobject.indexer.Types._
@@ -17,12 +18,20 @@ import scala.xml.Null
 import scala.xml.Text
 
 
+trait OpcoesVisualizacao {
+  def getMaxUpdateRatio() : Double
+} 
 
+abstract class BaseRenderer[T] extends CellRenderer[T] {
+      def empty : RenderedCell = RenderedCell(NodeSeq.Empty, List("css-vis-empty-right"))
+}
 
 class Visualizacao(indexer : IIndexer) {
 
+    
+  
     // de SymbolicObject e outro de Relacao
-    private implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
+    private implicit val cellRendererSO = new BaseRenderer[Either[PosicaoComCtx, NodeSeq]] {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
@@ -35,7 +44,7 @@ class Visualizacao(indexer : IIndexer) {
     }
 
     // de SymbolicObject e outro de Relacao
-    private implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+    private implicit val cellRendererRelation = new BaseRenderer[Either[RelacaoComCtx, NodeSeq]] {
       import br.gov.lexml.lexmldiff._
       private[this] def renderDiffCase(dc : DiffCase) : NodeSeq = dc match {
         case i : Insert => <span class="diff diffInsert">{i.text}</span>
@@ -60,10 +69,10 @@ class Visualizacao(indexer : IIndexer) {
           val d : NodeSeq = r.data.textos.flatMap { case (t1,t2) =>
             diff(t1.text,t2.text)            
           } getOrElse(Text(""))
-          RenderedCell(<span> { d }</span>)
+          RenderedCell(<span> { d }</span>,List("css-vis-diff","css-vis-diff-diferenca"))
         }
-        case Left(_) => RenderedCell()
-        case Right(ns) => RenderedCell(ns)
+        case Left(_) => RenderedCell(NodeSeq.Empty,List("css-vis-diff","css-vis-diff-sem-diferenca"))
+        case Right(ns) => RenderedCell(ns,List("css-vis-diff-comentario"))
       }
     }
 
@@ -81,7 +90,7 @@ class Visualizacao(indexer : IIndexer) {
   
   import java.util.{List => JList}
     
-  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]], opcoes : OpcoesVisualizacao): String = {
     import scala.collection.{JavaConverters => JC}
   
     def toScalaList[A](l : JList[A]) : List[A] = {
@@ -90,10 +99,10 @@ class Visualizacao(indexer : IIndexer) {
     
     createHtmlTable(
         toScalaList(indexOrder).map(_.toInt), 
-        toScalaList(columns).map( x => toScalaList(x)) )
+        toScalaList(columns).map( x => toScalaList(x)), opcoes )
   }
   
-  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]], opcoes : OpcoesVisualizacao): String = {
 
     def produceRootCorrelations : List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] = {
       
