@@ -1,7 +1,7 @@
-function getVisualizacao(qcid, callback){
+function getVisualizacao(qcid, porcentagem, callback){
     
     $.ajax({
-        url: '/api/visualizacao/' + qcid,
+        url: '/api/visualizacao/' + qcid+'/'+porcentagem,
         type:'GET',
         contentType: "application/json; charset=utf-8",
         success:function(res){

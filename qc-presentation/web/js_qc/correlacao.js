@@ -2,8 +2,6 @@
 //***** JSPLUMB *****//
 jsPlumb.ready(function() {                
 
-
-
     // your jsPlumb related init code goes here
     jsPlumb.importDefaults({
         Connector : "Straight",

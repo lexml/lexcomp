@@ -107,12 +107,13 @@
             
 
         <script>
-            
+            // parametros criados em menu.js
             var qcid = getURLParameter('qcid');
+            var porcentagem = getURLParameter('porcentagem');
             
             $(document).ready(function() {
 
-                getVisualizacao(qcid, function(tableVisualizacao) {
+                getVisualizacao(qcid, porcentagem, function(tableVisualizacao) {
                     $("#htmlVisualizacaoServidor").html(tableVisualizacao);
                     $('#htmlVisualizacaoServidor').show();
 

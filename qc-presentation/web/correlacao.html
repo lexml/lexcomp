@@ -229,7 +229,11 @@
                
                
                
-               
+                 //Repinta tela ao mudar a resolução ou tamano da janela
+ $(window).resize(function() {
+   jsPlumb.repaintEverything();
+});
+
                
                
 

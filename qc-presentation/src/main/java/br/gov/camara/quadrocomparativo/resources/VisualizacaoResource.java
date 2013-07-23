@@ -28,10 +28,13 @@ public class VisualizacaoResource {
 	HttpServletRequest request;
 
 	@GET
-	@Path("/{qcid}")
+	@Path("/{qcid}/{porcentagem}")
 	@Produces(MediaType.TEXT_HTML)
-	public String getVisualizacao(@PathParam("qcid") String idQuadro) {
+	public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") int porcentagem) {
 
+		//TODO Informar porcentagem ao código Scala 
+		System.out.println("PORCENTAGEM INFORMADA: "+porcentagem);
+		
 		QuadroComparativo qc = QuadroComparativoController
 				.getQuadroComparativo(request, idQuadro);
 		
