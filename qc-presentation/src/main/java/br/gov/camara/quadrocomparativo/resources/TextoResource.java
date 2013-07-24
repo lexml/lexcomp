@@ -292,9 +292,7 @@ public class TextoResource {
         
         QuadroComparativoController.saveQuadroComparativo(request, qc);
 
-        String result = "Texto saved: " + texto;
-        
-        return Response.status(Status.CREATED).entity(result).build();
+        return Response.status(Status.CREATED).entity(texto).build();
     }
     
     /**

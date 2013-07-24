@@ -184,7 +184,7 @@ function print_menu() {
                $("#visualizacao-porcentagem").val( ui.value / 100 );
            }
        });
-       $("#visualizacao-porcentagem").val("0.01");
+       $("#visualizacao-porcentagem").val("0.50");
        
       //botão da visualização que abre a visualização em si
        $("#sbVisualizacao").click(function(event) { 
