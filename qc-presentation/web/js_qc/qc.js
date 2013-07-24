@@ -502,11 +502,38 @@ function configuraQuadro() {
     });
     
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     
     
     // edita conteudo dos textos
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
+        
+        
+        var idColunaUrn;
         
         event.preventDefault();
             
@@ -531,12 +558,19 @@ function configuraQuadro() {
         $.each(quadro.colunas, function (ic, col) {
                    
             if (col.textos) {
-
+                
                 $.each(col.textos, function (it, txt) {
-
+                    
+                    console.log(urn);
+                    console.log(txt.urn.toString());
+                    
+                    
                     if (txt.urn == urn) {
+                        
                         texto = txt;
                         coluna = col;
+                        console.log(col);
+                        idColunaUrn = col.id;
                         return;
                     }
                 });
@@ -567,24 +601,41 @@ function configuraQuadro() {
                     //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
                     //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
                         
-                    texto.preambulo = $("#preambulo-textarea").val();
-                    texto.articulacao = $("#texto-textarea").val();
-                    texto.fecho = $("#fecho-textarea").val();
                     
+                    var textoSalvamento = {};
+                    textoSalvamento.preambulo = $("#preambulo-textarea").val();                    
+                    textoSalvamento.articulacao = $("#texto-textarea").val();
+                    textoSalvamento.fecho = $("#fecho-textarea").val();
+                    
+                   
+              
+                  
+                 //console.log('#### - /api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/");
+                  
+                   //Ajax 
                    $.ajax({
-                        url: '/api/texto/qc/' + quadro.id + '/col/' + coluna.id + "/",
+                        url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
                         type: 'POST',
-                        data: JSON.stringify(texto),
-                        dataType: 'json',
+                        data: JSON.stringify(textoSalvamento),
+                        dataType: 'json',                        
                         contentType: "application/json; charset=utf-8",
                         success:function(res){
                             dialog.dialog("close");
+                            console.log(res);
+                            texto = textoSalvamento;
                         },
                         error:function(res){
-                            showAlertDialog("Falha ao salvar texto: " + res.statusText);
+                            
+                            console.log('Erro:');                            
+                            console.log(res);
+                            //showAlertDialog("Falha ao salvar texto: " + res.statusText);
                             //dialog.dialog("close");
                         }
                     }); 
+                   
+                    
+                    
+                    
                 },
                 "Cancelar": function() {
                     $( this ).dialog( "close" );
@@ -592,7 +643,7 @@ function configuraQuadro() {
             },
             open: function (evt, ui) {
                 
-                searchText(urn, false);
+                //searchText(urn, false);
                 if(texto && texto.articulacao){
                     showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
                 }
@@ -606,6 +657,38 @@ function configuraQuadro() {
         //$('a#linkImportaTexto').click();
         
     });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //Remove divs de Texto que por ventura estejam duplicados, evitando assim efeitos inesperados no plumb
     $('.window[id]').each(function () {
