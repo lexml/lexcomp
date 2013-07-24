@@ -33,9 +33,9 @@ class Visualizacao(indexer : IIndexer) {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
-          case tp: TextoPuro[Contexto] => RenderedCell(<span><span class="cis-vis-span-rotulo">{tp.data.caminho.render2 + ": "}</span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
+          case tp: TextoPuro[Contexto] => RenderedCell(<span><span class="css-vis-span-rotulo">{tp.data.caminho.render2 + ": "}</span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
           case tf: TextoFormatado[Contexto] => RenderedCell(
-              NodeSeq.fromSeq(Seq(<span class="cis-vis-span-rotulo">{tf.data.caminho.render2 + ": "}</span>) ++ tf.frag.ns ) 
+              NodeSeq.fromSeq(Seq(<span class="css-vis-span-rotulo">{tf.data.caminho.render2 + ": "}</span>) ++ tf.frag.ns ) 
               , 
               List("css-vis-texto-formatado"), Some("tf-" + tf.id))
           case os: ObjetoSimbolicoComplexo[Contexto] => RenderedCell(<span>{ pos.rotulo.toString }</span>, List("css-vis-texto-obj-simbolico", "css-vis-os-" + os.tipo.nomeTipo), Some("os-" + os.id))
