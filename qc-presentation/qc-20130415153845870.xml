@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <quadroComparativo>
-    <articulacoesExcluidas>true</articulacoesExcluidas>
+    <articulacoesExcluidas>false</articulacoesExcluidas>
     <colunas>
         <textos>
             <anoComponente></anoComponente>
@@ -98,8 +98,8 @@ DISPOSIÇÕES GERAIS
 <nomeTipo>texto_formatado</nomeTipo>
                             </refTipo>
                             <id>248</id>
-                            <representacao> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
-                            <xhtmlFragment> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
+                            <representacao> Esta cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
+                            <xhtmlFragment> Esta cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
                         </objeto>
                         <rotulo xsi:type="roleRotuloImpl">
                             <refTipo>
@@ -1478,8 +1478,8 @@ DISPOSIÇÕES GERAIS
 <nomeTipo>texto_formatado</nomeTipo>
                             </refTipo>
                             <id>128</id>
-                            <representacao> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
-                            <xhtmlFragment> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
+                            <representacao> Esta Lei cria  para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
+                            <xhtmlFragment> Esta Lei cria  para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
                         </objeto>
                         <rotulo xsi:type="roleRotuloImpl">
                             <refTipo>
@@ -2088,11 +2088,196 @@ DISPOSIÇÕES GERAIS
             <refTipo>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
+            <alvo>221</alvo>
+            <id>281</id>
+            <origem>261</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>240</alvo>
+            <id>282</id>
+            <origem>280</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
             <alvo>208</alvo>
-            <id>1</id>
+            <id>283</id>
             <origem>248</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
-                <noneUsuario>0</noneUsuario>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>230</alvo>
+            <id>284</id>
+            <origem>270</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>235</alvo>
+            <id>285</id>
+            <origem>275</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>216</alvo>
+            <id>286</id>
+            <origem>256</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>239</alvo>
+            <id>287</id>
+            <origem>279</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>211</alvo>
+            <id>288</id>
+            <origem>251</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>238</alvo>
+            <id>289</id>
+            <origem>278</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>218</alvo>
+            <id>290</id>
+            <origem>258</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>232</alvo>
+            <id>291</id>
+            <origem>272</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>222</alvo>
+            <id>292</id>
+            <origem>262</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>233</alvo>
+            <id>293</id>
+            <origem>273</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>228</alvo>
+            <id>294</id>
+            <origem>268</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
         <relacoes>
@@ -2100,22 +2285,13 @@ DISPOSIÇÕES GERAIS
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
             <alvo>214</alvo>
-            <id>2</id>
+            <id>295</id>
             <origem>254</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
-                <noneUsuario>0</noneUsuario>
-            </proveniencia>
-        </relacoes>
-        <relacoes>
-            <refTipo>
-                <nomeTipo>relacao_divisao</nomeTipo>
-            </refTipo>
-            <alvo>216</alvo>
-            <alvo>218</alvo>
-            <id>3</id>
-            <origem>258</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
-                <noneUsuario>0</noneUsuario>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
         <urn1>urn:lex:br:federal:lei:2010;1</urn1>
@@ -2126,17 +2302,216 @@ DISPOSIÇÕES GERAIS
             <refTipo>
                 <nomeTipo>relacao_diferenca</nomeTipo>
             </refTipo>
+            <alvo>148</alvo>
+            <id>296</id>
+            <origem>228</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>136</alvo>
+            <id>297</id>
+            <origem>216</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>131</alvo>
+            <id>298</id>
+            <origem>211</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>158</alvo>
+            <id>299</id>
+            <origem>238</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>141</alvo>
+            <id>300</id>
+            <origem>221</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>153</alvo>
+            <id>301</id>
+            <origem>233</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>150</alvo>
+            <id>302</id>
+            <origem>230</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
             <alvo>128</alvo>
-            <id>1</id>
+            <id>303</id>
             <origem>208</origem>
-            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
-                <noneUsuario>0</noneUsuario>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>160</alvo>
+            <id>304</id>
+            <origem>240</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>138</alvo>
+            <id>305</id>
+            <origem>218</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>155</alvo>
+            <id>306</id>
+            <origem>235</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>134</alvo>
+            <id>307</id>
+            <origem>214</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>159</alvo>
+            <id>308</id>
+            <origem>239</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>142</alvo>
+            <id>309</id>
+            <origem>222</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
+            </proveniencia>
+        </relacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>152</alvo>
+            <id>310</id>
+            <origem>232</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaSistemaImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_sistema</nomeTipo>
+                </refTipo>
+                <noneSistema>1</noneSistema>
             </proveniencia>
         </relacoes>
         <urn1>urn:lex:br:federal:lei:2012;2</urn1>
         <urn2>urn:lex:br:federal:lei:2009;3</urn2>
     </correlacoes>
-    <currentPosition>280</currentPosition>
+    <currentPosition>310</currentPosition>
     <id>20130415153845870</id>
     <titulo>Titulo 1</titulo>
 </quadroComparativo>

@@ -1,6 +1,10 @@
 /* Fixos */
 .css-vis-table{
+	border: 1px solid black; 
+	border-collapse: collapse;
 }
+
+
 .css-vis-texto-obj-simbolico{
 }
 .css-vis-os-articulacao{
@@ -13,6 +17,7 @@
 
 
 /* Diff */
+
 .css-vis-diff{
     border: 1px solid;
     /* border-bottom: 2px solid; */
@@ -25,6 +30,13 @@
 }
 .css-vis-empty-right{
 	border: 0px;
+}
+
+.diffDelete {
+    color: red;
+}
+.diffInsert {
+    color: blue;
 }
 
 /* Conteúdo do texto*/
