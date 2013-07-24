@@ -139,36 +139,8 @@ class Visualizacao(indexer : IIndexer) {
 
     val resHtml =
       (<html>
-         <head>
-           <style>
-             .css-vis-comentario {{
-    			  
-  			}}
-   			.css-vis-texto-puro {{
-    			  
-   			}}
-   			.css-vis-texto-formatado {{
-    			  
-   			}}
-   			.css-vis-texto-obj-simbolico {{
-    			  
-   			}}
-   			.css-vis-os-ARTIGO {{
-    			  
-   			}}
-   			.css-vis-table {{
-   			  border: 1px solid black collapse;
-   			}}
-    		td {{
-    		  border: 1px solid black;
-    		}}
-            .diffDelete {{
-              color: red;
-            }}
-    		.diffInsert {{
-              color: blue;
-            }}
-           </style>
+         <head> 
+    		<link rel="stylesheet" href="css/visualizacao.css" type="text/css" media="all"/>         
          </head>
          <body>{ result }</body>
        </html>)
