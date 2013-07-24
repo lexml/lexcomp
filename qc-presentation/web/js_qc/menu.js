@@ -178,13 +178,13 @@ function print_menu() {
         $("#sliderVisualizacao").slider({
            value:1,
            min: 1,
-           max: 9,
+           max: 99,
            step: 1,
            slide: function( event, ui ) {
-               $("#visualizacao-porcentagem").val( ui.value / 10 );
+               $("#visualizacao-porcentagem").val( ui.value / 100 );
            }
        });
-       $("#visualizacao-porcentagem").val("0.1");
+       $("#visualizacao-porcentagem").val("0.01");
        
       //botão da visualização que abre a visualização em si
        $("#sbVisualizacao").click(function(event) { 

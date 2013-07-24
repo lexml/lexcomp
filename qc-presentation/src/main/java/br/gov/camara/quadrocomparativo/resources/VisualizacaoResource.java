@@ -20,6 +20,7 @@ import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.indexer.Indexer;
 import br.gov.lexml.symbolicobject.table.Visualizacao;
+import br.gov.lexml.symbolicobject.table.OpcoesVisualizacao;
 
 @Path("/visualizacao/")
 public class VisualizacaoResource {
@@ -30,11 +31,8 @@ public class VisualizacaoResource {
 	@GET
 	@Path("/{qcid}/{porcentagem}")
 	@Produces(MediaType.TEXT_HTML)
-	public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") int porcentagem) {
+	public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") final int porcentagem) {
 
-		//TODO Informar porcentagem ao código Scala 
-		System.out.println("PORCENTAGEM INFORMADA: "+porcentagem);
-		
 		QuadroComparativo qc = QuadroComparativoController
 				.getQuadroComparativo(request, idQuadro);
 		
@@ -59,7 +57,12 @@ public class VisualizacaoResource {
 		// montando colunas
 		String saidaHtml = "";
 		Visualizacao visualizacao = new Visualizacao(makeIndexer(qc));
-		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas);
+		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, new OpcoesVisualizacao(){
+			@Override
+			public double getMaxUpdateRatio() {
+				return porcentagem / 10.0;
+			}
+		});
 
 		return "sucesso: " + idQuadro + " saida html: " + saidaHtml;
 	}
