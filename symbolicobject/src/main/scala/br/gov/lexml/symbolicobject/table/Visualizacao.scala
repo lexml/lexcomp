@@ -1,7 +1,6 @@
 package br.gov.lexml.symbolicobject.table
 
 import scala.xml.NodeSeq
-
 import br.gov.lexml.{symbolicobject => I}
 import br.gov.lexml.symbolicobject.indexer.Contexto
 import br.gov.lexml.symbolicobject.indexer.Types._
@@ -16,6 +15,7 @@ import br.gov.lexml.symbolicobject.indexer.ContextoRelacao
 import br.gov.lexml.lexmldiff.LexmlDiff
 import scala.xml.Null
 import scala.xml.Text
+import br.gov.lexml.symbolicobject.util.CollectionUtils
 
 
 trait OpcoesVisualizacao {
@@ -105,37 +105,42 @@ class Visualizacao(indexer : IIndexer) {
   
   def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]], opcoes : OpcoesVisualizacao): String = {
 
-    def produceRootCorrelations : List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] = {
-      
-      //preparing plan
-      val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
-      val plan = Plan(indexOrder, cols: _*)
+    //preparing plan
+    val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
+    val plan = Plan(indexOrder, cols: _*)
 
-      
-      
-      //creating rootCorrelations
-      val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
-      
+    //creating rootCorrelations
+    val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
 
-      def eitherPosicao(pos: PosicaoComCtx): List[Either[PosicaoComCtx, NodeSeq]] =
-        Left(pos) :: pos.objetoSimbolico.get.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
-      //Left(pos) :: relacaoDB.commentsOfSymbolicObject(pos.objetoSimbolico.get.id).map(Right(_))
+    def eitherPosicao(pos: PosicaoComCtx): List[Either[PosicaoComCtx, NodeSeq]] =
+      Left(pos) :: pos.objetoSimbolico.get.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
+    //Left(pos) :: relacaoDB.commentsOfSymbolicObject(pos.objetoSimbolico.get.id).map(Right(_))
 
-      def eitherRelacao(relation: RelacaoComCtx): List[Either[RelacaoComCtx, NodeSeq]] =
-        Left(relation) :: relation.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
-      //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
+    def eitherRelacao(relation: RelacaoComCtx): List[Either[RelacaoComCtx, NodeSeq]] =
+      Left(relation) :: relation.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
+    //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
 
-      val novoRootCorrelations: List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] =
-        rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))                    
+    val novoRootCorrelations: List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] =
+      rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))
+        
 
-      novoRootCorrelations
+    val table = Transforms.rootCorrelationToTable(novoRootCorrelations)
+
+    def toNodeData(p : Option[PosicaoComCtx]) : 
+        Cell[CorrelationCellData[Either[PosicaoComCtx,NodeSeq],Either[RelacaoComCtx,NodeSeq]]] = p match {
+        case Some(v) => Cell(NodeData(Left(v)),2)
+	    case None => Cell(NoData,2)
     }
-
-
-
-    val table = Transforms.rootCorrelationToTable(produceRootCorrelations)
-
-    val result = table.renderTable(List("css-vis-table"))
+    
+    val transposedNaoCitados = CollectionUtils.zipAll(todosNaoCitados).map(_.map(toNodeData).toList).toList
+    
+    val resultTable = if (transposedNaoCitados.isEmpty) {
+        table
+    } else {
+    	val table2 = Table(List(Cell(Other( <span>Outros dispositivos</span>,List("css-vis-outros-dispositivos") ),columns.length*2)) :: transposedNaoCitados)
+        table + table2
+    }
+    val result = resultTable.renderTable(List("css-vis-table"))
 
     val resHtml =
       (<html>

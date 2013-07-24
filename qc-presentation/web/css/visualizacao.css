@@ -53,3 +53,10 @@
 }
 .css-vis-os-os_paragrafo{
 }
+
+.css-vis-outros-dispositivos {
+	font-weight: bold;
+	color: blue;
+	font-size-adjust: 130%;
+	text-align: center;
+}

@@ -10,6 +10,8 @@ case class NodeData[+Node](value : Node) extends CorrelationCellData[Node,Nothin
 
 case class EdgeData[+Edge](value : Edge) extends CorrelationCellData[Nothing,Edge]
 
+case class Other(ns : NodeSeq, classes : List[String]) extends CorrelationCellData[Nothing,Nothing]
+
 object CorrelationCellData {
   implicit def cellRenderer[Node,Edge](implicit nodeRenderer : CellRenderer[Node], edgeRenderer : CellRenderer[Edge]) : 
 	  				CellRenderer[CorrelationCellData[Node,Edge]] = 
@@ -18,6 +20,7 @@ object CorrelationCellData {
   				case NoData => RenderedCell(NodeSeq.Empty,List("css-vis-diff-vazio"))
   				case NodeData(value) => nodeRenderer.render(value)
   				case EdgeData(value) => edgeRenderer.render(value)
+  				case Other(ns,classes) => RenderedCell(ns,classes)
   			}
   }
 }
