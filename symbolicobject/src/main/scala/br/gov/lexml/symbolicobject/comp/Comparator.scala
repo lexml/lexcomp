@@ -37,7 +37,8 @@ import java.util.Collection
 import scala.collection.JavaConverters
 import br.gov.lexml.symbolicobject.ProvenienciaUsuario
 
-class CompareProcessConfiguration {
+class CompareProcessConfiguration(
+    ) {
   def normalize(t: String): String = {
     import br.gov.lexml.parser.pl.text.normalizer
     normalizer.normalize(t.trim.replaceAll("\\s+"," ").replaceAll("\"","").replaceAll("[,.;]",".").replaceAll("[0-9]+", "#").toLowerCase())

@@ -30,6 +30,7 @@ import scala.xml.NodeSeq
 import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
 import scala.xml.XML
 import scala.xml.Elem
+import br.gov.lexml.parser.pl.output.LexmlRenderer
 
 
 trait PrettyPrintable {
@@ -141,7 +142,17 @@ trait Representavel  {
   final lazy val repr = getRepresentacao()
 }
 
-abstract sealed class Rotulo extends I.Rotulo with Tipado with Representavel with PrettyPrintable
+abstract sealed class Gender
+
+case object Male extends Gender
+case object Female extends Gender
+
+final case class GenderName(name : String, gender : Gender) {
+  override def toString() = name
+}
+
+abstract sealed class Rotulo extends I.Rotulo with Tipado with Representavel with PrettyPrintable   
+
 
 object Rotulo {
   def fromRotulo(r : I.Rotulo) : Rotulo = r match {    
@@ -149,6 +160,38 @@ object Rotulo {
     case rc : I.RotuloClassificado => RotuloClassificado.fromRotuloClassificado(rc)
     case rr : I.RoleRotulo => RotuloRole.fromRoleRotulo(rr)
   }
+  
+  def render(r : Rotulo) : Option[GenderName] = r match {
+    case ro : RotuloOrdenado => RotuloOrdenado.render(ro)
+    case rr : RotuloRole => RotuloRole.render(rr)
+    case rc : RotuloClassificado => RotuloClassificado.render(rc)    
+  }
+}
+
+object NumberRenderer {
+  def ordinal(n : Int) = 
+    if (n < 10) {
+      n.toString + "º"
+    } else {
+      n.toString
+    }
+  
+  def alfa(n : Int) = { 
+    val d0 = n % 26 
+    val n1 = n / 26 
+    def h(x : Int) : List[Int] =
+      if(x == 0) { List() }
+      else if (x > 26) { (x % 26) :: h (x / 26) } 
+      else { List(x) }
+    val tl = h(n1).reverse.dropWhile(_ == 0)
+    val (first :: rest) = tl :+ d0
+    val ll = if(rest.isEmpty) { first :: rest } else { (first - 1) :: rest }
+    ll.map(n => ('a'.toInt + n).toChar).mkString("")
+  }
+  
+  def alfaUpper(n : Int) = alfa(n).toUpperCase
+  
+  
 }
 
 /**
@@ -171,6 +214,9 @@ object RotuloRole {
       val nomeRole = (e \\ "@nomeRole").text.trim()
       RotuloRole(nomeRole)
   }
+  def render(r : RotuloRole) : Option[GenderName] = r.nomeRole match {
+    case _ => None
+  }
 }
 
 /**
@@ -191,6 +237,33 @@ final case class RotuloOrdenado(nomeRole : String, posicaoRole : Int*) extends R
 object RotuloOrdenado {
   def fromRotuloOrdenado(ro : I.RotuloOrdenado) =
 		RotuloOrdenado(ro.getNomeRole,JC.collectionAsScalaIterable(ro.getPosicaoRole).toSeq.map(_.toInt): _*)
+  
+  def render(r : RotuloOrdenado) : Option[GenderName] = {
+    val nr = r.nomeRole
+    val firstNum = r.posicaoRole(0)
+    val secondNum = r.posicaoRole.tail.headOption
+    val comp = LexmlRenderer.renderComp(secondNum).toUpperCase
+    nr match {
+      case "art" => Some(GenderName(
+          "Art. " + LexmlRenderer.renderOrdinal(firstNum) + comp,Male))
+      case "par" => Some(GenderName(
+          "§ " + LexmlRenderer.renderOrdinal(firstNum) + comp,Male))
+      case "inc" => Some(GenderName(
+          LexmlRenderer.renderRomano(firstNum).toUpperCase + comp,Male))
+      case "ali" => Some(GenderName(
+          LexmlRenderer.renderAlphaSeq(firstNum).toLowerCase + comp,Female))
+      case "ite" => Some(GenderName(firstNum.toString + comp,Male))
+      case "prt" => Some(GenderName("Parte " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case "liv" => Some(GenderName("Livro " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case "tit" => Some(GenderName("Título " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      //case "subtitulo" => Some(GenderName("Sub-Título " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case "cap" => Some(GenderName("Capítulo " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      //case "subcapitulo" => Some(GenderName("Sub-Capítulo " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case "sec" => Some(GenderName("Seção " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case "sub" => Some(GenderName("Sub-Seção " + LexmlRenderer.renderRomano(firstNum).toUpperCase + comp, Male))
+      case _ => Some(GenderName("ops: " + nr + " " + r,Male))
+    }    
+  }
 }
 
 /**
@@ -211,6 +284,12 @@ final case class RotuloClassificado(nomeRole : String, classificacao : String*) 
 object RotuloClassificado {
   def fromRotuloClassificado(rc : I.RotuloClassificado) =
 		  RotuloClassificado(rc.getNomeRole,JC.collectionAsScalaIterable(rc.getClassificacao).toSeq : _*)
+  def render(r : RotuloClassificado) : Option[GenderName] = {
+    (r.nomeRole,r.classificacao.toList) match {
+      case ("paragrafo",List("unico")) => Some(GenderName("par. único",Male))
+      case _ => None
+    }
+  }
 }
 
 /**
@@ -480,6 +559,20 @@ final case class Caminho(rotulos : IndexedSeq[Rotulo] = IndexedSeq()) {
       })
       case r : RotuloRole => r.nomeRole      
     }.reverse.mkString("_")
+  }
+  
+  def render2 : String = {
+     val l = rotulos.reverse.toList.takeWhile { 
+      case r : RotuloRole => r.nomeRole != "articulacao"
+      case _ => true
+    }.span {
+      case r : RotuloOrdenado => r.nomeRole != "art"
+      case _ => true
+    } match {
+      case (befArt,art::_) => befArt :+ art
+      case (x,_) => x
+    }
+    l.reverse.flatMap(Rotulo.render).mkString(", ") 
   }
 }
 
