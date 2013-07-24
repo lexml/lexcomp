@@ -1,35 +1,43 @@
+/* Fixos */
 .css-vis-table{
-    width: 100%;
-    margin: auto;
 }
-
-
 .css-vis-texto-obj-simbolico{
-    
 }
-
-
 .css-vis-os-articulacao{
-    font-weight: bold;
+}
+.css-vis-texto-formatado{
+    font-weight: normal;
+}
+.css-vis-texto-puro{
 }
 
+
+/* Diff */
+.css-vis-diff{
+    border: 1px solid;
+    /* border-bottom: 2px solid; */
+    background-color: #f7f7f7;
+}
+.css-vis-diff-vazio{
+	border: 0px;
+}
+.css-vis-diff-diferenca{
+}
+.css-vis-empty-right{
+	border: 0px;
+}
+
+/* Conteúdo do texto*/
+.css-vis-span-rotulo{
+	font-weight: bold;
+}
 
 .css-vis-os-os_artigo{
     font-weight: bold;
 }
-
-
 .css-vis-os-os_caput{
     font-style: italic;
     color: #666;
 }
-
-.css-vis-texto-formatado{
-    font-weight: normal;
-    
-}
-.css-vis-diff{
-    border: 1px solid;
-    border-bottom: 2px solid;
-    background-color: #f7f7f7;
+.css-vis-os-os_paragrafo{
 }
