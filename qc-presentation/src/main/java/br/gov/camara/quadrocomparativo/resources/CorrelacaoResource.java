@@ -18,9 +18,12 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.mortbay.log.Log;
 
 import br.gov.camara.quadrocomparativo.model.ConfiguracaoImpl;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
@@ -209,13 +212,13 @@ public class CorrelacaoResource {
         return correlacao.getConfiguracao();
     }
     
-    @POST @Path("/processar/{qcid}/{urn1}/{urn2}/")
+    @POST @Path("/processar/{qcid}/{urn1}/{urn2}/{porcentagem}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_HTML)
     public Response processarRoboCorrelacao(/*ConfiguracaoImpl config,*/
         @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
-        @PathParam("urn2") String urn2) {
-        
-    	System.out.println("urn1 " + urn1 + " ; urn2 " + urn2);
+        @PathParam("urn2") String urn2,
+        @PathParam("porcentagem") final int slider){
     	
         QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
         
@@ -236,8 +239,7 @@ public class CorrelacaoResource {
         CompareProcessConfiguration conf = new CompareProcessConfiguration(){
         	@Override
         	public double minSimilarity() {
-        		// TODO Obter da página
-        		return 0.75;
+        		return slider / 100.0;
         	}
         };               
         
@@ -252,8 +254,12 @@ public class CorrelacaoResource {
                 
         QuadroComparativoController.saveQuadroComparativo(request, qc); 
                         
+        /*
         String result = "Config saved: ";
         return Response.status(201).entity(result).build();
+        */
+        
+        return Response.status(201).build();
     }
     
 

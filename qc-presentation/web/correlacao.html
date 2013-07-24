@@ -210,13 +210,12 @@
                              
                               
                     $.ajax({
-                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '?' + $('#formConfiguracao').serialize(),                        
+                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),                        
                         type:'POST',               
-                        dataType: 'json',
                         contentType: "application/json; charset=utf-8",               
                         success:function() {
-                            
                            $("#dialog-configuracao").dialog("close");
+                           location.reload();
                         },
                         error:function(res){
                             alert("Bad thing happend! " + res.statusText);
