@@ -109,12 +109,20 @@ function formModalOpen(urn, onCloseCallback){
                     var urn = textoAtualModal.urnIdDIV;                
 
                     $("#"+ urn).attr({urn: textoAtualModal.urn});                                
-
+                    
+                    
+                    
                     //Modifica o ID do Texto originário          
-                    $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);                
+                    $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV); 
+                    
+                    
+                    
 
                     //Adiciona os Endpoints do Plumb na criação do novo texto
                     addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
+                    
+                    //Seta urn ao atributo URN da DIV
+                    $("#"+textoAtualModal.urnIdDIV).attr("urn", textoAtualModal.urn); 
 
                     //Modifica o título do novo texto
                     $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
