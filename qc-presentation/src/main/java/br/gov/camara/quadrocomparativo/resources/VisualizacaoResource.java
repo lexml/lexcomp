@@ -2,6 +2,7 @@ package br.gov.camara.quadrocomparativo.resources;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -19,12 +20,14 @@ import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.indexer.Indexer;
-import br.gov.lexml.symbolicobject.table.Visualizacao;
 import br.gov.lexml.symbolicobject.table.OpcoesVisualizacao;
+import br.gov.lexml.symbolicobject.table.Visualizacao;
 
 @Path("/visualizacao/")
 public class VisualizacaoResource {
 
+	private static Logger log = Logger.getLogger(VisualizacaoResource.class.getName());
+	
 	@Context
 	HttpServletRequest request;
 
@@ -64,7 +67,7 @@ public class VisualizacaoResource {
 			}
 		});
 
-		return "sucesso: " + idQuadro + " saida html: " + saidaHtml;
+		return saidaHtml;
 	}
 
 	/**
