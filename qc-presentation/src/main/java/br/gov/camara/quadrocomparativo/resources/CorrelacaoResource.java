@@ -150,6 +150,7 @@ public class CorrelacaoResource {
     
     @DELETE @Path("/relacao/{qcid}/{urn1}/{urn2}/{idRelacao}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_HTML)
     public Response deleteRelacao(@PathParam("idRelacao") String idRelacao,
         @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
         @PathParam("urn2") String urn2) {

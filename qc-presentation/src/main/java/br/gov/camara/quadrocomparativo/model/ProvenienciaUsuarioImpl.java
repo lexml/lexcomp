@@ -19,6 +19,10 @@ public class ProvenienciaUsuarioImpl extends ProvenienciaImpl
     private static final long serialVersionUID = 782494371607661947L;
 
     private int noneUsuario = 0;
+
+    public ProvenienciaUsuarioImpl() {
+		super(new RefTipoImpl("proveniencia_usuario"));
+	}
     
     @Override
     public String toString() {

@@ -17,6 +17,7 @@ var idQuadroExclusao;
                 
                    $.ajax({
                         url: url,
+                        dataType: "html",
                         type:'DELETE'        
                         
                     }).done(function() {

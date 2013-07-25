@@ -617,7 +617,7 @@ function configuraQuadro() {
                         url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
                         type: 'POST',
                         data: JSON.stringify(textoSalvamento),
-                        dataType: 'json', 
+                        dataType: "html",
                         //TODO
                         //dataType : function()  { return "0"; },
                         contentType: "application/json; charset=utf-8",

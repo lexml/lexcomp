@@ -21,6 +21,10 @@ public class ProvenienciaSistemaImpl extends ProvenienciaImpl
     
     private int noneSistema = 1;
     
+    public ProvenienciaSistemaImpl() {
+    		super(new RefTipoImpl("proveniencia_sistema"));
+	}
+    
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

@@ -1030,7 +1030,7 @@ function saveRelacao(qcid, urn1, urn2, relacao, callback) {
         url: '/api/correlacao/relacao/' + qcid + '/' + urn1 + '/' + urn2,
         type: 'POST',
         data: JSON.stringify(relacao),
-        dataType: 'json',
+        dataType: "html",
         contentType: "application/json; charset=utf-8"
         
     }).done(function() {
@@ -1050,7 +1050,7 @@ function deleteRelacao(qcid, urn1, urn2, idRelacao, callback) {
     $.ajax({
         url: '/api/correlacao/relacao/' + qcid + '/' + urn1 + '/' + urn2 + '/' + idRelacao,
         type: 'DELETE',
-        dataType: 'json',
+        dataType:  "html",
         contentType: "application/json; charset=utf-8"
         
     }).done(function() {
