@@ -526,3 +526,30 @@ label {
     position: relative;
     right: 60px;
 }
+
+
+/*  Quadro de correlação */
+.endpointRelacaoUsuario {
+	fill: rgba(200,200,000,0.5);
+}
+
+.css_relacao_sistema path {
+    fill: rgba(200,200,200,0.6);
+    stroke: rgba(200,200,200,0.4);    
+}
+
+.css_relacao_usuario path {
+    fill: rgba(200,200,200,0.6);
+    stroke: rgba(200,200,200,0.4);    
+}
+
+.css_relacao_sistema circle {
+    fill: rgba(200,200,200,0.6);
+    stroke: rgba(200,200,200,0.4);    
+}
+
+.css_relacao_usuario circle {
+    fill: rgba(200,200,200,0.6);
+    stroke: rgba(200,200,200,0.4);    
+}
+

@@ -1,4 +1,29 @@
-    
+
+var relacaoUsuarioStyle = {
+        lineWidth:2,
+        strokeStyle:"green",
+        joinstyle:"round",
+        outlineColor:"green",
+        outlineWidth:2,
+        fillStyle:'green'
+    };
+
+var relacaoSistemaStyle = {
+        lineWidth:2,
+        strokeStyle:"lightgray",
+        joinstyle:"round",
+        outlineColor:"lightgray",
+        outlineWidth:2,
+        fillStyle:'lightgray'
+    };
+
+var relacaoSistemaEndpointStyle = {
+        fillStyle:'lightgray'
+};
+var relacaoUsuarioEndpointStyle = {
+		fillStyle:'green'
+};
+
 //***** JSPLUMB *****//
 jsPlumb.ready(function() {                
 
@@ -10,12 +35,8 @@ jsPlumb.ready(function() {
                 cursor: 'pointer', 
                 zIndex:2000
             },*/
-        // default to blue at one end and green at the other
-        EndpointStyles : [{
-            fillStyle:'green'
-        }, {
-            fillStyle:'green'
-        }],
+        // default to blue at one end and green at the other        
+        EndpointStyles : [relacaoSistemaEndpointStyle,relacaoSistemaEndpointStyle],
 
         Endpoints : [ [ "Dot", {
             radius:5
@@ -23,14 +44,7 @@ jsPlumb.ready(function() {
             radius:5
         } ]],
 
-        PaintStyle:{
-            lineWidth:2,
-            strokeStyle:"green",
-            joinstyle:"round",
-            outlineColor:"green",
-            outlineWidth:2,
-            fillStyle:'green'
-        },
+        PaintStyle: relacaoSistemaStyle,
 
         ConnectorZIndex:5,
         Anchors: [[0, 0.2, 1, 0.5],[1, 0.2, 1, 0.5]]				
@@ -384,6 +398,25 @@ function addDivRelacao(relacao) {
             relacao.alvo = novoAlvo;
         }
 
+        var proveniencia;
+        if(relacao.proveniencia && relacao.proveniencia.refTipo && relacao.proveniencia.refTipo.nomeTipo) {
+        	proveniencia = relacao.proveniencia.refTipo.nomeTipo == "proveniencia_sistema" ? "sistema" : "usuario";
+        } else {
+        	proveniencia = "usuario";
+        }
+        
+        var clazz = "css_relacao_" + proveniencia;
+        
+        function AddClass(el) {
+        	var e = $(el.canvas)[0];
+        	e.className.baseVal+=" " + clazz;
+        	e.className.animVal+=" " + clazz;
+        	for(var i=0;i<2;i++) {
+        		var e1 = $(el.endpoints[i].canvas)[0];
+            	e1.className+=" " + clazz;            	
+        	}
+        };
+                
         if (relacao.origem) {
             $.each(relacao.origem, function (index, elem) {
                 
@@ -391,8 +424,11 @@ function addDivRelacao(relacao) {
                     return;
                 }
                 
-                jsPlumb.connect({ source: "objA_" + elem, target: relacaoId,
-                    anchor: ["RightMiddle", "LeftMiddle"]});
+                var c = jsPlumb.connect({ source: "objA_" + elem, target: relacaoId,
+                    anchor: ["RightMiddle", "LeftMiddle"],
+                    paintStyle:"",//relacaoStyle                    
+                });                
+                AddClass(c);
             });
         }
 
@@ -402,9 +438,12 @@ function addDivRelacao(relacao) {
                 if (elem == idRaizDoc["A"]) {
                     return;
                 }
-
-                jsPlumb.connect({ source: relacaoId, target: "objB_" + elem,
-                    anchor: ["RightMiddle", "LeftMiddle"]});
+                
+                var c = jsPlumb.connect({ source: relacaoId, target: "objB_" + elem,
+                    anchor: ["RightMiddle", "LeftMiddle"],
+                    paintStyle:"",//relacaoStyle
+                    });
+                AddClass(c);
             });
         }
         
