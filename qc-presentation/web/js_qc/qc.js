@@ -610,14 +610,16 @@ function configuraQuadro() {
                    
               
                   
-                 //console.log('#### - /api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/");
+                 
                   
                    //Ajax 
                    $.ajax({
                         url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
                         type: 'POST',
                         data: JSON.stringify(textoSalvamento),
-                        dataType: 'json',                        
+                        dataType: 'json', 
+                        //TODO
+                        //dataType : function()  { return "0"; },
                         contentType: "application/json; charset=utf-8",
                         success:function(res){
                             dialog.dialog("close");
