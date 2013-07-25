@@ -246,7 +246,7 @@ public class CorrelacaoResource {
         List<Relacao> resultado = CompareProcess.compareJ(leftDoc, rightDoc, conf, qc, true, lRelacao);
         
         for(Relacao r : resultado) {
-        	correlacao.addRelacao(RelacaoImpl.newFromRelacao(r));
+        	correlacao.addRelacao(RelacaoImpl.newFromRelacao(r), qc);
         }
                 
         QuadroComparativoController.saveQuadroComparativo(request, qc); 

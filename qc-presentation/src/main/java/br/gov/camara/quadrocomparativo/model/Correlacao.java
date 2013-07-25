@@ -19,6 +19,7 @@ import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.IdSource;
 import br.gov.lexml.symbolicobject.tipos.STipo;
+import br.gov.lexml.symbolicobject.tipos.Tipos;
 
 /**
  *
@@ -117,7 +118,7 @@ public class Correlacao implements Serializable {
         
         // ID sequencial
         if (relacao.getId() == 0) {
-        	relacao.setId(idSource.nextId(null));
+        	relacao.setId(idSource.nextId(Tipos.Relacao()));
             
             while (relacoes.contains(relacao)) {
                 relacao.setId(relacao.getId() + 1);
