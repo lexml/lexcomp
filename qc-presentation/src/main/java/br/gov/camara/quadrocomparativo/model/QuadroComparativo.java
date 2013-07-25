@@ -171,13 +171,15 @@ public class QuadroComparativo implements Serializable, IdSource{
     public Texto getTexto(String colId, String urn) {
         
         Coluna col = getColuna(colId);
-        for (Texto txt : col.getTextos()) {
+        
+        if(col != null && col.getTextos() != null){
+            for (Texto txt : col.getTextos()) {
 
-            if (txt.getUrn()!= null && txt.getUrn().equals(urn)) {
-                return txt;
+                if (txt.getUrn()!= null && txt.getUrn().equals(urn)) {
+                    return txt;
+                }
             }
         }
-        
         return null;
     }
     
