@@ -215,7 +215,8 @@
                         contentType: "application/json; charset=utf-8",               
                         success:function() {
                            $("#dialog-configuracao").dialog("close");
-                           location.reload();
+                           //location.reload();
+                           getRelacoes(qcid, urn1, urn2);
                         },
                         error:function(res){
                             alert("Bad thing happend! " + res.statusText);

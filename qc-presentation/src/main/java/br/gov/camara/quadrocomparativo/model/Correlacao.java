@@ -12,13 +12,13 @@ import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Relacao;
-import java.util.Map;
+import br.gov.lexml.symbolicobject.parser.IdSource;
+import br.gov.lexml.symbolicobject.tipos.STipo;
 
 /**
  *
@@ -105,7 +105,7 @@ public class Correlacao implements Serializable {
     	this.comentarios = comentarios;
    	}
     
-    public void addRelacao(RelacaoImpl relacao) {
+    public void addRelacao(RelacaoImpl relacao, IdSource idSource) {
     	
     	//obriga recalcular a estatística
     	estatisticaTexto1 = null;
@@ -117,7 +117,7 @@ public class Correlacao implements Serializable {
         
         // ID sequencial
         if (relacao.getId() == 0) {
-            relacao.setId(relacoes.size() + 1);
+        	relacao.setId(idSource.nextId(null));
             
             while (relacoes.contains(relacao)) {
                 relacao.setId(relacao.getId() + 1);
