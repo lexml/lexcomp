@@ -20,7 +20,7 @@ object PlanToCorrelation {
 
       def traversalP(posicao: PosicaoComCtx): Stream[PosicaoComCtx] = posicao.objetoSimbolico match {
         case Some(os: ObjetoSimbolicoSimples[_]) => Stream(posicao) 
-        case Some(os: ObjetoSimbolicoComplexo[_]) => posicao +: os.posicoes.toStream.flatMap(traversalP)
+        case Some(os: ObjetoSimbolicoComplexo[_]) => /*posicao +:*/ os.posicoes.toStream.flatMap(traversalP)
         case _ => Stream()
       }
 

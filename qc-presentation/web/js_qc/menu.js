@@ -129,14 +129,69 @@ function print_menu() {
                         </table>\
                     </div>');
     
+    //formulário da visualização
+    document.write('<div id="dialog-visualizacao" title="Visualização" style="display: none;">\
+            <form action="" id="formVisualizacao" method="POST">\
+                <table>\
+                    <tr>\
+                    	<td>Grau de semelhança do diff:</td>\
+                    </tr>\
+		            <tr>\
+			            <td><div id="sliderVisualizacao"></div></td>\
+			        </tr>\
+		    		<tr>\
+    					<td><input type="text" id="visualizacao-porcentagem" disabled="true" style="border: 0; color: #f6931f; font-weight: bold;"/></td>\
+			        </tr>\
+                    <tr>\
+                        <td><input type="button" class="btnAcao" value="Processar" id="sbVisualizacao"></td>\
+                    </tr>\
+                </table>\
+            </form>\
+        </div>');
+    
     if (!getURLParameter) {
         document.write('<script type="text/javascript" src="js_qc/qc_misc.js"></script>');
     }
     
     var qcid = getURLParameter("qcid");
     if (qcid) {
+    	
+    	/*
+    	 * Configura o destino de Plano
+    	 */
+    	
         $("#plano").attr("href", "/?qcid=" + qcid);
-        $("#linkVisualizacao").attr("href", "/visualizacao.html?qcid=" + qcid);
+
+        
+        /*
+         * Configuração da página de visualização
+         */ 
+        
+        $("a#linkVisualizacao").click(function(event) {
+            event.preventDefault();         
+            $( "#dialog-visualizacao" ).dialog({
+                 modal:true,draggable:false,width:600, height:360
+            });
+        });
+        
+        //campo slider da visualização
+        $("#sliderVisualizacao").slider({
+           value:1,
+           min: 1,
+           max: 99,
+           step: 1,
+           slide: function( event, ui ) {
+               $("#visualizacao-porcentagem").val( ui.value / 100 );
+           }
+       });
+       $("#visualizacao-porcentagem").val("0.50");
+       
+      //botão da visualização que abre a visualização em si
+       $("#sbVisualizacao").click(function(event) { 
+           event.preventDefault();
+           $(location).attr('href',"/visualizacao.html?qcid=" + qcid + "&porcentagem="+$("#sliderVisualizacao").slider("value"));
+       }); 
+       
     }
     
     //Salva o Planejamento do Quadro Comparativo
@@ -162,15 +217,13 @@ function print_menu() {
 
 
     });
-    
+
     $("a#linkConfiguracao").click(function(event) {
         event.preventDefault();         
         
         $( "#dialog-configuracao" ).dialog({
              modal:true,draggable:false,width:600, height:360
         });
-        
-
     });
     
     

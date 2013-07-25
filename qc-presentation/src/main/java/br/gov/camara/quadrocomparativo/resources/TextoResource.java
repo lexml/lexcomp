@@ -35,8 +35,6 @@ import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.parser.pl.ArticulacaoParser;
 import br.gov.lexml.parser.pl.errors.ParseException;
-import br.gov.lexml.parser.pl.errors.ParseProblem;
-import br.gov.lexml.parser.pl.errors.ProblemType;
 import br.gov.lexml.renderer.plaintext.RendererPlainText;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.InputDocument;
@@ -46,7 +44,6 @@ import br.gov.lexml.symbolicobject.parser.StringSource;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
 
 import com.sun.jersey.api.NotFoundException;
-import javax.ws.rs.QueryParam;
 
 // The class registers its methods for the HTTP GET request using the @GET annotation. 
 // Using the @Produces annotation, it defines that it can deliver several MIME types,

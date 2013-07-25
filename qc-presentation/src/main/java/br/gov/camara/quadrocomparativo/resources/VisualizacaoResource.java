@@ -2,6 +2,7 @@ package br.gov.camara.quadrocomparativo.resources;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -19,18 +20,21 @@ import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.indexer.Indexer;
+import br.gov.lexml.symbolicobject.table.OpcoesVisualizacao;
 import br.gov.lexml.symbolicobject.table.Visualizacao;
 
 @Path("/visualizacao/")
 public class VisualizacaoResource {
 
+	private static Logger log = Logger.getLogger(VisualizacaoResource.class.getName());
+	
 	@Context
 	HttpServletRequest request;
 
 	@GET
-	@Path("/{qcid}")
+	@Path("/{qcid}/{porcentagem}")
 	@Produces(MediaType.TEXT_HTML)
-	public String getVisualizacao(@PathParam("qcid") String idQuadro) {
+	public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") final int porcentagem) {
 
 		QuadroComparativo qc = QuadroComparativoController
 				.getQuadroComparativo(request, idQuadro);
@@ -56,9 +60,14 @@ public class VisualizacaoResource {
 		// montando colunas
 		String saidaHtml = "";
 		Visualizacao visualizacao = new Visualizacao(makeIndexer(qc));
-		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas);
+		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, new OpcoesVisualizacao(){
+			@Override
+			public double getMaxUpdateRatio() {
+				return porcentagem / 10.0;
+			}
+		});
 
-		return "sucesso: " + idQuadro + " saida html: " + saidaHtml;
+		return saidaHtml;
 	}
 
 	/**

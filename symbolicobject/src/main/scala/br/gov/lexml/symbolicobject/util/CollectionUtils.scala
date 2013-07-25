@@ -18,4 +18,11 @@ object CollectionUtils {
 	/*def groupBy1on2with[K,V,C](f : Iterable[V] => C) = (l : Iterable[(K,V)]) =>
 	  l.groupBy(_._1).mapValues(l => f(l.map(_._2))) */
 	
+    def zipAll[A](l : Seq[Seq[A]]) : IndexedSeq[IndexedSeq[Option[A]]] = {
+      val ll = l.map(_.toIndexedSeq).toIndexedSeq
+      val numRows = ll.map(_.length).max
+      (0 until numRows) map { row =>
+        ll.map(d => d.lift(row))
+      }      
+    }
 }

@@ -15,19 +15,29 @@ import br.gov.lexml.symbolicobject.indexer.ContextoRelacao
 import br.gov.lexml.lexmldiff.LexmlDiff
 import scala.xml.Null
 import scala.xml.Text
+import br.gov.lexml.symbolicobject.util.CollectionUtils
 
 
+trait OpcoesVisualizacao {
+  def getMaxUpdateRatio() : Double
+} 
 
+abstract class BaseRenderer[T] extends CellRenderer[T] {
+      def empty : RenderedCell = RenderedCell(NodeSeq.Empty, List("css-vis-empty-right"))
+}
 
 class Visualizacao(indexer : IIndexer) {
-
+  
     // de SymbolicObject e outro de Relacao
-    private implicit val cellRendererSO = new CellRenderer[Either[PosicaoComCtx, NodeSeq]] {
+    private implicit val cellRendererSO = new BaseRenderer[Either[PosicaoComCtx, NodeSeq]] {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
-          case tp: TextoPuro[Contexto] => RenderedCell(<span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
-          case tf: TextoFormatado[Contexto] => RenderedCell(tf.frag.ns, List("css-vis-texto-formatado"), Some("tf-" + tf.id))
+          case tp: TextoPuro[Contexto] => RenderedCell(<span><span class="css-vis-span-rotulo">{tp.data.caminho.render2 + ": "}</span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
+          case tf: TextoFormatado[Contexto] => RenderedCell(
+              NodeSeq.fromSeq(Seq(<span class="css-vis-span-rotulo">{tf.data.caminho.render2 + ": "}</span>) ++ tf.frag.ns ) 
+              , 
+              List("css-vis-texto-formatado"), Some("tf-" + tf.id))
           case os: ObjetoSimbolicoComplexo[Contexto] => RenderedCell(<span>{ pos.rotulo.toString }</span>, List("css-vis-texto-obj-simbolico", "css-vis-os-" + os.tipo.nomeTipo), Some("os-" + os.id))
           case _ => RenderedCell(<span>Outro tipo de Objeto Simbolico. Rotulo = { pos.rotulo }</span>)
         }
@@ -35,7 +45,7 @@ class Visualizacao(indexer : IIndexer) {
     }
 
     // de SymbolicObject e outro de Relacao
-    private implicit val cellRendererRelation = new CellRenderer[Either[RelacaoComCtx, NodeSeq]] {
+    private implicit val cellRendererRelation = new BaseRenderer[Either[RelacaoComCtx, NodeSeq]] {
       import br.gov.lexml.lexmldiff._
       private[this] def renderDiffCase(dc : DiffCase) : NodeSeq = dc match {
         case i : Insert => <span class="diff diffInsert">{i.text}</span>
@@ -60,10 +70,10 @@ class Visualizacao(indexer : IIndexer) {
           val d : NodeSeq = r.data.textos.flatMap { case (t1,t2) =>
             diff(t1.text,t2.text)            
           } getOrElse(Text(""))
-          RenderedCell(<span> { d }</span>)
+          RenderedCell(<span> { d }</span>,List("css-vis-diff","css-vis-diff-diferenca"))
         }
-        case Left(_) => RenderedCell()
-        case Right(ns) => RenderedCell(ns)
+        case Left(_) => RenderedCell(NodeSeq.Empty,List("css-vis-diff","css-vis-diff-sem-diferenca"))
+        case Right(ns) => RenderedCell(ns,List("css-vis-diff-comentario"))
       }
     }
 
@@ -81,7 +91,7 @@ class Visualizacao(indexer : IIndexer) {
   
   import java.util.{List => JList}
     
-  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]], opcoes : OpcoesVisualizacao): String = {
     import scala.collection.{JavaConverters => JC}
   
     def toScalaList[A](l : JList[A]) : List[A] = {
@@ -90,75 +100,52 @@ class Visualizacao(indexer : IIndexer) {
     
     createHtmlTable(
         toScalaList(indexOrder).map(_.toInt), 
-        toScalaList(columns).map( x => toScalaList(x)) )
+        toScalaList(columns).map( x => toScalaList(x)), opcoes )
   }
   
-  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]], opcoes : OpcoesVisualizacao): String = {
 
-    def produceRootCorrelations : List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] = {
-      
-      //preparing plan
-      val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
-      val plan = Plan(indexOrder, cols: _*)
+    //preparing plan
+    val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
+    val plan = Plan(indexOrder, cols: _*)
 
-      
-      
-      //creating rootCorrelations
-      val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
-      
+    //creating rootCorrelations
+    val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
 
-      def eitherPosicao(pos: PosicaoComCtx): List[Either[PosicaoComCtx, NodeSeq]] =
-        Left(pos) :: pos.objetoSimbolico.get.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
-      //Left(pos) :: relacaoDB.commentsOfSymbolicObject(pos.objetoSimbolico.get.id).map(Right(_))
+    def eitherPosicao(pos: PosicaoComCtx): List[Either[PosicaoComCtx, NodeSeq]] =
+      Left(pos) :: pos.objetoSimbolico.get.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
+    //Left(pos) :: relacaoDB.commentsOfSymbolicObject(pos.objetoSimbolico.get.id).map(Right(_))
 
-      def eitherRelacao(relation: RelacaoComCtx): List[Either[RelacaoComCtx, NodeSeq]] =
-        Left(relation) :: relation.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
-      //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
+    def eitherRelacao(relation: RelacaoComCtx): List[Either[RelacaoComCtx, NodeSeq]] =
+      Left(relation) :: relation.data.comentarios.toList.map(a => Right(<span>{ a.texto }</span>))
+    //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
 
-      val novoRootCorrelations: List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] =
-        rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))                    
+    val novoRootCorrelations: List[RootCorrelation[List[Either[PosicaoComCtx, NodeSeq]], List[Either[RelacaoComCtx, NodeSeq]]]] =
+      rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))
+        
 
-      novoRootCorrelations
+    val table = Transforms.rootCorrelationToTable(novoRootCorrelations)
+
+    def toNodeData(p : Option[PosicaoComCtx]) : 
+        Cell[CorrelationCellData[Either[PosicaoComCtx,NodeSeq],Either[RelacaoComCtx,NodeSeq]]] = p match {
+        case Some(v) => Cell(NodeData(Left(v)),2)
+	    case None => Cell(NoData,2)
     }
-
-
-
-    val table = Transforms.rootCorrelationToTable(produceRootCorrelations)
-
-    val result = table.renderTable(List("css-vis-table"))
+    
+    val transposedNaoCitados = CollectionUtils.zipAll(todosNaoCitados).map(_.map(toNodeData).toList).toList
+    
+    val resultTable = if (transposedNaoCitados.isEmpty) {
+        table
+    } else {
+    	val table2 = Table(List(Cell(Other( <span>Outros dispositivos</span>,List("css-vis-outros-dispositivos") ),columns.length*2)) :: transposedNaoCitados)
+        table + table2
+    }
+    val result = resultTable.renderTable(List("css-vis-table"))
 
     val resHtml =
       (<html>
-         <head>
-           <style>
-             .css-vis-comentario {{
-    			  
-  			}}
-   			.css-vis-texto-puro {{
-    			  
-   			}}
-   			.css-vis-texto-formatado {{
-    			  
-   			}}
-   			.css-vis-texto-obj-simbolico {{
-    			  
-   			}}
-   			.css-vis-os-ARTIGO {{
-    			  
-   			}}
-   			.css-vis-table {{
-   			  border: 1px solid black collapse;
-   			}}
-    		td {{
-    		  border: 1px solid black;
-    		}}
-            .diffDelete {{
-              color: red;
-            }}
-    		.diffInsert {{
-              color: blue;
-            }}
-           </style>
+         <head> 
+    		<link rel="stylesheet" href="css/visualizacao.css" type="text/css" media="all"/>         
          </head>
          <body>{ result }</body>
        </html>)
