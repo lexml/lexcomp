@@ -587,6 +587,11 @@ function configuraQuadro() {
             buttons: {
                 "Salvar": function() {
                     var dialog = $(this);
+                    
+                showConfirmDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.",
+                function () {
+                    
+                    
                         
                     //texto.preambulo = nicEditors.findEditor("preambulo-textarea").getContent();
                     //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
@@ -625,6 +630,13 @@ function configuraQuadro() {
                             dialog.dialog("close");
                         }
                     }); 
+                    
+                    
+                    
+                });
+                //fim do cofirm
+                    
+                    
                 },
                 "Cancelar": function() {
                     $( this ).dialog( "close" );
@@ -634,9 +646,9 @@ function configuraQuadro() {
                 
             	searchText(urn, false);
                 
-                if(texto && texto.articulacao){
+                /*if(texto && texto.articulacao){
                     showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
-                }
+                }*/
                 
             },close: function (evt, ui) {
                 //document.location.reload();
