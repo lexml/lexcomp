@@ -4,6 +4,29 @@ var textoAtualModal;
 var colunaAtual;
 var urnTextoNovo = 'URNTEXTONOVO';
 
+/**
+ * 
+ * @param cond ou uma string representando uma URN ou
+ *        uma funcão de Texto => Boolean representando a seleção de textos
+ * @param func função que processa o texto selecionado, com tipo
+ *        (Texto, Int, Coluna, Int) => () onde
+ *        o segundo parâmetro é o número do texto na coluna e o 
+ *        quarto parâmetro é o número da coluna
+ * @returns
+ */
+function fortext(cond,func) {
+	if(typeof(cond) === "string") {
+		var urn = cond;
+		cond = function(t) { return t.urn == urn; };
+	}
+    $.each(quadro.colunas, function (ic, col) {
+        if (col.textos) {
+            $.each(col.textos, function (it, txt) {                
+                if (cond(txt)) { func(txt,it,col,ic); }
+            });
+        }
+    });
+}
             		
 //Gera um nome de URN Temporário, para os novos textos
 function uniqval(len) {
@@ -581,12 +604,17 @@ function configuraQuadro() {
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         success:function(res){
-                            console.log(res);
+                        	//FIXME Verificar porque é necessário
+                            res.urn = (""+res.urn).replace("__", ";");
                             
                             if (!res.documentoParseado){
                             	showAlertDialog("O documento foi salvo, porém, não foi possível realizar a estruturação do conteúdo.");
+                            } else {
+                            	fortext(urn,function(txt,it,col) {
+                            		col.textos[it] = res;
+                            	});
                             }
-                        	
+                        	                                                                           
                         	dialog.dialog("close");
                         },
                         error:function(res){
