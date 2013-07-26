@@ -161,6 +161,44 @@ public class TextoResource {
         return texto;
     }
 
+    @POST 
+    @Path("/qc/{qcid}/col/{colid}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response saveTexto(Texto texto, @PathParam("qcid") String qcId,
+            @PathParam("colid") String colId) {
+
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
+
+        // texto.setArticulacaoXML(getArticulacaoXML(texto));
+        
+        // verifica se o usuario nao inseriu um arquivo lexml no lugar da
+        // articulacao
+        String articulacao = cleanString(texto.getArticulacao());
+        
+        if (isXML(articulacao)) {
+            texto.setArticulacaoXML(articulacao);
+            texto.setArticulacao(getArticulacaoPlainText(articulacao));
+        }
+        
+        try {
+            texto.setDocumento(getEstruturaTexto(qc, texto));
+        } catch (ParseException ex) {
+            log.log(Level.SEVERE, "Erro ao parsear texto", ex);
+            throw new NotFoundException("Erro ao parsear texto");
+        }
+        
+        texto.setArticulacaoXML(null);
+
+        qc.addTexto(colId, texto);
+        
+        //exclui todas as eventuais relações existentes
+        removeRelacoes(qc, texto);
+        
+        QuadroComparativoController.saveQuadroComparativo(request, qc);
+
+        return Response.status(Status.CREATED).entity(texto).build();
+    }
+    
     @GET
     @Path("/{urn}/qc/{qcid}/estrutura/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -256,45 +294,7 @@ public class TextoResource {
             throw new ParseException(null);
         }        
     }
-
-    @POST
-    @Path("/qc/{qcid}/col/{colid}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveTexto(Texto texto, @PathParam("qcid") String qcId,
-            @PathParam("colid") String colId) {
-
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
-        // texto.setArticulacaoXML(getArticulacaoXML(texto));
-        
-        // verifica se o usuario nao inseriu um arquivo lexml no lugar da
-        // articulacao
-        String articulacao = cleanString(texto.getArticulacao());
-        
-        if (isXML(articulacao)) {
-            texto.setArticulacaoXML(articulacao);
-            texto.setArticulacao(getArticulacaoPlainText(articulacao));
-        }
-        
-        try {
-            texto.setDocumento(getEstruturaTexto(qc, texto));
-        } catch (ParseException ex) {
-            log.log(Level.SEVERE, "Erro ao parsear texto", ex);
-            throw new NotFoundException("Erro ao parsear texto");
-        }
-        
-        texto.setArticulacaoXML(null);
-
-        qc.addTexto(colId, texto);
-        
-        //exclui todas as eventuais relações existentes
-        removeRelacoes(qc, texto);
-        
-        QuadroComparativoController.saveQuadroComparativo(request, qc);
-
-        return Response.status(Status.CREATED).entity(texto).build();
-    }
-    
+   
     /**
      * Remove todas as relações de um texto no Quadro
      * @param qc

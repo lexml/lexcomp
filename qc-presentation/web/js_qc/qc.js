@@ -500,38 +500,10 @@ function configuraQuadro() {
                 'texto': $(this).parent()
             });
     });
-    
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-    
-    
+
     // edita conteudo dos textos
     $('a.editText').unbind('click');
     $('a.editText').click(function(event) {
-        
         
         var idColunaUrn;
         
@@ -550,23 +522,13 @@ function configuraQuadro() {
         titulo = titulo.replace(/<\/?[^>]+(>|$)/g, "");        
         var texto, coluna = null;
         
-        $('a#linkImportaTexto').click(function(event) {
-            event.preventDefault();
-            searchText(urn, true);
-        });
-        
+        //localiza o id da coluna que foi clicado
         $.each(quadro.colunas, function (ic, col) {
-                   
             if (col.textos) {
-                
                 $.each(col.textos, function (it, txt) {
-                    
                     console.log(urn);
                     console.log(txt.urn.toString());
-                    
-                    
                     if (txt.urn == urn) {
-                        
                         texto = txt;
                         coluna = col;
                         console.log(col);
@@ -574,10 +536,10 @@ function configuraQuadro() {
                         return;
                     }
                 });
-
             }
         });
         
+        //altera o título da janela
         if ($("#dialog-edit-text").attr("title") != "") {
             $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);            
         } else {
@@ -588,6 +550,11 @@ function configuraQuadro() {
             urn = urn.replace(";", "__");
         }
         
+        //configura o dialog da janela
+        $('a#linkImportaTexto').click(function(event) {
+            event.preventDefault();
+            searchText(urn, true);
+        });
         $("#dialog-edit-text").dialog({
             resizable: false,
             modal: true,
@@ -600,24 +567,18 @@ function configuraQuadro() {
                     //texto.preambulo = nicEditors.findEditor("preambulo-textarea").getContent();
                     //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
                     //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
-                        
                     
                     var textoSalvamento = {};
                     textoSalvamento.preambulo = $("#preambulo-textarea").val();                    
                     textoSalvamento.articulacao = $("#texto-textarea").val();
                     textoSalvamento.fecho = $("#fecho-textarea").val();
-                    
-                   
-              
-                  
-                 
                   
                    //Ajax 
                    $.ajax({
                         url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
                         type: 'POST',
                         data: JSON.stringify(textoSalvamento),
-                        dataType: "html",
+                        dataType: "json",
                         //TODO
                         //dataType : function()  { return "0"; },
                         contentType: "application/json; charset=utf-8",
@@ -634,10 +595,6 @@ function configuraQuadro() {
                             //dialog.dialog("close");
                         }
                     }); 
-                   
-                    
-                    
-                    
                 },
                 "Cancelar": function() {
                     $( this ).dialog( "close" );
@@ -645,7 +602,8 @@ function configuraQuadro() {
             },
             open: function (evt, ui) {
                 
-                //searchText(urn, false);
+            	searchText(urn, false);
+                
                 if(texto && texto.articulacao){
                     showAlertDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.");
                 }
@@ -659,37 +617,6 @@ function configuraQuadro() {
         //$('a#linkImportaTexto').click();
         
     });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     //Remove divs de Texto que por ventura estejam duplicados, evitando assim efeitos inesperados no plumb
