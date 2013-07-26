@@ -310,8 +310,8 @@ function addDivRelacaoPendente(id) {
     }
     
     strDivRelacao += ' style="height: 20px; width: 4.5%; float: left; margin-left: 47.2%; margin-top: 150px; border: dashed; position: fixed;" class="colunaComparacao">\
-                            <a href="javascript:void(0);" id="linkCancelaRelacao" style="margin: 5px;"><img src="images/remove_c.png" width="15" align="left" title="Cancelar"></a>\
-                            <a href="javascript:void(0);" id="linkConfirmaRelacao" style="margin: 5px;"><img src="images/check_c.png" width="18" align="left" title="Salvar"></a>\
+                            <ul class="iconesControlesCorrelacao"><li><a href="javascript:void(0);" id="linkCancelaRelacao" style="margin: 5px;"><img src="images/remove_c.png" width="15" align="left" title="Cancelar"></a></li>\
+                            <li><a href="javascript:void(0);" id="linkConfirmaRelacao" style="margin: 5px;"><img src="images/check_c.png" width="18" align="left" title="Salvar"></a></li></ul>\
                         </div>';
 
     if ($("#pendingRelacao").length == 0) {
@@ -358,10 +358,12 @@ function addDivRelacao(relacao) {
     
     var relacaoId = "relacao_" + relacao.id;
     var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" style="height: 20px; width: 75px; border: solid; margin:auto; margin-left:50%;" class="colunaComparacao relacao">\
-                            <a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a>&nbsp;\
-                            <a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a>&nbsp;\
-                            <a href="javascript:void(0);" id="linkEditaRelacao_' + relacao.id + '" class="linkEditaRelacao" style="margin: 1px;"><img src="images/edit_c.png" width="15" align="left" title="Editar"></a>\
-                            <a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="left" title="Tipos" style="position:relative; right:-6px; top:-14px;"></a>\
+                            \<ul class="iconesControlesCorrelacao">\
+                            <li><a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a></li>\
+                            <li><a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a></li>\
+                            <li><a href="javascript:void(0);" id="linkEditaRelacao_' + relacao.id + '" class="linkEditaRelacao" style="margin: 1px;"><img src="images/edit_c.png" width="15" align="left" title="Editar"></a></li>\
+                            <li><a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="left" title="Tipos"></a></li>\
+                            \<ul>\
                         </div>';
 
     var divRelacao = $(strDivRelacao);

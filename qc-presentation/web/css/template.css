@@ -157,6 +157,15 @@ top: -55px;
 left: 276px
     
 }
+
+
+.iconesControlesCorrelacao{
+    margin:auto;
+    list-style:none;
+}
+.iconesControlesCorrelacao li{ display: inline;  list-style:none; }
+
+
 #submenu{
     background-color: #CACACA;
     width: 327px;
