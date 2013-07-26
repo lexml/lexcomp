@@ -287,8 +287,10 @@ public class TextoResource {
 
         if (validation.isSuccess()) {
             DocumentoImpl doc = new DocumentoImpl(validation.toOption().get());
+            texto.setDocumentoParseado(true);
             return doc;
         } else {
+        	texto.setDocumentoParseado(false);
             log.log(Level.SEVERE, "Validação não executada com sucesso.");
             // FIXME como pegar ParseException do Parser?
             throw new ParseException(null);

@@ -520,6 +520,7 @@ function configuraQuadro() {
         var urn = $(this).parent().attr("urn");
         var titulo = $(this).siblings(".tituloTexto").html();
         titulo = titulo.replace(/<\/?[^>]+(>|$)/g, "");        
+        
         var texto, coluna = null;
         
         //localiza o id da coluna que foi clicado
@@ -568,31 +569,32 @@ function configuraQuadro() {
                     //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
                     //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
                     
-                    var textoSalvamento = {};
-                    textoSalvamento.preambulo = $("#preambulo-textarea").val();                    
-                    textoSalvamento.articulacao = $("#texto-textarea").val();
-                    textoSalvamento.fecho = $("#fecho-textarea").val();
+                    texto.preambulo = $("#preambulo-textarea").val();                    
+                    texto.articulacao = $("#texto-textarea").val();
+                    texto.fecho = $("#fecho-textarea").val();
                   
                    //Ajax 
                    $.ajax({
                         url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
                         type: 'POST',
-                        data: JSON.stringify(textoSalvamento),
+                        data: JSON.stringify(texto),
                         dataType: "json",
-                        //TODO
-                        //dataType : function()  { return "0"; },
                         contentType: "application/json; charset=utf-8",
                         success:function(res){
-                            dialog.dialog("close");
                             console.log(res);
-                            texto = textoSalvamento;
+                            
+                            if (!res.documentoParseado){
+                            	showAlertDialog("O documento foi salvo, porém, não foi possível realizar a estruturação do conteúdo.");
+                            }
+                        	
+                        	dialog.dialog("close");
                         },
                         error:function(res){
                             
                             console.log('Erro:');                            
                             console.log(res);
-                            //showAlertDialog("Falha ao salvar texto: " + res.statusText);
-                            //dialog.dialog("close");
+                            showAlertDialog("Falha ao salvar texto: " + res.statusText);
+                            dialog.dialog("close");
                         }
                     }); 
                 },
@@ -890,31 +892,36 @@ jsPlumb.ready(function() {
     //Deleta que for clicada
     jsPlumb.bind("click", function(conn, originalEvent) {
         
-        showConnectionDialog("Escolha uma opção abaixo: ",
-            function () { 
-                
-               var urn1 = $("#"+conn.sourceId).attr('urn');
-               var urn2 = $("#"+conn.targetId).attr('urn');               
-               
-               var textoTmp1 = getTextoByURN(quadro, urn1);
-               var textoTmp2 = getTextoByURN(quadro, urn2);
-               
-               if(textoTmp1 && textoTmp1.documentoParseado && textoTmp2 && textoTmp2.documentoParseado) {               
-                     
-                        urn1 = urn1.split(";").join("__");
-                        urn2 = urn2.split(";").join("__");
-
-                        var url = "correlacao.html?qcid=" + quadro.id + "&urn1=" + urn1 + "&urn2=" + urn2;
-                        window.location= url;
-               }else{
-                   alert("Para editar correlações, se faz necessária a inserção dos textos. \n\nClique em Editar Texto para inserir o texto desejado.");
-               }
-               
-            },
-            function () { 
-                jsPlumb.detach(conn); 
-                atualizaConexoes(conn, 'remover');
-            });
+        showConnectionDialog(
+        		//text
+        		"Escolha uma opção abaixo: ",
+        		//editCallback
+	            function () { 
+	                
+	               var urn1 = $("#"+conn.sourceId).attr('urn');
+	               var urn2 = $("#"+conn.targetId).attr('urn');               
+	               
+	               var textoTmp1 = getTextoByURN(quadro, urn1);
+	               var textoTmp2 = getTextoByURN(quadro, urn2);
+	               
+	               if(textoTmp1 && textoTmp1.documentoParseado && textoTmp2 && textoTmp2.documentoParseado) {               
+	                     
+	                        urn1 = urn1.split(";").join("__");
+	                        urn2 = urn2.split(";").join("__");
+	
+	                        var url = "correlacao.html?qcid=" + quadro.id + "&urn1=" + urn1 + "&urn2=" + urn2;
+	                        window.location= url;
+	               }else{
+	                   alert("Para editar correlações, se faz necessária a inserção dos textos. \n\nClique em Editar Texto para inserir o texto desejado.");
+	               }
+	               
+	            },
+	            //deleteCallback
+	            function () { 
+	                jsPlumb.detach(conn); 
+	                atualizaConexoes(conn, 'remover');
+	            });
+        		//params
     });   
 				
     //Ao conectar adiciona a nova conexão a lista de conexões existentes;

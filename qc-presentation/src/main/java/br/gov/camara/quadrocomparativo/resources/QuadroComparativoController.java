@@ -52,8 +52,6 @@ public class QuadroComparativoController {
     }
     
     static QuadroComparativo getQuadroComparativo(File file) {
-        
-    	
     	
     	if (file.exists()){
 	        try {
@@ -98,11 +96,7 @@ public class QuadroComparativoController {
                 if (col.getTextos() != null) {
                     for (Texto tex : col.getTextos()) {
                         
-                        if (tex.getDocumento() != null) {
-                            tex.setDocumentoParseado(true);
-                        }else{
-                            tex.setDocumentoParseado(false);
-                        }
+                        tex.setDocumentoParseado(tex.getDocumento() != null);
                         tex.setArticulacao(null);
                         tex.setArticulacaoXML(null);
                         tex.setDocumento(null);
