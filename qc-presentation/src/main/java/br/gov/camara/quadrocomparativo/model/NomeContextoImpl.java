@@ -46,4 +46,9 @@ public class NomeContextoImpl extends NomeImpl implements NomeContexto, Serializ
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
     }
+    
+    @Override
+    String getRealJavaType() {
+    	return "nomeContexto";
+    }
 }

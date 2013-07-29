@@ -35,6 +35,11 @@ public class RoleRotuloImpl extends RotuloImpl implements RoleRotulo {
             this.nomeRole = role.getNomeRole();
         }
     }
+    
+    @Override
+    String getRealJavaType() {
+    	return "roleRotulo";
+    }
 
     @Override
     public String getNomeRole() {

@@ -34,6 +34,11 @@ public class RotuloOrdenadoImpl extends RoleRotuloImpl
             posicaoRole = new ArrayList<Integer>(rotulo.getPosicaoRole());
         }
     }
+    
+	@Override
+	String getRealJavaType() {
+		return "rotuloOrdenado";
+	}
 
     @Override
     public List<Integer> getPosicaoRole() {

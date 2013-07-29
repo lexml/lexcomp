@@ -39,4 +39,8 @@ public class TextoPuroImpl extends ObjetoSimbolicoSimplesImpl
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
     }
+    @Override
+	protected String getRealJavaType() {
+		return "textoPuro";
+	}
 }

@@ -227,11 +227,17 @@ public class CorrelacaoResource {
         Documento leftDoc = qc.getTexto(urn1).getDocumento();
         Documento rightDoc = qc.getTexto(urn2).getDocumento(); 
         
-        final Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
-        
-        List<Relacao> lRelacao = correlacao.getRelacoes();
-        if(lRelacao == null) { 
-        	lRelacao = new ArrayList<Relacao>(); 
+        List<Relacao> lRelacao = new ArrayList<Relacao>();
+        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        if (correlacao == null){
+        	correlacao = new Correlacao(urn1, urn2);
+            qc.addCorrelacao(correlacao);
+        } else {
+	        lRelacao = correlacao.getRelacoes();
+	        if(lRelacao == null) { 
+	        	lRelacao = new ArrayList<Relacao>(); 
+	        }
+	        correlacao.removeAllRelacoes();
         }
         
         CompareProcessConfiguration conf = new CompareProcessConfiguration(){
@@ -240,9 +246,6 @@ public class CorrelacaoResource {
         		return slider / 100.0;
         	}
         };               
-        
-        correlacao.removeAllRelacoes();        
-        
         
         List<Relacao> resultado = CompareProcess.compareJ(leftDoc, rightDoc, conf, qc, true, lRelacao);
         

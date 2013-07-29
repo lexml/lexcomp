@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <quadroComparativo>
-    <articulacoesExcluidas>true</articulacoesExcluidas>
+    <articulacoesExcluidas>false</articulacoesExcluidas>
     <colunas>
         <textos>
             <anoComponente></anoComponente>
             <articulacao>Art. 1o  Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8o do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.
 
-Art. 2o  Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.
-
-Art. 3o  Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.
-
-§ 1o  O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.
-
-§ 2o  Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.
-
-Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.
-</articulacao>
+Art. 2o  Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</articulacao>
             <autoridades>federal</autoridades>
             <categorias>legislacao</categorias>
             <comissaoespecial></comissaoespecial>
@@ -28,31 +19,36 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                     <refTipo>
                         <nomeTipo>raiz_documento</nomeTipo>
                     </refTipo>
-                    <id>22</id>
+                    <id>12</id>
+                    <javaType>objetoSimbolicoComplexo</javaType>
                     <posicoes>
                         <objeto xsi:type="objetoSimbolicoComplexoImpl">
                             <refTipo>
 <nomeTipo>articulacao</nomeTipo>
                             </refTipo>
-                            <id>23</id>
+                            <id>13</id>
+                            <javaType>objetoSimbolicoComplexo</javaType>
                             <posicoes>
 <objeto xsi:type="objetoSimbolicoComplexoImpl">
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>25</id>
+    <id>15</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>26</id>
+            <id>16</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>27</id>
+                    <id>17</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8o do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
                     <xhtmlFragment> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8o do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
                 </objeto>
@@ -60,6 +56,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                     <refTipo>
                         <nomeTipo>role_rotulo</nomeTipo>
                     </refTipo>
+                    <javaType>roleRotulo</javaType>
                     <representacao>{texto}</representacao>
                     <nomeRole>texto</nomeRole>
                 </rotulo>
@@ -69,6 +66,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
             <refTipo>
                 <nomeTipo>role_rotulo</nomeTipo>
             </refTipo>
+            <javaType>roleRotulo</javaType>
             <representacao>{cpt}</representacao>
             <nomeRole>cpt</nomeRole>
         </rotulo>
@@ -78,6 +76,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>rotulo_ordenado</nomeTipo>
     </refTipo>
+    <javaType>rotuloOrdenado</javaType>
     <representacao>{art[1]}</representacao>
     <nomeRole>art</nomeRole>
     <posicaoRole>1</posicaoRole>
@@ -88,19 +87,22 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>28</id>
+    <id>18</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>29</id>
+            <id>19</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>30</id>
+                    <id>20</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</representacao>
                     <xhtmlFragment> Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</xhtmlFragment>
                 </objeto>
@@ -108,6 +110,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                     <refTipo>
                         <nomeTipo>role_rotulo</nomeTipo>
                     </refTipo>
+                    <javaType>roleRotulo</javaType>
                     <representacao>{texto}</representacao>
                     <nomeRole>texto</nomeRole>
                 </rotulo>
@@ -117,6 +120,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
             <refTipo>
                 <nomeTipo>role_rotulo</nomeTipo>
             </refTipo>
+            <javaType>roleRotulo</javaType>
             <representacao>{cpt}</representacao>
             <nomeRole>cpt</nomeRole>
         </rotulo>
@@ -126,171 +130,10 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>rotulo_ordenado</nomeTipo>
     </refTipo>
+    <javaType>rotuloOrdenado</javaType>
     <representacao>{art[2]}</representacao>
     <nomeRole>art</nomeRole>
     <posicaoRole>2</posicaoRole>
-</rotulo>
-                            </posicoes>
-                            <posicoes>
-<objeto xsi:type="objetoSimbolicoComplexoImpl">
-    <refTipo>
-        <nomeTipo>os_artigo</nomeTipo>
-    </refTipo>
-    <id>31</id>
-    <posicoes>
-        <objeto xsi:type="objetoSimbolicoComplexoImpl">
-            <refTipo>
-                <nomeTipo>os_caput</nomeTipo>
-            </refTipo>
-            <id>32</id>
-            <posicoes>
-                <objeto xsi:type="textoFormatadoImpl">
-                    <refTipo>
-                        <nomeTipo>texto_formatado</nomeTipo>
-                    </refTipo>
-                    <id>33</id>
-                    <representacao> Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.</representacao>
-                    <xhtmlFragment> Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.</xhtmlFragment>
-                </objeto>
-                <rotulo xsi:type="roleRotuloImpl">
-                    <refTipo>
-                        <nomeTipo>role_rotulo</nomeTipo>
-                    </refTipo>
-                    <representacao>{texto}</representacao>
-                    <nomeRole>texto</nomeRole>
-                </rotulo>
-            </posicoes>
-        </objeto>
-        <rotulo xsi:type="roleRotuloImpl">
-            <refTipo>
-                <nomeTipo>role_rotulo</nomeTipo>
-            </refTipo>
-            <representacao>{cpt}</representacao>
-            <nomeRole>cpt</nomeRole>
-        </rotulo>
-    </posicoes>
-    <posicoes>
-        <objeto xsi:type="objetoSimbolicoComplexoImpl">
-            <refTipo>
-                <nomeTipo>os_paragrafo</nomeTipo>
-            </refTipo>
-            <id>34</id>
-            <posicoes>
-                <objeto xsi:type="textoFormatadoImpl">
-                    <refTipo>
-                        <nomeTipo>texto_formatado</nomeTipo>
-                    </refTipo>
-                    <id>35</id>
-                    <representacao> O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.</representacao>
-                    <xhtmlFragment> O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.</xhtmlFragment>
-                </objeto>
-                <rotulo xsi:type="roleRotuloImpl">
-                    <refTipo>
-                        <nomeTipo>role_rotulo</nomeTipo>
-                    </refTipo>
-                    <representacao>{texto}</representacao>
-                    <nomeRole>texto</nomeRole>
-                </rotulo>
-            </posicoes>
-        </objeto>
-        <rotulo xsi:type="rotuloOrdenadoImpl">
-            <refTipo>
-                <nomeTipo>rotulo_ordenado</nomeTipo>
-            </refTipo>
-            <representacao>{par[1]}</representacao>
-            <nomeRole>par</nomeRole>
-            <posicaoRole>1</posicaoRole>
-        </rotulo>
-    </posicoes>
-    <posicoes>
-        <objeto xsi:type="objetoSimbolicoComplexoImpl">
-            <refTipo>
-                <nomeTipo>os_paragrafo</nomeTipo>
-            </refTipo>
-            <id>36</id>
-            <posicoes>
-                <objeto xsi:type="textoFormatadoImpl">
-                    <refTipo>
-                        <nomeTipo>texto_formatado</nomeTipo>
-                    </refTipo>
-                    <id>37</id>
-                    <representacao> Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.</representacao>
-                    <xhtmlFragment> Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.</xhtmlFragment>
-                </objeto>
-                <rotulo xsi:type="roleRotuloImpl">
-                    <refTipo>
-                        <nomeTipo>role_rotulo</nomeTipo>
-                    </refTipo>
-                    <representacao>{texto}</representacao>
-                    <nomeRole>texto</nomeRole>
-                </rotulo>
-            </posicoes>
-        </objeto>
-        <rotulo xsi:type="rotuloOrdenadoImpl">
-            <refTipo>
-                <nomeTipo>rotulo_ordenado</nomeTipo>
-            </refTipo>
-            <representacao>{par[2]}</representacao>
-            <nomeRole>par</nomeRole>
-            <posicaoRole>2</posicaoRole>
-        </rotulo>
-    </posicoes>
-</objeto>
-<rotulo xsi:type="rotuloOrdenadoImpl">
-    <refTipo>
-        <nomeTipo>rotulo_ordenado</nomeTipo>
-    </refTipo>
-    <representacao>{art[3]}</representacao>
-    <nomeRole>art</nomeRole>
-    <posicaoRole>3</posicaoRole>
-</rotulo>
-                            </posicoes>
-                            <posicoes>
-<objeto xsi:type="objetoSimbolicoComplexoImpl">
-    <refTipo>
-        <nomeTipo>os_artigo</nomeTipo>
-    </refTipo>
-    <id>38</id>
-    <posicoes>
-        <objeto xsi:type="objetoSimbolicoComplexoImpl">
-            <refTipo>
-                <nomeTipo>os_caput</nomeTipo>
-            </refTipo>
-            <id>39</id>
-            <posicoes>
-                <objeto xsi:type="textoFormatadoImpl">
-                    <refTipo>
-                        <nomeTipo>texto_formatado</nomeTipo>
-                    </refTipo>
-                    <id>40</id>
-                    <representacao> Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.</representacao>
-                    <xhtmlFragment> Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
-                </objeto>
-                <rotulo xsi:type="roleRotuloImpl">
-                    <refTipo>
-                        <nomeTipo>role_rotulo</nomeTipo>
-                    </refTipo>
-                    <representacao>{texto}</representacao>
-                    <nomeRole>texto</nomeRole>
-                </rotulo>
-            </posicoes>
-        </objeto>
-        <rotulo xsi:type="roleRotuloImpl">
-            <refTipo>
-                <nomeTipo>role_rotulo</nomeTipo>
-            </refTipo>
-            <representacao>{cpt}</representacao>
-            <nomeRole>cpt</nomeRole>
-        </rotulo>
-    </posicoes>
-</objeto>
-<rotulo xsi:type="rotuloOrdenadoImpl">
-    <refTipo>
-        <nomeTipo>rotulo_ordenado</nomeTipo>
-    </refTipo>
-    <representacao>{art[4]}</representacao>
-    <nomeRole>art</nomeRole>
-    <posicaoRole>4</posicaoRole>
 </rotulo>
                             </posicoes>
                         </objeto>
@@ -298,22 +141,26 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                             <refTipo>
 <nomeTipo>role_rotulo</nomeTipo>
                             </refTipo>
+                            <javaType>roleRotulo</javaType>
                             <representacao>{articulacao}</representacao>
                             <nomeRole>articulacao</nomeRole>
                         </rotulo>
                     </posicoes>
                 </objetoSimbolico>
                 <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
+                    <javaType>nomeRelativo</javaType>
                     <representacao>todos_documentos/urn;urn:lex:br:federal:lei:2013;1</representacao>
                     <rotulo xsi:type="rotuloClassificadoImpl">
                         <refTipo>
                             <nomeTipo>rotulo_classificado</nomeTipo>
                         </refTipo>
+                        <javaType>rotuloClassificado</javaType>
                         <representacao>urn;urn:lex:br:federal:lei:2013;1</representacao>
                         <nomeRole>urn</nomeRole>
                         <classificacao>urn:lex:br:federal:lei:2013;1</classificacao>
                     </rotulo>
                     <sobreNome xsi:type="nomeContextoImpl">
+                        <javaType>nomeContexto</javaType>
                         <representacao>todos_documentos</representacao>
                         <refTipoContexto>
                             <nomeTipo>todos_documentos</nomeTipo>
@@ -323,23 +170,22 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                 <refTipo>
                     <nomeTipo>doc_proj_lei</nomeTipo>
                 </refTipo>
-                <id>21</id>
+                <id>11</id>
             </documento>
             <documentoParseado>true</documentoParseado>
-            <fecho>baioxop</fecho>
+            <fecho></fecho>
             <incluidoVisualizacao>true</incluidoVisualizacao>
             <localidades>br</localidades>
             <numero>1</numero>
             <numeroComponente></numeroComponente>
-            <order>0</order>
-            <preambulo>cima</preambulo>
+            <preambulo></preambulo>
             <tiposDocumento>lei</tiposDocumento>
             <titulo>Lei nº 1/2013&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
             <urn>urn:lex:br:federal:lei:2013;1</urn>
             <urnIdDIV>urn_lex_br_federal_lei_2013_1</urnIdDIV>
             <versao></versao>
         </textos>
-        <id>20130726113320574-1</id>
+        <id>20130729180711645-1</id>
         <titulo>Nova Coluna</titulo>
     </colunas>
     <colunas>
@@ -361,7 +207,7 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
             <categorias>legislacao</categorias>
             <comissaoespecial></comissaoespecial>
             <componenteDocumento></componenteDocumento>
-            <dataAssinatura>2014</dataAssinatura>
+            <dataAssinatura>2015</dataAssinatura>
             <dataEvento></dataEvento>
             <dataVigente></dataVigente>
             <documento>
@@ -369,31 +215,36 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                     <refTipo>
                         <nomeTipo>raiz_documento</nomeTipo>
                     </refTipo>
-                    <id>2</id>
+                    <id>12</id>
+                    <javaType>objetoSimbolicoComplexo</javaType>
                     <posicoes>
                         <objeto xsi:type="objetoSimbolicoComplexoImpl">
                             <refTipo>
 <nomeTipo>articulacao</nomeTipo>
                             </refTipo>
-                            <id>3</id>
+                            <id>13</id>
+                            <javaType>objetoSimbolicoComplexo</javaType>
                             <posicoes>
 <objeto xsi:type="objetoSimbolicoComplexoImpl">
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>5</id>
+    <id>15</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>6</id>
+            <id>16</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>7</id>
+                    <id>17</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8o do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</representacao>
                     <xhtmlFragment> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8o do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
                 </objeto>
@@ -429,19 +280,22 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>8</id>
+    <id>18</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>9</id>
+            <id>19</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>10</id>
+                    <id>20</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</representacao>
                     <xhtmlFragment> Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</xhtmlFragment>
                 </objeto>
@@ -477,19 +331,22 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>11</id>
+    <id>21</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>12</id>
+            <id>22</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>13</id>
+                    <id>23</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.</representacao>
                     <xhtmlFragment> Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.</xhtmlFragment>
                 </objeto>
@@ -515,13 +372,15 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
             <refTipo>
                 <nomeTipo>os_paragrafo</nomeTipo>
             </refTipo>
-            <id>14</id>
+            <id>24</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>15</id>
+                    <id>25</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.</representacao>
                     <xhtmlFragment> O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.</xhtmlFragment>
                 </objeto>
@@ -548,13 +407,15 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
             <refTipo>
                 <nomeTipo>os_paragrafo</nomeTipo>
             </refTipo>
-            <id>16</id>
+            <id>26</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>17</id>
+                    <id>27</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.</representacao>
                     <xhtmlFragment> Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.</xhtmlFragment>
                 </objeto>
@@ -591,19 +452,22 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
     <refTipo>
         <nomeTipo>os_artigo</nomeTipo>
     </refTipo>
-    <id>18</id>
+    <id>28</id>
+    <javaType>objetoSimbolicoComplexo</javaType>
     <posicoes>
         <objeto xsi:type="objetoSimbolicoComplexoImpl">
             <refTipo>
                 <nomeTipo>os_caput</nomeTipo>
             </refTipo>
-            <id>19</id>
+            <id>29</id>
+            <javaType>objetoSimbolicoComplexo</javaType>
             <posicoes>
                 <objeto xsi:type="textoFormatadoImpl">
                     <refTipo>
                         <nomeTipo>texto_formatado</nomeTipo>
                     </refTipo>
-                    <id>20</id>
+                    <id>30</id>
+                    <javaType>textoFormatado</javaType>
                     <representacao> Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.</representacao>
                     <xhtmlFragment> Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.</xhtmlFragment>
                 </objeto>
@@ -645,14 +509,14 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                     </posicoes>
                 </objetoSimbolico>
                 <nome xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="nomeRelativoImpl">
-                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei:2014;2</representacao>
+                    <representacao>todos_documentos/urn;urn:lex:br:federal:lei:2015;3</representacao>
                     <rotulo xsi:type="rotuloClassificadoImpl">
                         <refTipo>
                             <nomeTipo>rotulo_classificado</nomeTipo>
                         </refTipo>
-                        <representacao>urn;urn:lex:br:federal:lei:2014;2</representacao>
+                        <representacao>urn;urn:lex:br:federal:lei:2015;3</representacao>
                         <nomeRole>urn</nomeRole>
-                        <classificacao>urn:lex:br:federal:lei:2014;2</classificacao>
+                        <classificacao>urn:lex:br:federal:lei:2015;3</classificacao>
                     </rotulo>
                     <sobreNome xsi:type="nomeContextoImpl">
                         <representacao>todos_documentos</representacao>
@@ -664,30 +528,47 @@ Art. 4o  Na interpretação desta Lei, serão considerados os fins sociais a que
                 <refTipo>
                     <nomeTipo>doc_proj_lei</nomeTipo>
                 </refTipo>
-                <id>1</id>
+                <id>11</id>
             </documento>
             <documentoParseado>true</documentoParseado>
             <fecho></fecho>
             <incluidoVisualizacao>false</incluidoVisualizacao>
             <localidades>br</localidades>
-            <numero>2</numero>
+            <numero>3</numero>
             <numeroComponente></numeroComponente>
-            <order>1</order>
             <preambulo></preambulo>
             <tiposDocumento>lei</tiposDocumento>
-            <titulo>Lei nº 2/2014&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
-            <urn>urn:lex:br:federal:lei:2014;2</urn>
-            <urnIdDIV>urn_lex_br_federal_lei_2014_2</urnIdDIV>
+            <titulo>Lei nº 3/2015&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei:2015;3</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_2015_3</urnIdDIV>
             <versao></versao>
         </textos>
-        <id>20130726113320574-2</id>
+        <id>20130729180711645-2</id>
         <titulo>Nova Coluna</titulo>
     </colunas>
     <conexoes>
         <sourceId>urn_lex_br_federal_lei_2013_1</sourceId>
-        <targetId>urn_lex_br_federal_lei_2014_2</targetId>
+        <targetId>urn_lex_br_federal_lei_2015_3</targetId>
     </conexoes>
-    <currentPosition>40</currentPosition>
-    <id>20130726113320574</id>
-    <titulo>Titulo novo</titulo>
+    <correlacoes>
+        <relacoes>
+            <refTipo>
+                <nomeTipo>relacao_diferenca</nomeTipo>
+            </refTipo>
+            <alvo>20</alvo>
+            <id>11</id>
+            <origem>17</origem>
+            <proveniencia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="provenienciaUsuarioImpl">
+                <refTipo>
+                    <nomeTipo>proveniencia_usuario</nomeTipo>
+                </refTipo>
+                <noneUsuario>0</noneUsuario>
+            </proveniencia>
+        </relacoes>
+        <urn1>urn:lex:br:federal:lei:2013;1</urn1>
+        <urn2>urn:lex:br:federal:lei:2015;3</urn2>
+    </correlacoes>
+    <currentPosition>11</currentPosition>
+    <id>20130729180711645</id>
+    <titulo>Novo quadro</titulo>
 </quadroComparativo>

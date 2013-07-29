@@ -198,15 +198,17 @@ public class QuadroComparativo implements Serializable, IdSource{
     public void addTexto(String colId, Texto texto) {
         
         Coluna col = getColuna(colId);
-        if (getTexto(colId, texto.getUrn()) != null) {
-        
-            Texto txt = getTexto(colId, texto.getUrn());
-            texto.setOrder(txt.getOrder());
-            int index = col.getTextos().indexOf(txt);
-            col.getTextos().set(index, texto);
-        
-        } else {
-            col.addTexto(texto);
+        if (col != null){
+	        if (getTexto(colId, texto.getUrn()) != null) {
+	        
+	            Texto txt = getTexto(colId, texto.getUrn());
+	            texto.setOrder(txt.getOrder());
+	            int index = col.getTextos().indexOf(txt);
+	            col.getTextos().set(index, texto);
+	        
+	        } else {
+	            col.addTexto(texto);
+	        }
         }
     }
 

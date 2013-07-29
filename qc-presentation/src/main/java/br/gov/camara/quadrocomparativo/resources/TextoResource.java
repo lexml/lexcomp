@@ -168,7 +168,7 @@ public class TextoResource {
             @PathParam("colid") String colId) {
 
         QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
+        
         // texto.setArticulacaoXML(getArticulacaoXML(texto));
         
         // verifica se o usuario nao inseriu um arquivo lexml no lugar da
@@ -199,10 +199,12 @@ public class TextoResource {
         return Response.status(Status.CREATED).entity(texto).build();
     }
     
+    /*
     @GET
     @Path("/{urn}/qc/{qcid}/estrutura/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Texto getEstruturaTextoInQuadro(@PathParam("qcid") String qcId,
+    */
+    Texto getEstruturaTextoInQuadro(@PathParam("qcid") String qcId,
             @PathParam("urn") String urn) {
 
         if (urn == null) {

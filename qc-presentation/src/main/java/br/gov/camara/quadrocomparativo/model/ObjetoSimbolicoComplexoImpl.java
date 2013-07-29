@@ -77,6 +77,11 @@ public class ObjetoSimbolicoComplexoImpl extends ObjetoSimbolicoImpl
 		
 		return r;
     }
+
+	@Override
+	protected String getRealJavaType() {
+		return "objetoSimbolicoComplexo";
+	}
     
     
 }

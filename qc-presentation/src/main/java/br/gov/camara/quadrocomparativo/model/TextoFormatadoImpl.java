@@ -41,5 +41,10 @@ public class TextoFormatadoImpl extends ObjetoSimbolicoSimplesImpl
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
     }
+
+	@Override
+	protected String getRealJavaType() {
+		return "textoFormatado";
+	}
     
 }

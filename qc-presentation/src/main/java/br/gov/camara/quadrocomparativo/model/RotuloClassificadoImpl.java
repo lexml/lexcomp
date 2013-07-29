@@ -26,6 +26,11 @@ public class RotuloClassificadoImpl extends RoleRotuloImpl
     public RotuloClassificadoImpl() {
     }
     
+    @Override
+    String getRealJavaType() {
+    	return "rotuloClassificado";
+    }
+    
     public RotuloClassificadoImpl(RotuloClassificado rotulo) {
         super(rotulo);
         

@@ -16,13 +16,25 @@ var urnTextoNovo = 'URNTEXTONOVO';
  */
 function fortext(cond,func) {
 	if(typeof(cond) === "string") {
+		console.log("cond: "+cond);
 		var urn = cond;
 		cond = function(t) { return t.urn == urn; };
+	} else {
+		console.log("cond nao eh string ");
+		console.log(cond);
 	}
     $.each(quadro.colunas, function (ic, col) {
+    	console.log("Considerando coluna: " + ic);
         if (col.textos) {
-            $.each(col.textos, function (it, txt) {                
-                if (cond(txt)) { func(txt,it,col,ic); }
+            $.each(col.textos, function (it, txt) {
+            	console.log("Considerando texto: " + it + ", valor: ");
+            	console.log(txt);
+                if (cond(txt)) { 
+                	console.log("    bateu!");
+                	func(txt,it,col,ic); 
+                } else {
+                	console.log("    não bateu ...");
+                }
             });
         }
     });
@@ -570,6 +582,7 @@ function configuraQuadro() {
             $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
         }
         
+        //substitui ; por __ porque tudo o que está após o caracter ; desaparece 
         while(urn.match(";")) {
             urn = urn.replace(";", "__");
         }
@@ -591,8 +604,6 @@ function configuraQuadro() {
                 showConfirmDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.",
                 function () {
                     
-                    
-                        
                     //texto.preambulo = nicEditors.findEditor("preambulo-textarea").getContent();
                     //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
                     //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
@@ -610,8 +621,11 @@ function configuraQuadro() {
                         contentType: "application/json; charset=utf-8",
                         success:function(res){
                         	//FIXME Verificar porque é necessário
-                            res.urn = (""+res.urn).replace("__", ";");
-                            
+                            //res.urn = (""+res.urn).replace("__", ";");
+                            while(urn.match("__")) {
+                                urn = urn.replace("__", ";");
+                            }
+
                             if (!res.documentoParseado){
                             	showAlertDialog("O documento foi salvo, porém, não foi possível realizar a estruturação do conteúdo.");
                             } else {

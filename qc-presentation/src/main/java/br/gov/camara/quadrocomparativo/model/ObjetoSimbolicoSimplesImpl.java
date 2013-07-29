@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 

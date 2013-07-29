@@ -59,4 +59,9 @@ public class NomeRelativoImpl extends NomeImpl implements NomeRelativo, Serializ
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
     }
+    
+    @Override
+    String getRealJavaType() {
+    	return "nomeRelativo";
+    }
 }

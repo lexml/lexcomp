@@ -5,13 +5,14 @@
 package br.gov.camara.quadrocomparativo.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 import br.gov.lexml.symbolicobject.ObjetoSimbolico;
 import br.gov.lexml.symbolicobject.ObjetoSimbolicoComplexo;
@@ -24,20 +25,35 @@ import br.gov.lexml.symbolicobject.TextoPuro;
  * @author p_7174
  */
 @XmlSeeAlso({ ObjetoSimbolicoComplexoImpl.class,
-		ObjetoSimbolicoSimplesImpl.class })
+		ObjetoSimbolicoSimplesImpl.class,
+		TextoFormatadoImpl.class, TextoPuroImpl.class})
+@JsonTypeInfo(
+		use=JsonTypeInfo.Id.NAME,
+		include=JsonTypeInfo.As.PROPERTY,
+		property="javaType"
+		)
+@JsonSubTypes({
+	@JsonSubTypes.Type(value=ObjetoSimbolicoComplexoImpl.class,name="objetoSimbolicoComplexo"),
+	@JsonSubTypes.Type(value=TextoPuroImpl.class,name="textoPuro"),
+	@JsonSubTypes.Type(value=TextoFormatadoImpl.class,name="textoFormatado")
+})
 abstract class ObjetoSimbolicoImpl implements ObjetoSimbolico, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@XmlElement
 	private RefTipoImpl refTipo;
+		
 	protected long id;
+		
+	private String javaType;
 
 	public ObjetoSimbolicoImpl() {
+		javaType = getRealJavaType();
 	}
 
 	public ObjetoSimbolicoImpl(ObjetoSimbolico obj) {
-
+		this();
 		if (obj != null) {
 			id = obj.getId();
 			refTipo = new RefTipoImpl(obj.getRefTipo());
@@ -98,6 +114,14 @@ abstract class ObjetoSimbolicoImpl implements ObjetoSimbolico, Serializable {
 		return ToStringBuilder.reflectionToString(this);
 	}
 	
+	public String getJavaType() {
+		return javaType;
+	}
+
+	public void setJavaType(String javaType) {
+		this.javaType = javaType;
+	}
+	
 	/**
      * Produz o conjunto de id de todos os ObjetoSimbolico das posicoes
      * a partir de this, inclusive este, recursivamente até os nós não complexos, inclusive.
@@ -105,4 +129,8 @@ abstract class ObjetoSimbolicoImpl implements ObjetoSimbolico, Serializable {
      */
     abstract public Set<Long> produceObjetoSimbolicoIdSetFromPosicoes();
 
+
+    abstract protected String getRealJavaType();
+    
+     
 }

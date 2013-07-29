@@ -823,7 +823,7 @@ function printRelacoes (relacoes) {
         var thisRelacao = $(this);
         showConfirmDialog("Deseja remover a relação?",
                 function () {
-                    deleteRelacao(qcid, urn1, urn2, thisRelacao.parent().attr("id").replace("relacao_", ""), relacaoSaved);
+                    deleteRelacao(qcid, urn1, urn2, thisRelacao.attr("id").replace("linkRemoveRelacao_", ""), relacaoSaved);
                 });
         
     });
@@ -1017,10 +1017,12 @@ function getRelacoes(qcid, urn1, urn2) {
         success:function(res){
             relacoes = res;
             printRelacoes(res);
-            $("#loadingRelacao").remove();
         },
         error:function(res){
             //alert("Bad thing happend! " + res.statusText);
+        },
+        complete:function(r){
+        	$("#loadingRelacao").remove();
         }
     });
     
