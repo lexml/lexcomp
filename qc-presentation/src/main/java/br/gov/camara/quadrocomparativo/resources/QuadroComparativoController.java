@@ -124,6 +124,9 @@ public class QuadroComparativoController {
     static boolean saveQuadroComparativo(HttpServletRequest request, QuadroComparativo qc){
     	QuadroComparativo qcAtual = getQuadroComparativo(request, qc.getId());
     	
+    	// garante que o current position é o valor máximo entre o que veio do JS e o que está na sessão
+    	qc.setCurrentPosition(Math.max(qc.getCurrentPosition(),qcAtual.getCurrentPosition()));
+    	
     	boolean ok = true;
     	if (qc.isArticulacoesExcluidas()){
     		ok = restauraArticulacoes(qc, qcAtual);    		
@@ -168,7 +171,7 @@ public class QuadroComparativoController {
         return true;
     }
 
-    private static boolean  saveQuadroToFile(QuadroComparativo quadro){
+    private static boolean saveQuadroToFile(QuadroComparativo quadro){
         try {
             
             new File(quadro.getFileName()).delete();

@@ -34,7 +34,7 @@ public class QuadroComparativo implements Serializable, IdSource{
     private List<Conexao> conexoes;
     private String dataModificacao;
     private List<Correlacao> correlacoes;
-    private long currentPosition = 0;
+    private long idSourceCurrentPosition = 0;
     
     private boolean articulacoesExcluidas = false;
     
@@ -274,13 +274,13 @@ public class QuadroComparativo implements Serializable, IdSource{
     
     
     synchronized public long nextId(STipo tipo) {
-		return ++currentPosition;
+		return ++idSourceCurrentPosition;
 	}
     synchronized public long getCurrentPosition() {
-		return currentPosition;
+		return idSourceCurrentPosition;
 	}
     synchronized public void setCurrentPosition(long currentPosition) {
-		this.currentPosition = currentPosition;
+		this.idSourceCurrentPosition = currentPosition;
 	}
 
 }
