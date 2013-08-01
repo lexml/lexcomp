@@ -286,7 +286,7 @@ object RotuloClassificado {
 		  RotuloClassificado(rc.getNomeRole,JC.collectionAsScalaIterable(rc.getClassificacao).toSeq : _*)
   def render(r : RotuloClassificado) : Option[GenderName] = {
     (r.nomeRole,r.classificacao.toList) match {
-      case ("paragrafo",List("unico")) => Some(GenderName("par. único",Male))
+      case ("par",List("unico")) => Some(GenderName("par. único",Male))
       case _ => None
     }
   }

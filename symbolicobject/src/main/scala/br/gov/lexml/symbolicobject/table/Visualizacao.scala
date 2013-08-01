@@ -58,7 +58,6 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
       private[this] def renderDiffCases(l : List[DiffCase]) : NodeSeq = l.toSeq.flatMap(renderDiffCase)
       private[this] def diff(t1 : String, t2 : String) : Option[NodeSeq] = {
         val dl = LexmlDiff.diff(t1, t2, opcoes.getMaxUpdateRatio, true)
-        println("getMaxUpdateRatio: " + opcoes.getMaxUpdateRatio)
         if(dl.exists(c => !c.isInstanceOf[Equal])) {
           Some(renderDiffCases(dl))
         } else {
