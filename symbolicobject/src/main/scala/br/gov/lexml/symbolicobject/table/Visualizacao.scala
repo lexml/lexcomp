@@ -26,7 +26,7 @@ abstract class BaseRenderer[T] extends CellRenderer[T] {
       def empty : RenderedCell = RenderedCell(NodeSeq.Empty, List("css-vis-empty-right"))
 }
 
-class Visualizacao(indexer : IIndexer) {
+class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
   
     // de SymbolicObject e outro de Relacao
     private implicit val cellRendererSO = new BaseRenderer[Either[PosicaoComCtx, NodeSeq]] {
@@ -57,8 +57,8 @@ class Visualizacao(indexer : IIndexer) {
       }
       private[this] def renderDiffCases(l : List[DiffCase]) : NodeSeq = l.toSeq.flatMap(renderDiffCase)
       private[this] def diff(t1 : String, t2 : String) : Option[NodeSeq] = {
-        val dl = LexmlDiff.diff(t1, t2, 0.8, true)
-        
+        val dl = LexmlDiff.diff(t1, t2, opcoes.getMaxUpdateRatio, true)
+        println("getMaxUpdateRatio: " + opcoes.getMaxUpdateRatio)
         if(dl.exists(c => !c.isInstanceOf[Equal])) {
           Some(renderDiffCases(dl))
         } else {
@@ -91,7 +91,7 @@ class Visualizacao(indexer : IIndexer) {
   
   import java.util.{List => JList}
     
-  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]], opcoes : OpcoesVisualizacao): String = {
+  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]]): String = {
     import scala.collection.{JavaConverters => JC}
   
     def toScalaList[A](l : JList[A]) : List[A] = {
@@ -100,10 +100,10 @@ class Visualizacao(indexer : IIndexer) {
     
     createHtmlTable(
         toScalaList(indexOrder).map(_.toInt), 
-        toScalaList(columns).map( x => toScalaList(x)), opcoes )
+        toScalaList(columns).map( x => toScalaList(x)) )
   }
   
-  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]], opcoes : OpcoesVisualizacao): String = {
+  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]]): String = {
 
     //preparing plan
     val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))

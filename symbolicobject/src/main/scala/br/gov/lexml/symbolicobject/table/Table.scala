@@ -24,11 +24,8 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
     def totalColSpan(r : List[Cell[A]]) = r.map(_.cs).sum
     
     val maxSpan = rows.map(totalColSpan).max
-       
-    
-    addClassesId(
-        <table> 
-        { rows.map(row => {
+      
+    val renderedRows = rows.map(row => {
           val ts = totalColSpan(row)
           val rs = maxSpan - ts
           <tr>{
@@ -38,7 +35,11 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
             if(rs <= 0) { NodeSeq.Empty } else { cellRenderer.empty.td % new UnprefixedAttribute("colspan", rs.toString, Null) }
             }
             </tr>            
-          })
+          }).filter(row => (row \ "td").map(_.text.trim.length()).sum > 0)
+    
+    addClassesId(
+        <table> 
+        { renderedRows
         }
     	</table>, cssClasses, id)
   }

@@ -59,13 +59,13 @@ public class VisualizacaoResource {
 
 		// montando colunas
 		String saidaHtml = "";
-		Visualizacao visualizacao = new Visualizacao(makeIndexer(qc));
-		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, new OpcoesVisualizacao(){
+		Visualizacao visualizacao = new Visualizacao(makeIndexer(qc), new OpcoesVisualizacao(){
 			@Override
 			public double getMaxUpdateRatio() {
-				return porcentagem / 10.0;
+				return porcentagem / 100.0;
 			}
 		});
+		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas);
 
 		return saidaHtml;
 	}

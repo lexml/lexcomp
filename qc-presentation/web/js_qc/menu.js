@@ -135,7 +135,7 @@ function print_menu() {
             <form action="" id="formVisualizacao" method="POST">\
                 <table>\
                     <tr>\
-                    	<td>Grau de semelhança do diff:</td>\
+                    	<td>Percentual mínimo de semelhança para fazer não considerar diferença completa:</td>\
                     </tr>\
 		            <tr>\
 			            <td><div id="sliderVisualizacao"></div></td>\
@@ -177,15 +177,15 @@ function print_menu() {
         
         //campo slider da visualização
         $("#sliderVisualizacao").slider({
-           value:1,
+           value:80,
            min: 1,
            max: 99,
            step: 1,
            slide: function( event, ui ) {
-               $("#visualizacao-porcentagem").val( ui.value / 100 );
+               $("#visualizacao-porcentagem").val( ui.value + "%" );
            }
        });
-       $("#visualizacao-porcentagem").val("0.50");
+       $("#visualizacao-porcentagem").val("80%");
        
       //botão da visualização que abre a visualização em si
        $("#sbVisualizacao").click(function(event) { 
