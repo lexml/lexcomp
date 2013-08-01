@@ -5,6 +5,7 @@
 package br.gov.camara.quadrocomparativo.resources;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -227,16 +228,17 @@ public class CorrelacaoResource {
         Documento leftDoc = qc.getTexto(urn1).getDocumento();
         Documento rightDoc = qc.getTexto(urn2).getDocumento(); 
         
-        List<Relacao> lRelacao = new ArrayList<Relacao>();
+        final List<Relacao> lRelacao = new ArrayList<Relacao>();
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
         if (correlacao == null){
         	correlacao = new Correlacao(urn1, urn2);
             qc.addCorrelacao(correlacao);
         } else {
-	        lRelacao = correlacao.getRelacoes();
-	        if(lRelacao == null) { 
-	        	lRelacao = new ArrayList<Relacao>(); 
+        	List<Relacao> relacoesAtuais = correlacao.getRelacoes();
+	        if(relacoesAtuais != null) { 
+	        	lRelacao.addAll(relacoesAtuais); 
 	        }
+	        			        
 	        correlacao.removeAllRelacoes();
         }
         

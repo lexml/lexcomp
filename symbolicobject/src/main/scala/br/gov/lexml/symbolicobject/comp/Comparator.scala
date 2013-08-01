@@ -219,9 +219,9 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
   val parentOf: Map[Long, ObjectData] = objMap.values.flatMap { od => od.cpids.map(x => (x, od)) }.toMap
   
   def equalByHash(ctx : EqContext) = {
-    val leftBUObjs = leftBottomUpObjs.filter(ctx.unmatched contains _.id)
-    val rightBUObjs = rightBottomUpObjs.filter(ctx.unmatched contains _.id)
-    val allObjs = leftBUObjs ++ rightBUObjs
+    val unmatched = ctx.unmatched    
+    val allObjs = leftBottomUpObjs ++ rightBottomUpObjs
+    allObjs.map(o => (o.id,o.cpids)).foreach(x => println("   " + x))
     val hashOf: Map[Long, Int] = allObjs.foldLeft(Map[Long, Int]()) {
 	    case (m, o) =>
 	      val h = if (o.isSimple) { o.textHash } else { orderedHash(o.cpids.map(m)) }
@@ -230,9 +230,8 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
     val rightHashMap = rightTopDownObjs
     		.filter(ctx.unmatched contains _.id)
     		.groupBy(o => (o.nivel, hashOf(o.id)))
-
-    rightHashMap.foreach(x => println("    " + x))
-    leftBUObjs.foldLeft(Map[Long, Long](), ctx.matched) {
+    
+    leftBottomUpObjs.foldLeft(Map[Long, Long](), ctx.matched) {
       case ((em, um), lo) if !(em contains lo.id) =>
         rightHashMap.get((lo.nivel, hashOf(lo.id)))
           .flatMap(_.view.filterNot { um contains _.id }
@@ -339,8 +338,9 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
   
   
   def compare(idSource : IdSource,emmitOnlyForTexts : Boolean = false,rels : Iterable[Relacao[_]] = Seq()) : Seq[Relacao[Unit]] = {
-    val rels1 = rels filter  { _.proveniencia.isInstanceOf[ProvenienciaUsuario] }
-    val (pairs,matched) = rels1 map {
+    val rels1 = rels.toList
+    val rels2 = rels1 filter  { _.proveniencia.isInstanceOf[ProvenienciaUsuario] }
+    val (pairs,matched) = rels2.map {
       case r : RelacaoAusenteNaOrigem[_] => (Seq(),Seq(r.dir))
       case r : RelacaoAusenteNoAlvo[_] => (Seq(),Seq(r.esq))
       case r : RelacaoIgualdade[_] => (Seq((r.esq,r.dir)),Seq(r.esq,r.dir))
@@ -351,16 +351,15 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
       case r : RelacaoFusao[_] => 
         val esq = r.origem.to[Seq]
         (Seq((esq.head,r.dir)),r.dir +: esq)
-    } unzip    
+    }.unzip    
     val base = pairs.flatten.toMap
-    //leftTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
-    //rightTopDownObjs.foreach(od => println(f"   (${od.id}) -> (${od.textoLocalNormalizado},${od.textHash})"))
     val matched2 = matched.flatten.toSet
     val unmatched = objMap.values.map(_.id).toSet -- matched2
     var ctx = EqContext(objMap.mapValues(o => (o.caminho, o.textoLocal)), leftTopDownObjs.map(_.id), rightTopDownObjs.map(_.id), base, 
     				unmatched)
     ctx = ctx + equalByHash(ctx)
     ctx = ctx + equalByTextSimiliarity(ctx)
+    
     ctx = ctx + equalByCommonChildren(ctx)    
     val result1 = ctx.equalSoFar -- base.keySet
     val result = if (emmitOnlyForTexts) {
@@ -381,7 +380,7 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
     val userRelIndex = rels1.map { r => (r.origem.toList.sorted,r.alvo.toList.sorted) }.toSet
     def isNotSpecifiedByUser(r : Relacao[Unit]) : Boolean = !(userRelIndex contains (r.origem.toList.sorted,r.alvo.toList.sorted)) 
     
-    rels1.map(_.setData(())).toSeq ++ relacoes.filter(isNotSpecifiedByUser)
+    rels1.map(_.setData(())).toSeq ++ relacoes.filter(isNotSpecifiedByUser)    
   }
 
 }

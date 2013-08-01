@@ -810,6 +810,8 @@ function getStrRotulo(rotulo) {
 
 function printRelacoes (relacoes) {
     
+	$(".relacao").remove();
+	
     if (!relacoes || !relacoes.length) {
         return;
     }
