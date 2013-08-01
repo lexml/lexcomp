@@ -125,7 +125,12 @@ public class QuadroComparativoController {
     	QuadroComparativo qcAtual = getQuadroComparativo(request, qc.getId());
     	
     	// garante que o current position é o valor máximo entre o que veio do JS e o que está na sessão
-    	qc.setCurrentPosition(Math.max(qc.getCurrentPosition(),qcAtual.getCurrentPosition()));
+    	if(qcAtual != null) {
+    		qc.setCurrentPosition(Math.max(qc.getCurrentPosition(),qcAtual.getCurrentPosition()));
+    	} else {
+    		qc.setCurrentPosition(Math.max(qc.getCurrentPosition(),1));
+    	}
+    	
     	
     	boolean ok = true;
     	if (qc.isArticulacoesExcluidas()){
