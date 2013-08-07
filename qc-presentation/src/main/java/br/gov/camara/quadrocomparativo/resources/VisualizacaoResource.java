@@ -81,8 +81,11 @@ public class VisualizacaoResource {
 	private List<Integer> getIndexOrder(QuadroComparativo qc) {
 
 		List<Integer> res = new ArrayList<Integer>();
-
-		for (int i = 0; i < qc.getColunas().size(); i++) {
+		
+		for (int i = qc.getColunas().size()-1 ; i >= 0 ; i--) {
+			res.add(i);
+		}
+		/*for (int i = 0; i < qc.getColunas().size(); i++) {
 			if (qc.getColunas().get(i).getColunaPrincipal()) {
 				res.add(i);
 			}
@@ -91,7 +94,7 @@ public class VisualizacaoResource {
 		if (res.isEmpty()) {
 			res.add(0);
 		}
-
+*/
 		return res;
 	}
 
