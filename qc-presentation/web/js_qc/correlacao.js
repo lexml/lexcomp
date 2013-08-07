@@ -778,7 +778,7 @@ function getStrRotulo(rotulo) {
             } else if(rotulo.nomeRole == "ali") { //Tratamento Alínea 
                 strRotulo += alinea(rotulo.posicaoRole[0]) //+ rotulo.nomeRole;                                        
             } else if(rotulo.nomeRole == "ite") { //Tratamento item
-            	strRotulo += rotulo.posicaoRole[0] + "–" //+ rotulo.nomeRole;            
+            	strRotulo += rotulo.posicaoRole[0] + "– " //+ rotulo.nomeRole;            
             } else if(rotulo.nomeRole == "cap") { //Tratamento Capitulo 
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Capítulo " + romano(rotulo.posicaoRole[0]);
