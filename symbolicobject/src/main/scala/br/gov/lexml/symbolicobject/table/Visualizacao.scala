@@ -16,6 +16,7 @@ import br.gov.lexml.lexmldiff.LexmlDiff
 import scala.xml.Null
 import scala.xml.Text
 import br.gov.lexml.symbolicobject.util.CollectionUtils
+import br.gov.lexml.symbolicobject.impl.Caminho
 
 
 trait OpcoesVisualizacao {
@@ -27,15 +28,23 @@ abstract class BaseRenderer[T] extends CellRenderer[T] {
 }
 
 class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
-  
+    def renderCaminho(c : Caminho) : NodeSeq = { 
+      var r = c.render2 match {
+	      case ("","") => NodeSeq.Empty
+	      case ("",t) => <span class="rotuloPrincipal">{t + " "}</span>
+	      case (p,t) => NodeSeq fromSeq (Seq(<span class="rotuloContexto">{p}</span> , <span> </span>, <span class="rotuloPrincipal">{t + " "}</span>))
+      }
+      println("renderCaminho: caminho = " + c + ", r = " + r)
+      r
+    }
     // de SymbolicObject e outro de Relacao
     private implicit val cellRendererSO = new BaseRenderer[Either[PosicaoComCtx, NodeSeq]] {
       def render(x: Either[PosicaoComCtx, NodeSeq]): RenderedCell = x match {
         case Right(comentario) => RenderedCell(comentario, List("css-vis-comentario"))
         case Left(pos) => pos.objetoSimbolico.get match {
-          case tp: TextoPuro[Contexto] => RenderedCell(<span><span class="css-vis-span-rotulo">{tp.data.caminho.render2 + ": "}</span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
+          case tp: TextoPuro[Contexto] => RenderedCell(<span><span class="css-vis-span-rotulo">{renderCaminho(tp.data.caminho)}</span>{ tp.texto }</span>, List("css-vis-texto-puro"), Some("tp-" + tp.id))
           case tf: TextoFormatado[Contexto] => RenderedCell(
-              NodeSeq.fromSeq(Seq(<span class="css-vis-span-rotulo">{tf.data.caminho.render2 + ": "}</span>) ++ tf.frag.ns ) 
+              NodeSeq.fromSeq(Seq(<span class="css-vis-span-rotulo">{renderCaminho(tf.data.caminho)}</span>) ++ tf.frag.ns ) 
               , 
               List("css-vis-texto-formatado"), Some("tf-" + tf.id))
           case os: ObjetoSimbolicoComplexo[Contexto] => RenderedCell(<span>{ pos.rotulo.toString }</span>, List("css-vis-texto-obj-simbolico", "css-vis-os-" + os.tipo.nomeTipo), Some("os-" + os.id))
