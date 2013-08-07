@@ -97,30 +97,14 @@ object PlanToCorrelation {
          */
         def f(col: Column, acc: (Int, List[Column], Map[SymbolicObjectId, CorrelationType])): (Int, List[Column], Map[SymbolicObjectId, CorrelationType]) = {                    
           val (numColuna, colsAlvo, m) = acc
-          println("    f: numColuna = " + numColuna + ", colsAlvo = " + colsAlvo.map(_.docs.map(_.id)) + ", col = " + col.docs.map(_.id) + ", m = ")
-          m.foreach(x => println("     " + x))
-
           val m2: Map[SymbolicObjectId, CorrelationType] = {
 
             def correlationsFromPosicao(pos: PosicaoComCtx, colsAlvo: List[Column]): CorrelationType = {
-              println("       correlationsFromPosicao: pos = " + pos + ", colsAlvo.length = " + colsAlvo.length)
-              println("            relations: ")
-              pos.objeto.data.relacoes.foreach { case (docId,m) =>
-                println("                docId: " + docId)
-                m.foreach { case (dir,l) =>
-                  println("                    dir: " + dir)
-                  l.foreach { r =>
-                    println("                        origem: " + r.origem + ", alvo: " + r.alvo)
-                    }
-                }
-              }
               val relacoes = for {
                 colAlvo <- colsAlvo
                 doc <- colAlvo.docs
-                _ = println("                                   considering doc.id = " + doc.id)
                 (dir,rl) <- pos.objeto.data.relacoes.getOrElse(doc.id,Map()) // **** rdb.relationsFrom(pos.objetoSimbolico.get.id, doc.id)
                 r <- rl
-                _ = println("                                       considering relacao: " + r)                
                 if(r match {
                   case _ : RelacaoAusenteNaOrigem[_] => false
                   case _ : RelacaoAusenteNoAlvo[_] => false
@@ -131,7 +115,6 @@ object PlanToCorrelation {
               } yield {                
                 Relation(r, m(alvo))
               }
-              println("       correlationsFromPosicao: relacoes = " + relacoes)
               Correlation(pos, numColuna, relacoes)
             }
             
@@ -139,7 +122,6 @@ object PlanToCorrelation {
             val res = novasCorrelacoes ++ m            
             res
           }
-          println("       m2.keys = " + m2.keySet.toIndexedSeq.sorted)
           (numColuna - direcao, col :: colsAlvo, m2)
         }
 
