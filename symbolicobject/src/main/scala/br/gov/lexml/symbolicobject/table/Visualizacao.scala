@@ -105,7 +105,7 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
   
   import java.util.{List => JList}
     
-  def createHtmlTable(indexOrder: JList[Integer], columns: JList[ColumnSpec]): String = {
+  def createHtmlTable(indexOrder: JList[Integer], columns: JList[ColumnSpec], tableTitle : String): String = {
     import scala.collection.{JavaConverters => JC}
   
     def toScalaList[A](l : JList[A]) : List[A] = {
@@ -114,10 +114,11 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
     
     createHtmlTable(
         toScalaList(indexOrder).map(_.toInt), 
-        toScalaList(columns) )
+        toScalaList(columns),
+        tableTitle)
   }
   
-  def createHtmlTable(indexOrder: List[Int], columns: List[ColumnSpec]): String = {
+  def createHtmlTable(indexOrder: List[Int], columns: List[ColumnSpec], tableTitle : String): String = {
 
     //preparing plan
     val colNames = columns.map(_.nomeColuna)
@@ -162,7 +163,9 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
          <head> 
     		<link rel="stylesheet" href="css/visualizacao.css" type="text/css" media="all"/>         
          </head>
-         <body>{ result }</body>
+         <body>
+    		  <div class="css-vis-table-title">{tableTitle}</div>
+          { result }</body>
        </html>)
 
     resHtml.toString

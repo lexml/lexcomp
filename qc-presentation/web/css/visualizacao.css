@@ -19,6 +19,13 @@
 	text-align: center;
 }
 
+div.css-vis-table-title {
+	font-weight: bold;
+	font-size-adjust: 140%;	
+	text-align: center;
+	padding: 8px;
+}
+
 .css-vis-texto-obj-simbolico{
 }
 .css-vis-os-articulacao{

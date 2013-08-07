@@ -42,9 +42,13 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
         <table> {
         	if(columnNames.isEmpty) { NodeSeq.Empty } else {        
     		  <thead>
-        		<tr>
-        			{ columnNames.flatMap { case (cn,cs) => <td colSpan={cs.toString}>{cn}</td> } }
-        		</tr>
+        		{        		  
+        		  if(columnNames.isEmpty) { NodeSeq.Empty } else {
+	        		<tr class="columnNameRow">
+        			   { columnNames.flatMap { case (cn,cs) => <td colSpan={cs.toString}>{cn}</td> } }
+        		    </tr>
+        		  }
+        		}
     		  </thead>
         	}
         }

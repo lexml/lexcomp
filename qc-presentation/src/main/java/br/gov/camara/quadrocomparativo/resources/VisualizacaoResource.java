@@ -67,7 +67,8 @@ public class VisualizacaoResource {
 				return porcentagem / 100.0;
 			}
 		});
-		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas);
+		System.out.println("qc.getTitulo = " + qc.getTitulo());
+		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, qc.getTitulo());
 
 		return saidaHtml;
 	}
