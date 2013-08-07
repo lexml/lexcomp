@@ -50,9 +50,11 @@ function showJanelaComenario(idpai){
 
 
 //Abre Janela Modal - Criação de URNs para os textos
-function formModalOpen(urn, onCloseCallback){
+function formModalOpen(urn, isEdit, onCloseCallback){
     
     $('#formLegislacao')[0].reset();
+    
+    var urnAntiga = urn;
     
     $("#modalForm").dialog({
         resizable: false, 
@@ -106,18 +108,20 @@ function formModalOpen(urn, onCloseCallback){
                 //Só adiciona um novo texto se não existir uma URN igual
                 if($("#"+textoAtualModal.urnIdDIV).length == 0){
                     
-                    var urn = textoAtualModal.urnIdDIV;                
+                    var urnIdDIVAntiga = parse_divURN(urnAntiga);
 
-                    $("#"+ urn).attr({urn: textoAtualModal.urn});                                
+                    //Modifica o ID do Texto originário
+                    if (isEdit) {
+                        $("#" + urnIdDIVAntiga).attr("id", textoAtualModal.urnIdDIV);
+                        atualizaIdConexoes(urnIdDIVAntiga, textoAtualModal.urnIdDIV);
+                        atualizaIdCorrelacao(quadro.id, urnAntiga, textoAtualModal.urn);
+                        
+                    } else {
+                        $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV); 
+                    }
                     
+                    $("#"+ textoAtualModal.urnIdDIV).attr({urn: textoAtualModal.urn});
                     
-                    
-                    //Modifica o ID do Texto originário          
-                    $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV); 
-                    
-                    
-                    
-
                     //Adiciona os Endpoints do Plumb na criação do novo texto
                     addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
                     
@@ -125,9 +129,13 @@ function formModalOpen(urn, onCloseCallback){
                     $("#"+textoAtualModal.urnIdDIV).attr("urn", textoAtualModal.urn); 
 
                     //Modifica o título do novo texto
-                    $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo); 
-                
-                }else{
+                    $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo);
+                    
+                    //Modifica o link do lexml
+                    $("#"+textoAtualModal.urnIdDIV + " .linkLexml").attr("href",
+                        "http://www.lexml.gov.br/urn/" + textoAtualModal.urn);
+                    
+                } else if (!isEdit) {
                     $("#URNTEXTONOVO").remove();                    
                     showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
                 }
@@ -136,6 +144,49 @@ function formModalOpen(urn, onCloseCallback){
             
             
               
+        }
+    });
+}
+
+function atualizaIdConexoes(urnAntiga, urnNova) {
+    
+    $.each(quadro.conexoes, function (index, conn) {
+        //alert(conexao.sourceId + " === " + conn.sourceId);
+        //alert(conexao.targetId + " === " + conn.targetId);
+
+        if (conn.sourceId == urnAntiga) {
+            conn.sourceId = urnNova;
+        }
+            
+        if (conn.targetId == urnAntiga) {
+            conn.targetId = urnNova;
+        }
+    });
+    
+    saveQuadro();
+}
+
+function atualizaIdCorrelacao(qcId, urnAntiga, urnNova, callback) {
+    
+    //substitui ; por __ porque tudo o que está após o caracter ; desaparece 
+    while(urnAntiga.match(";")) {
+        urnAntiga = urnAntiga.replace(";", "__");
+    }
+    
+    $.ajax({
+        url: '/api/correlacao/updateid/' + qcId + '/' + urnAntiga,
+        type: 'POST',
+        data: urnNova,
+        dataType: "html",
+        contentType: "application/json; charset=utf-8"
+        
+    }).done(function() {
+        
+    }).fail(function(){
+        //alert("Bad thing happend! " + res.statusText);
+    }).always(function() {
+        if (callback) {
+            callback();
         }
     });
 }

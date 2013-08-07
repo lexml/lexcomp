@@ -372,7 +372,7 @@ function configuraQuadro() {
         textoAtualModal = null;
         
         //Abre a Modal, passando o ID temporário do TEXTO
-        formModalOpen(urnTextoNovo, function() {
+        formModalOpen(urnTextoNovo, false, function() {
             
             if(textoAtualModal) {
                
@@ -512,7 +512,7 @@ function configuraQuadro() {
         evt.preventDefault();        
         var urn =  $(this).parent().attr("urn");
         textoAtualModal = getTextoByURN(quadro, urn);
-        formModalOpen(urn);
+        formModalOpen(urn, true);
     });	    
     
     $('.gerarURN').unbind('click');

@@ -1,11 +1,14 @@
 /* Fixos */
 .css-vis-table {
 	border: 1px solid black; 
+        border-spacing: 0px;        
 	border-collapse: collapse;
+        table-layout: fixed;
 }
 
 .css-vis-table td {
-	padding: 3px;
+	padding: 10px;
+        border: 1px solid black;
 }
 
 .css-vis-texto-obj-simbolico{
