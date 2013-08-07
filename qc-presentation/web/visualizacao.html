@@ -114,16 +114,22 @@
             function adjustTable(tbl) {
                 //var tbl = document.getElementById(tableId);
                 var row = tbl.rows[0];
-                var maxWidth = 1;
-                for ( var i = 0; i < row.childNodes.length; i++ ) {
+                var maxWidth = $("body").width() / ($(row).find("td").length);
+                /*for ( var i = 0; i < row.childNodes.length; i++ ) {
                   var width = row.childNodes[i].offsetWidth;
                   if(width && width > maxWidth) { maxWidth = width; } 
-                }
+                }*/
                 for ( var i = 0; i < row.childNodes.length; i++ ) {
                     if (row.childNodes[i].style) {
                         row.childNodes[i].style.width = maxWidth + "px"; 
                     }
                 }
+                
+                $(".css-vis-texto-formatado").width(maxWidth);
+                $(".css-vis-diff-vazio").width(maxWidth/2);
+                $(".css-vis-diff").width(maxWidth);
+                $(".css-vis-empty-right").width(maxWidth/2);
+                
             }
             
             $(document).ready(function() {
