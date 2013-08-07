@@ -35,13 +35,11 @@ abstract class BaseRenderer[T] extends CellRenderer[T] {
 
 class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
     def renderCaminho(c : Caminho) : NodeSeq = { 
-      var r = c.render2 match {
+      c.render2 match {
 	      case ("","") => NodeSeq.Empty
 	      case ("",t) => <span class="rotuloPrincipal">{t + " "}</span>
 	      case (p,t) => NodeSeq fromSeq (Seq(<span class="rotuloContexto">{p}</span> , <span> </span>, <span class="rotuloPrincipal">{t + " "}</span>))
-      }
-      println("renderCaminho: caminho = " + c + ", r = " + r)
-      r
+      }      
     }
     // de SymbolicObject e outro de Relacao
     private implicit val cellRendererSO = new BaseRenderer[Either[PosicaoComCtx, NodeSeq]] {

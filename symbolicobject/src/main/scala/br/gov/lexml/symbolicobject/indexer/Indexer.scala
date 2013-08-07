@@ -149,14 +149,12 @@ final class Indexer extends IIndexer {
     val s2t = for {
       rel <- rel1
       (r, s, t) = rel
-      d <- docsPerObject.getOrElse(t, Set())
-      _ = println("s2t: s = " + s + ", t = " + t, " d = " + d + ", r = " + r)
+      d <- docsPerObject.getOrElse(t, Set())      
     } yield (s, (d, (SourceToTarget, Set(r))))
     val t2s = for {
       rel <- rel1
       (r, s, t) = rel
-      d <- docsPerObject.getOrElse(s, Set())
-      _ = println("t2s: t = " + t + ", s = " + s + ", d = " + d + ", r = " + r)
+      d <- docsPerObject.getOrElse(s, Set())      
     } yield (t, (d, (TargetToSource, Set(r))))
     val relsL: Seq[(Long, (Long, (Direction, Set[Long])))] = s2t.seq ++ t2s.seq
     val rels = relsL.groupBy1on2with(_.groupBy1on2with(_.groupBy1on2with(_.flatten.toSet)))

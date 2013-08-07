@@ -221,7 +221,7 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
   def equalByHash(ctx : EqContext) = {
     val unmatched = ctx.unmatched    
     val allObjs = leftBottomUpObjs ++ rightBottomUpObjs
-    allObjs.map(o => (o.id,o.cpids)).foreach(x => println("   " + x))
+    
     val hashOf: Map[Long, Int] = allObjs.foldLeft(Map[Long, Int]()) {
 	    case (m, o) =>
 	      val h = if (o.isSimple) { o.textHash } else { orderedHash(o.cpids.map(m)) }
