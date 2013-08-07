@@ -83,6 +83,40 @@ public class CorrelacaoResource {
         return correlacao;
     }
     
+    @POST @Path("/updateid/{qcid}/{urn1}/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateIdCorrelacao(String urnNova,
+        @PathParam("qcid") String qcid, @PathParam("urn1") String urnAntiga) {
+        
+    	
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
+        
+        urnAntiga = urnAntiga.replaceAll("__", ";");
+        urnNova = urnNova.replaceAll("__", ";");
+        
+        List<Correlacao> listCorrel = qc.getCorrelacoes(urnAntiga);
+        
+        if (listCorrel == null || listCorrel.isEmpty()) {
+            throw new NotFoundException("Nenhuma correlacao encontrada para urn = " + urnAntiga);
+        }
+
+        for (Correlacao correl : listCorrel) {
+            
+            if (correl.getUrn1().equals(urnAntiga)) {
+                correl.setUrn1(urnNova);
+            }
+            
+            if (correl.getUrn2().equals(urnAntiga)) {
+                correl.setUrn2(urnNova);
+            }
+        }
+        
+        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
+        
+        String result = "Quadro saved: " + qc;
+        return Response.status(201).entity(result).build();
+    }
+    
     @GET @Path("/relacao/{qcid}/{urn1}/{urn2}/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Relacao> getRelacoes(@PathParam("qcid") String qcId,

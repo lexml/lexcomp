@@ -56,7 +56,7 @@
                 <div id="htmlVisualizacaoServidor">
 
 		    <!-- INCIO SERVIDOR -->
-                    <table class="css-vis-table" border="0"> 
+                    <table id="vis-table" class="css-vis-table" border="0" cellspacing="0"> 
                         <tbody>
                             <tr>
                                 <td colspan="2" id="os-29" class="css-vis-texto-obj-simbolico css-vis-os-articulacao"><span>{articulacao}</span></td>
@@ -111,12 +111,28 @@
             var qcid = getURLParameter('qcid');
             var porcentagem = getURLParameter('porcentagem');
             
+            function adjustTable(tbl) {
+                //var tbl = document.getElementById(tableId);
+                var row = tbl.rows[0];
+                var maxWidth = 1;
+                for ( var i = 0; i < row.childNodes.length; i++ ) {
+                  var width = row.childNodes[i].offsetWidth;
+                  if(width > maxWidth) { maxWidth = width; } 
+                }
+                for ( var i = 0; i < row.childNodes.length; i++ ) {
+                  row.childNodes[i].style.width = maxWidth + "px"; 
+                }
+            }
+            
             $(document).ready(function() {
 
                 getVisualizacao(qcid, porcentagem, function(tableVisualizacao) {
-                    $("#htmlVisualizacaoServidor").html(tableVisualizacao);
+                    var table = $(tableVisualizacao).get(0);
+                    adjustTable(table);
+                    
+                    $("#htmlVisualizacaoServidor").html(table);
                     $('#htmlVisualizacaoServidor').show();
-
+                    
                     //Encerra loading
                     $('#loading').hide();
                     $('#fade').hide();
@@ -124,7 +140,9 @@
                 });
 
             });
-        </script>              
-
+            
+        </script>
+        
+        
     </body>
 </html>
