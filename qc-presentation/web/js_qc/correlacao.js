@@ -428,7 +428,7 @@ function addDivRelacao(relacao) {
                 
                 var c = jsPlumb.connect({ source: "objA_" + elem, target: relacaoId,
                     anchor: ["RightMiddle", "LeftMiddle"],
-                    paintStyle:"",//relacaoStyle                    
+                    paintStyle:""//relacaoStyle                    
                 });                
                 AddClass(c);
             });
@@ -443,7 +443,7 @@ function addDivRelacao(relacao) {
                 
                 var c = jsPlumb.connect({ source: relacaoId, target: "objB_" + elem,
                     anchor: ["RightMiddle", "LeftMiddle"],
-                    paintStyle:"",//relacaoStyle
+                    paintStyle:""//relacaoStyle
                     });
                 AddClass(c);
             });
@@ -982,12 +982,6 @@ function getTiposCorrelacao(cardOrigem, cardAlvo){
     var key = cardOrigem + ":" + cardAlvo;
     return tiposRelacao[key];
 }
-
-
-
-
-
-
 
 function getCorrelacao(qcid, urn1, urn2, callback){
     
