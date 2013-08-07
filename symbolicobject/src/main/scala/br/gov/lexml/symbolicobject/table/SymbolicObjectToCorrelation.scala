@@ -35,29 +35,7 @@ object PlanToCorrelation {
   /**
    * Devolve as correlações do plano e a relação de Posicao não citadas
    */
-  def createCorrelations(plan: Plan): (List[RootCorrelationType], Seq[Stream[PosicaoComCtx]]) = {
-    println("createCorrelations: starting")
-    println("    number of columns : " + plan.columns.length)
-    println("    number of text in each column: " + plan.columns.map(_.docs.length))
-    println("    id of each document in each column: " + plan.columns.map(_.docs.map(_.id)))
-    println("    symobjs in each column:")
-    plan.columns.zipWithIndex.foreach { case (col,colNum) =>
-      println("        Column: " + colNum)
-      val posicoes = traversal(col).toIndexedSeq.grouped(10).map(_.map(p => "%04d".format(p.objeto.id)))
-      posicoes.foreach(x => println("           " + x))            
-    }
-    println("    relations by object: ")    
-    plan.columns.zipWithIndex.foreach { case (col,colNum) =>
-      println("        Column: " + colNum)
-      traversal(col).map(_.objeto).foreach { obj =>
-        if(obj.data.relacoes.nonEmpty) {
-          println("               " + obj.id)
-          obj.data.relacoes.foreach { rel =>
-            println("                    " + rel)
-           }
-        }
-      }                  
-    }
+  def createCorrelations(plan: Plan): (List[RootCorrelationType], Seq[Stream[PosicaoComCtx]]) = {    
     
     /**
      * Retorna a lista de objetos simbolicos em uma coluna
@@ -80,16 +58,14 @@ object PlanToCorrelation {
     /**
      * Produz os RootCorrelations da coluna indexada em colIndex
      */
-    def rootCorrelationFromColumn(colIndex: Int): Stream[RootCorrelationType] = {
-      println("rootCorrelationsFromColumn: colIndex = " + colIndex)
+    def rootCorrelationFromColumn(colIndex: Int): Stream[RootCorrelationType] = {      
       val DIRECAO_DIREITA = 1
       val DIRECAO_ESQUERDA = -1
 
       /**
        * Produz todas as correlações da coluna indexada em relacao as demais colunas
        */
-      def allCorrelationsFromColumns(allCols: List[Column], numColunaInicial: Int, direcao: Int): Map[SymbolicObjectId, CorrelationType] = {
-        println("  allCorrelations: allCols.length = " + allCols.length + ", numColunaInicial = " + numColunaInicial + ", direcao = " + direcao)  
+      def allCorrelationsFromColumns(allCols: List[Column], numColunaInicial: Int, direcao: Int): Map[SymbolicObjectId, CorrelationType] = {         
 
         /**
          * Função usada no fold
