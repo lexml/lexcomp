@@ -751,7 +751,7 @@ function getStrRotulo(rotulo) {
             if(rotulo.nomeRole == "art"){                                        
                 strRotulo += "  " + "Art. " + rotulo.posicaoRole[0] ;
                 if(rotulo.posicaoRole[0]<10){                                        
-                    strRotulo += "<u><sup>o</sup></u>";
+                    strRotulo += "º";
                 }else{
                     strRotulo += ". ";
                 }                                       
@@ -768,12 +768,17 @@ function getStrRotulo(rotulo) {
                     strRotulo += "Parágrafo único. ";
                 
                 } else {
-                    strRotulo += "§ " + rotulo.posicaoRole[0] + "<u style='font-size: 0.8em;'><sup>o</sup></u> ";
+                	if(rotulo.posicaoRole[0] < 10) {
+                		strRotulo += "§ " + rotulo.posicaoRole[0] + "º" ;
+                	} else {
+                		strRotulo += "§ " + rotulo.posicaoRole[0] + ". ";
+                	}
                 }
                 
             } else if(rotulo.nomeRole == "ali") { //Tratamento Alínea 
                 strRotulo += alinea(rotulo.posicaoRole[0]) //+ rotulo.nomeRole;                                        
-            
+            } else if(rotulo.nomeRole == "ite") { //Tratamento item
+            	strRotulo += rotulo.posicaoRole[0] + "–" //+ rotulo.nomeRole;            
             } else if(rotulo.nomeRole == "cap") { //Tratamento Capitulo 
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Capítulo " + romano(rotulo.posicaoRole[0]);
