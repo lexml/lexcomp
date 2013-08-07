@@ -17,7 +17,8 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
   def map[B](f : A => B) : Table[B] = Table(rows.map(_.map(_.map(f))))
   def +[B >: A](t : Table[B]) : Table[B] = Table(rows ++ t.rows)
  
-  def renderTable(cssClasses : List[String] = Nil, id : Option[String] = None )
+  def renderTable(cssClasses : List[String] = Nil, id : Option[String] = None,
+      columnNames : List[(String,Int)] = Nil)
                     (implicit cellRenderer : CellRenderer[A]) = {
     import Table._
     
@@ -38,9 +39,19 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
           }).filter(row => (row \ "td").map(_.text.trim.length()).sum > 0)
     
     addClassesId(
-        <table> 
+        <table> {
+        	if(columnNames.isEmpty) { NodeSeq.Empty } else {        
+    		  <thead>
+        		<tr>
+        			{ columnNames.flatMap { case (cn,cs) => <td colSpan={cs.toString}>{cn}</td> } }
+        		</tr>
+    		  </thead>
+        	}
+        }
+    		<tbody>
         { renderedRows
         }
+        	</tbody>
     	</table>, cssClasses, id)
   }
   

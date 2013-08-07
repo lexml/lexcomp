@@ -23,6 +23,12 @@ trait OpcoesVisualizacao {
   def getMaxUpdateRatio() : Double
 } 
 
+class ColumnSpec(
+    val nomeColuna : String, 
+    _docs : java.util.List[I.Documento]) {
+  val docs = scala.collection.JavaConversions.collectionAsScalaIterable(_docs).to[List]
+}
+
 abstract class BaseRenderer[T] extends CellRenderer[T] {
       def empty : RenderedCell = RenderedCell(NodeSeq.Empty, List("css-vis-empty-right"))
 }
@@ -99,7 +105,7 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
   
   import java.util.{List => JList}
     
-  def createHtmlTable(indexOrder: JList[Integer], columns: JList[JList[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: JList[Integer], columns: JList[ColumnSpec]): String = {
     import scala.collection.{JavaConverters => JC}
   
     def toScalaList[A](l : JList[A]) : List[A] = {
@@ -108,13 +114,14 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
     
     createHtmlTable(
         toScalaList(indexOrder).map(_.toInt), 
-        toScalaList(columns).map( x => toScalaList(x)) )
+        toScalaList(columns) )
   }
   
-  def createHtmlTable(indexOrder: List[Int], columns: List[List[I.Documento]]): String = {
+  def createHtmlTable(indexOrder: List[Int], columns: List[ColumnSpec]): String = {
 
     //preparing plan
-    val cols: List[Column] = columns.map(x => Column(x.map(produceDocumentoComCtx): _*))
+    val colNames = columns.map(_.nomeColuna)
+    val cols: List[Column] = columns.map(x => Column(x.docs.map(produceDocumentoComCtx): _*))
     val plan = Plan(indexOrder, cols: _*)
 
     //creating rootCorrelations
@@ -148,7 +155,7 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
     	val table2 = Table(List(Cell(Other( <span>Outros dispositivos</span>,List("css-vis-outros-dispositivos") ),columns.length*2)) :: transposedNaoCitados)
         table + table2
     }
-    val result = resultTable.renderTable(List("css-vis-table"))
+    val result = resultTable.renderTable(List("css-vis-table"),columnNames = colNames.map(x => (x,2)))
 
     val resHtml =
       (<html>

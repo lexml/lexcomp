@@ -6,9 +6,17 @@
         table-layout: fixed;
 }
 
+
 .css-vis-table td {
 	padding: 10px;
         border: 1px solid black;
+}
+
+.css-vis-table thead td {
+	font-weight: bold;
+	font-size-adjust: 120%;
+	background-color: #d0d0d0;
+	text-align: center;
 }
 
 .css-vis-texto-obj-simbolico{

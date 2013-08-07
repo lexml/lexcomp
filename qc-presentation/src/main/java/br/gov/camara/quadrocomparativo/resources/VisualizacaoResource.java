@@ -20,6 +20,7 @@ import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.indexer.Indexer;
+import br.gov.lexml.symbolicobject.table.ColumnSpec;
 import br.gov.lexml.symbolicobject.table.OpcoesVisualizacao;
 import br.gov.lexml.symbolicobject.table.Visualizacao;
 
@@ -44,7 +45,7 @@ public class VisualizacaoResource {
 		}
 
 		// monta as colunas nos documentos
-		List<List<Documento>> colunas = new ArrayList<List<Documento>>();
+		List<ColumnSpec> colunas = new ArrayList<ColumnSpec>();
 		for (Coluna c : qc.getColunas()) {
 			List<Documento> documentos = new ArrayList<Documento>();
 			for (Texto t : c.getTextos()) {
@@ -54,7 +55,8 @@ public class VisualizacaoResource {
 					}
 				}
 			}
-			colunas.add(documentos);
+			ColumnSpec cs = new ColumnSpec(c.getTitulo(),documentos);
+			colunas.add(cs);
 		}
 
 		// montando colunas
