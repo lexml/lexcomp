@@ -31,6 +31,7 @@ import scalaz._
 import br.gov.lexml.parser.pl.ProjetoLei
 import br.gov.lexml.parser.pl.output.LexmlRenderer
 import br.gov.lexml.parser.pl.profile.ProjetoDeLeiDoSenadoNoSenado
+import br.gov.lexml.parser.pl.text.normalizer
 
 
 final case class InputDocument(tipo: STipo, doc: XMLSource, urn: String)
@@ -83,7 +84,7 @@ trait ParagrafosToBlocks extends BlockSource {
   self: ParagrafosSource =>
   def paragrafos: TraversableOnce[String]
   override final def blocks() =
-    Success(paragrafos.map((x: String) => Paragraph(Seq(Text(x)))).toList)
+    Success(paragrafos.map((x: String) => Paragraph(Seq(Text(normalizer.removeDuplicateSpace(x.trim))))).toList)
 }
 
 trait BlocksToXMLCompleto extends XMLSource {

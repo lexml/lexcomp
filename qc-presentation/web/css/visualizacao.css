@@ -45,7 +45,7 @@
 
 /* Conteúdo do texto*/
 .css-vis-span-rotulo{
-	font-weight: bold;
+/*	font-weight: bold; */
 }
 
 .css-vis-os-os_artigo{
@@ -63,4 +63,20 @@
 	color: blue;
 	font-size-adjust: 130%;
 	text-align: center;
+}
+
+.rotuloContexto {
+	font-weight: normal;
+}
+
+.rotuloPrincipal {
+	font-weight: bold;
+}
+
+.rotuloContexto:before {
+	content: "[";
+}
+
+.rotuloContexto:after {
+	content: "]";
 }
