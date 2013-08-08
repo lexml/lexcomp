@@ -4,7 +4,7 @@
 
     <groupId>br.gov.camara</groupId>
     <artifactId>QuadroComparativo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>QuadroComparativo</name>
@@ -139,7 +139,7 @@
         <dependency>
             <groupId>br.gov.lexml</groupId>
             <artifactId>symbolicobject</artifactId>
-            <version>0.0.5-SNAPSHOT</version>
+            <version>0.0.5</version>
         </dependency>
         <dependency>
             <groupId>jdom</groupId>
