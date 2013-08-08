@@ -93,8 +93,8 @@ public class VisualizacaoResource {
 
 		if (res.isEmpty()) {
 			res.add(0);
-		}
-*/
+		}*/
+
 		return res;
 	}
 

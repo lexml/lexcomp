@@ -13,16 +13,16 @@ final case class Cell[+A](content : A, cs : Int)  {
  
 }
 
-final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
+final case class Table[A](rows : IndexedSeq[IndexedSeq[Cell[A]]] = IndexedSeq()) {
   def map[B](f : A => B) : Table[B] = Table(rows.map(_.map(_.map(f))))
   def +[B >: A](t : Table[B]) : Table[B] = Table(rows ++ t.rows)
  
-  def renderTable(cssClasses : List[String] = Nil, id : Option[String] = None,
-      columnNames : List[(String,Int)] = Nil)
+  def renderTable(cssClasses : IndexedSeq[String] = IndexedSeq(), id : Option[String] = None,
+      columnNames : IndexedSeq[(String,Int)] = IndexedSeq())
                     (implicit cellRenderer : CellRenderer[A]) = {
     import Table._
     
-    def totalColSpan(r : List[Cell[A]]) = r.map(_.cs).sum
+    def totalColSpan(r : IndexedSeq[Cell[A]]) = r.map(_.cs).sum
     
     val maxSpan = rows.map(totalColSpan).max
       
@@ -65,7 +65,7 @@ final case class Table[A](rows : List[List[Cell[A]]] = Nil) {
 
 final case class RenderedCell(
     xml : NodeSeq = NodeSeq.Empty, 
-    classes : List[String] = Nil,
+    classes : IndexedSeq[String] = IndexedSeq(),
     id : Option[String] = None) {
    lazy val td = Table.addClassesId(<td>{xml}</td> , classes, id)  
      
@@ -80,7 +80,7 @@ object Table {
   
   def vconcat[A](l : Table[A]*) = l.foldLeft[Table[A]](Table())(_ + _)
   
-  def addClassesId(e : Elem, classes : List[String], id : Option[String]) = {
+  def addClassesId(e : Elem, classes : IndexedSeq[String], id : Option[String]) = {
      var el = e 
      el = if(!classes.isEmpty) { el % new UnprefixedAttribute("class",classes.mkString(" "),Null) } else { el }
      el = id.map(el % new UnprefixedAttribute("id",_,Null)).getOrElse(el)

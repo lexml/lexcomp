@@ -6,8 +6,8 @@ import scala.collection.generic.CanBuildFrom
 
 
 final case class RootCorrelation[+Node,+Edge](
-    value : Node, column : Int, leftRels : List[Relation[Node,Edge]],
-    rightRels : List[Relation[Node,Edge]]) {
+    value : Node, column : Int, leftRels : IndexedSeq[Relation[Node,Edge]],
+    rightRels : IndexedSeq[Relation[Node,Edge]]) {
   
   override def toString : String = "RootCorrelation = value : {" + value + "} ; column : {" + column + "} ; leftRels : {" + leftRels + "} ; rightRels : {" + rightRels + "}" 
   
@@ -29,11 +29,11 @@ final case class RootCorrelation[+Node,+Edge](
   }   
 }
 
-final case class Correlation[+Node,+Edge](value : Node, column : Int, rels : List[Relation[Node,Edge]]) {
+final case class Correlation[+Node,+Edge](value : Node, column : Int, rels : IndexedSeq[Relation[Node,Edge]]) {
   
   override def toString : String = "Coorelation = value : {" + value + "} ; column : {" + column + "} ; rels : {" + rels + "}"
   
-  def fold[A](f : (Node,Int,List[(Edge,A)]) => A) : A = {
+  def fold[A](f : (Node,Int,IndexedSeq[(Edge,A)]) => A) : A = {
     f(value,column,rels.map { case Relation(data,next) => (data,next.fold(f))} )
   }
   def map[Node1,Edge1](f : Node => Node1, g : Edge => Edge1) : Correlation[Node1,Edge1] = {
@@ -44,20 +44,20 @@ final case class Correlation[+Node,+Edge](value : Node, column : Int, rels : Lis
 		    case Relation(ed,c) => Relation(ed,c.mapColumn(f)) 
 		  })
   
-  lazy val flatCorrelations = fold[List[FlatCorrelation[Node,Edge]]] { (d,nc,l) =>
+  lazy val flatCorrelations = fold[IndexedSeq[FlatCorrelation[Node,Edge]]] { (d,nc,l) =>
     type F = FlatCorrelation[Node,Edge]
-    type R = List[F]
+    type R = IndexedSeq[F]
     def add(v : Option[Node], c : (Edge,R)) : R = {
       def add1(d: Option[Node], v : Option[Edge],f : F) = FlatCorrelation(d,nc,Some(FlatRelation(v,f)))
       val (rd,n) = c
       n match {
-        case Nil => Nil
-        case x :: xs => add1(v,Some(rd),x) :: xs.map(add1(None,None,_))
+        case IndexedSeq() => IndexedSeq()
+        case _ => add1(v,Some(rd),n.head) +: n.tail.map(add1(None,None,_))
       }
     }
     l match {   
-       case Nil => List(FlatCorrelation(Some(d),nc,None))
-       case x :: xs =>(add(Some(d),x) :: xs.map(add(None,_))).flatten
+       case IndexedSeq() => IndexedSeq(FlatCorrelation(Some(d),nc,None))
+       case _ =>(add(Some(d),l.head) +: l.tail.map(add(None,_))).flatten
   } }
 }
 
