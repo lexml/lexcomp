@@ -102,7 +102,7 @@ class LexmlParser(idSource: IdSource) {
       xmlid <- e.attributes.get("id")
       lastComp <- NodeSeq.fromSeq(xmlid).text.split("_").toSeq.lastOption
       rotulo = rotuloFromIdComp(lastComp)
-      els = onlyElements(e.child).dropWhile(_.label == "Rotulo")
+      els = onlyElements(e.child).dropWhile(x => x.label == "Rotulo" || x.label == "TituloDispositivo")
       p = processaDispositivo(e, tipo, rotulo, els)
       /*pos <- if(tipo.superTipos.contains(T.Tipos.Agrupador)) {
 	              Some(processaAgrupador(e,tipo,rotulo,els))
