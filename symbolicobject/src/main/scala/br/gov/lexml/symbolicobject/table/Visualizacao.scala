@@ -125,6 +125,10 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
 
     //creating rootCorrelations
     val (rootCorrelations, todosNaoCitados) = PlanToCorrelation.createCorrelations(plan)
+    
+    def selId(p : PosicaoComCtx) = p.objeto.id
+    
+    val rootCorrelationsSemRepeticao = new PairFilter(selId).rootCorrelations(rootCorrelations)
 
     def eitherPosicao(pos: PosicaoComCtx): IndexedSeq[Either[PosicaoComCtx, NodeSeq]] =
       Left(pos) +: pos.objetoSimbolico.get.data.comentarios.toIndexedSeq.map(a => Right(<span>{ a.texto }</span>))
@@ -135,7 +139,7 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
     //Left(relation) :: relacaoDB.commentsOfRelation(relation.id).map(Right(_))
 
     val novoRootCorrelations: IndexedSeq[RootCorrelation[IndexedSeq[Either[PosicaoComCtx, NodeSeq]], IndexedSeq[Either[RelacaoComCtx, NodeSeq]]]] =
-      rootCorrelations.map(_.map(eitherPosicao, eitherRelacao))
+      rootCorrelationsSemRepeticao.map(_.map(eitherPosicao, eitherRelacao))
         
 
     val table = Transforms.rootCorrelationToTable(novoRootCorrelations)

@@ -4,6 +4,46 @@ import scala.collection.LinearSeqLike
 import scala.collection.generic.CanBuildFrom
 
 
+class PairFilter[Node,Edge](f : Node => Long, val initialPairs : Set[(Long,Long)] = Set()) {
+  type RC = RootCorrelation[Node,Edge]
+  type PS = Set[(Long,Long)]
+  type R = Relation[Node,Edge]
+  type C = Correlation[Node,Edge]
+
+  var pairs : Set[(Long,Long)] = initialPairs
+  
+  def isNew(n1 : Node, n2 : Node) : Boolean = {
+    val v1 = f(n1)
+    val v2 = f(n2)
+    val p = if(v1 <= v2) { (v1,v2) } else { (v2,v1) }
+    val res = !pairs.contains(p)    
+    if(res) {
+      pairs = pairs + p
+    }
+    res
+  }
+  
+  def rootCorrelations(rcl : IndexedSeq[RC]) : IndexedSeq[RC] = rcl.map(rootCorrelation)
+  
+  def rootCorrelation(rc : RC) : RC = {           
+    val leftRels1 = rc.leftRels.flatMap(relation(rc.value,_))
+    val rightRels1 = rc.rightRels.flatMap(relation(rc.value,_))
+    rc copy (leftRels = leftRels1, rightRels = rightRels1)
+  }
+  
+  def relation(n : Node, r : R) : Option[R] = {
+    val next = r.next
+    if(isNew(n,next.value)) {
+    	Some(r copy (next = correlation(next)))
+    } else {
+      None
+    }    
+  }
+  
+  def correlation(c : C) : C = {
+    c copy (rels = c.rels.flatMap(relation(c.value,_)))
+  }
+}
 
 final case class RootCorrelation[+Node,+Edge](
     value : Node, column : Int, leftRels : IndexedSeq[Relation[Node,Edge]],
@@ -26,7 +66,8 @@ final case class RootCorrelation[+Node,+Edge](
   } 
   def map[Node1,Edge1](f : Node => Node1, g : Edge => Edge1) : RootCorrelation[Node1,Edge1] = {
     RootCorrelation(f(value),column, leftRels.map(_.map(f,g)), rightRels.map(_.map(f,g)))
-  }   
+  }
+  
 }
 
 final case class Correlation[+Node,+Edge](value : Node, column : Int, rels : IndexedSeq[Relation[Node,Edge]]) {
