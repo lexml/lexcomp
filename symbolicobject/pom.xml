@@ -115,7 +115,7 @@
 		<dependency>
 			<groupId>br.gov.lexml</groupId>
 			<artifactId>treedistance</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.2</version>
 		</dependency>
 
 		<dependency>
@@ -126,7 +126,7 @@
 
 		<dependency>
 			<groupId>br.gov.lexml.parser.pl</groupId>
-			<artifactId>parser-projeto-lei</artifactId>
+			<artifactId>lexml-parser-projeto-lei</artifactId>
 			<version>1.9.0</version>
 		</dependency>
 
@@ -187,11 +187,6 @@
 			<groupId>org.clapper</groupId>
 			<artifactId>grizzled-slf4j_${scala.version}</artifactId>
 			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>br.gov.lexml</groupId>
-			<artifactId>scala-utils</artifactId>
-			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
