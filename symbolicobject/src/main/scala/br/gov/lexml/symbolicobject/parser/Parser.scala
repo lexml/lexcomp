@@ -37,6 +37,7 @@ import java.lang.{ Character => C }
 import scala.Option.option2Iterable
 import br.gov.lexml.symbolicobject.impl._
 import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
+import br.gov.lexml.symbolicobject.util.CollectionUtils
 
 trait IdSource {
   def nextId(tipo: STipo): Long
@@ -84,14 +85,30 @@ class LexmlParser(idSource: IdSource) {
     val text = textEls.flatMap(_.child)
     val posL = subElems.flatMap(processaAgrupadorOuDispositivo)    
     val posText = (text.isEmpty, (NodeSeq fromSeq text).text.trim) match {
-      case (true, _) => None
-      case (_, "") => None
-      case (_, t) =>
-        val txtid = idSource.nextId(T.Tipos.TextoFormatado)
-        val o = TextoFormatado(txtid, new WrappedNodeSeq(NodeSeq fromSeq text), ())
-        Some(Posicao[Unit](RotuloRole("texto"), o))
+      case (true, _) => Seq()
+      case (_, "") => Seq()
+      case (_, t) =>        
+        val splitText = text.flatMap {
+          case Text(t) => 
+            CollectionUtils.intersperse[Node,Seq[Node]](
+                t.split("#S#").toSeq.map(Text(_)),Seq(Text("#S#")))
+          case x => Seq(x)
+        } 
+        val textLists = CollectionUtils.splitBy[Node](splitText, _ == Text("#S#"))
+        
+        val makeRotulo = if (textLists.size > 1) {
+          (idx : Int) => RotuloOrdenado("texto",idx + 1) 
+        } else {
+          (_ : Int) => RotuloRole("texto")
+        }
+        
+        textLists.zipWithIndex map { case (l,idx) =>
+          val txtid = idSource.nextId(T.Tipos.TextoFormatado)
+          val o = TextoFormatado(txtid, new WrappedNodeSeq(NodeSeq fromSeq l), ())
+          Posicao[Unit](makeRotulo(idx), o)
+        }        
     }
-    val os = ObjetoSimbolicoComplexo(id, tipo, (), (posText.toSeq ++ posL).toIndexedSeq)
+    val os = ObjetoSimbolicoComplexo(id, tipo, (), (posText ++ posL).toIndexedSeq)
 
     Posicao[Unit](rotulo, os)
   }

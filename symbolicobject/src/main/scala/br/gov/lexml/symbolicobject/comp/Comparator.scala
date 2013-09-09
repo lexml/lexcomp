@@ -122,9 +122,9 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
     val A = Attributes
     val id = o.id
     
-    val textPid = o match {
-      case oc: ObjetoSimbolicoComplexo[_] => (oc / "texto").result.headOption.map(_.objeto.id)
-      case _ => None
+    val textPids = o match {
+      case oc: ObjetoSimbolicoComplexo[_] => (oc / "texto").result.map(_.objeto.id).toIndexedSeq
+      case _ => IndexedSeq()
     }
     /*lazy val hash: Int = o match {
       case o: ObjetoSimbolicoComplexo[_] => orderedHash(o.posicoes.map(_.objeto -> hash))
@@ -136,16 +136,19 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
       case t: TextoFormatado[_] => t.frag.ns.text
     } 
     lazy val textoLocalNormalizado = normalize(textoLocal)
-    lazy val texto = o match {
-      case oc: ObjetoSimbolicoComplexo[_] => (oc / "texto").result.headOption.map(_.objeto).collect {
+    lazy val textos = o match {
+      case oc: ObjetoSimbolicoComplexo[_] => (oc / "texto").result.map(_.objeto).collect {
         case t: TextoPuro[_] => t.texto
         case t: TextoFormatado[_] => t.frag.ns.text
-      }.getOrElse("")
-      case t: TextoPuro[_] => t.texto
-      case t: TextoFormatado[_] => t.frag.ns.text
+      }.toIndexedSeq
+      case t: TextoPuro[_] => IndexedSeq(t.texto)
+      case t: TextoFormatado[_] => IndexedSeq(t.frag.ns.text)
     }
+    lazy val texto = textos.mkString(" ")
+    lazy val textosNormalizados = textos.map(normalize)
     lazy val textoNormalizado = normalize(texto)
     lazy val textHash = stringHash(textoNormalizado)
+    lazy val textsHash = textos.map(stringHash)    
     lazy val nomeTipo : String = o match {
       case _: ObjetoSimbolicoComplexo[_] => o.tipo.nomeTipo
       case os: ObjetoSimbolicoSimples[_] => objetoParente.get.o.tipo.nomeTipo + "_text"
@@ -169,7 +172,7 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
           (lo.posicoes.length == ro.posicoes.length) && lo.posicoes.zip(ro.posicoes).forall {
             case (pl, pr) => m.get(pl.objeto.id) == Some(pr.objeto.id)
           }
-        case _ => normalize(texto) == normalize(od.texto)
+        case _ => textoNormalizado == od.textoNormalizado
       })
     }
     lazy val isSimple = o.isInstanceOf[ObjetoSimbolicoSimples[_]]
@@ -321,12 +324,11 @@ class CompareProcess(leftDoc: Documento[_], rightDoc: Documento[_], conf: Compar
       .foldLeft(Map[Long, Long](), ctx.matched) {
         case ((m, s), lo) => {
           val lid = lo.id
-          val rids = rightParents(ctx, lo).filter(id => !s.contains(id))
-          rids.filterNot(s.contains).headOption.map { ch =>
+          val rids = rightParents(ctx, lo).filterNot(s.contains)
+          rids.headOption.map { ch =>
             val textPids = for {
-              ro <- objMap.get(ch)
-              ltextid <- lo.textPid
-              rtextid <- ro.textPid
+              ro <- objMap.get(ch).toSeq
+              (ltextid,rtextid) <- lo.textPids.zip(ro.textPids)              
               if ctx.unmatched contains ltextid
               if ctx.unmatched contains rtextid
             } yield { (ltextid, rtextid) }

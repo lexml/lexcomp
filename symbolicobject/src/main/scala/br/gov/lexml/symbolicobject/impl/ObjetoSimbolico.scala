@@ -194,7 +194,12 @@ object Rotulo {
     }
   }
   
-  def renderRotuloNormal(r: Rotulo) : String = toRotuloLexml(r).flatMap(LexmlRenderer.renderRotulo).getOrElse("")
+  def renderRotuloNormal(r: Rotulo) : String = {
+    r match {
+      case RotuloOrdenado("texto",n) => "seg. " + n
+      case _ => toRotuloLexml(r).flatMap(LexmlRenderer.renderRotulo).getOrElse("") 
+    }    
+  }
 }
 
 object NumberRenderer {
@@ -272,6 +277,7 @@ object RotuloOrdenado {
     val secondNum = r.posicaoRole.tail.headOption
     val comp = LexmlRenderer.renderComp(secondNum).toUpperCase
     nr match {
+      case "texto" => Some(GenderName("Texto " + LexmlRenderer.renderOrdinal(firstNum), Male))
       case "art" => Some(GenderName(
         "Art. " + LexmlRenderer.renderOrdinal(firstNum) + comp, Male))
       case "par" => Some(GenderName(
@@ -598,6 +604,7 @@ final case class Caminho(rotulos: IndexedSeq[Rotulo] = IndexedSeq()) {
       case (x, _) => x
     }
     val l1 = l dropWhile (r => r match {
+      case rr : RotuloOrdenado => false
       case rr : RotuloRole if rr.nomeRole == "texto" => true
       case rr : RotuloRole if rr.nomeRole == "cpt" => true
       case _ => false
