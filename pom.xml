@@ -15,14 +15,21 @@
 		<module>treedistance</module>
 	</modules>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
+		<github.global.server>github</github.global.server>
+	</properties>
+
 	<scm>
 		<url>https://github.com/lexml/${project.artifactId}</url>
 		<developerConnection>scm:git:https://github.com/lexml/${project.artifactId}.git</developerConnection>
 		<connection>scm:git:https://github.com/lexml/${project.artifactId}.git</connection>
 		<tag>HEAD</tag>
 	</scm>
-        
-        <distributionManagement>
+	
+    <distributionManagement>
 		<repository>
 			<id>releases</id>
 			<name>GitHub ${project.artifactId} Repository</name>
