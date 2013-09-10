@@ -10,9 +10,9 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>treedistance</module>
 		<module>symbolicobject</module>
 		<module>qc-presentation</module>
+		<!-- <module>treedistance</module>  -->
 	</modules>
 
 	<properties>
