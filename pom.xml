@@ -11,8 +11,8 @@
 
 	<modules>
 		<module>treedistance</module>
-		<module>qc-presentation</module>
 		<module>symbolicobject</module>
+		<module>qc-presentation</module>
 	</modules>
 
 	<properties>
@@ -85,6 +85,7 @@
 					<branch>refs/heads/master</branch>
 					<includes>
 						<include>**/*</include>
+						<excludes>**/QuadroComparativo.jar</excludes>
 					</includes>
 					<repositoryName>mvn-repo</repositoryName>      <!-- github repo name -->
 					<repositoryOwner>lexml</repositoryOwner>    <!-- github username -->

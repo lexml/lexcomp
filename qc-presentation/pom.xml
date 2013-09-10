@@ -50,7 +50,6 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-        
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -64,11 +63,12 @@
                     </descriptorRefs>
                     <finalName>QuadroComparativo</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <attach>false</attach>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id><!-- this is used for inheritance merges -->
-                        <phase>package</phase><!-- bind to the packaging phase -->
+                        <id>make-assembly</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
@@ -176,7 +176,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <fx.home>C:\Java\jdk1.7.0_06\jre\lib</fx.home>
+                <fx.home>${java.home}/jre/lib</fx.home>
             </properties>
         </profile>
     </profiles>
