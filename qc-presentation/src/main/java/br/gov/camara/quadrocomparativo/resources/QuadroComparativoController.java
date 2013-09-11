@@ -78,6 +78,7 @@ public class QuadroComparativoController {
         quadro.setTitulo("Novo quadro");
         quadro.addColuna(col);
 
+        saveQuadroToFile(quadro);
         SessionController.save(request, quadro.getId(), quadro);
 
         return quadro;

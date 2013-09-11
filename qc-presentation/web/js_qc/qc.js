@@ -202,6 +202,10 @@ function carregaQuadro(id) {
         
         montaQuadro();
         configuraQuadro();
+        
+        if (!getURLParameter("qcid") && quadro.id) { 
+            history.replaceState(null, null, document.URL + "?qcid=" + quadro.id);
+        }
     });
                 			
 }
