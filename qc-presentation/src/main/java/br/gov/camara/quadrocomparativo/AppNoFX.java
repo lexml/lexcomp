@@ -21,6 +21,8 @@ import org.mortbay.jetty.webapp.WebAppContext;
  * @author p_7174
  */
 public class AppNoFX  {
+	private static final Logger logger = Logger.getLogger(AppNoFX.class.getName());
+            
 
     public static final String DEFAULT_URL = "http://localhost:8080/";
     private static Server server;
@@ -42,7 +44,7 @@ public class AppNoFX  {
                     //resource_handler.setDirectoriesListed(true);
                     resource_handler.setWelcomeFiles(new String[]{"index.html"});
 
-                    URL baseUrl = App.class.getClassLoader().getResource("index.html");
+                    URL baseUrl = AppNoFX.class.getClassLoader().getResource("index.html");
                     String base = baseUrl.toExternalForm().replaceAll("index.html", "");
                     //System.out.println(base);
                     resource_handler.setResourceBase(base);
@@ -63,8 +65,7 @@ public class AppNoFX  {
                     server.join();
 
                 } catch (Exception ex) {
-                    Logger.getLogger(App.class.getName())
-                            .log(Level.SEVERE, null, ex);
+                    logger.log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -75,8 +76,7 @@ public class AppNoFX  {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(App.class.getName())
-                        .log(Level.SEVERE, null, ex);
+                logger.log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -97,8 +97,7 @@ public class AppNoFX  {
         try {
             serverThread.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(App.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
     }
 }
