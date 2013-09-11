@@ -100,7 +100,7 @@ public class DocumentoLexmlUtil {
 	 */
 	public static byte[] downloadLexmlPage(String urn) {
 		try {
-			return IOUtils.toByteArray(makeURLLexml(urn));
+			return IOUtils.toByteArray(makeURLLexml(urn).openStream());
 
 		} catch (MalformedURLException e) {
 			log.log(Level.WARNING,
@@ -124,7 +124,7 @@ public class DocumentoLexmlUtil {
 			String s = getZipFileUrlFromLexmlPage(urn);
 			if (s != null) {
 				System.out.println("Zip file: "+s);
-				return IOUtils.toByteArray(new URL(s));
+				return IOUtils.toByteArray(new URL(s).openStream());
 			}
 		} catch (MalformedURLException e) {
 			log.log(Level.WARNING,
