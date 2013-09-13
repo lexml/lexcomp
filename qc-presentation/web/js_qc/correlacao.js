@@ -360,8 +360,7 @@ function addDivRelacao(relacao) {
     var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" style="height: 20px; width: 75px; border: solid; margin:auto; margin-left:50%;" class="colunaComparacao relacao">\
                             \<ul class="iconesControlesCorrelacao">\
                             <li><a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a></li>\
-                            <li><a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a></li>\
-                            <li><a href="javascript:void(0);" id="linkEditaRelacao_' + relacao.id + '" class="linkEditaRelacao" style="margin: 1px;"><img src="images/edit_c.png" width="15" align="left" title="Editar"></a></li>\
+                            <li>&nbsp;<a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a></li>\
                             <li><a href="javascript:void(0);" id="linkEditaTipoRelacao_' + relacao.id + '" class="linkEditaTipoRelacao" style="margin: 0px;"><img src="images/tipo.png" width="15" align="left" title="Tipos"></a></li>\
                             \<ul>\
                         </div>';
