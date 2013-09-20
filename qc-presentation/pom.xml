@@ -22,7 +22,7 @@
 		<tag>HEAD</tag>
 	</scm>
 	
-		<repositories>
+	<repositories>
 		<repository>
 			<id>GitHub Repository</id>
 			<url>https://raw.github.com/lexml/mvn-repo/master</url>
@@ -34,6 +34,14 @@
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
+ 
+ 		<repository>
+            <id>googlecode-proxy-autodetect</id>
+            <url>https://me-ceap-maven.googlecode.com/svn/maven</url>
+			<releases>
+      			<enabled>true</enabled>
+    		</releases>
+        </repository>		
 	</repositories>
 	
 
@@ -216,6 +224,13 @@
             <artifactId>lexml-parser-projeto-lei</artifactId>
             <version>1.9.0</version>
         </dependency>
+        
+        <dependency>
+			<groupId>br.gov.lexml.external</groupId>
+    		<artifactId>proxy-vole-lexml</artifactId>
+    		<version>0.0.1</version>
+    	</dependency>
+        
     </dependencies>
     
     <profiles>
