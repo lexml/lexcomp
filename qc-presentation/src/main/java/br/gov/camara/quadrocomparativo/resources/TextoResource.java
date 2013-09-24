@@ -182,9 +182,9 @@ public class TextoResource {
         
         try {
             texto.setDocumento(getEstruturaTexto(qc, texto));
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             log.log(Level.SEVERE, "Erro ao parsear texto", ex);
-            throw new NotFoundException("Erro ao parsear texto");
+            throw new NotFoundException("Erro ao parsear texto: "+ex.getMessage());
         }
         
         texto.setArticulacaoXML(null);
@@ -253,16 +253,20 @@ public class TextoResource {
             texto.setDocumento(doc);
             texto.setArticulacao(null);
             texto.setArticulacaoXML(null);
+            
+            log.log(Level.SEVERE, "Validação com sucesso.");
 
             return texto;
         } else {
             log.log(Level.SEVERE, "Validação não executada com sucesso.");
+            
+            throw new RuntimeException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente: "+ validation.toEither().left().get());
         }
 
-        return null;
+        //return null;
     }
 
-    private DocumentoImpl getEstruturaTexto(QuadroComparativo qc, Texto texto) throws ParseException {
+    private DocumentoImpl getEstruturaTexto(QuadroComparativo qc, Texto texto) throws Exception {
 
         if (texto.getDocumento() != null) {
             return texto.getDocumento();
@@ -290,12 +294,18 @@ public class TextoResource {
         if (validation.isSuccess()) {
             DocumentoImpl doc = new DocumentoImpl(validation.toOption().get());
             texto.setDocumentoParseado(true);
+            
+            log.log(Level.SEVERE, "Validação com sucesso2.");
+            
+            //throw new Exception("SO PARA TESTAR.");
             return doc;
         } else {
         	texto.setDocumentoParseado(false);
             log.log(Level.SEVERE, "Validação não executada com sucesso.");
+            
             // FIXME como pegar ParseException do Parser?
-            throw new ParseException(null);
+            
+            throw new Exception("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente: "+ validation.toEither().left().get());
         }        
     }
    
