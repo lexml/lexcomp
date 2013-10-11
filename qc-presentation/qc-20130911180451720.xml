@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<quadroComparativo>
+    <articulacoesExcluidas>true</articulacoesExcluidas>
+    <colunas>
+        <textos>
+            <anoComponente></anoComponente>
+            <autoridades>federal</autoridades>
+            <categorias>legislacao</categorias>
+            <comissaoespecial></comissaoespecial>
+            <componenteDocumento></componenteDocumento>
+            <dataAssinatura>1990-12-11</dataAssinatura>
+            <dataEvento></dataEvento>
+            <dataVigente></dataVigente>
+            <documentoParseado>false</documentoParseado>
+            <incluidoVisualizacao>false</incluidoVisualizacao>
+            <localidades>br</localidades>
+            <numero>8112</numero>
+            <numeroComponente></numeroComponente>
+            <order>0</order>
+            <tiposDocumento>lei</tiposDocumento>
+            <titulo>Lei nº 8112/1990&lt;br&gt;&lt;p class=subtitulo&gt; [Brasil | Federal]&lt;/p&gt;</titulo>
+            <urn>urn:lex:br:federal:lei:1990-12-11;8112</urn>
+            <urnIdDIV>urn_lex_br_federal_lei_1990_12_11_8112</urnIdDIV>
+            <versao></versao>
+        </textos>
+        <id>20130911180451720-1</id>
+        <titulo>Nova Coluna</titulo>
+    </colunas>
+    <currentPosition>0</currentPosition>
+    <id>20130911180451720</id>
+    <titulo>Novo quadro</titulo>
+</quadroComparativo>

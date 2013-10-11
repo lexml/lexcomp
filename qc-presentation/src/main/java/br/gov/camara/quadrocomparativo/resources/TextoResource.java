@@ -184,7 +184,7 @@ public class TextoResource {
             texto.setDocumento(getEstruturaTexto(qc, texto));
         } catch (Exception ex) {
             log.log(Level.SEVERE, "Erro ao parsear texto", ex);
-            throw new NotFoundException("Erro ao parsear texto: "+ex.getMessage());
+            throw new NotFoundException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente");
         }
         
         texto.setArticulacaoXML(null);

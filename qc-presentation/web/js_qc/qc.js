@@ -568,7 +568,7 @@ function configuraQuadro() {
                 $.each(col.textos, function (it, txt) {
                     console.log(urn);
                     console.log(txt.urn.toString());
-                    if (txt.urn == urn) {
+                    if (txt.urn === urn) {
                         texto = txt;
                         coluna = col;
                         console.log(col);
@@ -580,7 +580,7 @@ function configuraQuadro() {
         });
         
         //altera o título da janela
-        if ($("#dialog-edit-text").attr("title") != "") {
+        if ($("#dialog-edit-text").attr("title") !== "") {
             $("#dialog-edit-text").dialog('option', 'title', "Alterar texto - " + titulo);            
         } else {
             $("#dialog-edit-text").attr("title", "Alterar texto - " + titulo);
@@ -644,7 +644,7 @@ function configuraQuadro() {
                             
                             console.log('Erro:');                            
                             console.log(res);
-                            showAlertDialog("Falha ao salvar texto: " + res.statusText);
+                            showAlertDialog(res.responseText);
                             dialog.dialog("close");
                         }
                     }); 
