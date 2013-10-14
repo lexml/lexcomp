@@ -172,13 +172,13 @@ function initObjs(){
     //Ao clicar no elemento, trata a questão do relacionamento entre estes
     $(".objDocumento").click(function(event) {
         
-        
-                
         event.stopPropagation();
         event.preventDefault();
         
-        
-        
+        if ($(this).hasClass("disabled")) {
+            return false;
+        }
+                
         if($("#divMenuContexto").is(":visible")){            
             $("#divMenuContexto").hide();
             return;
@@ -203,6 +203,7 @@ function initObjs(){
         if ((relacaoSources && relacaoSources.length > 0)
             || (relacaoTargets && relacaoTargets.length > 0)) {
             
+            desabilitaObjDocumentosJaRelacionados();
             addDivRelacaoPendente();
             
         } else if ($("#pendingRelacao").length > 0) {
@@ -238,8 +239,7 @@ function initObjs(){
         event.stopPropagation();
         event.preventDefault();
         
-        
-        if (!$(this).hasClass("selected")) {
+        if (!$(this).hasClass("selected") && !$(this).hasClass("disabled")) {
             
             var _this = $(this);
             if (_this.closest("#colunaComparacaoA").length != 0) {
@@ -271,6 +271,50 @@ function initObjs(){
         }
         
     });
+}
+
+function desabilitaObjDocumentosJaRelacionados() {
+    
+    $.each(relacaoSources, function(i, source) {
+        //console.log(source);
+        var sourceId = source.replace("objA_", "");
+        
+        $.each(relacoes, function(i, relacao) {
+            
+           $.each(relacao.origem, function(i, origem) {
+                //console.log(origem + " -- " + ); 
+                if (origem == sourceId) {
+                    
+                    $.each(relacao.alvo, function(i, alvo) {
+                        //console.log($("#objB_" + alvo).html());
+                        $("#objB_" + alvo).addClass("disabled");
+                    });
+                }
+            });
+        });
+    });
+    
+    $.each(relacaoTargets, function(i, source) {
+        //console.log(source);
+        var targetId = source.replace("objB_", "");
+        
+        $.each(relacoes, function(i, relacao) {
+            
+           $.each(relacao.alvo, function(i, alvo) {
+                //console.log(origem + " -- " + ); 
+                if (alvo == targetId) {
+                    
+                    $.each(relacao.origem, function(i, origem) {
+                        //console.log($("#objB_" + alvo).html());
+                        $("#objA_" + origem).addClass("disabled");
+                    });
+                }
+            });
+        });
+    });
+    
+    $(".objDocumento.disabled").attr("title", "Este elemento já está relacionado com um dos elementos selecionados");
+    $(".objDocumento.disabled").css("color", "darkgray");
 }
 
 function addDivRelacaoPendente(id) {
