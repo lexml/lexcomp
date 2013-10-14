@@ -170,7 +170,7 @@ function initObjs(){
     relacaoTargets = [];
     
     //Ao clicar no elemento, trata a questão do relacionamento entre estes
-    $(".objDocumento").click(function(event) {
+    $(".objDocumento:not(.disabled)").click(function(event) {
         
         event.stopPropagation();
         event.preventDefault();
@@ -254,7 +254,7 @@ function initObjs(){
             }
             
             $(this).css("background-color", "#FFFF99");
-            $(this).find(".objDocumento").css("background-color", "#FFFF99").addClass("highlighted");
+            $(this).find(".objDocumento:not(.disabled)").css("background-color", "#FFFF99").addClass("highlighted");
             _this.addClass("highlighted");
         }
     }); 
@@ -566,7 +566,6 @@ function cancelaRelacao() {
     var targetsArray = relacaoTargets.slice(0);
     
     $.each(sourcesArray, function (index, obj) {
-       
        var elem = $("#" + obj);
        removeSelectedStyle(elem);
        removeDeselected(elem);
@@ -577,6 +576,8 @@ function cancelaRelacao() {
        removeSelectedStyle(elem);
        removeDeselected(elem);
     });
+    
+    $(".objDocumento.disabled").css("color", "black").attr("title", "").removeClass("disabled");
 }
 
 function confirmaRelacao(id) {
@@ -669,7 +670,7 @@ function addSelected(elem, column) {
         array.push(elem.attr("id"));
 
     } else {
-        elem.find(".objDocumento").filter("div").each(function() {
+        elem.find(".objDocumento:not(.disabled)").filter("div").each(function() {
             addSelected($(this), column);
         });
     }
@@ -678,8 +679,8 @@ function addSelected(elem, column) {
 function addSelectedStyle(obj) {
     obj.addClass("selected");
     obj.css("background-color", "#ffff99");
-    obj.find(".objDocumento").addClass("selected");
-    obj.find(".objDocumento").css("background-color", "#ffff99");
+    obj.find(".objDocumento:not(.disabled)").addClass("selected");
+    obj.find(".objDocumento:not(.disabled)").css("background-color", "#ffff99");
 }
 
 function removeSelectedStyle(obj) {
@@ -858,8 +859,8 @@ function getStrRotulo(rotulo) {
 
 function printRelacoes (relacoes) {
     
-	$(".relacao").remove();
-	
+    $(".relacao").remove();
+    	
     if (!relacoes || !relacoes.length) {
         return;
     }
