@@ -31,6 +31,9 @@ import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
 import scala.xml.XML
 import scala.xml.Elem
 import br.gov.lexml.parser.pl.output.LexmlRenderer
+import java.util.Collections
+import scala.collection.JavaConversions
+import scala.collection.JavaConverters
 
 trait PrettyPrintable {
   val pretty: P.Doc
@@ -40,6 +43,12 @@ trait PrettyPrintable {
 trait Identificavel extends I.Identificavel {
   val id: SymbolicObjectId
   override final def getId() = id
+  val properties : Map[String,String] = Map()
+  override final def getProperties() = JavaConverters.mapAsJavaMapConverter(properties).asJava
+}
+
+object Properties {
+  val URN_ALTERACAO = "urnAlteracao"
 }
 
 trait Tipado extends I.Tipado {
@@ -326,10 +335,29 @@ object RotuloClassificado {
   }
 }
 
+trait WithProperties[+A] {
+  val properties : Map[String,String]
+  def setProperties(props : Map[String,String]) : A
+  final def updateProperties(f : Map[String,String] => Map[String,String]) : A =
+    setProperties(f(properties))
+  final def setProperty(key : String, value : String) = 
+    updateProperties { _ + (key -> value)}
+  final def getProperty(key : String) = properties.get(key)
+  final def clearProperty(key : String) = updateProperties { _ - key }
+  final def clearProperties() = setProperties(Map())
+}
+
 /**
  * Todos excetos os textos
  */
-final case class ObjetoSimbolicoComplexo[+A](id: SymbolicObjectId, tipo: STipo, data: A, posicoes: IndexedSeq[Posicao[A]]) extends ObjetoSimbolico[A] with I.ObjetoSimbolicoComplexo {
+final case class ObjetoSimbolicoComplexo[+A](
+    id: SymbolicObjectId, 
+    tipo: STipo, 
+    data: A, 
+    posicoes: IndexedSeq[Posicao[A]] = IndexedSeq(), 
+    override val properties : Map[String,String] = Map()
+    ) extends ObjetoSimbolico[A] with I.ObjetoSimbolicoComplexo with WithProperties[ObjetoSimbolicoComplexo[A]] {
+  
   lazy val objMap: Map[Rotulo, List[ObjetoSimbolico[A]]] = posicoes.groupBy(_.rotulo).mapValues(a => a.toList.map(_.objeto))
   lazy val javaPosicoes = JC.seqAsJavaList(posicoes: Seq[I.Posicao])
   override def getPosicoes() = javaPosicoes
@@ -339,7 +367,8 @@ final case class ObjetoSimbolicoComplexo[+A](id: SymbolicObjectId, tipo: STipo, 
     tipo.nomeTipo :: ("[" + id + "](") :: (if (posicoes.isEmpty) { empty } else { linebreak }) :: (text(data.toString)) :: subels
   }
   override def changeContext[B](f: ObjetoSimbolico[A] => B): ObjetoSimbolico[B] =
-    copy(data = f(this), posicoes = posicoes.map(_.changeContext(f)))
+    copy(data = f(this), posicoes = posicoes.map(_.changeContext(f)))  
+  override def setProperties(m : Map[String,String]) = copy(properties = m)
 }
 
 object ObjetoSimbolicoComplexo {
@@ -361,6 +390,7 @@ object ObjetoSimbolicoSimples {
   def fromObjetoSimbolicoSimples(os: I.ObjetoSimbolicoSimples): ObjetoSimbolicoSimples[Unit] = os match {
     case tt: I.TextoFormatado => TextoFormatado.fromTextoFormatado(tt)
     case tp: I.TextoPuro => TextoPuro.fromTextoPuro(tp)
+    case o : I.Omissis => Omissis.fromOmissis(o)    
   }
 }
 
@@ -395,6 +425,20 @@ final case class TextoPuro[+A](id: SymbolicObjectId, texto: String, data: A) ext
 object TextoPuro {
   def fromTextoPuro(tp: I.TextoPuro): TextoPuro[Unit] =
     TextoPuro(tp.getId, tp.getTexto, ())
+}
+
+final case class Omissis[+A](id: SymbolicObjectId, data: A) extends ObjetoSimbolicoSimples[A] with I.TextoPuro {
+  override val tipo = T.Omissis
+  override def getRepresentacao() = "(...)"
+  override def getTexto() = "..."  
+  override lazy val pretty = (s"Omissis[${id}]" : P.Doc)
+  
+  override def changeContext[B](f: ObjetoSimbolico[A] => B): ObjetoSimbolico[B] = copy(data = f(this))
+}
+
+object Omissis {
+  def fromOmissis(o: I.Omissis): Omissis[Unit] =
+    Omissis(o.getId, ())
 }
 
 abstract sealed class Nome extends I.Nome with Representavel with PrettyPrintable
@@ -439,6 +483,10 @@ object NomeContexto {
 final case class Documento[+A](id: SymbolicObjectId, tipo: STipo, nome: Nome, os: ObjetoSimbolico[A]) extends I.Documento with Identificavel with Tipado with PrettyPrintable {
   override def getObjetoSimbolico() = os
   override def getNome() = nome
+  val urn : Option[String] = nome match {
+    case NomeRelativo(RotuloClassificado("urn", urn), _) => Some(urn)
+    case _ => None
+  }
   override lazy val pretty = {
     import P.Doc._
     val m: Map[String, P.Doc] = Map("tipo" -> text(tipo.nomeTipo), "nome" -> nome.pretty, "os" -> os.pretty)

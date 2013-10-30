@@ -84,6 +84,10 @@ class LexmlParser(idSource: IdSource) {
     val id = idSource.nextId(tipo)
     val text = textEls.flatMap(_.child)
     val posL = subElems.flatMap(processaAgrupadorOuDispositivo)    
+    val properties : Map[String,String] = if(e.label.toLowerCase == "alteracao") {
+      val base = e.attributes.get("http://www.w3.org/XML/1998/namespace",e,"base")
+      base.map(x => (Properties.URN_ALTERACAO,x.text)).toMap
+    } else { Map () }
     val posText = (text.isEmpty, (NodeSeq fromSeq text).text.trim) match {
       case (true, _) => Seq()
       case (_, "") => Seq()
@@ -108,7 +112,7 @@ class LexmlParser(idSource: IdSource) {
           Posicao[Unit](makeRotulo(idx), o)
         }        
     }
-    val os = ObjetoSimbolicoComplexo(id, tipo, (), (posText ++ posL).toIndexedSeq)
+    val os = ObjetoSimbolicoComplexo(id, tipo, (), (posText ++ posL).toIndexedSeq, properties = properties)
 
     Posicao[Unit](rotulo, os)
   }
