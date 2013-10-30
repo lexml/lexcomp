@@ -17,6 +17,7 @@ trait Tipado {
 
 trait Identificavel extends Tipado {
   def getId() : Long
+  def getProperties() : java.util.Map[String,String]
 }
   
 trait ObjetoSimbolico extends Identificavel 
@@ -57,6 +58,8 @@ trait TextoFormatado extends ObjetoSimbolicoSimples {
 trait TextoPuro extends ObjetoSimbolicoSimples {
   def getTexto() : String
 }
+
+trait Omissis extends ObjetoSimbolicoSimples
 
 trait Intervalo {  
   def getPrimeiroId() : Long

@@ -16,14 +16,13 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Nome;
 import br.gov.lexml.symbolicobject.ObjetoSimbolico;
-import br.gov.lexml.symbolicobject.RefTipo;
 
 /**
  *
  * @author p_7174
  */
 @XmlRootElement
-public class DocumentoImpl implements Documento, Serializable {
+public class DocumentoImpl extends IdentificavelImpl implements Documento, Serializable {
     
     private static final long serialVersionUID = -1574980283434994409L;
 
@@ -31,9 +30,6 @@ public class DocumentoImpl implements Documento, Serializable {
     private ObjetoSimbolicoImpl objetoSimbolico;
     @XmlElement
     private NomeImpl nome;
-    @XmlElement
-    private RefTipoImpl refTipo;
-    private long id;
     
     public DocumentoImpl() {
     }
@@ -47,23 +43,7 @@ public class DocumentoImpl implements Documento, Serializable {
             id = doc.getId();
         }
     }
-
-    public RefTipo getRefTipo() {
-        return refTipo;
-    }
-
-    public void setRefTipo(RefTipoImpl refTipo) {
-        this.refTipo = refTipo;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    
     public ObjetoSimbolico getObjetoSimbolico() {
         return (ObjetoSimbolico) objetoSimbolico;
     }
