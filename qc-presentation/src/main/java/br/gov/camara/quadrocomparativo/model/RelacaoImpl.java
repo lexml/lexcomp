@@ -20,14 +20,12 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author p_7174
  */
 @XmlRootElement
-public class RelacaoImpl implements Relacao, Serializable {
+public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializable {
 
     private static final long serialVersionUID = 763798331027456618L;
     private Set<Long> origem;
     private Set<Long> alvo;
-    @XmlElement
-    private RefTipoImpl refTipo;
-    private long id;
+    
     private ProvenienciaImpl proveniencia;
 
     public static RelacaoImpl newFromRelacao(Relacao arg0){
@@ -41,25 +39,7 @@ public class RelacaoImpl implements Relacao, Serializable {
 		
 		return r;
     }
-    
-    @Override
-    public RefTipo getRefTipo() {
-        return refTipo;
-    }
-
-    public void setRefTipo(RefTipoImpl refTipo) {
-        this.refTipo = refTipo;
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+        
     @Override
     public Set<Long> getOrigem() {
         return origem;

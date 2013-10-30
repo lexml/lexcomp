@@ -5,7 +5,6 @@
 package br.gov.camara.quadrocomparativo.resources;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +30,10 @@ import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.symbolicobject.Documento;
 import br.gov.lexml.symbolicobject.Relacao;
-import br.gov.lexml.symbolicobject.comp.CompareProcess;
+import br.gov.lexml.symbolicobject.comp.CPT_TextToText;
+import br.gov.lexml.symbolicobject.comp.Comparator;
 import br.gov.lexml.symbolicobject.comp.CompareProcessConfiguration;
+import br.gov.lexml.symbolicobject.comp.CompareProcessSpec;
 
 import com.sun.jersey.api.NotFoundException;
 
@@ -283,7 +284,9 @@ public class CorrelacaoResource {
         	}
         };               
         
-        List<Relacao> resultado = CompareProcess.compareJ(leftDoc, rightDoc, conf, qc, true, lRelacao);
+        CompareProcessSpec spec = new CompareProcessSpec(leftDoc, rightDoc, conf, qc, true, lRelacao, new CPT_TextToText("alt","alt"));
+        		
+        List<Relacao> resultado = Comparator.compareJ(spec);
         
         for(Relacao r : resultado) {
         	correlacao.addRelacao(RelacaoImpl.newFromRelacao(r), qc);

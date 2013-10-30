@@ -37,15 +37,10 @@ import br.gov.lexml.symbolicobject.TextoPuro;
 	@JsonSubTypes.Type(value=TextoPuroImpl.class,name="textoPuro"),
 	@JsonSubTypes.Type(value=TextoFormatadoImpl.class,name="textoFormatado")
 })
-abstract class ObjetoSimbolicoImpl implements ObjetoSimbolico, Serializable {
+abstract class ObjetoSimbolicoImpl extends IdentificavelImpl implements ObjetoSimbolico, Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@XmlElement
-	private RefTipoImpl refTipo;
-		
-	protected long id;
-		
+	
 	private String javaType;
 
 	public ObjetoSimbolicoImpl() {
@@ -58,22 +53,6 @@ abstract class ObjetoSimbolicoImpl implements ObjetoSimbolico, Serializable {
 			id = obj.getId();
 			refTipo = new RefTipoImpl(obj.getRefTipo());
 		}
-	}
-
-	public RefTipo getRefTipo() {
-		return refTipo;
-	}
-
-	public void setRefTipo(RefTipoImpl refTipo) {
-		this.refTipo = refTipo;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public static ObjetoSimbolicoImpl getInstance(ObjetoSimbolico obj) {
