@@ -47,10 +47,10 @@ class Parser(idSource: IdSource) {
 
   private val lexmlParser = new LexmlParser(idSource)
 
-  def parse(source: InputDocument): Validation[String, Documento[Unit]] = {
+  def parse(source: InputDocument): Validation[Throwable, Documento[Unit]] = {
     for {
       xml <- source.doc.elem()
-      doc <- lexmlParser.parse(source.urn, source.tipo, xml)
+      doc <- lexmlParser.parse(source.urn, source.tipo, xml).leftMap(new RuntimeException(_))
     } yield (doc)
   }
 }

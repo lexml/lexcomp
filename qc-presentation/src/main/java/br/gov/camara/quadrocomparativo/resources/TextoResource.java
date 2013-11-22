@@ -243,7 +243,7 @@ public class TextoResource {
         }
 
         Parser tParser = new Parser(qc);
-        Validation<String, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
+        Validation<Throwable, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
                 .parse(new InputDocument(Tipos.DocProjetoLei(),
                 new LexMLDocument(new StringSource(texto
                 .getArticulacaoXML())), urn));
@@ -258,9 +258,9 @@ public class TextoResource {
 
             return texto;
         } else {
-            log.log(Level.SEVERE, "Validação não executada com sucesso.");
+            log.log(Level.SEVERE, "Validação não executada com sucesso.",validation.toEither().left().get());
             
-            throw new RuntimeException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente: "+ validation.toEither().left().get());
+            throw new RuntimeException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente", validation.toEither().left().get());
         }
 
         //return null;
@@ -286,7 +286,7 @@ public class TextoResource {
         }
 
         Parser tParser = new Parser(qc);
-        Validation<String, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
+        Validation<Throwable, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
                 .parse(new InputDocument(Tipos.DocProjetoLei(),
                 new LexMLDocument(new StringSource(texto
                 .getArticulacaoXML())), texto.getUrn()));
@@ -301,11 +301,11 @@ public class TextoResource {
             return doc;
         } else {
         	texto.setDocumentoParseado(false);
-            log.log(Level.SEVERE, "Validação não executada com sucesso.");
+            log.log(Level.SEVERE, "Validação não executada com sucesso.",validation.toEither().left().get());
             
             // FIXME como pegar ParseException do Parser?
             
-            throw new Exception("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente: "+ validation.toEither().left().get());
+            throw new Exception("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente",validation.toEither().left().get());
         }        
     }
    

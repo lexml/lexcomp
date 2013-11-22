@@ -45,11 +45,11 @@ final case class Paragrafos(paragrafos: TraversableOnce[String]) extends Paragra
 }
 
 trait XMLSource {
-  def elem(): Validation[String, Elem]
+  def elem(): Validation[Throwable, Elem]
 }
 
 final case class LexMLDocument(streamSource: StreamSource) extends XMLSource {
-  override def elem() = Validation.fromTryCatch(XML.load(streamSource.stream())).leftMap(t => "Erro lendo xml: " + t)
+  override def elem() = Validation.fromTryCatch(XML.load(streamSource.stream()))
 }
 
 trait StreamSource {
@@ -101,12 +101,13 @@ trait BlocksToXMLCompleto extends XMLSource {
         Validation.failure("Erros na análise do texto: " + falhas.mkString(", "))
       }
     }
-    for {
+    val r = (for {
       bl <- blocks()
       pl <- parse(bl)
     } yield {
       LexmlRenderer.render(pl)
-    }
+    })
+    r.leftMap(new RuntimeException(_))
   }
 }
 
@@ -116,12 +117,13 @@ trait BlocksToXMLSomenteArticulacao extends XMLSource {
   lazy val parser = new ProjetoLeiParser(ProjetoDeLeiDoSenadoNoSenado)
 
   override def elem() = {
-    for {
+    val r = (for {
       bl <- blocks()
       articulacao <- Validation.fromTryCatch(parser.parseArticulacao(bl, false)).leftMap(t => "Erro durante análise da articulação: " + t)
     } yield {
       LexmlRenderer.renderArticulacao(articulacao)
-    }
+    })
+    r.leftMap(new RuntimeException(_))
   }
 }
       
