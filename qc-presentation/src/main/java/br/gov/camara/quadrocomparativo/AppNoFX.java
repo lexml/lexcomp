@@ -4,6 +4,8 @@
  */
 package br.gov.camara.quadrocomparativo;
 
+import com.btr.proxy.search.ProxySearch;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,6 +93,10 @@ public class AppNoFX  {
      */
     public static void main(String[] args) {
     	
+        ProxySearch proxySearch = ProxySearch.getDefaultProxySearch();
+        ProxySelector myProxySelector = proxySearch.getProxySelector();
+        ProxySelector.setDefault(myProxySelector);
+        
     	AppNoFX app = new AppNoFX();
     	app.initServer();
 
