@@ -595,10 +595,29 @@ function editaRelacao(id) {
     addDivRelacaoPendente(id);
 }
 
-function comentaRelacao(id){
-   
+function comentaRelacao(relacao_id){
+    
     $( "#dialog-comentario" ).dialog({
-        modal:true,draggable:false,width:600, height:360});
+        modal:true,
+        draggable:false,
+        width:600, height:360,
+        buttons: {
+            "Salvar": function() {
+                $( this ).dialog( "close" );
+                
+                var tipoComentario = $('select[id="tiposCorrelacao"]').find('option:selected').val();    
+                
+                if (!tipoComentario) {
+                    // alert campo obrigatorio
+                }
+
+                saveComentario(qcid, urn1, urn2, relacao_id);
+            },
+            "Cancelar": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
     
 }
 
@@ -1079,6 +1098,27 @@ function saveRelacao(qcid, urn1, urn2, relacao, callback) {
         url: '/api/correlacao/relacao/' + qcid + '/' + urn1 + '/' + urn2,
         type: 'POST',
         data: JSON.stringify(relacao),
+        dataType: "html",
+        contentType: "application/json; charset=utf-8"
+        
+    }).done(function() {
+        
+    }).fail(function(){
+        //alert("Bad thing happend! " + res.statusText);
+    }).always(function() {
+        if (callback) {
+            callback();
+        }
+    });
+    
+}
+
+function saveComentario(qcid, urn1, urn2, relacao_id, comentario, callback) {
+    
+    $.ajax({
+        url: '/api/correlacao/comentario/' + qcid + '/' + urn1 + '/' + urn2 + '/' + relacao_id,
+        type: 'POST',
+        data: JSON.stringify(comentario),
         dataType: "html",
         contentType: "application/json; charset=utf-8"
         
