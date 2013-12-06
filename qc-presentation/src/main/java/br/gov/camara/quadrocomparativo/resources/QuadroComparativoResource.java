@@ -33,61 +33,63 @@ import com.sun.jersey.api.NotFoundException;
 @Path("/qc")
 public class QuadroComparativoResource {
 
-	@Context
-	HttpServletRequest request; 	//System.out.println("request: "+request.getSession(true).getId());
-	
-    @GET @Path("/")
+    @Context
+    HttpServletRequest request; 	//System.out.println("request: "+request.getSession(true).getId());
+
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public QuadroComparativo getNewQuadroComparativo() {
-        
+
         return QuadroComparativoController.createQuadroComparativo(request);
     }
-    
-    @GET @Path("/{id}")
+
+    @GET
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public QuadroComparativo getQuadroComparativoSemArticulacoes(@PathParam("id") String id) {
-    	
+
         QuadroComparativo quadro = QuadroComparativoController.getQuadroComparativo(request, id);
-        
+
         if (quadro == null) {
             throw new NotFoundException();
         }
-        
+
         // articulacoes nao serao transmitidas ao realizar operacoes com o
         // quadro comparativo para que o trafego nao fique pesado
         return QuadroComparativoController.cloneWithoutArticulacoes(quadro);
     }
-    
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveQuadroComparativo(QuadroComparativo quadro) {
-    	
-    	if (!QuadroComparativoController.saveQuadroComparativo(request, quadro)){
-    		
-    		throw new WebApplicationException(500);
-    	} else {
-    		String result = "Quadro saved: " + quadro;
 
-    		return Response.status(201).entity(result).build();
-    	}
+        if (!QuadroComparativoController.saveQuadroComparativo(request, quadro)) {
+
+            throw new WebApplicationException(500);
+        } else {
+            String result = "Quadro saved: " + quadro;
+
+            return Response.status(201).entity(result).build();
+        }
     }
-    
-    @GET @Path("/list")
+
+    @GET
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<QuadroComparativo> getQuadroComparativoList() {
-        
+
         File dir = new File(".");
         FilenameFilter filter = new FilenameFilter() {
             public boolean accept(File directory, String fileName) {
                 return fileName.startsWith("qc-") && fileName.endsWith(".xml");
             }
         };
-        
+
         File[] files = dir.listFiles(filter);
         List<QuadroComparativo> quadros = new ArrayList<QuadroComparativo>();
-        
+
         if (files != null) {
-            
+
             for (File f : files) {
                 QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(f);
                 QuadroComparativo qcEnvio = new QuadroComparativo(qc.getId(), qc.getTitulo());
@@ -95,21 +97,22 @@ public class QuadroComparativoResource {
                 quadros.add(qcEnvio);
             }
         }
-        
+
         return quadros;
     }
 
-    @DELETE @Path("/{qcid}")
+    @DELETE
+    @Path("/{qcid}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteQuadroComparativo(@PathParam("qcid") String qcid) {
-        
-    	if (QuadroComparativoController.deleteQuadroComparativo(request, qcid)){
-    	
-    		String result = "Quadro deleted: " + qcid;
-        
-    		return Response.ok(result).build();
-    	}
-    	return Response.status(404).build();
+
+        if (QuadroComparativoController.deleteQuadroComparativo(request, qcid)) {
+
+            String result = "Quadro deleted: " + qcid;
+
+            return Response.ok(result).build();
+        }
+        return Response.status(404).build();
     }
-    
+
 }

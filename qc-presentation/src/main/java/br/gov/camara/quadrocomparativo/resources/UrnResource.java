@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/urn")
 public class UrnResource {
 
-    @GET @Path("/")
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     
     public Texto getUrn(@QueryParam("tipoTexto") String tipoTexto,

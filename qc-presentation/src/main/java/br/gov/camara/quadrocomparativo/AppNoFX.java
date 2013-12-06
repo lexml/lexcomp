@@ -26,7 +26,7 @@ public class AppNoFX  {
 	private static final Logger logger = Logger.getLogger(AppNoFX.class.getName());
             
 
-    public static final String DEFAULT_URL = "http://localhost:8080/";
+    public static final String DEFAULT_URL = "http://localhost:80/";
     private static Server server;
     private static Thread serverThread;
 
@@ -39,7 +39,7 @@ public class AppNoFX  {
                     server = new Server();
                     
                     SelectChannelConnector connector = new SelectChannelConnector();
-                    connector.setPort(8080);
+                    connector.setPort(80);
                     server.addConnector(connector);
 
                     ResourceHandler resource_handler = new ResourceHandler();

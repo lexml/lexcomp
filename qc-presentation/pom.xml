@@ -92,7 +92,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>br.gov.camara.quadrocomparativo.App</mainClass>
+                            <mainClass>br.gov.camara.quadrocomparativo.AppNoFX</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -154,7 +154,7 @@
             <artifactId>jetty-embedded</artifactId>
             <version>6.1.26</version>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.14</version>
@@ -168,10 +168,20 @@
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
             <version>1.14</version>
+        </dependency-->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>1.17.1</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-core</artifactId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
             <version>1.14</version>
         </dependency>
         <dependency>
