@@ -27,7 +27,7 @@ import br.gov.lexml.symbolicobject.tipos.Tipos;
  */
 @XmlRootElement
 public class Correlacao implements Serializable {
-    
+
     private static final long serialVersionUID = 1286987453288856189L;
 
     private String urn1;
@@ -42,7 +42,7 @@ public class Correlacao implements Serializable {
 
     private CorrelacaoEstatisticaTexto estatisticaTexto1;
     private CorrelacaoEstatisticaTexto estatisticaTexto2;
-    
+
     public Correlacao() {
     }
 
@@ -50,13 +50,13 @@ public class Correlacao implements Serializable {
         this.urn1 = urn1;
         this.urn2 = urn2;
     }
-    
+
     public String getUrn1() {
         return urn1;
     }
 
     public void setUrn1(String urn1) {
-        
+
         if (urn1 != null) {
             urn1 = urn1.replaceAll("__", ";");
         }
@@ -91,77 +91,77 @@ public class Correlacao implements Serializable {
     }
 
     public List<Relacao> getRelacoes() {
-        return (List)relacoes;
+        return (List) relacoes;
     }
-    
+
     public void setRelacoes(List<RelacaoImpl> relacoes) {
         this.relacoes = relacoes;
     }
-        
+
     public List<Comentario> getComentarios() {
-    	return (List)comentarios;
-   	}
+        return (List) comentarios;
+    }
 
     public void setComentarios(List<ComentarioImpl> comentarios) {
-    	this.comentarios = comentarios;
-   	}
-    
+        this.comentarios = comentarios;
+    }
+
     public void addRelacao(RelacaoImpl relacao, IdSource idSource) {
-    	
-    	//obriga recalcular a estatística
-    	estatisticaTexto1 = null;
-    	estatisticaTexto2 = null;
-        
+
+        //obriga recalcular a estatística
+        estatisticaTexto1 = null;
+        estatisticaTexto2 = null;
+
         if (relacoes == null) {
             relacoes = new ArrayList<RelacaoImpl>();
         }
-        
+
         // ID sequencial
         if (relacao.getId() == 0) {
-        	relacao.setId(idSource.nextId(Tipos.Relacao()));
-            
+            relacao.setId(idSource.nextId(Tipos.Relacao()));
+
             while (relacoes.contains(relacao)) {
                 relacao.setId(relacao.getId() + 1);
             }
         }
-        
+
         if (relacoes.contains(relacao)) {
             relacoes.remove(relacao);
         }
-        
+
         relacoes.add(relacao);
     }
 
     public void removeRelacao(String idRelacao) {
-        
-    	//obriga recalcular a estatística
-    	estatisticaTexto1 = null;
-    	estatisticaTexto2 = null;
+
+        //obriga recalcular a estatística
+        estatisticaTexto1 = null;
+        estatisticaTexto2 = null;
 
         if (relacoes == null) {
             return;
         }
-        
+
         List<RelacaoImpl> relacoesToRemove = new ArrayList<RelacaoImpl>();
-        
+
         for (RelacaoImpl rel : relacoes) {
-            
+
             if (rel.getId() == Long.parseLong(idRelacao)) {
-                
+
                 relacoesToRemove.add(rel);
             }
         }
-        
+
         for (RelacaoImpl rel : relacoesToRemove) {
-            
+
             relacoes.remove(rel);
         }
     }
-    
-    public void removeAllRelacoes(){
-    	if (relacoes != null){
-    		relacoes.clear();
-    	}
+
+    public void removeAllRelacoes() {
+        if (relacoes != null) {
+            relacoes.clear();
+        }
     }
 
     @XmlElement
@@ -175,54 +175,54 @@ public class Correlacao implements Serializable {
 
     @Override
     public String toString() {
-    	return ToStringBuilder.reflectionToString(this);
+        return ToStringBuilder.reflectionToString(this);
     }
-    
+
     public void setEstatisticaTexto1(CorrelacaoEstatisticaTexto estatisticaTexto1) {
-		this.estatisticaTexto1 = estatisticaTexto1;
-	}
+        this.estatisticaTexto1 = estatisticaTexto1;
+    }
 
-	public void setEstatisticaTexto2(CorrelacaoEstatisticaTexto estatisticaTexto2) {
-		this.estatisticaTexto2 = estatisticaTexto2;
-	}
+    public void setEstatisticaTexto2(CorrelacaoEstatisticaTexto estatisticaTexto2) {
+        this.estatisticaTexto2 = estatisticaTexto2;
+    }
 
-	@XmlElement
-    public CorrelacaoEstatisticaTexto getEstatisticaTexto1(){
-    	if (estatisticaTexto1 == null){
-    		estatisticaTexto1 = produceCorrelacaoEstaticaTexto(texto1);
-    	}
-    	return estatisticaTexto1;
+    @XmlElement
+    public CorrelacaoEstatisticaTexto getEstatisticaTexto1() {
+        if (estatisticaTexto1 == null) {
+            estatisticaTexto1 = produceCorrelacaoEstaticaTexto(texto1);
+        }
+        return estatisticaTexto1;
     }
-    
-	@XmlElement
-    public CorrelacaoEstatisticaTexto getEstatisticaTexto2(){
-    	if (estatisticaTexto2 == null){
-    		estatisticaTexto2 = produceCorrelacaoEstaticaTexto(texto2);
-    	}
-    	return estatisticaTexto2;
+
+    @XmlElement
+    public CorrelacaoEstatisticaTexto getEstatisticaTexto2() {
+        if (estatisticaTexto2 == null) {
+            estatisticaTexto2 = produceCorrelacaoEstaticaTexto(texto2);
+        }
+        return estatisticaTexto2;
     }
-    
-    private CorrelacaoEstatisticaTexto produceCorrelacaoEstaticaTexto(Texto t){
-    	
-    	if (t == null){
-    		return null;
-    	}
-    	
-    	//produz o conjunto de id presentes em relacoes
-    	Set<Long> res = new HashSet<Long>();
-    	if (relacoes != null && !relacoes.isEmpty()){
-	    	if (t == texto1){
-	    		for (RelacaoImpl r : relacoes){
-	    			res.addAll(r.getOrigem());
-		    	}
-		    } else {
-		    	for (RelacaoImpl r : relacoes){
-		    		res.addAll(r.getAlvo());
-		    	}
-		    }
-    	}
-	    	
-	    return new CorrelacaoEstatisticaTexto(t.getDocumento().getObjetoSimbolicoIdSet().size(), res.size()); 
+
+    private CorrelacaoEstatisticaTexto produceCorrelacaoEstaticaTexto(Texto t) {
+
+        if (t == null) {
+            return null;
+        }
+
+        //produz o conjunto de id presentes em relacoes
+        Set<Long> res = new HashSet<Long>();
+        if (relacoes != null && !relacoes.isEmpty()) {
+            if (t == texto1) {
+                for (RelacaoImpl r : relacoes) {
+                    res.addAll(r.getOrigem());
+                }
+            } else {
+                for (RelacaoImpl r : relacoes) {
+                    res.addAll(r.getAlvo());
+                }
+            }
+        }
+
+        return new CorrelacaoEstatisticaTexto(t.getDocumento().getObjetoSimbolicoIdSet().size(), res.size());
     }
-    
+
 }

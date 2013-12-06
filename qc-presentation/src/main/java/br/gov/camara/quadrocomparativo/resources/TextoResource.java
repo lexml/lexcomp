@@ -297,7 +297,6 @@ public class TextoResource {
             
             log.log(Level.SEVERE, "Validação com sucesso2.");
             
-            //throw new Exception("SO PARA TESTAR.");
             return doc;
         } else {
         	texto.setDocumentoParseado(false);
