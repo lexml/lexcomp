@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.gov.camara.quadrocomparativo;
+package br.gov.camara.quadrocomparativo.main;
 
 import com.btr.proxy.search.ProxySearch;
 import java.net.ProxySelector;
@@ -25,8 +25,8 @@ import org.mortbay.jetty.webapp.WebAppContext;
 public class AppNoFX  {
 	private static final Logger logger = Logger.getLogger(AppNoFX.class.getName());
             
-
-    public static final String DEFAULT_URL = "http://localhost:80/";
+	public static final int PORT = 8000;
+    public static final String URL = "http://localhost:"+PORT+"/";
     private static Server server;
     private static Thread serverThread;
 
@@ -39,7 +39,7 @@ public class AppNoFX  {
                     server = new Server();
                     
                     SelectChannelConnector connector = new SelectChannelConnector();
-                    connector.setPort(80);
+                    connector.setPort(PORT);
                     server.addConnector(connector);
 
                     ResourceHandler resource_handler = new ResourceHandler();
@@ -65,6 +65,8 @@ public class AppNoFX  {
 
                     server.start();
                     server.join();
+                    
+                    logger.info("Go to: "+URL);
 
                 } catch (Exception ex) {
                     logger.log(Level.SEVERE, null, ex);
@@ -82,18 +84,12 @@ public class AppNoFX  {
             }
         }
     }
-
+    
     /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
+     * Executa o servidor da aplicação
      */
-    public static void main(String[] args) {
-    	
-        ProxySearch proxySearch = ProxySearch.getDefaultProxySearch();
+    public static void startServer(){
+    	ProxySearch proxySearch = ProxySearch.getDefaultProxySearch();
         ProxySelector myProxySelector = proxySearch.getProxySelector();
         ProxySelector.setDefault(myProxySelector);
         
@@ -105,5 +101,17 @@ public class AppNoFX  {
         } catch (InterruptedException ex) {
             logger.log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * The main() method is ignored in correctly deployed JavaFX application.
+     * main() serves only as fallback in case the application can not be
+     * launched through deployment artifacts, e.g., in IDEs with limited FX
+     * support. NetBeans ignores main().
+     *
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    	startServer();
     }
 }
