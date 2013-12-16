@@ -39,7 +39,6 @@ public class MainTray {
 
 				public void mouseClicked(MouseEvent e) {
 					abrirJanelaPrincipal(url);
-
 				}
 
 				public void mouseEntered(MouseEvent e) {
@@ -51,6 +50,7 @@ public class MainTray {
 				}
 
 				public void mousePressed(MouseEvent e) {
+
 				}
 
 				public void mouseReleased(MouseEvent e) {
@@ -105,11 +105,11 @@ public class MainTray {
 			try {
 				tray.add(trayIcon);
 			} catch (AWTException e) {
-				System.err.println("Erro, TrayIcon não sera adicionado.");
+				System.err.println("Erro, TrayIcon não ser[á adicionado.");
 			}
 		} else {
 			// Caso o item System Tray não for suportado
-			JOptionPane.showMessageDialog(null, "recurso ainda não esta disponível pra o seu sistema");
+			JOptionPane.showMessageDialog(null, "Não é possível abrir o Lexcomp no seu sistema. Por favor, procure apoio técnico.");
 		}
 	}
 	
