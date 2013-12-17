@@ -5,21 +5,26 @@ import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
-import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class MainTray {
 
+	private static final Logger logger = Logger.getLogger(MainTray.class.getName());
+
 	public static void main(String[] args) {
 		
 		//abre tray
-		new MainTray().abrirTray(AppNoFX.URL);
+		new MainTray().abrirTray(AppNoFX.getURL());
 
 		//executa serviço
 		AppNoFX.startServer();
@@ -32,7 +37,18 @@ public class MainTray {
 
 			SystemTray tray = SystemTray.getSystemTray();
 
-			Image image = Toolkit.getDefaultToolkit().getImage("tray.gif");
+
+			Image imageICO = null;
+			try {
+				imageICO = ImageIO.read(MainTray.class.getResource("/tray.jpg"));
+			} catch (IOException e) {
+				logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.", e);
+			} finally {
+				if (imageICO == null){
+					logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.");
+				}
+			}
+			
 
 			// Criamos um listener para escutar os eventos de mouse
 			MouseListener mouseListener = new MouseListener() {
@@ -87,7 +103,7 @@ public class MainTray {
 			popup.add(defaultItem);
 
 			// criando um objeto do tipo TrayIcon
-			trayIcon = new TrayIcon(image, "Lexcomp", popup);
+			trayIcon = new TrayIcon(imageICO, "Lexcomp", popup);
 			ActionListener actionListener = new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					trayIcon.displayMessage("Action Event", "Um Evento foi disparado", TrayIcon.MessageType.INFO);

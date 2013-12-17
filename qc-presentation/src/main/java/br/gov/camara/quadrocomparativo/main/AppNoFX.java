@@ -4,9 +4,12 @@
  */
 package br.gov.camara.quadrocomparativo.main;
 
-import com.btr.proxy.search.ProxySearch;
+import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ProxySelector;
+import java.net.ServerSocket;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +21,8 @@ import org.mortbay.jetty.handler.ResourceHandler;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
 
+import com.btr.proxy.search.ProxySearch;
+
 /**
  *
  * @author p_7174
@@ -25,10 +30,31 @@ import org.mortbay.jetty.webapp.WebAppContext;
 public class AppNoFX  {
 	private static final Logger logger = Logger.getLogger(AppNoFX.class.getName());
             
-	public static final int PORT = 8000;
-    public static final String URL = "http://localhost:"+PORT+"/";
-    private static Server server;
+	private static Server server;
     private static Thread serverThread;
+
+    private static final int DEFAULT_PORT = 8000;
+    private static final int PORT = getPort();
+    private static int getPort(){
+		try {
+			ServerSocket ss = new ServerSocket(0,0,InetAddress.getLocalHost());
+			int port = ss.getLocalPort();
+			if (!ss.isClosed()){
+				ss.close();
+			}
+			return port;
+		} catch (UnknownHostException e) {
+			logger.log(Level.SEVERE, "Host não conhecido. Não foi possível obter uma porta para conexão.", e);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Problema de Entrada/Saída. Não foi possível obter uma porta para conexão.", e);
+		}
+    	return DEFAULT_PORT;
+    }
+    private static final String URL ="http://localhost:"+PORT+"/";
+    
+    public static String getURL(){
+    	return URL;    	
+    }
 
     private void initServer() {
 
@@ -66,7 +92,8 @@ public class AppNoFX  {
                     server.start();
                     server.join();
                     
-                    logger.info("Go to: "+URL);
+                    System.out.println("Go to: "+getURL());
+                    logger.log(Level.INFO, "Go to: "+getURL());
 
                 } catch (Exception ex) {
                     logger.log(Level.SEVERE, null, ex);

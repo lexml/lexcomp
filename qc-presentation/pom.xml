@@ -63,6 +63,12 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
+            <resource>
+            	<directory>${basedir}/src/main/resources</directory>
+            	<includes>
+            		<include>**/*</include>
+            	</includes>
+            </resource>
         </resources>
 
         <plugins>
@@ -92,7 +98,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>br.gov.camara.quadrocomparativo.AppNoFX</mainClass>
+                            <mainClass>br.gov.camara.quadrocomparativo.main.MainTray</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
