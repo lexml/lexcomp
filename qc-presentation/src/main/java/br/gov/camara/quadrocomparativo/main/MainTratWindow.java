@@ -91,7 +91,7 @@ public class MainTratWindow extends JFrame {
 		panel.setBounds(22, 12, 326, 72);
 		getContentPane().add(panel);
 		
-		JLabel lbloLexcompContinuar = new JLabel("<html>(O Lexcomp continuará ativo. Para fechá-lo, acione o menu disponível no ícone na bandeja do sistema. Use o botão direito<br> do mouse)</html>");
+		JLabel lbloLexcompContinuar = new JLabel("<html>(O Lexcomp continuará ativo. Para fechá-lo, acione o menu disponível no ícone na bandeja do sistema. Use o botão direito do mouse)</html>");
 		lbloLexcompContinuar.setHorizontalAlignment(SwingConstants.CENTER);
 		lbloLexcompContinuar.setFont(new Font("Dialog", Font.PLAIN, 9));
 		lbloLexcompContinuar.setBounds(22, 188, 326, 41);
