@@ -24,13 +24,13 @@ public class MainTray {
 	public static void main(String[] args) {
 		
 		//abre tray
-		new MainTray().abrirTray(AppNoFX.getURL());
+		new MainTray().configurarTray(AppNoFX.getURL());
 
 		//executa serviço
 		AppNoFX.startServer();
 	}
 	
-	public void abrirTray(final String url){
+	public void configurarTray(final String url){
 		final TrayIcon trayIcon; 
 
 		if (SystemTray.isSupported()) {
@@ -121,8 +121,12 @@ public class MainTray {
 			try {
 				tray.add(trayIcon);
 			} catch (AWTException e) {
-				System.err.println("Erro, TrayIcon não ser[á adicionado.");
+				logger.log(Level.SEVERE, "Erro, TrayIcon não será adicionado.", e);
 			}
+			
+			//abrir a janela principal
+			abrirJanelaPrincipal(url);
+			
 		} else {
 			// Caso o item System Tray não for suportado
 			JOptionPane.showMessageDialog(null, "Não é possível abrir o Lexcomp no seu sistema. Por favor, procure apoio técnico.");

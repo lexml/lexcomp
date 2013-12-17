@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 
 public class MainTratWindow extends JFrame {
@@ -38,7 +39,7 @@ public class MainTratWindow extends JFrame {
 		setTitle("Lexcomp");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 371, 226);
+		setBounds(100, 100, 371, 270);
 		
 		setResizable(false);
 		
@@ -58,15 +59,18 @@ public class MainTratWindow extends JFrame {
 		lblAbraOEndereo.setBounds(22, 105, 356, 15);
 		getContentPane().add(lblAbraOEndereo);
 		
-		JButton btnCopiarEndereo = new JButton("Copiar endereço");
+		JButton btnCopiarEndereo = new JButton("Copiar endereço e fechar esta janela");
 		btnCopiarEndereo.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnCopiarEndereo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//copia conteúdo para a área de transferência
 				Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
 				clpbrd.setContents(new StringSelection(textFieldEndereco.getText()), null);
+				//fecha janela
+				dispose();
 			}
 		});
-		btnCopiarEndereo.setBounds(22, 154, 168, 25);
+		btnCopiarEndereo.setBounds(22, 154, 326, 25);
 		getContentPane().add(btnCopiarEndereo);
 		
 		JPanel panel = new JPanel(){
@@ -86,6 +90,12 @@ public class MainTratWindow extends JFrame {
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(22, 12, 326, 72);
 		getContentPane().add(panel);
+		
+		JLabel lbloLexcompContinuar = new JLabel("<html>(O Lexcomp continuará ativo. Para fechá-lo, acione o menu disponível no ícone na bandeja do sistema. Use o botão direito<br> do mouse)</html>");
+		lbloLexcompContinuar.setHorizontalAlignment(SwingConstants.CENTER);
+		lbloLexcompContinuar.setFont(new Font("Dialog", Font.PLAIN, 9));
+		lbloLexcompContinuar.setBounds(22, 188, 326, 41);
+		getContentPane().add(lbloLexcompContinuar);
 	}
 	
 	public static void centreWindow(Window frame) {
