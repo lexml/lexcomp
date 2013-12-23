@@ -30,7 +30,7 @@ public class AppMainTray {
 	
 			//executa serviço
 			AppNoFX.startServer();
-		}
+		}					
 	}
 	
 	public void configurarTray(final String url){
