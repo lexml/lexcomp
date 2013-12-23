@@ -27,7 +27,7 @@ import br.gov.lexml.symbolicobject.tipos.STipo;
 @XmlRootElement
 public class QuadroComparativo implements Serializable, IdSource {
 
-	private static final String FILENAME_PREFIX = System.getProperty("user.home")+"/lexcomp/";
+	public static final String FILENAME_PREFIX = System.getProperty("user.home")+"/LexComp/";
 	
     private static final long serialVersionUID = -6227052315334283202L;
     private String id;
