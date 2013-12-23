@@ -17,17 +17,20 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class MainTray {
+public class AppMainTray {
 
-	private static final Logger logger = Logger.getLogger(MainTray.class.getName());
+	private static final Logger logger = Logger.getLogger(AppMainTray.class.getName());
 
 	public static void main(String[] args) {
 		
-		//abre tray
-		new MainTray().configurarTray(AppNoFX.getURL());
-
-		//executa serviço
-		AppNoFX.startServer();
+		//se for a única instância...
+		if (SingleInstance.lockInstance()){
+			//abre tray
+			new AppMainTray().configurarTray(AppNoFX.getURL());
+	
+			//executa serviço
+			AppNoFX.startServer();
+		}
 	}
 	
 	public void configurarTray(final String url){
@@ -40,7 +43,7 @@ public class MainTray {
 
 			Image imageICO = null;
 			try {
-				imageICO = ImageIO.read(MainTray.class.getResource("/tray.jpg"));
+				imageICO = ImageIO.read(AppMainTray.class.getResource("/tray.jpg"));
 			} catch (IOException e) {
 				logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.", e);
 			} finally {

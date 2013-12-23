@@ -1,4 +1,5 @@
 package br.gov.camara.quadrocomparativo.main;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -19,11 +20,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.SwingConstants;
 
 
-public class MainTratWindow extends JFrame {
+public class MainTratWindow extends JFrame{
+	
 	private static final Logger logger = Logger.getLogger(MainTratWindow.class.getName());
 
 	private static final long serialVersionUID = 4825266919343576506L;
@@ -79,7 +80,7 @@ public class MainTratWindow extends JFrame {
 		        super.paintComponent(g);
 		        Image imageMarca = null;
 				try {
-					imageMarca = ImageIO.read(MainTray.class.getResource("/marca_lexcomp_Horizontal.jpg"));
+					imageMarca = ImageIO.read(AppMainTray.class.getResource("/marca_lexcomp_Horizontal.jpg"));
 					g.drawImage(imageMarca, 0, 0, null);
 				} catch (IOException e) {
 					logger.log(Level.ALL, "Não foi possível obter as imagens do formulário principal.", e);
