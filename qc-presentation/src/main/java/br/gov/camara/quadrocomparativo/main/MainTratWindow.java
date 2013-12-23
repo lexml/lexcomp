@@ -40,7 +40,7 @@ public class MainTratWindow extends JFrame{
 		setTitle("Lexcomp");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 371, 270);
+		setBounds(100, 100, 371, 287);
 		
 		setResizable(false);
 		
@@ -50,14 +50,14 @@ public class MainTratWindow extends JFrame{
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setFont(new Font("Dialog", Font.BOLD, 12));
 		textFieldEndereco.setEditable(false);
-		textFieldEndereco.setBounds(22, 123, 326, 19);
+		textFieldEndereco.setBounds(22, 137, 326, 19);
 		textFieldEndereco.setText(endereco);
 		getContentPane().add(textFieldEndereco);
 		textFieldEndereco.setColumns(10);
 		
 		JLabel lblAbraOEndereo = new JLabel("<html>Abra o endereço abaixo no <b>Firefox</b> ou no <b>Chrome</b>:</html>");
 		lblAbraOEndereo.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblAbraOEndereo.setBounds(22, 105, 356, 15);
+		lblAbraOEndereo.setBounds(22, 118, 356, 15);
 		getContentPane().add(lblAbraOEndereo);
 		
 		JButton btnCopiarEndereo = new JButton("Copiar endereço e fechar esta janela");
@@ -71,7 +71,7 @@ public class MainTratWindow extends JFrame{
 				dispose();
 			}
 		});
-		btnCopiarEndereo.setBounds(22, 154, 326, 25);
+		btnCopiarEndereo.setBounds(22, 168, 326, 25);
 		getContentPane().add(btnCopiarEndereo);
 		
 		JPanel panel = new JPanel(){
@@ -89,13 +89,13 @@ public class MainTratWindow extends JFrame{
 		};
 		panel.setForeground(Color.WHITE);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(22, 12, 326, 72);
+		panel.setBounds(22, 16, 326, 88);
 		getContentPane().add(panel);
 		
 		JLabel lbloLexcompContinuar = new JLabel("<html>(O Lexcomp continuará ativo. Para fechá-lo, acione o menu disponível no ícone na bandeja do sistema. Use o botão direito do mouse)</html>");
 		lbloLexcompContinuar.setHorizontalAlignment(SwingConstants.CENTER);
 		lbloLexcompContinuar.setFont(new Font("Dialog", Font.PLAIN, 9));
-		lbloLexcompContinuar.setBounds(22, 188, 326, 41);
+		lbloLexcompContinuar.setBounds(22, 205, 326, 41);
 		getContentPane().add(lbloLexcompContinuar);
 	}
 	
