@@ -8,15 +8,13 @@ import java.util.logging.Logger;
 
 public class SingleInstance {
 	
-	
 	private static final Logger logger = Logger.getLogger(SingleInstance.class.getName());
 
-	private static final String TEMP_FILE_NAME = "lexcomp_lock";
-	private static final String TEMP_FILE_NAME_SUFIX = "tmp";
+	private static final String TEMP_FILE_NAME = System.getProperty("java.io.tmpdir")+"/lexcomp_lock.tmp";
 	
 	public static boolean lockInstance() {
 
-        final File file = new File(System.getProperty("java.io.tmpdir")+"/"+TEMP_FILE_NAME+"."+TEMP_FILE_NAME_SUFIX);
+        final File file = new File(TEMP_FILE_NAME);
 		try {
 	        final RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
 	        final FileLock fileLock = randomAccessFile.getChannel().tryLock();
