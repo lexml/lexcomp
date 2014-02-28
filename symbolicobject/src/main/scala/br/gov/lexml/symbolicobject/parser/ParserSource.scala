@@ -129,7 +129,7 @@ trait BlocksToXMLSomenteArticulacao extends XMLSource {
       
   
 final case class StringSource(s : String) extends StreamSource {
-  override def stream() = IOUtils.toInputStream(s,"utf-8")
+  override def stream() = IOUtils.toInputStream(s,"UTF-8")
 }
 
 final case class FileSource(f : File) extends StreamSource {

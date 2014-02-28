@@ -139,7 +139,7 @@ public class TrayConfig {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainTratWindow frame = new MainTratWindow(url);
+					MainTrayWindow frame = new MainTrayWindow(url);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

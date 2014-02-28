@@ -23,9 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 
-public class MainTratWindow extends JFrame{
+public class MainTrayWindow extends JFrame{
 	
-	private static final Logger logger = Logger.getLogger(MainTratWindow.class.getName());
+	private static final Logger logger = Logger.getLogger(MainTrayWindow.class.getName());
 
 	private static final long serialVersionUID = 4825266919343576506L;
 	private JTextField textFieldEndereco;
@@ -34,7 +34,7 @@ public class MainTratWindow extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public MainTratWindow(String endereco) {
+	public MainTrayWindow(String endereco) {
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.WHITE);
 		setTitle("Lexcomp");

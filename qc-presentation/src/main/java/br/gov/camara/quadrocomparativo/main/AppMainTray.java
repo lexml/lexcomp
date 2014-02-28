@@ -11,7 +11,8 @@ import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 public class AppMainTray {
 
 	public static void main(String[] args) {
-		
+    	System.setProperty("file.encoding", "UTF-8");
+
 		//se for a única instância...
 		if (SingleInstance.lockInstance()){
 			
