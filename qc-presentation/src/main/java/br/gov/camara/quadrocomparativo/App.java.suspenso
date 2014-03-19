@@ -51,7 +51,7 @@ public class App extends Application {
         primaryStage.setY(bounds.getMinY());
         primaryStage.setWidth(bounds.getWidth());
         primaryStage.setHeight(bounds.getHeight());
-        primaryStage.setTitle("Quadro Comparativo");
+        primaryStage.setTitle("LexComp - Quadro Comparativo");
 
         webView.setPrefSize(bounds.getWidth(), bounds.getHeight() - 25);
     }
