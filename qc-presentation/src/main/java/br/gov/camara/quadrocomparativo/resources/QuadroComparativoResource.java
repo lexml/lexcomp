@@ -78,7 +78,7 @@ public class QuadroComparativoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<QuadroComparativo> getQuadroComparativoList() {
 
-        File dir = new File(".");
+        File dir = new File(QuadroComparativo.QUADROS_HOMEDIR); 
         FilenameFilter filter = new FilenameFilter() {
             public boolean accept(File directory, String fileName) {
                 return fileName.startsWith("qc-") && fileName.endsWith(".xml");
@@ -91,7 +91,7 @@ public class QuadroComparativoResource {
         if (files != null) {
 
             for (File f : files) {
-                QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(f);
+                QuadroComparativo qc = QuadroComparativoController.getQuadroComparativoFromFile(f);
                 QuadroComparativo qcEnvio = new QuadroComparativo(qc.getId(), qc.getTitulo());
                 qcEnvio.setDataModificacao2(new Date(f.lastModified()));
                 quadros.add(qcEnvio);

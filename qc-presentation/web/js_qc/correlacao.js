@@ -1,3 +1,7 @@
+$.ajaxSetup ({
+	// Disable caching of AJAX responses
+	cache: false
+});
 
 var relacaoUsuarioStyle = {
         lineWidth:2,
@@ -90,13 +94,6 @@ jsPlumb.ready(function() {
                 atualizaConexoes(conn, 'remover');
             });
     }); 
-    
-    
-    
-    
-    
-  
-    
     
 });
 

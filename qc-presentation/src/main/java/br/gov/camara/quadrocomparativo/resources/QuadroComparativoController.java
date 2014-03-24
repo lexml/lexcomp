@@ -26,18 +26,20 @@ public class QuadroComparativoController {
     private static final Logger log = Logger.getLogger(QuadroComparativoController.class.getName());
 
     static QuadroComparativo getQuadroComparativo(HttpServletRequest request, String id) {
-        QuadroComparativo quadro = SessionController.get(request, id, QuadroComparativo.class);
+        QuadroComparativo quadro = null; //SessionController.get(request, id, QuadroComparativo.class);
 
         if (quadro == null) {
             File f = new File(QuadroComparativo.getFileName(id));
 
             if (f.exists()) {
-                quadro = getQuadroComparativo(f);
+                quadro = getQuadroComparativoFromFile(f);
             }
 
+            /*
             if (quadro != null) {
                 SessionController.save(request, id, quadro);
             }
+            */
         }
 
 //    	if(quadro == null) {
@@ -51,7 +53,7 @@ public class QuadroComparativoController {
         return quadro;
     }
 
-    static QuadroComparativo getQuadroComparativo(File file) {
+    static QuadroComparativo getQuadroComparativoFromFile(File file) {
 
         if (file.exists()) {
             try {
@@ -79,7 +81,7 @@ public class QuadroComparativoController {
         quadro.addColuna(col);
 
         saveQuadroToFile(quadro);
-        SessionController.save(request, quadro.getId(), quadro);
+        //SessionController.save(request, quadro.getId(), quadro);
 
         return quadro;
     }
@@ -115,7 +117,7 @@ public class QuadroComparativoController {
         File file = new File(QuadroComparativo.getFileName(qcId));
         if (file.delete()) {
 
-            SessionController.delete(request, qcId, QuadroComparativo.class);
+            //SessionController.delete(request, qcId, QuadroComparativo.class);
 
             return true;
         }
@@ -123,24 +125,24 @@ public class QuadroComparativoController {
     }
 
     static boolean saveQuadroComparativo(HttpServletRequest request, QuadroComparativo qc) {
-        QuadroComparativo qcAtual = getQuadroComparativo(request, qc.getId());
+        QuadroComparativo qcAtualSessao = getQuadroComparativo(request, qc.getId());
 
         // garante que o current position é o valor máximo entre o que veio do JS e o que está na sessão
-        if (qcAtual != null) {
-            qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), qcAtual.getCurrentPosition()));
+        if (qcAtualSessao != null) {
+            qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), qcAtualSessao.getCurrentPosition()));
         } else {
             qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), 1));
         }
 
 
-        boolean ok = true;
         if (qc.isArticulacoesExcluidas()) {
-            ok = restauraArticulacoes(qc, qcAtual);
+            if (!restauraArticulacoes(qc, qcAtualSessao)){
+            	return false;
+            }
         }
 
-        if (ok) {
-            SessionController.save(request, qc.getId(), qc);
-
+        if (!qc.isArticulacoesExcluidas()) {
+            //SessionController.save(request, qc.getId(), qc);
             return saveQuadroToFile(qc);
         }
 
@@ -148,12 +150,12 @@ public class QuadroComparativoController {
     }
 
     private static boolean restauraArticulacoes(QuadroComparativo quadro, QuadroComparativo qcAtual) {
-        // recupera articulacoes salvas anteriormente
+
+    	// recupera articulacoes salvas anteriormente
         if (qcAtual != null) {
 
             if (quadro.getColunas() != null) {
-                for (Coluna col : quadro.getColunas()) {
-
+            	for (Coluna col : quadro.getColunas()) {
                     if (col.getTextos() != null) {
                         for (Texto tex : col.getTextos()) {
 
@@ -170,11 +172,11 @@ public class QuadroComparativoController {
                     }
                 }
             }
-            qcAtual.setArticulacoesExcluidas(false);
+            quadro.setArticulacoesExcluidas(false);
+            
         }
 
-
-        return true;
+        return !quadro.isArticulacoesExcluidas();
     }
 
     private static boolean saveQuadroToFile(QuadroComparativo quadro) {

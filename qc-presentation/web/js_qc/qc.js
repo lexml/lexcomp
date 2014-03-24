@@ -1,3 +1,8 @@
+$.ajaxSetup ({
+	// Disable caching of AJAX responses
+	cache: false
+});
+
 var quadro = {};
 var urnAtual;
 var textoAtualModal;
@@ -605,50 +610,50 @@ function configuraQuadro() {
                 "Salvar": function() {
                     var dialog = $(this);
                     
-                showConfirmDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.",
-                function () {
-                    
-                    //texto.preambulo = nicEditors.findEditor("preambulo-textarea").getContent();
-                    //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
-                    //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
-                    
-                    texto.preambulo = $("#preambulo-textarea").val();                    
-                    texto.articulacao = $("#texto-textarea").val();
-                    texto.fecho = $("#fecho-textarea").val();
-                  
-                   //Ajax 
-                   $.ajax({
-                        url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
-                        type: 'POST',
-                        data: JSON.stringify(texto),
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        success:function(res){
-                        	//FIXME Verificar porque é necessário
-                            //res.urn = (""+res.urn).replace("__", ";");
-                            while(urn.match("__")) {
-                                urn = urn.replace("__", ";");
-                            }
-
-                            if (!res.documentoParseado){
-                            	showAlertDialog("O documento foi salvo, porém, não foi possível realizar a estruturação do conteúdo.");
-                            } else {
-                            	fortext(urn,function(txt,it,col) {
-                            		col.textos[it] = res;
-                            	});
-                            }
-                        	                                                                           
-                        	dialog.dialog("close");
-                        },
-                        error:function(res){
-                            
-                            console.log('Erro:');                            
-                            console.log(res);
-                            showAlertDialog(res.responseText);
-                            dialog.dialog("close");
-                        }
-                    }); 
-                    
+	                showConfirmDialog("Atenção: Ao alterar o texto salvo, todas as correlações feitas serão perdidas.",
+		                function () {
+		                    
+		                    //texto.preambulo = nicEditors.findEditor("preambulo-textarea").getContent();
+		                    //texto.articulacao = nicEditors.findEditor("texto-textarea").getContent();
+		                    //texto.fecho = nicEditors.findEditor("fecho-textarea").getContent();
+		                    
+		                    texto.preambulo = $("#preambulo-textarea").val();                    
+		                    texto.articulacao = $("#texto-textarea").val();
+		                    texto.fecho = $("#fecho-textarea").val();
+		                  
+		                   //Ajax 
+		                   $.ajax({
+		                        url: '/api/texto/qc/' + quadro.id + '/col/' + idColunaUrn +  "/",
+		                        type: 'POST',
+		                        data: JSON.stringify(texto),
+		                        dataType: "json",
+		                        contentType: "application/json; charset=utf-8",
+		                        success:function(res){
+		                        	//FIXME Verificar porque é necessário
+		                            //res.urn = (""+res.urn).replace("__", ";");
+		                            while(urn.match("__")) {
+		                                urn = urn.replace("__", ";");
+		                            }
+		
+		                            if (!res.documentoParseado){
+		                            	showAlertDialog("O documento foi salvo, porém, não foi possível realizar a estruturação do conteúdo.");
+		                            } else {
+		                            	fortext(urn,function(txt,it,col) {
+		                            		col.textos[it] = res;
+		                            	});
+		                            }
+		                        	                                                                           
+		                        	dialog.dialog("close");
+		                        },
+		                        error:function(res){
+		                            
+		                            console.log('Erro:');                            
+		                            console.log(res);
+		                            showAlertDialog(res.responseText);
+		                            dialog.dialog("close");
+		                        }
+		                    }); 
+	                    
                     
                     
                 });

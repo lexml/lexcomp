@@ -18,6 +18,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -112,7 +113,9 @@ public class CorrelacaoResource {
             }
         }
         
-        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){ //saveQuadroComparativo(request, qc, false);
+        	throw new WebApplicationException(500);
+        }
         
         String result = "Quadro saved: " + qc;
         return Response.status(201).entity(result).build();
@@ -178,7 +181,9 @@ public class CorrelacaoResource {
         
         correl.addRelacao(relacao, qc);
        
-        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){ //saveQuadroComparativo(request, qc, false);
+        	throw new WebApplicationException(500);
+        }
         
         String result = "Relacao saved: " + relacao;
         return Response.status(201).entity(result).build();
@@ -204,7 +209,9 @@ public class CorrelacaoResource {
         
         correl.removeRelacao(idRelacao);
         
-        QuadroComparativoController.saveQuadroComparativo(request, qc); //saveQuadroComparativo(request, qc, false);
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){ //saveQuadroComparativo(request, qc, false);
+        	throw new WebApplicationException(500);
+        }
         
         String result = "Relacao deleted: " + idRelacao;
         return Response.status(200).entity(result).build();
@@ -292,7 +299,9 @@ public class CorrelacaoResource {
         	correlacao.addRelacao(RelacaoImpl.newFromRelacao(r), qc);
         }
                 
-        QuadroComparativoController.saveQuadroComparativo(request, qc); 
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){
+        	throw new WebApplicationException(500);
+        }
                         
         /*
         String result = "Config saved: ";

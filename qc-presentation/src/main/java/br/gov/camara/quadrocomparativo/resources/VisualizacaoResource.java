@@ -106,24 +106,27 @@ public class VisualizacaoResource {
 
 		Indexer indexer = new Indexer();
 
-		for (Correlacao c : qc.getCorrelacoes()) {
-
-			// documentos
-			for (Documento d : qc.getAllDocumentos()) {
-				indexer.addDocumento(d);
-			}
-
-			// relações
-			if (c.getRelacoes() != null) {
-				for (Relacao r : c.getRelacoes()) {
-					indexer.addRelacao(r);
+		if (qc.getCorrelacoes() != null){
+			
+			for (Correlacao c : qc.getCorrelacoes()) {
+	
+				// documentos
+				for (Documento d : qc.getAllDocumentos()) {
+					indexer.addDocumento(d);
 				}
-			}
-
-			// comentários
-			if (c.getComentarios() != null) {
-				for (Comentario m : c.getComentarios()) {
-					indexer.addComentario(m);
+	
+				// relações
+				if (c.getRelacoes() != null) {
+					for (Relacao r : c.getRelacoes()) {
+						indexer.addRelacao(r);
+					}
+				}
+	
+				// comentários
+				if (c.getComentarios() != null) {
+					for (Comentario m : c.getComentarios()) {
+						indexer.addComentario(m);
+					}
 				}
 			}
 		}

@@ -32,7 +32,7 @@ public class AppMainTray {
 	}
 	
 	private static void verificarHomeDir() throws IOException{
-		File lexcompHome = new File(QuadroComparativo.FILENAME_PREFIX);
+		File lexcompHome = new File(QuadroComparativo.QUADROS_HOMEDIR);
 		if (!lexcompHome.exists()){	
 			try {
 				FileUtils.forceMkdir(lexcompHome);

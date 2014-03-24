@@ -20,6 +20,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -192,9 +193,11 @@ public class TextoResource {
         qc.addTexto(colId, texto);
         
         //exclui todas as eventuais relações existentes
-        removeRelacoes(qc, texto);
+        removeCorrelacoes(qc, texto);
         
-        QuadroComparativoController.saveQuadroComparativo(request, qc);
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){
+        	throw new WebApplicationException(500);
+        }
 
         return Response.status(Status.CREATED).entity(texto).build();
     }
@@ -309,15 +312,15 @@ public class TextoResource {
     }
    
     /**
-     * Remove todas as relações de um texto no Quadro
+     * Remove todas as correlações de um texto no Quadro
      * @param qc
      * @param texto
      */
-    private void removeRelacoes(QuadroComparativo qc, Texto texto){
+    private void removeCorrelacoes(QuadroComparativo qc, Texto texto){
     	for (Texto t : qc.getAllTextos()){
     		Correlacao c = qc.getCorrelacao(texto.getUrn(), t.getUrn());
     		if (c != null){
-    			c.removeAllRelacoes();
+    			qc.getCorrelacoes().remove(c);
     		}
     	}
     }
