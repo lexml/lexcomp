@@ -5,6 +5,7 @@
 package br.gov.camara.quadrocomparativo.main;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.InetAddress;
 import java.net.ProxySelector;
 import java.net.ServerSocket;
@@ -33,23 +34,43 @@ public class AppNoFX  {
 	private static Server server;
     private static Thread serverThread;
 
-    private static final int DEFAULT_PORT = 8000;
+    private static final int DEFAULT_PORT = 36486;
     private static final int PORT = getPort();
+    
     private static int getPort(){
+    	if (getPort(DEFAULT_PORT)> 0){
+    		return DEFAULT_PORT;
+    	} else {
+    		int port = getPort(0);
+    		if (port> 0){
+    			return port;
+    		}
+    	}
+    	
+		logger.log(Level.SEVERE, "Problema de Entrada/Saída. Não foi possível obter uma porta para conexão.");
+		
+		return -1;
+    }
+    
+    private static int getPort(int port){
 		try {
-			ServerSocket ss = new ServerSocket(0,0,InetAddress.getLocalHost());
-			int port = ss.getLocalPort();
-			if (!ss.isClosed()){
+			ServerSocket ss = new ServerSocket(port,0,InetAddress.getLocalHost());
+			int l_port = ss.getLocalPort();
+			
+			if (ss != null && !ss.isClosed()){
 				ss.close();
+				return l_port;
 			}
-			return port;
+		} catch (BindException e){
+			logger.log(Level.SEVERE, "Porta "+port+" já está em uso.", e);
 		} catch (UnknownHostException e) {
 			logger.log(Level.SEVERE, "Host não conhecido. Não foi possível obter uma porta para conexão.", e);
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "Problema de Entrada/Saída. Não foi possível obter uma porta para conexão.", e);
 		}
-    	return DEFAULT_PORT;
+    	return -1;
     }
+    
     private static final String URL ="http://localhost:"+PORT+"/";
     
     public static String getURL(){
