@@ -35,7 +35,6 @@ import br.gov.camara.quadrocomparativo.model.DocumentoImpl;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.parser.pl.ArticulacaoParser;
-import br.gov.lexml.parser.pl.errors.ParseException;
 import br.gov.lexml.renderer.plaintext.RendererPlainText;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.InputDocument;
@@ -55,7 +54,7 @@ public class TextoResource {
 
     @Context
     HttpServletRequest request;
-    private static Logger log = Logger.getLogger(TextoResource.class.getName());
+    private static final Logger log = Logger.getLogger(TextoResource.class.getName());
 
     /*
     @GET
