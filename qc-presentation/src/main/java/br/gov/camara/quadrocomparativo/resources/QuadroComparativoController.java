@@ -182,13 +182,21 @@ public class QuadroComparativoController {
     private static boolean saveQuadroToFile(QuadroComparativo quadro) {
         try {
 
-            new File(quadro.getFileName()).delete();
-
+            File quadroFile = new File(quadro.getFileName());
+            
+            if (!quadroFile.getParentFile().exists()) {
+                quadroFile.getParentFile().mkdirs();
+            
+            } else if (quadroFile.exists()) {
+            
+                quadroFile.delete();
+            }
+            
             JAXBContext context = JAXBContext.newInstance(
                     QuadroComparativo.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(quadro, new FileOutputStream(quadro.getFileName()));
+            m.marshal(quadro, new FileOutputStream(quadroFile));
 
             return true;
 
