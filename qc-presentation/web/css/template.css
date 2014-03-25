@@ -450,27 +450,49 @@ button, input, select, textarea {
 
 
 
-.objDocumento{
-    margin: 20px 0; 
+.objDocumento {
     border-top: dotted #B9C8CA 1px;
+    padding: 10px;
 }
 
 .objRotulo {
     float: left;
     font-weight: bold;
+    padding: 10px 0;
 }
 
 .objRotulo.agregador {
     width: 100%;
     text-align: center;
-    margin: 5px;
+    margin: 0;
 }
 
 .objRotulo.agregador + div.objTexto {
-    width: 100%;
     text-align: center;
     font-weight: bold;
 }
+
+.objAlteracao {
+	margin-left: 30px;
+	border-top: none;
+}
+
+.objAlteracao > .objRotulo:BEFORE {
+	content: "“";
+	font-weight: normal;
+	font-size: larger;
+}
+
+.objAlteracao .objTexto:AFTER {
+	content: " ”";
+	font-size: larger;
+}
+
+
+.objAlteracao .objDocumento {
+    border-top: none;
+}
+
 
 #capituloTextoComparacao{
     color:red;

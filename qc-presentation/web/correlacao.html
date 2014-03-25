@@ -1,138 +1,151 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
 
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Quadro Comparativo - Planejamento do Quadro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Quadro Comparativo - Planejamento do Quadro</title>
 
-        <!-- Jquery -->         
-        <script src="js/jquery-1.9.0.js"></script>
-        <script src="js/jquery-ui-1.10.0.custom.js"></script>
-        <script type="text/javascript" src="js/jquery.jsPlumb-1.4.1-all.js"></script>
-        <script type="text/javascript" src="js/moment.min.js"></script>
-        <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="js_qc/qc_misc.js"></script>
-        <script type="text/javascript" src="js_qc/menu.js"></script>
-        <script type="text/javascript" src="js_qc/correlacao.js"></script> 
+<!-- Jquery -->
+<script src="js/jquery-1.9.0.js"></script>
+<script src="js/jquery-ui-1.10.0.custom.js"></script>
+<script type="text/javascript" src="js/jquery.jsPlumb-1.5.5.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js_qc/qc_misc.js"></script>
+<script type="text/javascript" src="js_qc/menu.js"></script>
+<script type="text/javascript" src="js_qc/correlacao.js"></script>
 
-        <!--- Estilos --->
-        <link rel="stylesheet" href="css/demo_table.css" type="text/css" media="all"/>
-        <link href="css/template.css" rel="stylesheet" type="text/css" />        
-        <link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">        
+<!--- Estilos --->
+<link rel="stylesheet" href="css/demo_table.css" type="text/css"
+	media="all" />
+<link href="css/template.css" rel="stylesheet" type="text/css" />
+<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css"
+	rel="stylesheet">
 
-    </head>
+</head>
 
-    <body onUnload="" data-library="jquery"> 
-        <!---Loading--->
-        <div id="loading"><img src="images/icone_lexcomp_50x.png"><br><br><h3>Carregando Textos e Correlações.</h3></div>
-        <div id="fade" class="black_overlay"></div>
-        <script type="text/javascript">
+<body onUnload="" data-library="jquery">
+	<!---Loading--->
+	<div id="loading">
+		<img src="images/icone_lexcomp_50x.png"><br>
+		<br>
+		<h3>Carregando Textos e Correlações.</h3>
+	</div>
+	<div id="fade" class="black_overlay"></div>
+	<script type="text/javascript">
             //Loading dos textos e Correlações
             $('#loading').show();
             $('#fade').show();
         </script>
-        <!---Loading--->
+	<!---Loading--->
 
-        <!--- Menu de contexto --->   
-        
+	<!--- Menu de contexto --->
 
-        <div id="layout1">
-            <script type="text/javascript">
+
+	<div id="layout1">
+		<script type="text/javascript">
                 print_menu();
                 //Exibição ou omissão do submenu de correlações:
                 $('#menuCorrelacoes').show();                
             </script>
 
-            <div id="content1">
+		<div id="content1">
 
-                <div id="tituloQuadro">
-                    <h2 id="nomeQuadro">Correlação  - Código Florestal</h2>
-                </div>
-                
-                <div id="colunas">
+			<div id="tituloQuadro">
+				<h2 id="nomeQuadro">Correlação - Código Florestal</h2>
+			</div>
 
-                    <div id="colunaComparacaoA" class="colunaComparacao" style="float: left; display: none;">
-                        
-                    </div>
+			<div id="colunas">
 
-                    <div id="divRelacoes" style="float: left; width: 5.7%; margin: 3px;">
-                    </div>
+				<div id="colunaComparacaoA" class="colunaComparacao"
+					style="float: left; display: none;"></div>
 
-                    <div id="colunaComparacaoB" class="colunaComparacao" style="float: right; display: none;">
-                    </div>
+				<div id="divRelacoes" style="float: left; width: 5.7%; margin: 3px;">
+				</div>
 
-                </div>
+				<div id="colunaComparacaoB" class="colunaComparacao"
+					style="float: right; display: none;"></div>
 
-            </div>
-        </div>
+			</div>
 
-        <div id="dialog-open" title="Abrir quadro comparativo">
-            <table id="qcOpenTable" class="display dataTable" style="width: 680px; margin: 20px 0; clear: both;">
-            </table>
-        </div>
+		</div>
+	</div>
 
-        <div id="dialog-confirm" title="Confirmação">
-            <div id="confirm-text"></div>
-        </div>       
-        
-        <div id="dialog-tiporelacao" title="Tipo de Correlação" style="display: none;">
-            <b>Tipo de correlação:</b>  
-            <select id="tiposCorrelacao">
-                <option>-- Selecione --</option>
-            </select><br><br>            
-        </div>
-        
-        
-        <div id="dialog-comentario" title="Comentários" style="display: none;">
-            <form method="POST">
-                <table cellspacing="5">
-                 <tr>
-                    <td width="140"><b>Tipo de Comentário: </b></td>
-                    <td>
-                        <select name="tiposComentario" id="tiposComentario">
-                               <option value="">-- Selecione --</option>                                                  
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Comentário:</b></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><textarea cols="90" rows="10"></textarea></td>
-                </tr>
+	<div id="dialog-open" title="Abrir quadro comparativo">
+		<table id="qcOpenTable" class="display dataTable"
+			style="width: 680px; margin: 20px 0; clear: both;">
+		</table>
+	</div>
 
-                <tr><td colspan="2">&nbsp;</td></tr>
-                <tr><td><input type="button"  class="btnAcao" id="acaoSalvarComentario" value="Salvar"></td></tr>
+	<div id="dialog-confirm" title="Confirmação">
+		<div id="confirm-text"></div>
+	</div>
+
+	<div id="dialog-tiporelacao" title="Tipo de Correlação"
+		style="display: none;">
+		<b>Tipo de correlação:</b> <select id="tiposCorrelacao">
+			<option>-- Selecione --</option>
+		</select><br>
+		<br>
+	</div>
 
 
-                </table>
-            </form>
-        </div>
-        
-        
-        
-        <div id="dialog-configuracao" title="Configuração" style="display: none;">
-            <form action="" id="formConfiguracao" method="POST">
-            
-            <div id="slider"></div>
-            
-                <table>
-                    <tr>
-                        <td><input type="text" id="porcentagem" style="border: 0; color: #f6931f; font-weight: bold;"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" class="btnAcao" value="Processar" id="sbConfiguracao"></td>
-                    </tr>
+	<div id="dialog-comentario" title="Comentários" style="display: none;">
+		<form method="POST">
+			<table cellspacing="5">
+				<tr>
+					<td width="140"><b>Tipo de Comentário: </b></td>
+					<td><select name="tiposComentario" id="tiposComentario">
+							<option value="">-- Selecione --</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="2"><b>Comentário:</b></td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea cols="90" rows="10"></textarea></td>
+				</tr>
 
-                </table>
-            
-            </form>
-            
-        </div>
-        
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><input type="button" class="btnAcao"
+						id="acaoSalvarComentario" value="Salvar"></td>
+				</tr>
 
-        <script>
+
+			</table>
+		</form>
+	</div>
+
+
+
+	<div id="dialog-configuracao" title="Configuração"
+		style="display: none;">
+		<form action="" id="formConfiguracao" method="POST">
+
+			<div id="slider"></div>
+
+			<table>
+				<tr>
+					<td><input type="text" id="porcentagem"
+						style="border: 0; color: #f6931f; font-weight: bold;" /></td>
+				</tr>
+				<tr>
+					<td><input type="button" class="btnAcao" value="Processar"
+						id="sbConfiguracao"></td>
+				</tr>
+
+			</table>
+
+		</form>
+
+	</div>
+
+
+	<script>
             
             var qcid = getURLParameter('qcid');
             var urn1 = getURLParameter('urn1');
@@ -237,22 +250,23 @@
 
             });
         </script>
-        
-        
-        <!---Tipo comentários --->
-        <script type="text/javascript" src="js_qc/tipo_comentario.js"></script>
-        
-        
-        <!---Menu de contexto --->
-        <div id="divMenuContexto" style="display: none; position: absolute;padding: 10px; width: 160px;  color: white; font-weight: bold;">
-        <ul id="menuContexto">
-            <li><a href="#" class="linkEditaComentario">Comentários</a></li>
-          <li><a href="#">Outros</a></li>  
-        </ul>
-        </div>  
-        
-       
 
-        
-    </body>
+
+	<!---Tipo comentários --->
+	<script type="text/javascript" src="js_qc/tipo_comentario.js"></script>
+
+
+	<!---Menu de contexto --->
+	<div id="divMenuContexto"
+		style="display: none; position: absolute; padding: 10px; width: 160px; color: white; font-weight: bold;">
+		<ul id="menuContexto">
+			<li><a href="#" class="linkEditaComentario">Comentários</a></li>
+			<li><a href="#">Outros</a></li>
+		</ul>
+	</div>
+
+
+
+
+</body>
 </html>

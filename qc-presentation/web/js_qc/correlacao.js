@@ -166,6 +166,8 @@ function initObjs(){
     relacaoSources = [];
     relacaoTargets = [];
     
+    $(".objDocumento").css("background-color", "#f7f7f7");
+    
     //Ao clicar no elemento, trata a questão do relacionamento entre estes
     $(".objDocumento:not(.disabled)").click(function(event) {
         
@@ -236,6 +238,7 @@ function initObjs(){
         event.stopPropagation();
         event.preventDefault();
         
+               
         if (!$(this).hasClass("selected") && !$(this).hasClass("disabled")) {
             
             var _this = $(this);
@@ -250,8 +253,8 @@ function initObjs(){
                 
             }
             
-            $(this).css("background-color", "#FFFF99");
-            $(this).find(".objDocumento:not(.disabled)").css("background-color", "#FFFF99").addClass("highlighted");
+            _this.css("background-color", "#FFFF99");
+            /*$(this).find(".objDocumento:not(.disabled)").css("background-color", "#FFFF99").addClass("highlighted");*/
             _this.addClass("highlighted");
         }
     }); 
@@ -276,19 +279,21 @@ function desabilitaObjDocumentosJaRelacionados() {
         //console.log(source);
         var sourceId = source.replace("objA_", "");
         
-        $.each(relacoes, function(i, relacao) {
-            
-           $.each(relacao.origem, function(i, origem) {
-                //console.log(origem + " -- " + ); 
-                if (origem == sourceId) {
-                    
-                    $.each(relacao.alvo, function(i, alvo) {
-                        //console.log($("#objB_" + alvo).html());
-                        $("#objB_" + alvo).addClass("disabled");
-                    });
-                }
-            });
-        });
+        if (relacoes){
+	        $.each(relacoes, function(i, relacao) {
+	            
+	           $.each(relacao.origem, function(i, origem) {
+	                //console.log(origem + " -- " + ); 
+	                if (origem == sourceId) {
+	                    
+	                    $.each(relacao.alvo, function(i, alvo) {
+	                        //console.log($("#objB_" + alvo).html());
+	                        $("#objB_" + alvo).addClass("disabled");
+	                    });
+	                }
+	            });
+	        });
+        }
     });
     
     $.each(relacaoTargets, function(i, source) {
@@ -680,31 +685,31 @@ function addSelected(elem, column) {
         column = "B";
     }
     
-    if (elem.find(".objDocumento").filter("div").length == 0 ) {
+    if (elem.find(".objDocumento").filter("div").length == 0 ) { // que seja uma folha
             
         removeFromArray(array, elem.attr("id"));
         array.push(elem.attr("id"));
 
     } else {
-        elem.find(".objDocumento:not(.disabled)").filter("div").each(function() {
+        /*elem.find(".objDocumento:not(.disabled)").filter("div").each(function() {
             addSelected($(this), column);
-        });
+        });*/
     }
 }
 
 function addSelectedStyle(obj) {
     obj.addClass("selected");
     obj.css("background-color", "#ffff99");
-    obj.find(".objDocumento:not(.disabled)").addClass("selected");
-    obj.find(".objDocumento:not(.disabled)").css("background-color", "#ffff99");
+    /*obj.find(".objDocumento:not(.disabled)").addClass("selected");
+    obj.find(".objDocumento:not(.disabled)").css("background-color", "#ffff99");*/
 }
 
 function removeSelectedStyle(obj) {
     obj.removeClass("selected").css("background-color", "#f7f7f7");
-    obj.parents(".objDocumento.selected").removeClass("selected")
+    /*obj.parents(".objDocumento.selected").removeClass("selected")
         .css("background-color", "#f7f7f7");
     obj.find(".objDocumento").removeClass("selected")
-        .css("background-color", "#f7f7f7");
+        .css("background-color", "#f7f7f7");*/
 }
 
 function removeDeselected(elem, column) {
@@ -754,7 +759,7 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
                 strDiv += strRotulo;
             }
         }
-
+        
         if (obj.representacao) {
             var novoId = 'obj' + coluna +"_"+ obj.id;
             strDiv = '<div class="objTexto objDocumento" id='+novoId+'>';
@@ -771,7 +776,7 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
                 var rep = pos.rotulo.representacao;
                 var divFilho = null;
 
-                // excluindo agrupadores
+                // não chama para os agrupadores
                 if (rep && !rep.match("((.)?agrupadores(.)?)")) { 
                     divFilho = printObjetoSimbolico(pos.objeto, pos.rotulo, coluna);
                 }
@@ -782,7 +787,12 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
             var matchDoc = strDiv.match(/class=\"objTexto/g);
             if (matchDoc && matchDoc.length > 0) {
             
-            	var strReplacement = '<div class="objDocumento"';
+                var cssAlteracao = "";
+                if (obj.refTipo.nomeTipo == "os_alteracao"){
+                	cssAlteracao = "objAlteracao";
+                }
+
+                var strReplacement = '<div class="'+cssAlteracao+'"';
             	
             	if (obj.id) {
                     strReplacement += ' id="' + 'obj' + coluna +"_"+ obj.id + '"';
@@ -817,7 +827,7 @@ function getStrRotulo(rotulo) {
                 }                                       
             
             } else if(rotulo.nomeRole == "cpt") { //Tratamento Inciso
-                strRotulo += "<span style='color: darkgray'><i>caput</i></span>";
+                //strRotulo += "<span style='color: darkgray'><i>caput</i></span>";
             
             } else if(rotulo.nomeRole == "inc") { //Tratamento Inciso
                 strRotulo += romano(rotulo.posicaoRole[0]) + " -";
@@ -856,7 +866,7 @@ function getStrRotulo(rotulo) {
             	strRotulo += "Seção " + romano(rotulo.posicaoRole[0]);
             
             } else if(rotulo.nomeRole == "sub") {
-                strRotulo = "<span class='objRotulo agregador'>";
+                strRotulo = "<span class='objRotuloagregador'>";
             	strRotulo += "Subseção " + romano(rotulo.posicaoRole[0]);
             
             } else if(rotulo.nomeRole == "prt") {
