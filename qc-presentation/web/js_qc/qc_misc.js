@@ -297,7 +297,28 @@ function showConfirmDialog(text, okCallback, params) {
             "Cancelar": function() {
                 $( this ).dialog( "close" );
             }
+        }	
+    });
+}
+
+function showAlertDialog(text, okCallback, params) {
+    $("#alert-text").html(text);
+    $("#dialog-alert").dialog({
+        resizable: false,
+        modal: true,
+        width: 400,
+        buttons: {
+            "OK": function() {
+                $(this).dialog("close");
+
+                if (okCallback) {
+
+                    okCallback(params);
+                }
+            }
         }
     });
 }
+
+
 

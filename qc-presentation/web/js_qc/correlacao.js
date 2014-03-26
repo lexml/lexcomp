@@ -379,8 +379,12 @@ function addDivRelacaoPendente(id) {
         jsPlumb.reset();
     }
     
-    updateRelationDivPosition({id: "pendingRelacao", origem: relacaoSources,
-        alvo: relacaoTargets}, true);
+    try {
+        updateRelationDivPosition({id: "pendingRelacao", origem: relacaoSources,
+            alvo: relacaoTargets}, true);
+    } catch (e){
+    	console.log("Não foi possível atualizar o conjunto de relações: "+e);
+    }
     
     if (relacaoSources) {
         $.each(relacaoSources, function (index, elem) {
@@ -471,11 +475,15 @@ function addDivRelacao(relacao) {
                     return;
                 }
                 
-                var c = jsPlumb.connect({ source: "objA_" + elem, target: relacaoId,
-                    anchor: ["RightMiddle", "LeftMiddle"],
-                    paintStyle:""//relacaoStyle                    
-                });                
-                AddClass(c);
+                try{
+	                var c = jsPlumb.connect({ source: "objA_" + elem, target: relacaoId,
+	                    anchor: ["RightMiddle", "LeftMiddle"],
+	                    paintStyle:""//relacaoStyle                    
+	                });                
+	                AddClass(c);
+                } catch (e){
+                	console.log("Não foi possível montar as relações origem: "+e)
+                }
             });
         }
 
@@ -486,16 +494,26 @@ function addDivRelacao(relacao) {
                     return;
                 }
                 
-                var c = jsPlumb.connect({ source: relacaoId, target: "objB_" + elem,
-                    anchor: ["RightMiddle", "LeftMiddle"],
-                    paintStyle:""//relacaoStyle
-                    });
-                AddClass(c);
+                try{
+                	var c = jsPlumb.connect({ source: relacaoId, target: "objB_" + elem,
+                        anchor: ["RightMiddle", "LeftMiddle"],
+                        paintStyle:""//relacaoStyle
+                        });
+                    AddClass(c);
+                } catch (e){
+                	console.log("Não foi possível montar as relações alvo: "+e)
+                }
+                
             });
         }
         
-        updateRelationDivPosition({ id: relacaoId, alvo: relacao.alvo,
-        origem: relacao.origem});
+        
+        try {
+        	updateRelationDivPosition({ id: relacaoId, alvo: relacao.alvo, origem: relacao.origem});
+        } catch (e){
+        	console.log("Não foi possível atualizar o conjunto de relações: "+e);
+        }
+        
     }
     
 }
@@ -958,7 +976,11 @@ function printRelacoes (relacoes) {
     });
     
     // POG
-    jsPlumb.repaintEverything();
+    try {
+    	jsPlumb.repaintEverything();
+    } catch (e){
+    	console.log("Erro ao atualizar a página do Plumb.");
+    }
 }
 
 //***** FUNÇÕES AUXILIARES ***//
@@ -1056,29 +1078,7 @@ function alinea(numero){
     return letra;
 }
     
-function showConfirmDialog(text, okCallback, params) {
-    
-    $("#confirm-text").html(text);
-    $("#dialog-confirm").dialog({
-        resizable: false,
-        modal: true,
-        width: 400, 
-        buttons: {
-            "OK": function() {
-                $( this ).dialog( "close" );
-                
-                if (okCallback) {
-                    
-                    okCallback(params);
-                }
-                
-            },
-            "Cancelar": function() {
-                $( this ).dialog( "close" );
-            }
-        }
-    });
-}
+
 
 function getTiposCorrelacao(cardOrigem, cardAlvo){
     

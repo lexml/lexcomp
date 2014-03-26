@@ -37,10 +37,7 @@ function fortext(cond, func) {
                 console.log("Considerando texto: " + it + ", valor: ");
                 console.log(txt);
                 if (cond(txt)) {
-                    console.log("    bateu!");
                     func(txt, it, col, ic);
-                } else {
-                    console.log("    não bateu ...");
                 }
             });
         }
@@ -752,25 +749,6 @@ function showConnectionDialog(text, editCallback, deleteCallback, params) {
     });
 }
 
-function showAlertDialog(text, okCallback, params) {
-    $("#confirm-text").html(text);
-    $("#dialog-confirm").dialog({
-        resizable: false,
-        modal: true,
-        width: 400,
-        buttons: {
-            "OK": function() {
-                $(this).dialog("close");
-
-                if (okCallback) {
-
-                    okCallback(params);
-                }
-            }
-        }
-    });
-}
-
 function removeColumn(params) {
     var colId = params.colId;
     $("#th-" + colId).remove();
@@ -959,7 +937,7 @@ jsPlumb.ready(function() {
                                 var url = "correlacao.html?qcid=" + quadro.id + "&urn1=" + urn1 + "&urn2=" + urn2;
                                 window.location = url;
                             } else {
-                                alert("Para editar correlações, se faz necessária a inserção dos textos. \n\nClique em Editar Texto para inserir o texto desejado.");
+                                alert("Para editar correlações, é necessário que todos os textos tenham sidos inseridos. \n\nClique em Editar Texto para inserir o texto desejado.");
                             }
 
                         },

@@ -52,9 +52,9 @@
 
             <div id="content1">
 
-                <div id="tituloQuadro">
-                    <h2 id="nomeQuadro">Correlação - Código Florestal</h2>
-                </div>
+			<div id="tituloQuadro">
+				<h2 id="nomeQuadro">Relações entre textos</h2>
+			</div>
 
                 <div id="colunas">
 
@@ -78,9 +78,13 @@
             </table>
         </div>
 
-        <div id="dialog-confirm" title="Confirmação">
-            <div id="confirm-text"></div>
-        </div>
+	<div id="dialog-confirm" title="Confirmação">
+		<div id="confirm-text"></div>
+	</div>
+	
+	<div id="dialog-alert" title="Alerta">
+		<div id="alert-text"></div>
+	</div>
 
         <div id="dialog-tiporelacao" title="Tipo de Correlação"
              style="display: none;">
@@ -213,17 +217,19 @@
 
 
                     $.ajax({
-                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),
-                        type: 'POST',
-                        contentType: "application/json; charset=utf-8",
-                        success: function() {
-                            $("#dialog-configuracao").dialog("close");
-                            //location.reload();
-                            getRelacoes(qcid, urn1, urn2);
+                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),                        
+                        type:'GET',               
+                        contentType: "application/json; charset=utf-8",               
+                        success:function() {
+                           $("#dialog-configuracao").dialog("close");
+                           //location.reload();
+                           getRelacoes(qcid, urn1, urn2);
                         },
-                        error: function(res) {
-                            alert("Bad thing happend! " + res.statusText);
-                        }
+                        error:function(res){
+                            showAlertDialog(res.responseText);
+                        }                        
+                        
+                    }); 
 
                     });
 

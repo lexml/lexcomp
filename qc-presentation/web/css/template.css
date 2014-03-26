@@ -488,9 +488,9 @@ button, input, select, textarea {
     font-size: larger;
 }
 
-.objAlteracao .objTexto:AFTER {
-    content: " ”";
-    font-size: larger;
+.objAlteracao > div:last-child .objTexto:AFTER {
+	content: " ”";
+	font-size: larger;
 }
 
 
