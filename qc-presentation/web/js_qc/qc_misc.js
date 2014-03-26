@@ -212,6 +212,20 @@ function saveQuadro() {
     });
 }
 
+function getTiposComentario(callback) {
+    $.ajax({
+        type: 'GET',
+        url: 'xml/tipo-comentario.xml',
+        dataType: 'xml',
+        success: function(res) {
+
+            if (callback) {
+                callback(res);
+            } 
+        }
+    });
+}
+
 function getTextoByURN(quadro, urn) {
     
     var texto;

@@ -360,7 +360,7 @@ function addDivRelacaoPendente(id) {
                             <li><a href="javascript:void(0);" id="linkConfirmaRelacao" style="margin: 5px;"><img src="images/check_c.png" width="18" align="left" title="Salvar"></a></li></ul>\
                         </div>';
 
-    if ($("#pendingRelacao").length == 0) {
+    if ($("#pendingRelacao").length === 0) {
         var divRelacao = $(strDivRelacao);
         $("#colunaComparacaoA").after(divRelacao);
         
@@ -403,7 +403,7 @@ function addDivRelacaoPendente(id) {
 function addDivRelacao(relacao) {
     
     var relacaoId = "relacao_" + relacao.id;
-    var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" style="height: 20px; width: 75px; border: solid; margin:auto; margin-left:50%;" class="colunaComparacao relacao">\
+    var strDivRelacao = '<div id="' + relacaoId + '" relacao_id="' + relacao.id + '" class="colunaComparacao relacao">\
                             \<ul class="iconesControlesCorrelacao">\
                             <li><a href="javascript:void(0);" id="linkRemoveRelacao_' + relacao.id + '" class="linkRemoveRelacao" style="margin: 2px;"><img src="images/remove_c.png" width="15" align="left" title="Apagar"></a></li>\
                             <li>&nbsp;<a href="javascript:void(0);" id="linkEditaComentario_' + relacao.id + '" style="margin: 2px;" class="linkEditaComentario"><img src="images/comentario.png" width="15" align="left" title="Comentários"></a></li>\
@@ -424,7 +424,7 @@ function addDivRelacao(relacao) {
         if (relacao.origem) {
             $.each(relacao.origem, function (index, elem) {
                 
-                if (elem != idRaizDoc["A"]) {
+                if (elem !== idRaizDoc["A"]) {
                     novaOrigem.push(elem);
                 }
                 
@@ -436,7 +436,7 @@ function addDivRelacao(relacao) {
         if (relacao.alvo) {
             $.each(relacao.alvo, function (index, elem) {
                 
-                if (elem != idRaizDoc["B"]) {
+                if (elem !== idRaizDoc["B"]) {
                     novoAlvo.push(elem);
                 }
                 
@@ -447,7 +447,7 @@ function addDivRelacao(relacao) {
 
         var proveniencia;
         if(relacao.proveniencia && relacao.proveniencia.refTipo && relacao.proveniencia.refTipo.nomeTipo) {
-        	proveniencia = relacao.proveniencia.refTipo.nomeTipo == "proveniencia_sistema" ? "sistema" : "usuario";
+        	proveniencia = relacao.proveniencia.refTipo.nomeTipo === "proveniencia_sistema" ? "sistema" : "usuario";
         } else {
         	proveniencia = "usuario";
         }
@@ -602,22 +602,58 @@ function comentaRelacao(relacao_id){
     $( "#dialog-comentario" ).dialog({
         modal:true,
         draggable:false,
-        width:600, height:360,
+        width:600, height:320,
         buttons: {
             "Salvar": function() {
-                $( this ).dialog( "close" );
+                _this = $(this);
                 
                 var tipoComentario = $('select[id="tiposCorrelacao"]').find('option:selected').val();    
+                var xhtmlFragment = $("#dialog-comentario .xhtmlFragment").val();
                 
                 if (!tipoComentario) {
                     // alert campo obrigatorio
+                    showAlertDialog("O campo \"tipo de comentário\" é obrigatório.");
+                    return;
                 }
+                
+                if (!xhtmlFragment) {
+                    // alert campo obrigatorio
+                    showAlertDialog("O campo \"comentário\" é obrigatório.");
+                    return;
+                }
+                
+                var comentario = {
+                    tipo: tipoComentario,
+                    xhtmlFragment: xhtmlFragment
+                };
 
-                saveComentario(qcid, urn1, urn2, relacao_id);
+                saveComentario(qcid, urn1, urn2, relacao_id, comentario, function () {
+                    _this.dialog( "close" );
+                });
             },
             "Cancelar": function() {
-                $( this ).dialog( "close" );
+                $(this).dialog("close");
             }
+        },
+        open: function () {
+            
+            getTiposComentario(function(res) {
+            
+                $("#tiposComentario").html("");
+                //$("#tiposComentario").append("<option value=''>-- Selecione --</option>");
+            
+                //Monta combo de Tipos
+                $(res).find('Tipo').each(function() {
+                    var id = $(this).attr('xmlid');
+                    var nome = $(this).find('Nome').text();
+                    $('<option value="' + id + '"></option>').html(nome).appendTo('select[id="tiposComentario"]');
+                });
+            });
+            
+            getComentario(qcid, urn1, urn2, relacao_id, function(res) {
+                $("#tiposComentario").val(res.tipo);
+                $("#dialog-comentario .xhtmlFragment").val(res.xhtmlFragment);
+            });
         }
     });
     
@@ -911,7 +947,7 @@ function printRelacoes (relacoes) {
     });
     
      $(".linkEditaComentario").click(function () {
-        var id = $(this).parent().attr("relacao_id");
+        var id = $(this).closest("[relacao_id]").attr("relacao_id");
         comentaRelacao(id);        
     });
     
@@ -1120,6 +1156,28 @@ function saveRelacao(qcid, urn1, urn2, relacao, callback) {
     
 }
 
+function getComentario(qcid, urn1, urn2, relacao_id, callback) {
+    
+    //var strLoading = "<div id='loadingRelacao' style='position: fixed; top: 50%; margin: 10px;'><img src='images/icone_lexcomp_50x.png'/></div>"
+    //$("#divRelacoes").append($(strLoading));
+    
+    $.ajax({
+        url: '/api/correlacao/comentario/' + qcid + '/' + urn1 + '/' + urn2 + '/' + relacao_id,
+        type:'GET',
+        contentType: "application/json; charset=utf-8",
+        
+    }).done(function() {
+        
+    }).fail(function(){
+        //alert("Bad thing happend! " + res.statusText);
+    }).always(function(res) {
+        if (callback) {
+            callback(res);
+        }
+    });
+    
+}
+
 function saveComentario(qcid, urn1, urn2, relacao_id, comentario, callback) {
     
     $.ajax({
@@ -1131,11 +1189,13 @@ function saveComentario(qcid, urn1, urn2, relacao_id, comentario, callback) {
         
     }).done(function() {
         
-    }).fail(function(){
-        //alert("Bad thing happend! " + res.statusText);
-    }).always(function() {
+    }).fail(function(res){
+        showAlertDialog("Falha ao salvar comentário.");
+        console.log("Falha ao salvar comentário.");
+        console.log(res);
+    }).always(function(res) {
         if (callback) {
-            callback();
+            callback(res);
         }
     });
     
