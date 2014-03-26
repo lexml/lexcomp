@@ -452,19 +452,19 @@ button, input, select, textarea {
 
 .objDocumento {
     border-top: dotted #B9C8CA 1px;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .objRotulo {
     float: left;
     font-weight: bold;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 }
 
 .objRotulo.agregador {
     width: 100%;
     text-align: center;
-    margin: 0;
+    padding: 5px 0;
 }
 
 .objRotulo.agregador + div.objTexto {

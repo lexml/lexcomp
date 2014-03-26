@@ -777,10 +777,10 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
                 var divFilho = null;
 
                 // não chama para os agrupadores
-                if (rep && !rep.match("((.)?agrupadores(.)?)")) { 
+                if (rep && !rep.match("((.)?agrupadores(.)?)")) {
                     divFilho = printObjetoSimbolico(pos.objeto, pos.rotulo, coluna);
                 }
-
+                
                 strDiv += divFilho;
             });
             
