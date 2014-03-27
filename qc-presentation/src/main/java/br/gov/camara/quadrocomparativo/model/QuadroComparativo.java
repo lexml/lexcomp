@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import br.gov.lexml.symbolicobject.Documento;
+import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.IdSource;
 import br.gov.lexml.symbolicobject.tipos.STipo;
 
@@ -159,6 +160,8 @@ public class QuadroComparativo implements Serializable, IdSource {
     }
 
     public Texto getTexto(String urn) {
+        
+        urn = urn.replaceAll("__", ";");
 
         for (Texto txt : getAllTextos()) {
 
@@ -215,6 +218,9 @@ public class QuadroComparativo implements Serializable, IdSource {
     }
 
     public Correlacao getCorrelacao(String urn1, String urn2) {
+        
+        urn1 = urn1.replaceAll("__", ";");
+        urn2 = urn2.replaceAll("__", ";");
 
         if (getCorrelacoes() != null) {
 
@@ -232,6 +238,8 @@ public class QuadroComparativo implements Serializable, IdSource {
     }
 
     public List<Correlacao> getCorrelacoes(String urn) {
+        
+        urn = urn.replaceAll("__", ";");
 
         if (getCorrelacoes() != null) {
 
@@ -304,5 +312,15 @@ public class QuadroComparativo implements Serializable, IdSource {
 
     synchronized public void setCurrentPosition(long currentPosition) {
         this.idSourceCurrentPosition = currentPosition;
+    }
+
+    public Relacao getRelacao(String urn1, String urn2, Long relacaoId) {
+        Correlacao correl = getCorrelacao(urn1, urn2);
+        
+        if (correl != null) {
+            return correl.getRelacao(relacaoId);
+        }
+        
+        return null;
     }
 }

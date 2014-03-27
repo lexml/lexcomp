@@ -60,4 +60,34 @@ public class ComentarioImpl extends IdentificavelImpl implements Comentario, Ser
         }
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (this.alvo != null ? this.alvo.hashCode() : 0);
+        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        final ComentarioImpl other = (ComentarioImpl) obj;
+        if (this.alvo == null || !this.alvo.equals(other.alvo) || !this.alvo.equals(other.alvo)) {
+            return false;
+        }
+            
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

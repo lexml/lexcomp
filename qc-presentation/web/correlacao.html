@@ -52,9 +52,9 @@
 
             <div id="content1">
 
-			<div id="tituloQuadro">
-				<h2 id="nomeQuadro">Relações entre textos</h2>
-			</div>
+                <div id="tituloQuadro">
+                    <h2 id="nomeQuadro">Relações entre textos</h2>
+                </div>
 
                 <div id="colunas">
 
@@ -78,13 +78,13 @@
             </table>
         </div>
 
-	<div id="dialog-confirm" title="Confirmação">
-		<div id="confirm-text"></div>
-	</div>
-	
-	<div id="dialog-alert" title="Alerta">
-		<div id="alert-text"></div>
-	</div>
+        <div id="dialog-confirm" title="Confirmação">
+            <div id="confirm-text"></div>
+        </div>
+
+        <div id="dialog-alert" title="Alerta">
+            <div id="alert-text"></div>
+        </div>
 
         <div id="dialog-tiporelacao" title="Tipo de Correlação"
              style="display: none;">
@@ -93,30 +93,26 @@
             </select><br>
             <br>
         </div>
-
-
+        
         <div id="dialog-comentario" title="Comentários" style="display: none;">
-            <form method="POST">
-                <table cellspacing="5">
-                    <tr>
-                        <td width="140"><b>Tipo de Comentário: </b></td>
-                        <td><select name="tiposComentario" id="tiposComentario">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><b>Comentário:</b></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><textarea class="xhtmlFragment" cols="90" rows="10"></textarea></td>
-                    </tr>
+            <table cellspacing="5">
+                <tr>
+                    <td width="140"><b>Tipo de Comentário: </b></td>
+                    <td><select name="tiposComentario" id="tiposComentario">
+                            <option value="">-- Selecione --</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Comentário:</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea class="xhtmlFragment" cols="90" rows="10"></textarea></td>
+                </tr>
 
-                </table>
-            </form>
+            </table>
+            
         </div>
-
-
 
         <div id="dialog-configuracao" title="Configuração"
              style="display: none;">
@@ -154,12 +150,6 @@
             $(document).ready(function() {
 
                 getCorrelacao(qcid, urn1, urn2, function(correlacao) {
-
-
-                    //quantDispRelacionados
-                    //quantDispNaoRelacionados
-                    //quantDispTotal
-
 
                     relacoes = correlacao.relacoes;
                     tiposRelacao = correlacao.tiposRelacao;
@@ -206,55 +196,41 @@
                 });
                 $("#porcentagem").val($("#slider").slider("value") + "%");
 
-
-
-
-
                 $("#sbConfiguracao").click(function(event) {
 
                     event.preventDefault();
 
-
-
                     $.ajax({
-                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),                        
-                        type:'GET',               
-                        contentType: "application/json; charset=utf-8",               
-                        success:function() {
-                           $("#dialog-configuracao").dialog("close");
-                           //location.reload();
-                           getRelacoes(qcid, urn1, urn2);
+                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        success: function() {
+                            $("#dialog-configuracao").dialog("close");
+                            //location.reload();
+                            getRelacoes(qcid, urn1, urn2);
                         },
-                        error:function(res){
+                        error: function(res) {
                             showAlertDialog(res.responseText);
-                        }                        
-                        
-                    }); 
+                        }
 
                     });
 
                 });
-
-
-
-
+                
                 //Repinta tela ao mudar a resolução ou tamano da janela
                 $(window).resize(function() {
                     jsPlumb.repaintEverything();
                 });
 
-
-
-
             });
         </script>
 
 
-        <!---Menu de contexto --->
+        <!-- Menu de contexto -->
         <div id="divMenuContexto"
              style="display: none; position: absolute; padding: 10px; width: 160px; color: white; font-weight: bold;">
             <ul id="menuContexto">
-                <li><a href="#" class="linkEditaComentario">Comentários</a></li>
+                <li><a href="#" class="linkEditaComentario">Comentário...</a></li>
             </ul>
         </div>
 

@@ -4,10 +4,11 @@
  */
 package br.gov.camara.quadrocomparativo.model;
 
-import br.gov.lexml.symbolicobject.RefTipo;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,21 +26,22 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
     private static final long serialVersionUID = 763798331027456618L;
     private Set<Long> origem;
     private Set<Long> alvo;
-    
     private ProvenienciaImpl proveniencia;
 
-    public static RelacaoImpl newFromRelacao(Relacao arg0){
-		RelacaoImpl r = new RelacaoImpl();
-		
-		r.setId(arg0.getId());
-		r.setOrigem(arg0.getOrigem());
-		r.setAlvo(arg0.getAlvo());
-		r.setRefTipo(new RefTipoImpl(arg0.getRefTipo()));
-		r.setProveniencia(ProvenienciaImpl.newFromProveniencia(arg0.getProveniencia()));
-		
-		return r;
+    private List<ComentarioImpl> comentarios;
+
+    public static RelacaoImpl newFromRelacao(Relacao arg0) {
+        RelacaoImpl r = new RelacaoImpl();
+
+        r.setId(arg0.getId());
+        r.setOrigem(arg0.getOrigem());
+        r.setAlvo(arg0.getAlvo());
+        r.setRefTipo(new RefTipoImpl(arg0.getRefTipo()));
+        r.setProveniencia(ProvenienciaImpl.newFromProveniencia(arg0.getProveniencia()));
+
+        return r;
     }
-        
+
     @Override
     public Set<Long> getOrigem() {
         return origem;
@@ -56,6 +58,15 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
 
     public void setAlvo(Set<Long> alvo) {
         this.alvo = alvo;
+    }
+
+    @XmlElement
+    public List<ComentarioImpl> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioImpl> comentarios) {
+        this.comentarios = comentarios;
     }
 
     @Override
@@ -83,6 +94,25 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
             return false;
         }
         return true;
+    }
+
+    public void addComentario(ComentarioImpl comentario) {
+
+        if (comentarios == null) {
+            comentarios = new ArrayList<ComentarioImpl>();
+        }
+
+        if (comentario.getId() == 0) {
+            comentario.setId(comentarios.size() + 1);
+        }
+
+        comentario.setAlvo(getId());
+
+        if (comentarios.contains(comentario)) {
+            comentarios.remove(comentario);
+        }
+
+        comentarios.add(comentario);
     }
 
     public static class TiposRelacao {
@@ -120,8 +150,9 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
     public void setProveniencia(ProvenienciaImpl proveniencia) {
         this.proveniencia = proveniencia;
     }
+
     public String toString() {
-    	return ToStringBuilder.reflectionToString(this);
+        return ToStringBuilder.reflectionToString(this);
     }
-    
+
 }

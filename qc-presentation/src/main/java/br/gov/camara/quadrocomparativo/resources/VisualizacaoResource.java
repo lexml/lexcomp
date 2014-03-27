@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import br.gov.camara.quadrocomparativo.model.Coluna;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
+import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Documento;
@@ -27,111 +28,112 @@ import br.gov.lexml.symbolicobject.table.Visualizacao;
 @Path("/visualizacao/")
 public class VisualizacaoResource {
 
-	private static Logger log = Logger.getLogger(VisualizacaoResource.class.getName());
-	
-	@Context
-	HttpServletRequest request;
+    private static final Logger log = Logger.getLogger(VisualizacaoResource.class.getName());
 
-	@GET
-	@Path("/{qcid}/{porcentagem}")
-	@Produces(MediaType.TEXT_HTML)
-	public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") final int porcentagem) {
+    @Context
+    HttpServletRequest request;
 
-		QuadroComparativo qc = QuadroComparativoController
-				.getQuadroComparativo(request, idQuadro);
-		
-		if (qc == null){
-			return "Falha ao obter o quadro comparativo.";
-		}
+    @GET
+    @Path("/{qcid}/{porcentagem}")
+    @Produces(MediaType.TEXT_HTML)
+    public String getVisualizacao(@PathParam("qcid") String idQuadro, @PathParam("porcentagem") final int porcentagem) {
 
-		// monta as colunas nos documentos
-		List<ColumnSpec> colunas = new ArrayList<ColumnSpec>();
-		for (Coluna c : qc.getColunas()) {
-			List<Documento> documentos = new ArrayList<Documento>();
-			for (Texto t : c.getTextos()) {
-				if (t != null) {
-					if (t.getIncluidoVisualizacao() || true) {
-						documentos.add(t.getDocumento());
-					}
-				}
-			}
-			ColumnSpec cs = new ColumnSpec(c.getTitulo(),documentos);
-			colunas.add(cs);
-		}
+        QuadroComparativo qc = QuadroComparativoController
+                .getQuadroComparativo(request, idQuadro);
 
-		// montando colunas
-		String saidaHtml = "";
-		Visualizacao visualizacao = new Visualizacao(makeIndexer(qc), new OpcoesVisualizacao(){
-			@Override
-			public double getMaxUpdateRatio() {
-				return porcentagem / 100.0;
-			}
-		});
-		saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, qc.getTitulo());
+        if (qc == null) {
+            return "Falha ao obter o quadro comparativo.";
+        }
 
-		return saidaHtml;
-	}
+        // monta as colunas nos documentos
+        List<ColumnSpec> colunas = new ArrayList<ColumnSpec>();
+        for (Coluna c : qc.getColunas()) {
+            List<Documento> documentos = new ArrayList<Documento>();
+            for (Texto t : c.getTextos()) {
+                if (t != null) {
+                    if (t.getIncluidoVisualizacao() || true) {
+                        documentos.add(t.getDocumento());
+                    }
+                }
+            }
+            ColumnSpec cs = new ColumnSpec(c.getTitulo(), documentos);
+            colunas.add(cs);
+        }
 
-	/**
-	 * TODO implementar a obtencao da ordem de exibicao das colunas
-	 * 
-	 * @param qc
-	 * @return
-	 */
-	private List<Integer> getIndexOrder(QuadroComparativo qc) {
+        // montando colunas
+        String saidaHtml;
+        Visualizacao visualizacao = new Visualizacao(makeIndexer(qc), new OpcoesVisualizacao() {
+            @Override
+            public double getMaxUpdateRatio() {
+                return porcentagem / 100.0;
+            }
+        });
+        saidaHtml = visualizacao.createHtmlTable(getIndexOrder(qc), colunas, qc.getTitulo());
 
-		List<Integer> res = new ArrayList<Integer>();
-		
-		for (int i = qc.getColunas().size()-1 ; i >= 0 ; i--) {
-			res.add(i);
-		}
-		/*for (int i = 0; i < qc.getColunas().size(); i++) {
-			if (qc.getColunas().get(i).getColunaPrincipal()) {
-				res.add(i);
-			}
-		}
+        return saidaHtml;
+    }
 
-		if (res.isEmpty()) {
-			res.add(0);
-		}*/
+    /**
+     * TODO implementar a obtencao da ordem de exibicao das colunas
+     *
+     * @param qc
+     * @return
+     */
+    private List<Integer> getIndexOrder(QuadroComparativo qc) {
 
-		return res;
-	}
+        List<Integer> res = new ArrayList<Integer>();
 
-	private Indexer makeIndexer(QuadroComparativo qc) {
+        for (int i = qc.getColunas().size() - 1; i >= 0; i--) {
+            res.add(i);
+        }
+        /*for (int i = 0; i < qc.getColunas().size(); i++) {
+         if (qc.getColunas().get(i).getColunaPrincipal()) {
+         res.add(i);
+         }
+         }
 
-		if (qc == null) {
-			return null;
-		}
+         if (res.isEmpty()) {
+         res.add(0);
+         }*/
 
-		Indexer indexer = new Indexer();
+        return res;
+    }
 
-		if (qc.getCorrelacoes() != null){
-			
-			for (Correlacao c : qc.getCorrelacoes()) {
-	
-				// documentos
-				for (Documento d : qc.getAllDocumentos()) {
-					indexer.addDocumento(d);
-				}
-	
-				// relações
-				if (c.getRelacoes() != null) {
-					for (Relacao r : c.getRelacoes()) {
-						indexer.addRelacao(r);
-					}
-				}
-	
-				// comentários
-				if (c.getComentarios() != null) {
-					for (Comentario m : c.getComentarios()) {
-						indexer.addComentario(m);
-					}
-				}
-			}
-		}
+    private Indexer makeIndexer(QuadroComparativo qc) {
 
-		return indexer;
-	}
+        if (qc == null) {
+            return null;
+        }
+
+        Indexer indexer = new Indexer();
+
+        if (qc.getCorrelacoes() != null) {
+
+            for (Correlacao c : qc.getCorrelacoes()) {
+
+                // documentos
+                for (Documento d : qc.getAllDocumentos()) {
+                    indexer.addDocumento(d);
+                }
+
+                // relações
+                if (c.getRelacoes() != null) {
+                    for (Relacao r : c.getRelacoes()) {
+                        indexer.addRelacao(r);
+
+                        // comentários
+                        if (((RelacaoImpl)r).getComentarios() != null) {
+                            for (Comentario m : ((RelacaoImpl)r).getComentarios()) {
+                                indexer.addComentario(m);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        return indexer;
+    }
 
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TipoComentario>
     <Tipos>
-        <Tipo xmlid="nota">
+        <Tipo xmlid="NOTA">
             <Nome>Nota</Nome>
         </Tipo>
-        <Tipo xmlid="observacao">
+        <Tipo xmlid="OBSERVACAO">
             <Nome>Observação</Nome>
         </Tipo>       
     </Tipos>    

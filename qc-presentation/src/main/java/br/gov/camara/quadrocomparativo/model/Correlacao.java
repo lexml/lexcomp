@@ -15,10 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.IdSource;
-import br.gov.lexml.symbolicobject.tipos.STipo;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
 
 /**
@@ -36,8 +34,6 @@ public class Correlacao implements Serializable {
     private Texto texto2;
     @XmlElement
     private List<RelacaoImpl> relacoes;
-    @XmlElement
-    private List<ComentarioImpl> comentarios;
     private ConfiguracaoImpl configuracao;
 
     private CorrelacaoEstatisticaTexto estatisticaTexto1;
@@ -47,6 +43,12 @@ public class Correlacao implements Serializable {
     }
 
     public Correlacao(String urn1, String urn2) {
+        if (urn1 != null) {
+            urn1 = urn1.replaceAll("__", ";");
+        }
+        if (urn2 != null) {
+            urn2 = urn2.replaceAll("__", ";");
+        }
         this.urn1 = urn1;
         this.urn2 = urn2;
     }
@@ -97,13 +99,20 @@ public class Correlacao implements Serializable {
     public void setRelacoes(List<RelacaoImpl> relacoes) {
         this.relacoes = relacoes;
     }
+    
+    public Relacao getRelacao(Long id) {
 
-    public List<Comentario> getComentarios() {
-        return (List) comentarios;
-    }
+        if (getRelacoes() != null && id != null) {
 
-    public void setComentarios(List<ComentarioImpl> comentarios) {
-        this.comentarios = comentarios;
+            for (Relacao rel : getRelacoes()) {
+
+                if (rel.getId() == id) {
+                    return rel;
+                }
+            }
+        }
+
+        return null;
     }
 
     public void addRelacao(RelacaoImpl relacao, IdSource idSource) {
@@ -224,5 +233,5 @@ public class Correlacao implements Serializable {
 
         return new CorrelacaoEstatisticaTexto(t.getDocumento().getObjetoSimbolicoIdSet().size(), res.size());
     }
-
+    
 }

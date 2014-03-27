@@ -4,6 +4,7 @@
  */
 package br.gov.camara.quadrocomparativo.resources;
 
+import br.gov.camara.quadrocomparativo.model.ComentarioImpl;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,28 +39,26 @@ import br.gov.lexml.symbolicobject.comp.CompareProcessConfiguration;
 import br.gov.lexml.symbolicobject.comp.CompareProcessSpec;
 
 import com.sun.jersey.api.NotFoundException;
+import java.net.URI;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
 
-// The class registers its methods for the HTTP GET request using the @GET annotation. 
-// Using the @Produces annotation, it defines that it can deliver several MIME types,
-// text, XML and HTML. 
-// The browser requests per default the HTML MIME type.
 @Path("/correlacao")
 public class CorrelacaoResource {
 
     @Context
     HttpServletRequest request; 	//System.out.println("request: "+request.getSession(true).getId());
 
+    @Context 
+    UriInfo uriInfo;
+            
     @GET
     @Path("/{qcid}/{urn1}/{urn2}/")
     @Produces(MediaType.APPLICATION_JSON)
     public Correlacao getCorrelacao(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
+        QuadroComparativo qc = getExistingQuadro(qcId);
 
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
@@ -74,12 +73,14 @@ public class CorrelacaoResource {
 
         if (texto1 != null && texto1.getDocumento() == null) {
             TextoResource textoRes = new TextoResource();
-            texto1.setDocumento(textoRes.getEstruturaTextoInQuadro(qcId, urn1).getDocumento());
+            texto1.setDocumento(textoRes.getEstruturaTextoInQuadro(qcId, urn1)
+                    .getDocumento());
         }
 
         if (texto2 != null && texto2.getDocumento() == null) {
             TextoResource textoRes = new TextoResource();
-            texto2.setDocumento(textoRes.getEstruturaTextoInQuadro(qcId, urn2).getDocumento());
+            texto2.setDocumento(textoRes.getEstruturaTextoInQuadro(qcId, urn2)
+                    .getDocumento());
         }
 
         correlacao.setTexto1(texto1);
@@ -89,40 +90,66 @@ public class CorrelacaoResource {
     }
 
     @GET
-    @Path("/{qcid}/{urn1}/{urn2}/{relacaoId}")
+    @Path("/comentario/{qcid}/{urn1}/{urn2}/{relacaoId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Comentario getComentario(@PathParam("qcid") String qcId,
+    public List<Comentario> getComentarios(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2,
             @PathParam("relacaoId") Long relacaoId) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
+        RelacaoImpl relacao = (RelacaoImpl) getExistingRelacao(qcId, urn1, urn2, relacaoId);
 
-        if (qc == null) {
-            throw new WebApplicationException(Status.NOT_FOUND);
-        }
-
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
-
-        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
-
-        if (correlacao == null) {
-            throw new WebApplicationException(Status.NOT_FOUND);
-        }
-
-        if (correlacao.getComentarios() != null) {
-            for (Comentario c : correlacao.getComentarios()) {
-                if (c.getAlvo() == relacaoId) {
-                    return c;
-                }
-            }
+        if (relacao.getComentarios() != null) {
+            return (List) relacao.getComentarios();
         
         } else {
-            return null;
+            return new ArrayList<Comentario>();
+        }
+    }
+    
+    @POST
+    @Path("/comentario/{qcid}/{urn1}/{urn2}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response saveComentario(ComentarioImpl comentario,
+            @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
+            @PathParam("urn2") String urn2) {
+        
+        QuadroComparativo qc = getExistingQuadro(qcid);
+        RelacaoImpl relacao = (RelacaoImpl) qc.getRelacao(urn1, urn2, comentario.getAlvo());
+        relacao.setProveniencia(new ProvenienciaUsuarioImpl());
+        relacao.addComentario(comentario);
+        
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
 
-        throw new WebApplicationException(Status.NOT_FOUND);
+        URI uri = uriInfo.getAbsolutePathBuilder().path(comentario.getId() + "").build();
+        return Response.created(uri).build();
     }
+    
+    /*@PUT
+    @Path("/{qcid}/{urn1}/{urn2}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateComentario(ComentarioImpl comentario,
+            @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
+            @PathParam("urn2") String urn2) {
+        
+        QuadroComparativo qc = getExistingQuadro(qcid);
+        RelacaoImpl relacao = (RelacaoImpl) qc.getRelacao(urn1, urn2, comentario.getAlvo());
+        relacao.setProveniencia(new ProvenienciaUsuarioImpl());
+        
+        if (!relacao.getComentarios().contains(comentario)) {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+        
+        relacao.addComentario(comentario);
+        
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
+        }
+
+        String result = "Relacao saved: " + relacao;
+        return Response.status(201).entity(result).build();
+    }*/
 
     @POST
     @Path("/updateid/{qcid}/{urn1}/")
@@ -131,9 +158,6 @@ public class CorrelacaoResource {
             @PathParam("qcid") String qcid, @PathParam("urn1") String urnAntiga) {
 
         QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
-
-        urnAntiga = urnAntiga.replaceAll("__", ";");
-        urnNova = urnNova.replaceAll("__", ";");
 
         List<Correlacao> listCorrel = qc.getCorrelacoes(urnAntiga);
 
@@ -153,11 +177,11 @@ public class CorrelacaoResource {
         }
 
         if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) { //saveQuadroComparativo(request, qc, false);
-            throw new WebApplicationException(500);
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
 
-        String result = "Quadro saved: " + qc;
-        return Response.status(201).entity(result).build();
+        URI uri = uriInfo.getAbsolutePathBuilder().path(qcid + "/" + urnNova).build();
+        return Response.created(uri).build();
     }
 
     @GET
@@ -166,12 +190,7 @@ public class CorrelacaoResource {
     public List<Relacao> getRelacoes(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
-
-        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
 
         if (correlacao == null) {
             return new ArrayList<Relacao>();
@@ -189,16 +208,13 @@ public class CorrelacaoResource {
 
         relacao.setProveniencia(new ProvenienciaUsuarioImpl());
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid);
 
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
+        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
-        Correlacao correl = qc.getCorrelacao(urn1, urn2);
-
-        if (correl == null) {
-            correl = new Correlacao(urn1, urn2);
-            qc.addCorrelacao(correl);
+        if (correlacao == null) {
+            correlacao = new Correlacao(urn1, urn2);
+            qc.addCorrelacao(correlacao);
         }
 
         // define algum tipo de relação caso nenhuma tenha sido informada.
@@ -220,14 +236,14 @@ public class CorrelacaoResource {
             relacao.setAlvo(alvo);
         }
 
-        correl.addRelacao(relacao, qc);
+        correlacao.addRelacao(relacao, qc);
 
         if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) { //saveQuadroComparativo(request, qc, false);
-            throw new WebApplicationException(500);
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
 
-        String result = "Relacao saved: " + relacao;
-        return Response.status(201).entity(result).build();
+        URI uri = uriInfo.getAbsolutePathBuilder().path(relacao.getId() + "").build();
+        return Response.created(uri).build();
     }
 
     @DELETE
@@ -238,25 +254,21 @@ public class CorrelacaoResource {
             @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
             @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid);
+        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
-
-        Correlacao correl = qc.getCorrelacao(urn1, urn2);
-
-        if (correl == null) {
+        if (correlacao == null) {
             throw new NotFoundException();
         }
 
-        correl.removeRelacao(idRelacao);
+        correlacao.removeRelacao(idRelacao);
 
         if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) { //saveQuadroComparativo(request, qc, false);
-            throw new WebApplicationException(500);
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
 
         String result = "Relacao deleted: " + idRelacao;
-        return Response.status(200).entity(result).build();
+        return Response.ok(result).build();
     }
 
     /**
@@ -280,12 +292,7 @@ public class CorrelacaoResource {
     public ConfiguracaoImpl getConfiguracao(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
-
-        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
 
         if (correlacao == null) {
             throw new NotFoundException();
@@ -294,7 +301,7 @@ public class CorrelacaoResource {
         return correlacao.getConfiguracao();
     }
 
-    @POST
+    @GET
     @Path("/processar/{qcid}/{urn1}/{urn2}/{porcentagem}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_HTML)
@@ -303,19 +310,18 @@ public class CorrelacaoResource {
             @PathParam("urn2") String urn2,
             @PathParam("porcentagem") final int slider) {
 
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcid);
-
-        urn1 = urn1.replaceAll("__", ";");
-        urn2 = urn2.replaceAll("__", ";");
+        QuadroComparativo qc = getExistingQuadro(qcid);
 
         Documento leftDoc = qc.getTexto(urn1).getDocumento();
         Documento rightDoc = qc.getTexto(urn2).getDocumento();
 
         final List<Relacao> lRelacao = new ArrayList<Relacao>();
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        
         if (correlacao == null) {
             correlacao = new Correlacao(urn1, urn2);
             qc.addCorrelacao(correlacao);
+            
         } else {
             List<Relacao> relacoesAtuais = correlacao.getRelacoes();
             if (relacoesAtuais != null) {
@@ -341,14 +347,44 @@ public class CorrelacaoResource {
         }
 
         if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
-            throw new WebApplicationException(500);
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
 
-        /*
-         String result = "Config saved: ";
-         return Response.status(201).entity(result).build();
-         */
-        return Response.status(201).build();
+        return Response.ok().build();
+    }
+
+    private Correlacao getExistingCorrelacao(String qcId, String urn1, String urn2) {
+        
+        QuadroComparativo qc = getExistingQuadro(qcId);
+
+        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+
+        if (correlacao == null) {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+        
+        return correlacao;
+    }
+
+    private QuadroComparativo getExistingQuadro(String qcId) {
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
+
+        if (qc == null) {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+        
+        return qc;
+    }
+
+    private Relacao getExistingRelacao(String qcId, String urn1, String urn2, Long relacaoId) {
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
+        Relacao relacao = correlacao.getRelacao(relacaoId);
+        
+        if (relacao == null) {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+        
+        return relacao;
     }
 
 }

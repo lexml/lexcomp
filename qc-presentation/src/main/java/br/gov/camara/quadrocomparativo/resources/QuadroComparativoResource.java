@@ -80,6 +80,7 @@ public class QuadroComparativoResource {
 
         File dir = new File(QuadroComparativo.QUADROS_HOMEDIR); 
         FilenameFilter filter = new FilenameFilter() {
+            @Override
             public boolean accept(File directory, String fileName) {
                 return fileName.startsWith("qc-") && fileName.endsWith(".xml");
             }

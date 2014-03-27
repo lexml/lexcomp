@@ -28,26 +28,6 @@ function parse_divURN (urn) {
     return novaURN;
 }
 
-//abre Janela Modal - Comentários
-function showJanelaComenario(idpai){
-   // alert(idpai);   
-   
-   $("#dialog-comentario").dialog({
-            resizable: false,
-            modal: true,
-            width: 1000,
-            height: 650});
-        
-        console.log('Abre janela');
-    
-} 
-
-
-
-
-
-
-
 
 //Abre Janela Modal - Criação de URNs para os textos
 function formModalOpen(urn, isEdit, onCloseCallback){

@@ -59,20 +59,18 @@ jsPlumb.ready(function() {
 
         var conexoes = [];
 
-        if(conexao && acao != ""){
+        if(conexao && acao !== ""){
 
-            if (acao == "adicionar") {
+            if (acao === "adicionar") {
                 quadro.conexoes.push(conexao);
             }
 
-            if (acao == "remover") {						
+            if (acao === "remover") {						
 
                 $.each(quadro.conexoes, function (index, conn) {
-                    //alert(conexao.sourceId + " === " + conn.sourceId);
-                    //alert(conexao.targetId + " === " + conn.targetId);
-
-                    if (conexao.sourceId != conn.sourceId
-                        || conexao.targetId != conn.targetId) {
+                    
+                    if (conexao.sourceId !== conn.sourceId
+                        || conexao.targetId !== conn.targetId) {
 
                         conexoes.push(conn);
                     }
@@ -242,7 +240,7 @@ function initObjs(){
         if (!$(this).hasClass("selected") && !$(this).hasClass("disabled")) {
             
             var _this = $(this);
-            if (_this.closest("#colunaComparacaoA").length != 0) {
+            if (_this.closest("#colunaComparacaoA").length !== 0) {
                 _this.parents("#colunaComparacaoA > .highlighted").css("background-color", "#f7f7f7");
                 _this.parents("#colunaComparacaoA > .highlighted").removeClass("highlighted");
                 
@@ -280,19 +278,19 @@ function desabilitaObjDocumentosJaRelacionados() {
         var sourceId = source.replace("objA_", "");
         
         if (relacoes){
-	        $.each(relacoes, function(i, relacao) {
-	            
-	           $.each(relacao.origem, function(i, origem) {
-	                //console.log(origem + " -- " + ); 
-	                if (origem == sourceId) {
-	                    
-	                    $.each(relacao.alvo, function(i, alvo) {
-	                        //console.log($("#objB_" + alvo).html());
-	                        $("#objB_" + alvo).addClass("disabled");
-	                    });
-	                }
-	            });
-	        });
+            $.each(relacoes, function(i, relacao) {
+
+               $.each(relacao.origem, function(i, origem) {
+                    //console.log(origem + " -- " + ); 
+                    if (origem === sourceId) {
+
+                        $.each(relacao.alvo, function(i, alvo) {
+                            //console.log($("#objB_" + alvo).html());
+                            $("#objB_" + alvo).addClass("disabled");
+                        });
+                    }
+                });
+            });
         }
     });
     
@@ -300,19 +298,21 @@ function desabilitaObjDocumentosJaRelacionados() {
         //console.log(source);
         var targetId = source.replace("objB_", "");
         
-        $.each(relacoes, function(i, relacao) {
-            
-           $.each(relacao.alvo, function(i, alvo) {
-                //console.log(origem + " -- " + ); 
-                if (alvo == targetId) {
-                    
-                    $.each(relacao.origem, function(i, origem) {
-                        //console.log($("#objB_" + alvo).html());
-                        $("#objA_" + origem).addClass("disabled");
-                    });
-                }
+        if (relacoes){
+            $.each(relacoes, function(i, relacao) {
+
+               $.each(relacao.alvo, function(i, alvo) {
+                    //console.log(origem + " -- " + ); 
+                    if (alvo === targetId) {
+
+                        $.each(relacao.origem, function(i, origem) {
+                            //console.log($("#objB_" + alvo).html());
+                            $("#objA_" + origem).addClass("disabled");
+                        });
+                    }
+                });
             });
-        });
+        }
     });
     
     $(".objDocumento.disabled").attr("title", "Este elemento já está relacionado com um dos elementos selecionados");
@@ -328,7 +328,7 @@ function addDivRelacaoPendente(id) {
         
         $.each(relacoes, function (index, rel) {
             
-            if (rel.id == id) {
+            if (rel.id === id) {
                 relacao = rel;
                 return;
             }
@@ -471,7 +471,7 @@ function addDivRelacao(relacao) {
         if (relacao.origem) {
             $.each(relacao.origem, function (index, elem) {
                 
-                if (elem == idRaizDoc["A"]) {
+                if (elem === idRaizDoc["A"]) {
                     return;
                 }
                 
@@ -482,7 +482,7 @@ function addDivRelacao(relacao) {
 	                });                
 	                AddClass(c);
                 } catch (e){
-                	console.log("Não foi possível montar as relações origem: "+e)
+                	console.log("Não foi possível montar as relações origem: "+e);
                 }
             });
         }
@@ -490,7 +490,7 @@ function addDivRelacao(relacao) {
         if (relacao.alvo) {
             $.each(relacao.alvo, function (index, elem) {
 
-                if (elem == idRaizDoc["A"]) {
+                if (elem === idRaizDoc["A"]) {
                     return;
                 }
                 
@@ -501,7 +501,7 @@ function addDivRelacao(relacao) {
                         });
                     AddClass(c);
                 } catch (e){
-                	console.log("Não foi possível montar as relações alvo: "+e)
+                	console.log("Não foi possível montar as relações alvo: "+e);
                 }
                 
             });
@@ -520,7 +520,7 @@ function addDivRelacao(relacao) {
 
 function updateRelationDivPosition(relacao, alwaysVisible) {
     
-    if ($("#" + relacao.id).length == 0) {
+    if ($("#" + relacao.id).length === 0) {
         return;
     }
     
@@ -543,7 +543,7 @@ function updateRelationDivPosition(relacao, alwaysVisible) {
         $.each(relacao.origem, function (index, obj) {
             var id = obj + "";
 
-            if (!id.indexOf("objA_") == 0) {
+            if (id.indexOf("objA_") < 0) {
                 id = "objA_" + obj;
             }
             meanTop += $("#" + id).offset().top;
@@ -554,7 +554,7 @@ function updateRelationDivPosition(relacao, alwaysVisible) {
         $.each(relacao.alvo, function (index, obj) {
             var id = obj + "";
 
-            if (!id.indexOf("objB_") == 0) {
+            if (id.indexOf("objB_") < 0) {
                 id = "objB_" + obj;
             }
             meanTop += $("#" + id).offset().top;
@@ -604,8 +604,8 @@ function confirmaRelacao(id) {
     
     var relacao = {};
     relacao.id = id;
-    relacao.origem = relacaoSources.map(function (x) { return x.replace("objA_", "")});
-    relacao.alvo = relacaoTargets.map(function (x) { return x.replace("objB_", "")});
+    relacao.origem = relacaoSources.map(function (x) { return x.replace("objA_", ""); });
+    relacao.alvo = relacaoTargets.map(function (x) { return x.replace("objB_", ""); });
     saveRelacao(qcid, urn1, urn2, relacao, relacaoSaved);
 }
 
@@ -625,7 +625,7 @@ function comentaRelacao(relacao_id){
             "Salvar": function() {
                 _this = $(this);
                 
-                var tipoComentario = $('select[id="tiposCorrelacao"]').find('option:selected').val();    
+                var tipoComentario = $("#tiposComentario").val();    
                 var xhtmlFragment = $("#dialog-comentario .xhtmlFragment").val();
                 
                 if (!tipoComentario) {
@@ -642,10 +642,12 @@ function comentaRelacao(relacao_id){
                 
                 var comentario = {
                     tipo: tipoComentario,
-                    xhtmlFragment: xhtmlFragment
+                    xhtmlFragment: xhtmlFragment,
+                    alvo: relacao_id,
+                    id: $("#dialog-comentario").attr("comentarioId")
                 };
 
-                saveComentario(qcid, urn1, urn2, relacao_id, comentario, function () {
+                saveComentario(qcid, urn1, urn2, comentario, function () {
                     _this.dialog( "close" );
                 });
             },
@@ -669,8 +671,13 @@ function comentaRelacao(relacao_id){
             });
             
             getComentario(qcid, urn1, urn2, relacao_id, function(res) {
-                $("#tiposComentario").val(res.tipo);
-                $("#dialog-comentario .xhtmlFragment").val(res.xhtmlFragment);
+                
+                if (res.length) {
+                    var comentario = res[0];
+                    $("#dialog-comentario").attr("comentarioId", comentario.id);
+                    $("#tiposComentario").val(comentario.tipo);
+                    $("#dialog-comentario .xhtmlFragment").val(comentario.xhtmlFragment);
+                }
             });
         }
     });
@@ -683,7 +690,7 @@ function editaTipoRelacao(src, relacao_id){
     
     $.each(relacoes, function (index, rel) {
             
-        if (rel.id == relacao_id) {
+        if (rel.id === relacao_id) {
             relacao = rel;
             return;
         }
@@ -728,8 +735,8 @@ function relacaoSaved(res) {
 function addSelected(elem, column) {
     
     var array;
-    if ((column && column == "A")
-        || elem.closest("#colunaComparacaoA").length != 0) {
+    if ((column && column === "A")
+        || elem.closest("#colunaComparacaoA").length !== 0) {
         
         array = relacaoSources;
         column = "A";
@@ -739,7 +746,7 @@ function addSelected(elem, column) {
         column = "B";
     }
     
-    if (elem.find(".objDocumento").filter("div").length == 0 ) { // que seja uma folha
+    if (elem.find(".objDocumento").filter("div").length === 0 ) { // que seja uma folha
             
         removeFromArray(array, elem.attr("id"));
         array.push(elem.attr("id"));
@@ -769,8 +776,8 @@ function removeSelectedStyle(obj) {
 function removeDeselected(elem, column) {
     
     var array;
-    if ((column && column == "A")
-        || elem.closest("#colunaComparacaoA").length != 0) {
+    if ((column && column === "A")
+        || elem.closest("#colunaComparacaoA").length !== 0) {
         
         array = relacaoSources;
         column = "A";
@@ -780,7 +787,7 @@ function removeDeselected(elem, column) {
         column = "B";
     }
     
-    if (elem.find(".objDocumento").filter("div").length == 0 ) {
+    if (elem.find(".objDocumento").filter("div").length === 0 ) {
             
         removeFromArray(array, elem.attr("id"));
         
@@ -842,7 +849,7 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
             if (matchDoc && matchDoc.length > 0) {
             
                 var cssAlteracao = "";
-                if (obj.refTipo.nomeTipo == "os_alteracao"){
+                if (obj.refTipo.nomeTipo === "os_alteracao"){
                 	cssAlteracao = "objAlteracao";
                 }
 
@@ -872,7 +879,7 @@ function getStrRotulo(rotulo) {
         
         if (rotulo.nomeRole) {
             //Tratamento Artigo
-            if(rotulo.nomeRole == "art"){                                        
+            if(rotulo.nomeRole === "art"){                                        
                 strRotulo += "  " + "Art. " + rotulo.posicaoRole[0] ;
                 if(rotulo.posicaoRole[0]<10){                                        
                     strRotulo += "º";
@@ -880,57 +887,57 @@ function getStrRotulo(rotulo) {
                     strRotulo += ". ";
                 }                                       
             
-            } else if(rotulo.nomeRole == "cpt") { //Tratamento Inciso
+            } else if(rotulo.nomeRole === "cpt") { //Tratamento Inciso
                 //strRotulo += "<span style='color: darkgray'><i>caput</i></span>";
             
-            } else if(rotulo.nomeRole == "inc") { //Tratamento Inciso
+            } else if(rotulo.nomeRole === "inc") { //Tratamento Inciso
                 strRotulo += romano(rotulo.posicaoRole[0]) + " -";
             
-            } else if(rotulo.nomeRole == "par") { //Tratamento Parágrafo
+            } else if(rotulo.nomeRole === "par") { //Tratamento Parágrafo
                 
-                if (rotulo.classificacao == "unico") {
+                if (rotulo.classificacao === "unico") {
                     strRotulo += "Parágrafo único. ";
                 
-                } else {
-                	if(rotulo.posicaoRole[0] < 10) {
-                		strRotulo += "§ " + rotulo.posicaoRole[0] + "º" ;
-                	} else {
-                		strRotulo += "§ " + rotulo.posicaoRole[0] + ". ";
-                	}
+                } else if(rotulo.posicaoRole && rotulo.posicaoRole[0] < 10) {
+                    strRotulo += "§ " + rotulo.posicaoRole[0] + "º" ;
+                } else if(rotulo.posicaoRole) {
+                    strRotulo += "§ " + rotulo.posicaoRole[0] + ". ";
                 }
                 
-            } else if(rotulo.nomeRole == "ali") { //Tratamento Alínea 
-                strRotulo += alinea(rotulo.posicaoRole[0]) //+ rotulo.nomeRole;                                        
-            } else if(rotulo.nomeRole == "ite") { //Tratamento item
-            	strRotulo += rotulo.posicaoRole[0] + "– " //+ rotulo.nomeRole;            
-            } else if(rotulo.nomeRole == "cap") { //Tratamento Capitulo 
+            } else if(rotulo.nomeRole === "ali") { //Tratamento Alínea 
+                strRotulo += alinea(rotulo.posicaoRole[0]) //+ rotulo.nomeRole;
+                
+            } else if(rotulo.nomeRole === "ite") { //Tratamento item
+            	strRotulo += rotulo.posicaoRole[0] + "– " //+ rotulo.nomeRole;
+                
+            } else if(rotulo.nomeRole === "cap") { //Tratamento Capitulo 
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Capítulo " + romano(rotulo.posicaoRole[0]);
             
-            } else if(rotulo.nomeRole == "tit") { //Tratamento Titulo 
+            } else if(rotulo.nomeRole === "tit") { //Tratamento Titulo 
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Título " + romano(rotulo.posicaoRole[0]);
                 
-            } else if(rotulo.nomeRole == "liv") {
+            } else if(rotulo.nomeRole === "liv") {
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Livro " + romano(rotulo.posicaoRole[0]);
             
-            } else if(rotulo.nomeRole == "sec") {
+            } else if(rotulo.nomeRole === "sec") {
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Seção " + romano(rotulo.posicaoRole[0]);
             
-            } else if(rotulo.nomeRole == "sub") {
+            } else if(rotulo.nomeRole === "sub") {
                 strRotulo = "<span class='objRotuloagregador'>";
             	strRotulo += "Subseção " + romano(rotulo.posicaoRole[0]);
             
-            } else if(rotulo.nomeRole == "prt") {
+            } else if(rotulo.nomeRole === "prt") {
                 strRotulo = "<span class='objRotulo agregador'>";
             	strRotulo += "Parte " + romano(rotulo.posicaoRole[0]);
             }                                   
         
         }
 
-        strRotulo += "&nbsp;</span>"
+        strRotulo += "&nbsp;</span>";
         return strRotulo;
     }
     
@@ -987,8 +994,7 @@ function printRelacoes (relacoes) {
 function romano(valor){
 
     var N = parseInt(valor);
-    var N1 = N;
-    var Y = ""
+    var Y = "";
     while (N/1000 >= 1) {
         Y += "M";
         N = N-1000;
@@ -1048,32 +1054,32 @@ function romano(valor){
 function alinea(numero){
 
     var letra;
-    if(numero == 1  ) letra = 'a)';
-    if(numero == 2  ) letra = 'b)';
-    if(numero == 3  ) letra = 'c)';
-    if(numero == 4  ) letra = 'd)';
-    if(numero == 5  ) letra = 'e)';
-    if(numero == 6  ) letra = 'f)';
-    if(numero == 7  ) letra = 'g)';
-    if(numero == 8  ) letra = 'h)';
-    if(numero == 9  ) letra = 'i)';
-    if(numero == 10 ) letra = 'j)';
-    if(numero == 11 ) letra = 'k)';
-    if(numero == 12 ) letra = 'l)';
-    if(numero == 13 ) letra = 'm)';
-    if(numero == 14 ) letra = 'n)';
-    if(numero == 15 ) letra = 'o';
-    if(numero == 16 ) letra = 'p)';
-    if(numero == 17 ) letra = 'q)';
-    if(numero == 18 ) letra = 'r)';
-    if(numero == 19 ) letra = 's)';
-    if(numero == 20 ) letra = 't)';
-    if(numero == 21 ) letra = 'u)';
-    if(numero == 22 ) letra = 'v)';
-    if(numero == 23 ) letra = 'w)';
-    if(numero == 24 ) letra = 'x)';
-    if(numero == 25 ) letra = 'y)';
-    if(numero == 26 ) letra = 'z)';
+    if(numero === 1  ) letra = 'a)';
+    if(numero === 2  ) letra = 'b)';
+    if(numero === 3  ) letra = 'c)';
+    if(numero === 4  ) letra = 'd)';
+    if(numero === 5  ) letra = 'e)';
+    if(numero === 6  ) letra = 'f)';
+    if(numero === 7  ) letra = 'g)';
+    if(numero === 8  ) letra = 'h)';
+    if(numero === 9  ) letra = 'i)';
+    if(numero === 10 ) letra = 'j)';
+    if(numero === 11 ) letra = 'k)';
+    if(numero === 12 ) letra = 'l)';
+    if(numero === 13 ) letra = 'm)';
+    if(numero === 14 ) letra = 'n)';
+    if(numero === 15 ) letra = 'o';
+    if(numero === 16 ) letra = 'p)';
+    if(numero === 17 ) letra = 'q)';
+    if(numero === 18 ) letra = 'r)';
+    if(numero === 19 ) letra = 's)';
+    if(numero === 20 ) letra = 't)';
+    if(numero === 21 ) letra = 'u)';
+    if(numero === 22 ) letra = 'v)';
+    if(numero === 23 ) letra = 'w)';
+    if(numero === 24 ) letra = 'x)';
+    if(numero === 25 ) letra = 'y)';
+    if(numero === 26 ) letra = 'z)';
 
     return letra;
 }
@@ -1114,7 +1120,7 @@ function getCorrelacao(qcid, urn1, urn2, callback){
 
 function getRelacoes(qcid, urn1, urn2) {
     
-    var strLoading = "<div id='loadingRelacao' style='position: fixed; top: 50%; margin: 10px;'><img src='images/icone_lexcomp_50x.png'/></div>"
+    var strLoading = "<div id='loadingRelacao' style='position: fixed; top: 50%; margin: 10px;'><img src='images/icone_lexcomp_50x.png'/></div>";
     $("#divRelacoes").append($(strLoading));
     
     $.ajax({
@@ -1129,7 +1135,7 @@ function getRelacoes(qcid, urn1, urn2) {
             //alert("Bad thing happend! " + res.statusText);
         },
         complete:function(r){
-        	$("#loadingRelacao").remove();
+            $("#loadingRelacao").remove();
         }
     });
     
@@ -1164,7 +1170,7 @@ function getComentario(qcid, urn1, urn2, relacao_id, callback) {
     $.ajax({
         url: '/api/correlacao/comentario/' + qcid + '/' + urn1 + '/' + urn2 + '/' + relacao_id,
         type:'GET',
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json; charset=utf-8"
         
     }).done(function() {
         
@@ -1178,10 +1184,10 @@ function getComentario(qcid, urn1, urn2, relacao_id, callback) {
     
 }
 
-function saveComentario(qcid, urn1, urn2, relacao_id, comentario, callback) {
+function saveComentario(qcid, urn1, urn2, comentario, callback) {
     
     $.ajax({
-        url: '/api/correlacao/comentario/' + qcid + '/' + urn1 + '/' + urn2 + '/' + relacao_id,
+        url: '/api/correlacao/comentario/' + qcid + '/' + urn1 + '/' + urn2,
         type: 'POST',
         data: JSON.stringify(comentario),
         dataType: "html",
