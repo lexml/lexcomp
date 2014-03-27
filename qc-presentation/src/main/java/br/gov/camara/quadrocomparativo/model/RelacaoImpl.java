@@ -7,8 +7,6 @@ package br.gov.camara.quadrocomparativo.model;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,8 +25,6 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
     private Set<Long> origem;
     private Set<Long> alvo;
     private ProvenienciaImpl proveniencia;
-
-    private List<ComentarioImpl> comentarios;
 
     public static RelacaoImpl newFromRelacao(Relacao arg0) {
         RelacaoImpl r = new RelacaoImpl();
@@ -60,15 +56,6 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
         this.alvo = alvo;
     }
 
-    @XmlElement
-    public List<ComentarioImpl> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<ComentarioImpl> comentarios) {
-        this.comentarios = comentarios;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -94,25 +81,6 @@ public class RelacaoImpl extends IdentificavelImpl implements Relacao, Serializa
             return false;
         }
         return true;
-    }
-
-    public void addComentario(ComentarioImpl comentario) {
-
-        if (comentarios == null) {
-            comentarios = new ArrayList<ComentarioImpl>();
-        }
-
-        if (comentario.getId() == 0) {
-            comentario.setId(comentarios.size() + 1);
-        }
-
-        comentario.setAlvo(getId());
-
-        if (comentarios.contains(comentario)) {
-            comentarios.remove(comentario);
-        }
-
-        comentarios.add(comentario);
     }
 
     public static class TiposRelacao {

@@ -4,6 +4,7 @@
  */
 package br.gov.camara.quadrocomparativo.model;
 
+import br.gov.lexml.symbolicobject.Comentario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,6 +19,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.IdSource;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -38,6 +41,8 @@ public class Correlacao implements Serializable {
 
     private CorrelacaoEstatisticaTexto estatisticaTexto1;
     private CorrelacaoEstatisticaTexto estatisticaTexto2;
+    
+    private List<ComentarioImpl> comentarios;
 
     public Correlacao() {
     }
@@ -234,4 +239,44 @@ public class Correlacao implements Serializable {
         return new CorrelacaoEstatisticaTexto(t.getDocumento().getObjetoSimbolicoIdSet().size(), res.size());
     }
     
+    public void addComentario(ComentarioImpl comentario) {
+
+        if (comentarios == null) {
+            comentarios = new ArrayList<ComentarioImpl>();
+        }
+
+        if (comentario.getId() == 0) {
+            comentario.setId(comentarios.size() + 1);
+        }
+
+        if (comentarios.contains(comentario)) {
+            comentarios.remove(comentario);
+        }
+
+        comentarios.add(comentario);
+    }
+    
+    public List<Comentario> getComentarios(Long alvo) {
+        List<Comentario> result = new ArrayList<Comentario>();
+        
+        if (getComentarios() != null) {
+        
+            for (ComentarioImpl c: getComentarios()) {
+                if (c.getAlvo().equals(alvo)) {
+                    result.add(c);
+                }
+            }
+        }
+        
+        return result;
+    }
+
+    @XmlElement
+    public List<ComentarioImpl> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioImpl> comentarios) {
+        this.comentarios = comentarios;
+    }
 }

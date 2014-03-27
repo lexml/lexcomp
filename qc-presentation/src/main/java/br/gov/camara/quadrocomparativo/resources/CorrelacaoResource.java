@@ -90,20 +90,15 @@ public class CorrelacaoResource {
     }
 
     @GET
-    @Path("/comentario/{qcid}/{urn1}/{urn2}/{relacaoId}")
+    @Path("/comentario/{qcid}/{urn1}/{urn2}/{alvo}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Comentario> getComentarios(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2,
-            @PathParam("relacaoId") Long relacaoId) {
+            @PathParam("alvo") Long alvo) {
 
-        RelacaoImpl relacao = (RelacaoImpl) getExistingRelacao(qcId, urn1, urn2, relacaoId);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
 
-        if (relacao.getComentarios() != null) {
-            return (List) relacao.getComentarios();
-        
-        } else {
-            return new ArrayList<Comentario>();
-        }
+        return correlacao.getComentarios(alvo);
     }
     
     @POST
@@ -114,9 +109,13 @@ public class CorrelacaoResource {
             @PathParam("urn2") String urn2) {
         
         QuadroComparativo qc = getExistingQuadro(qcid);
-        RelacaoImpl relacao = (RelacaoImpl) qc.getRelacao(urn1, urn2, comentario.getAlvo());
-        relacao.setProveniencia(new ProvenienciaUsuarioImpl());
-        relacao.addComentario(comentario);
+        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
+        correlacao.addComentario(comentario);
+        
+        RelacaoImpl relacao = (RelacaoImpl) correlacao.getRelacao(comentario.getAlvo());
+        if (relacao != null) {
+            relacao.setProveniencia(new ProvenienciaUsuarioImpl());
+        }
         
         if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
             throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);

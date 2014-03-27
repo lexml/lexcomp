@@ -120,13 +120,13 @@ public class VisualizacaoResource {
                 if (c.getRelacoes() != null) {
                     for (Relacao r : c.getRelacoes()) {
                         indexer.addRelacao(r);
-
-                        // comentários
-                        if (((RelacaoImpl)r).getComentarios() != null) {
-                            for (Comentario m : ((RelacaoImpl)r).getComentarios()) {
-                                indexer.addComentario(m);
-                            }
-                        }
+                    }
+                }
+                
+                // comentários
+                if (c.getComentarios() != null) {
+                    for (Comentario m : c.getComentarios()) {
+                        indexer.addComentario(m);
                     }
                 }
 
