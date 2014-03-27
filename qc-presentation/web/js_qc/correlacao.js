@@ -158,6 +158,7 @@ var relacaoSources;
 var relacaoTargets;
 var relacoes;
 var tiposRelacao;
+var objMenuContextoAtual;
 
 function initObjs(){
 
@@ -217,13 +218,15 @@ function initObjs(){
         $("#menuContexto").menu();
         $("#divMenuContexto").show();
         $("#divMenuContexto").css({top: event.pageY + 5,left: event.pageX + 5}).show();
+        objMenuContextoAtual = $(this).attr("id");
         event.stopPropagation();
         event.preventDefault();
         return false;
     });
     //Oculta menu, quando usuário clica em qualquer outra parte do documento
-    $('body').click(function() {
-     $("#divMenuContexto").hide();   
+    $('body:not(#divMenuContexto)').click(function() {
+        $("#divMenuContexto").hide();
+        objMenuContextoAtual = null;
     });
     
     $(window).scroll(function () {
@@ -269,6 +272,16 @@ function initObjs(){
         }
         
     });
+    
+    $("#divMenuContexto .linkEditaComentario").click(function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        if (objMenuContextoAtual) {
+            var id = objMenuContextoAtual.replace("objA_", "").replace("objB_", "");
+            editaComentario(id);
+        }
+    });
+        
 }
 
 function desabilitaObjDocumentosJaRelacionados() {
@@ -615,7 +628,15 @@ function editaRelacao(id) {
     addDivRelacaoPendente(id);
 }
 
-function comentaRelacao(relacao_id){
+/* 
+ * Edita/cria comentario associado a um elemento da correlacao 
+ * (relacoes e objetos simbolicos). Funciona com quaisquer elementos, desde que 
+ * tenham ids unicos no contexto da correlacao.
+ *  
+ * @param {type} alvo id do elemento ao qual o comentario esta associado.
+ * @returns {undefined}          
+ */
+function editaComentario(alvo){
     
     $( "#dialog-comentario" ).dialog({
         modal:true,
@@ -643,7 +664,7 @@ function comentaRelacao(relacao_id){
                 var comentario = {
                     tipo: tipoComentario,
                     xhtmlFragment: xhtmlFragment,
-                    alvo: relacao_id,
+                    alvo: alvo,
                     id: $("#dialog-comentario").attr("comentarioId")
                 };
 
@@ -675,7 +696,7 @@ function comentaRelacao(relacao_id){
                 });
             });
             
-            getComentario(qcid, urn1, urn2, relacao_id, function(res) {
+            getComentario(qcid, urn1, urn2, alvo, function(res) {
                 
                 if (res.length) {
                     var comentario = res[0];
@@ -834,9 +855,9 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
             var novoId = 'obj' + coluna +"_"+ obj.id;
             strDiv = '<div class="objTexto objDocumento" id='+novoId+'>';
             strDiv += obj.representacao;
-            strDiv += '<div class="divComentario" onclick="linkEditaComentario();">\
+            /*strDiv += '<div class="divComentario" onclick="linkEditaComentario();">\
                            <a href="#"><img src="images/comentario.png" width="16"/></a>\
-                       </div>';
+                       </div>';*/
         }
 
         if (obj.posicoes) {
@@ -980,9 +1001,9 @@ function printRelacoes (relacoes) {
         editaRelacao(id);
     });
     
-     $(".linkEditaComentario").click(function () {
+     $(".relacao .linkEditaComentario").click(function () {
         var id = $(this).closest("[relacao_id]").attr("relacao_id");
-        comentaRelacao(id);        
+        editaComentario(id);        
     });
     
     
