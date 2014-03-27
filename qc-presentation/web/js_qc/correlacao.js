@@ -649,6 +649,11 @@ function comentaRelacao(relacao_id){
 
                 saveComentario(qcid, urn1, urn2, comentario, function () {
                     _this.dialog( "close" );
+                    try {
+                    	getRelacoes(qcid, urn1, urn2);
+                    } catch (e){
+                    	console.log("Erro atualizar as relações após criação de comentário.");
+                    }
                 });
             },
             "Cancelar": function() {
@@ -677,6 +682,10 @@ function comentaRelacao(relacao_id){
                     $("#dialog-comentario").attr("comentarioId", comentario.id);
                     $("#tiposComentario").val(comentario.tipo);
                     $("#dialog-comentario .xhtmlFragment").val(comentario.xhtmlFragment);
+                } else {
+                    $("#dialog-comentario").attr("comentarioId", "");
+                    $("#tiposComentario").val("NOTA");
+                    $("#dialog-comentario .xhtmlFragment").val("");
                 }
             });
         }

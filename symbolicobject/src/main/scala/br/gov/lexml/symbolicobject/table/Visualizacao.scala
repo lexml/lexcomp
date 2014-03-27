@@ -38,7 +38,7 @@ class Visualizacao(indexer : IIndexer, opcoes : OpcoesVisualizacao) {
       c.render2 match {
 	      case ("","") => NodeSeq.Empty
 	      case ("",t) => <span class="rotuloPrincipal">{t + " "}</span>
-	      case (p,t) => NodeSeq fromSeq (Seq(<span class="rotuloContexto">{p}</span> , <span> </span>, <span class="rotuloPrincipal">{t + " "}</span>))
+	      case (p,t) => NodeSeq fromSeq (Seq(<span class="rotuloContexto">[{p}]</span> , <span> </span>, <span class="rotuloPrincipal">{t + " "}</span>))
       }      
     }
     // de SymbolicObject e outro de Relacao
