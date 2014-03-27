@@ -71,7 +71,7 @@ public class AppNoFX  {
     	return -1;
     }
     
-    private static final String URL ="http://localhost:"+PORT+"/";
+    private static final String URL ="http://127.0.0.1:"+PORT+"/";
     
     public static String getURL(){
     	return URL;    	
