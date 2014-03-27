@@ -16,10 +16,8 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 
-import util.clone.DeepCopy;
 import br.gov.camara.quadrocomparativo.model.Coluna;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
-import br.gov.camara.quadrocomparativo.model.Texto;
 
 public class QuadroComparativoController {
 
@@ -86,33 +84,6 @@ public class QuadroComparativoController {
         return quadro;
     }
 
-    static QuadroComparativo cloneWithoutArticulacoes(QuadroComparativo qc) {
-
-        //clonning
-        //Transformer t = new Transformer();
-        //QuadroComparativo novoQC = t.transform(qc, new QuadroComparativo(), "allDocumentos", "fileName");
-        QuadroComparativo novoQC = (QuadroComparativo) DeepCopy.copy(qc);
-
-        if (novoQC.getColunas() != null) {
-            for (Coluna col : novoQC.getColunas()) {
-
-                if (col.getTextos() != null) {
-                    for (Texto tex : col.getTextos()) {
-
-                        tex.setDocumentoParseado(tex.getDocumento() != null);
-                        tex.setArticulacao(null);
-                        tex.setArticulacaoXML(null);
-                        tex.setDocumento(null);
-                    }
-                }
-            }
-        }
-
-        novoQC.setArticulacoesExcluidas(true);
-
-        return novoQC;
-    }
-
     static boolean deleteQuadroComparativo(HttpServletRequest request, String qcId) {
         File file = new File(QuadroComparativo.getFileName(qcId));
         if (file.delete()) {
@@ -125,18 +96,18 @@ public class QuadroComparativoController {
     }
 
     static boolean saveQuadroComparativo(HttpServletRequest request, QuadroComparativo qc) {
-        QuadroComparativo qcAtualSessao = getQuadroComparativo(request, qc.getId());
+        QuadroComparativo qcAtualArquivo = getQuadroComparativo(request, qc.getId());
 
         // garante que o current position é o valor máximo entre o que veio do JS e o que está na sessão
-        if (qcAtualSessao != null) {
-            qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), qcAtualSessao.getCurrentPosition()));
+        if (qcAtualArquivo != null) {
+            qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), qcAtualArquivo.getCurrentPosition()));
         } else {
             qc.setCurrentPosition(Math.max(qc.getCurrentPosition(), 1));
         }
 
 
         if (qc.isArticulacoesExcluidas()) {
-            if (!restauraArticulacoes(qc, qcAtualSessao)){
+            if (!qc.restauraArticulacoes(qcAtualArquivo)){
             	return false;
             }
         }
@@ -149,35 +120,7 @@ public class QuadroComparativoController {
         return false;
     }
 
-    private static boolean restauraArticulacoes(QuadroComparativo quadro, QuadroComparativo qcAtual) {
-
-    	// recupera articulacoes salvas anteriormente
-        if (qcAtual != null) {
-
-            if (quadro.getColunas() != null) {
-            	for (Coluna col : quadro.getColunas()) {
-                    if (col.getTextos() != null) {
-                        for (Texto tex : col.getTextos()) {
-
-                            if (tex.getArticulacao() == null || tex.getDocumento() == null) {
-
-                                Texto texAtual = qcAtual.getTexto(tex.getUrn());
-
-                                if (texAtual != null) {
-                                    tex.setArticulacao(texAtual.getArticulacao());
-                                    tex.setDocumento(texAtual.getDocumento());
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            quadro.setArticulacoesExcluidas(false);
-            
-        }
-
-        return !quadro.isArticulacoesExcluidas();
-    }
+    
 
     private static boolean saveQuadroToFile(QuadroComparativo quadro) {
         try {

@@ -56,7 +56,7 @@ public class QuadroComparativoResource {
 
         // articulacoes nao serao transmitidas ao realizar operacoes com o
         // quadro comparativo para que o trafego nao fique pesado
-        return QuadroComparativoController.cloneWithoutArticulacoes(quadro);
+        return quadro.removeArticulacoes();
     }
 
     @POST
