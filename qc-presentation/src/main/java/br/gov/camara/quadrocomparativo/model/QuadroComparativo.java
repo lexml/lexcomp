@@ -40,7 +40,7 @@ public class QuadroComparativo implements Serializable, IdSource {
     private long idSourceCurrentPosition = 0;
     private boolean articulacoesExcluidas = false;
 
-    public void setArticulacoesExcluidas(boolean articulacoesExcluidas) {
+    private void setArticulacoesExcluidas(boolean articulacoesExcluidas) {
         this.articulacoesExcluidas = articulacoesExcluidas;
     }
 
@@ -304,5 +304,61 @@ public class QuadroComparativo implements Serializable, IdSource {
 
     synchronized public void setCurrentPosition(long currentPosition) {
         this.idSourceCurrentPosition = currentPosition;
+    }
+    
+    /*
+     * ARTICULACOES
+     */
+    
+    public QuadroComparativo removeArticulacoes() {
+
+        if (getColunas() != null) {
+            for (Coluna col : getColunas()) {
+
+                if (col.getTextos() != null) {
+                    for (Texto tex : col.getTextos()) {
+
+                        tex.setDocumentoParseado(tex.getDocumento() != null);
+                        tex.setArticulacao(null);
+                        tex.setArticulacaoXML(null);
+                        tex.setDocumento(null);
+                    }
+                }
+            }
+        }
+
+        setArticulacoesExcluidas(true);
+
+        return this;
+    }
+
+    public boolean restauraArticulacoes(QuadroComparativo quadroComArticulacoes) {
+
+    	// recupera articulacoes salvas anteriormente
+        if (quadroComArticulacoes != null) {
+
+            if (getColunas() != null) {
+            	for (Coluna col : getColunas()) {
+                    if (col.getTextos() != null) {
+                        for (Texto tex : col.getTextos()) {
+
+                            if (tex.getArticulacao() == null || tex.getDocumento() == null) {
+
+                                Texto texAtual = quadroComArticulacoes.getTexto(tex.getUrn());
+
+                                if (texAtual != null) {
+                                    tex.setArticulacao(texAtual.getArticulacao());
+                                    tex.setDocumento(texAtual.getDocumento());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            setArticulacoesExcluidas(false);
+            
+        }
+
+        return !isArticulacoesExcluidas();
     }
 }
