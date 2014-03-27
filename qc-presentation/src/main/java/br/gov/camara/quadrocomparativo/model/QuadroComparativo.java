@@ -314,6 +314,16 @@ public class QuadroComparativo implements Serializable, IdSource {
         this.idSourceCurrentPosition = currentPosition;
     }
     
+    public Relacao getRelacao(String urn1, String urn2, Long relacaoId) {
+        Correlacao correl = getCorrelacao(urn1, urn2);
+        
+        if (correl != null) {
+            return correl.getRelacao(relacaoId);
+        }
+        
+        return null;
+    }
+    
     /*
      * ARTICULACOES
      */
