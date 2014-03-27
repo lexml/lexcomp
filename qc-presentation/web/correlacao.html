@@ -93,7 +93,7 @@
             </select><br>
             <br>
         </div>
-        
+
         <div id="dialog-comentario" title="Comentários" style="display: none;">
             <table cellspacing="5">
                 <tr>
@@ -111,29 +111,20 @@
                 </tr>
 
             </table>
-            
+
         </div>
 
         <div id="dialog-configuracao" title="Configuração"
              style="display: none;">
-            <form action="" id="formConfiguracao" method="POST">
 
-                <div id="slider"></div>
+            <div id="slider"></div>
+            <table>
+                <tr>
+                    <td><input type="text" id="porcentagem"
+                               style="border: 0; color: #f6931f; font-weight: bold;" /></td>
+                </tr>
 
-                <table>
-                    <tr>
-                        <td><input type="text" id="porcentagem"
-                                   style="border: 0; color: #f6931f; font-weight: bold;" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" class="btnAcao" value="Processar"
-                                   id="sbConfiguracao"></td>
-                    </tr>
-
-                </table>
-
-            </form>
-
+            </table>
         </div>
 
 
@@ -183,40 +174,6 @@
 
                 });
 
-
-                //Porcentagem Correlações
-                $("#slider").slider({
-                    value: 10,
-                    min: 10,
-                    max: 100,
-                    step: 10,
-                    slide: function(event, ui) {
-                        $("#porcentagem").val(ui.value + "%");
-                    }
-                });
-                $("#porcentagem").val($("#slider").slider("value") + "%");
-
-                $("#sbConfiguracao").click(function(event) {
-
-                    event.preventDefault();
-
-                    $.ajax({
-                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),
-                        type: 'GET',
-                        contentType: "application/json; charset=utf-8",
-                        success: function() {
-                            $("#dialog-configuracao").dialog("close");
-                            //location.reload();
-                            getRelacoes(qcid, urn1, urn2);
-                        },
-                        error: function(res) {
-                            showAlertDialog("Erro ao processar correlações.");
-                        }
-
-                    });
-
-                });
-                
                 //Repinta tela ao mudar a resolução ou tamano da janela
                 $(window).resize(function() {
                     jsPlumb.repaintEverything();

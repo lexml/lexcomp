@@ -323,7 +323,6 @@ public class TextoResource {
     		}
     	}
     }
-
     
     private String cleanString(String str) {
         

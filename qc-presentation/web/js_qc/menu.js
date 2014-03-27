@@ -223,7 +223,29 @@ function print_menu() {
         event.preventDefault();         
         
         $( "#dialog-configuracao" ).dialog({
-             modal:true,draggable:false,width:600, height:360
+             modal:true,draggable:false,width:600, height:150,
+             buttons: {
+                 "Processar": function () {
+                     
+                     $.ajax({
+                        url: '/api/correlacao/processar/' + qcid + '/' + urn1 + '/' + urn2 + '/' + $("#slider").slider("value"),
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        success: function() {
+                            $("#dialog-configuracao").dialog("close");
+                            //location.reload();
+                            getRelacoes(qcid, urn1, urn2);
+                        },
+                        error: function(res) {
+                            showAlertDialog("Erro ao processar correlações.");
+                            console.error(res);
+                        }
+
+                    });
+                    
+                    $(this).dialog("close");
+                 }
+             }
         });
     });
     

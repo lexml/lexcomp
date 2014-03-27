@@ -97,7 +97,11 @@ public class CorrelacaoResource {
             @PathParam("alvo") Long alvo) {
 
         Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
-
+        
+        if (correlacao == null) {
+            return new ArrayList<Comentario>();
+        }
+        
         return correlacao.getComentarios(alvo);
     }
     
@@ -110,7 +114,13 @@ public class CorrelacaoResource {
         
         QuadroComparativo qc = getExistingQuadro(qcid);
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
-        correlacao.addComentario(comentario);
+        
+        if (correlacao == null) {
+            correlacao = new Correlacao(urn1, urn2);
+            qc.addCorrelacao(correlacao);
+        }
+        
+        correlacao.addComentario(comentario, qc);
         
         RelacaoImpl relacao = (RelacaoImpl) correlacao.getRelacao(comentario.getAlvo());
         if (relacao != null) {

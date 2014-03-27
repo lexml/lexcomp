@@ -239,14 +239,23 @@ public class Correlacao implements Serializable {
         return new CorrelacaoEstatisticaTexto(t.getDocumento().getObjetoSimbolicoIdSet().size(), res.size());
     }
     
-    public void addComentario(ComentarioImpl comentario) {
+    public void addComentario(ComentarioImpl comentario, IdSource idSource) {
 
         if (comentarios == null) {
             comentarios = new ArrayList<ComentarioImpl>();
         }
 
-        if (comentario.getId() == 0) {
+        /*if (comentario.getId() == 0) {
             comentario.setId(comentarios.size() + 1);
+        }*/
+        
+        // ID sequencial
+        if (comentario.getId() == 0) {
+            comentario.setId(idSource.nextId(Tipos.Relacao()));
+
+            while (comentarios.contains(comentario)) {
+                comentario.setId(comentario.getId() + 1);
+            }
         }
 
         if (comentarios.contains(comentario)) {

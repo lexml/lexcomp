@@ -379,4 +379,5 @@ public class QuadroComparativo implements Serializable, IdSource {
 
         return !isArticulacoesExcluidas();
     }
+
 }
