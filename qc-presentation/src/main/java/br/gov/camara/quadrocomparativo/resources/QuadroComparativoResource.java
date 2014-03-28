@@ -4,6 +4,8 @@
  */
 package br.gov.camara.quadrocomparativo.resources;
 
+import br.gov.camara.quadrocomparativo.model.Conexao;
+import br.gov.camara.quadrocomparativo.model.Correlacao;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
@@ -25,6 +27,9 @@ import javax.ws.rs.core.Response;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
 
 import com.sun.jersey.api.NotFoundException;
+import java.net.URI;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
 
 // The class registers its methods for the HTTP GET request using the @GET annotation. 
 // Using the @Produces annotation, it defines that it can deliver several MIME types,
@@ -36,6 +41,9 @@ public class QuadroComparativoResource {
     @Context
     HttpServletRequest request; 	//System.out.println("request: "+request.getSession(true).getId());
 
+    @Context 
+    UriInfo uriInfo;
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public QuadroComparativo getNewQuadroComparativo() {
@@ -65,11 +73,10 @@ public class QuadroComparativoResource {
 
         if (!QuadroComparativoController.saveQuadroComparativo(request, quadro)) {
 
-            throw new WebApplicationException(500);
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         } else {
-            String result = "Quadro saved: " + quadro;
-
-            return Response.status(201).entity(result).build();
+            URI uri = uriInfo.getAbsolutePathBuilder().path(quadro.getId() + "").build();
+            return Response.created(uri).build();
         }
     }
 

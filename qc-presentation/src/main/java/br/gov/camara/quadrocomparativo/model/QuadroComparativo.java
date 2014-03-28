@@ -236,6 +236,28 @@ public class QuadroComparativo implements Serializable, IdSource {
 
         return null;
     }
+    
+    public Correlacao getCorrelacao(Conexao conexao) {
+        
+        if (getCorrelacoes() != null) {
+
+            for (Correlacao cor : getCorrelacoes()) {
+
+                if (cor.getUrn1() != null && cor.getUrn2() != null) {
+                    String urn1 = cor.getUrn1().replaceAll("\\.|;|\\:|@", "_");
+                    String urn2 = cor.getUrn2().replaceAll("\\.|;|\\:|@", "_");
+                    
+                    if (conexao.getSourceId().equals(urn1) && conexao.getTargetId().equals(urn2)
+                        || conexao.getSourceId().equals(urn2) && conexao.getTargetId().equals(urn1)) {
+
+                        return cor;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
 
     public List<Correlacao> getCorrelacoes(String urn) {
         
@@ -258,6 +280,30 @@ public class QuadroComparativo implements Serializable, IdSource {
         }
 
         return null;
+    }
+    
+    /**
+     * Mantem integridade entre correlacoes e conexoes
+     */
+    public void limpaCorrelacoesSemConexao() {
+        
+        if (getConexoes() == null || getConexoes().isEmpty()) {
+            setCorrelacoes(null);
+        
+        } else {
+            
+            List<Correlacao> correls = new ArrayList<Correlacao>();
+            for (Conexao conexao : getConexoes()) {
+                
+                Correlacao correlacao = getCorrelacao(conexao);
+                
+                if (correlacao != null) {
+                    correls.add(correlacao);
+                }
+            }
+            
+            setCorrelacoes(correls);
+        }
     }
 
     @XmlTransient

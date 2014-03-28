@@ -184,10 +184,10 @@ function saveQuadro() {
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         success:function(res){
-            alert("it works!");
+            
         },
         error:function(res){
-        //alert("Bad thing happend! " + res.statusText);
+            //alert("Bad thing happend! " + res.statusText);
         }
     });
 }

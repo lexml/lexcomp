@@ -111,6 +111,8 @@ public class QuadroComparativoController {
             	return false;
             }
         }
+        
+        qc.limpaCorrelacoesSemConexao();
 
         if (!qc.isArticulacoesExcluidas()) {
             //SessionController.save(request, qc.getId(), qc);

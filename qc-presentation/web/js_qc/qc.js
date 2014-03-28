@@ -29,7 +29,7 @@ function fortext(cond, func) {
         // cond nao eh string
         console.log(cond);
     }
-    
+
     $.each(quadro.colunas, function(ic, col) {
         console.log("Considerando coluna: " + ic);
         if (col.textos) {
@@ -425,7 +425,7 @@ function configuraQuadro() {
                     textoAtualModal = texto;
 
                     $.each(quadro.colunas, function(icol, coluna) {
-                        
+
                         if (coluna.id === colunaAtual) {
 
                             if (!quadro.colunas[icol].textos) {
@@ -560,7 +560,7 @@ function configuraQuadro() {
         $.each(quadro.colunas, function(ic, col) {
             if (col.textos) {
                 $.each(col.textos, function(it, txt) {
-                    
+
                     if (txt.urn === urn) {
                         texto = txt;
                         coluna = col;
@@ -895,9 +895,7 @@ jsPlumb.ready(function() {
             if (acao == "remover") {
 
                 $.each(quadro.conexoes, function(index, conn) {
-                    //alert(conexao.sourceId + " === " + conn.sourceId);
-                    //alert(conexao.targetId + " === " + conn.targetId);
-
+                    
                     if (conexao.sourceId != conn.sourceId
                             || conexao.targetId != conn.targetId) {
 
@@ -965,7 +963,7 @@ jsPlumb.ready(function() {
                         targetId: connection.targetId
                     };
                     atualizaConexoes(novaConexao, 'adicionar');
-                    
+
                 } else {
                     jsPlumb.detach(connection);
                     console.warn("Textos da mesma coluna não podem ser relacionados entre si...");
