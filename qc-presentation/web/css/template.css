@@ -148,14 +148,18 @@ body,html {
 }
 
 
-#menuCorrelacoes{
-
+#menuCorrelacoes {
     width: 327px;
-
     position: relative;
     top: -55px;
-    left: 276px
+    left: 276px;
+}
 
+#menuBack {
+    width: 327px;
+    position: relative;
+    top: -58px;
+    left: 270px;
 }
 
 
@@ -489,8 +493,8 @@ button, input, select, textarea {
 }
 
 .objAlteracao > div:last-child .objTexto:AFTER {
-	content: " ”";
-	font-size: larger;
+    content: " ”";
+    font-size: larger;
 }
 
 

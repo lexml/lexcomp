@@ -288,7 +288,7 @@ public class QuadroComparativo implements Serializable, IdSource {
     public void limpaCorrelacoesSemConexao() {
         
         if (getConexoes() == null || getConexoes().isEmpty()) {
-            setCorrelacoes(null);
+            setCorrelacoes(new ArrayList<Correlacao>());
         
         } else {
             

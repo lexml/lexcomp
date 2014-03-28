@@ -19,8 +19,6 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import br.gov.lexml.symbolicobject.Relacao;
 import br.gov.lexml.symbolicobject.parser.IdSource;
 import br.gov.lexml.symbolicobject.tipos.Tipos;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -169,6 +167,22 @@ public class Correlacao implements Serializable {
         for (RelacaoImpl rel : relacoesToRemove) {
 
             relacoes.remove(rel);
+        }
+        
+        // apaga comentarios relacionados
+        List<ComentarioImpl> comentariosToRemove = new ArrayList<ComentarioImpl>();
+        if (getComentarios() != null) {
+            
+            for (ComentarioImpl c : getComentarios()) {
+                if (c.getAlvo().equals(Long.parseLong(idRelacao))) {
+                    comentariosToRemove.add(c);
+                }
+            }
+        }
+        
+        for (ComentarioImpl c : comentariosToRemove) {
+
+            getComentarios().remove(c);
         }
     }
 

@@ -57,10 +57,10 @@ public class TextoResource {
     private static final Logger log = Logger.getLogger(TextoResource.class.getName());
 
     /*
-    @GET
-    @Path("/{urn}/")
-    @Produces(MediaType.APPLICATION_JSON)
-    */
+     @GET
+     @Path("/{urn}/")
+     @Produces(MediaType.APPLICATION_JSON)
+     */
     private Texto importarTexto(@PathParam("urn") String urn) {
 
         Texto t = new Texto(urn, null);
@@ -68,7 +68,7 @@ public class TextoResource {
         // tenta obter o zip
         LexmlFile zip = LexmlFile.newLexmlFileFromURN(urn);
         if (zip != null) {
-            
+
             t.setArticulacaoXML(zip.getTextoAsString());
             t.setArticulacao(getArticulacaoPlainText(t.getArticulacaoXML()));
 
@@ -83,59 +83,59 @@ public class TextoResource {
 
         return t;
     }
-    
+
     @GET
     @Path("/quantrel/{urn}/qc/{qcid}/")
     @Produces(MediaType.APPLICATION_JSON)
-    public int getQuantRelacoes(@PathParam("qcid") String qcId, @PathParam("urn") String urn){
-        
-    	//obtem quadro comparativo e texto
-    	QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-    	Texto texto = qc.getTexto(urn);
-    	
-    	//produzindo o conjunto de objetos simbólicos do texto
-    	Set<Long> osTextoIds = texto.getDocumento().getObjetoSimbolicoIdSet();
-    	
+    public int getQuantRelacoes(@PathParam("qcid") String qcId, @PathParam("urn") String urn) {
+
+        //obtem quadro comparativo e texto
+        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
+        Texto texto = qc.getTexto(urn);
+
+        //produzindo o conjunto de objetos simbólicos do texto
+        Set<Long> osTextoIds = texto.getDocumento().getObjetoSimbolicoIdSet();
+
     	//produzindo conjunto com todos os objetos simbólicos que possuem relações 
-    	//de todas as correlações do texto atual 
-    	Set<Long> osAllIdsRelacionados = new HashSet<Long>();
-		for (Relacao r : produceListRelacaoByTexto(qc, texto)){
-			osAllIdsRelacionados.addAll(r.getAlvo());
-			osAllIdsRelacionados.addAll(r.getOrigem());
-		}
-    	
-    	//produzindo um conjunto com os objetos simbólicos do texto que participam de alguma relação
-    	Set<Long> osTextoIdsComRelacao = new HashSet<Long>();
-    	for (Long l : osTextoIds){
-    		if (osAllIdsRelacionados.contains(l)){
-    			osTextoIdsComRelacao.add(l);
-    		}
-    	}
-    	
-    	//retorna a quantidade de relações
-    	return osTextoIdsComRelacao.size();
+        //de todas as correlações do texto atual 
+        Set<Long> osAllIdsRelacionados = new HashSet<Long>();
+        for (Relacao r : produceListRelacaoByTexto(qc, texto)) {
+            osAllIdsRelacionados.addAll(r.getAlvo());
+            osAllIdsRelacionados.addAll(r.getOrigem());
+        }
+
+        //produzindo um conjunto com os objetos simbólicos do texto que participam de alguma relação
+        Set<Long> osTextoIdsComRelacao = new HashSet<Long>();
+        for (Long l : osTextoIds) {
+            if (osAllIdsRelacionados.contains(l)) {
+                osTextoIdsComRelacao.add(l);
+            }
+        }
+
+        //retorna a quantidade de relações
+        return osTextoIdsComRelacao.size();
     }
-    
-    private List<Relacao> produceListRelacaoByTexto(QuadroComparativo qc, Texto texto){
-    
+
+    private List<Relacao> produceListRelacaoByTexto(QuadroComparativo qc, Texto texto) {
+
     	//produzindo conjunto com todos os objetos simbólicos que possuem relações 
-    	//de todas as correlações do texto atual 
-    	List<Relacao> result = new ArrayList<Relacao>();
-    	for (Correlacao c : qc.getCorrelacoes()){
-    		if (c.getTexto1().getUrn().equals(texto.getUrn()) || c.getTexto2().getUrn().equals(texto.getUrn())){
-    			result.addAll(c.getRelacoes());
-    		}
-    	}
-    	
-    	return result;
+        //de todas as correlações do texto atual 
+        List<Relacao> result = new ArrayList<Relacao>();
+        for (Correlacao c : qc.getCorrelacoes()) {
+            if (c.getTexto1().getUrn().equals(texto.getUrn()) || c.getTexto2().getUrn().equals(texto.getUrn())) {
+                result.addAll(c.getRelacoes());
+            }
+        }
+
+        return result;
     }
-    
+
     @GET
     @Path("/{urn}/qc/{qcid}/")
     @Produces(MediaType.APPLICATION_JSON)
     public Texto getTextoInQuadro(@PathParam("qcid") String qcId,
             @PathParam("urn") String urn) {
-        
+
         if (urn == null) {
             throw new NotFoundException();
 
@@ -161,51 +161,50 @@ public class TextoResource {
         return texto;
     }
 
-    @POST 
+    @POST
     @Path("/qc/{qcid}/col/{colid}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveTexto(Texto texto, @PathParam("qcid") String qcId,
             @PathParam("colid") String colId) {
 
         QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-        
+
         // texto.setArticulacaoXML(getArticulacaoXML(texto));
-        
         // verifica se o usuario nao inseriu um arquivo lexml no lugar da
         // articulacao
         String articulacao = cleanString(texto.getArticulacao());
-        
+
         if (isXML(articulacao)) {
             texto.setArticulacaoXML(articulacao);
             texto.setArticulacao(getArticulacaoPlainText(articulacao));
         }
-        
+
         try {
             texto.setDocumento(getEstruturaTexto(qc, texto));
         } catch (Exception ex) {
             log.log(Level.SEVERE, "Erro ao parsear texto", ex);
             throw new NotFoundException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente");
         }
-        
+
         texto.setArticulacaoXML(null);
 
         qc.addTexto(colId, texto);
-        
+
         //exclui todas as eventuais relações existentes
         removeCorrelacoes(qc, texto);
-        
-        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)){
-        	throw new WebApplicationException(500);
+
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
+            throw new WebApplicationException(500);
         }
 
         return Response.status(Status.CREATED).entity(texto).build();
     }
-    
+
     /*
-    @GET
-    @Path("/{urn}/qc/{qcid}/estrutura/")
-    @Produces(MediaType.APPLICATION_JSON)
-    */
+     @GET
+     @Path("/{urn}/qc/{qcid}/estrutura/")
+     @Produces(MediaType.APPLICATION_JSON)
+     */
     Texto getEstruturaTextoInQuadro(@PathParam("qcid") String qcId,
             @PathParam("urn") String urn) {
 
@@ -247,21 +246,21 @@ public class TextoResource {
         Parser tParser = new Parser(qc);
         Validation<Throwable, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
                 .parse(new InputDocument(Tipos.DocProjetoLei(),
-                new LexMLDocument(new StringSource(texto
-                .getArticulacaoXML())), urn));
+                                new LexMLDocument(new StringSource(texto
+                                                .getArticulacaoXML())), urn));
 
         if (validation.isSuccess()) {
             DocumentoImpl doc = new DocumentoImpl(validation.toOption().get());
             texto.setDocumento(doc);
             texto.setArticulacao(null);
             texto.setArticulacaoXML(null);
-            
+
             log.log(Level.SEVERE, "Validação com sucesso.");
 
             return texto;
         } else {
-            log.log(Level.SEVERE, "Validação não executada com sucesso.",validation.toEither().left().get());
-            
+            log.log(Level.SEVERE, "Validação não executada com sucesso.", validation.toEither().left().get());
+
             throw new RuntimeException("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente", validation.toEither().left().get());
         }
 
@@ -290,53 +289,53 @@ public class TextoResource {
         Parser tParser = new Parser(qc);
         Validation<Throwable, br.gov.lexml.symbolicobject.impl.Documento<BoxedUnit>> validation = tParser
                 .parse(new InputDocument(Tipos.DocProjetoLei(),
-                new LexMLDocument(new StringSource(texto
-                .getArticulacaoXML())), texto.getUrn()));
+                                new LexMLDocument(new StringSource(texto
+                                                .getArticulacaoXML())), texto.getUrn()));
 
         if (validation.isSuccess()) {
             DocumentoImpl doc = new DocumentoImpl(validation.toOption().get());
             texto.setDocumentoParseado(true);
-            
+
             log.log(Level.SEVERE, "Validação com sucesso2.");
-            
+
             return doc;
         } else {
-        	texto.setDocumentoParseado(false);
-            log.log(Level.SEVERE, "Validação não executada com sucesso.",validation.toEither().left().get());
-            
+            texto.setDocumentoParseado(false);
+            log.log(Level.SEVERE, "Validação não executada com sucesso.", validation.toEither().left().get());
+
             // FIXME como pegar ParseException do Parser?
-            
-            throw new Exception("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente",validation.toEither().left().get());
-        }        
+            throw new Exception("Não foi possível estruturar o documento informado. Por favor, verifique o conteúdo do texto e tente novamente", validation.toEither().left().get());
+        }
     }
-   
+
     /**
      * Remove todas as correlações de um texto no Quadro
+     *
      * @param qc
      * @param texto
      */
-    private void removeCorrelacoes(QuadroComparativo qc, Texto texto){
-    	for (Texto t : qc.getAllTextos()){
-    		Correlacao c = qc.getCorrelacao(texto.getUrn(), t.getUrn());
-    		if (c != null){
-    			qc.getCorrelacoes().remove(c);
-    		}
-    	}
+    private void removeCorrelacoes(QuadroComparativo qc, Texto texto) {
+        for (Texto t : qc.getAllTextos()) {
+            Correlacao c = qc.getCorrelacao(texto.getUrn(), t.getUrn());
+            if (c != null) {
+                qc.getCorrelacoes().remove(c);
+            }
+        }
     }
-    
+
     private String cleanString(String str) {
-        
+
         str = str.replace(String.valueOf((char) 160), " ").trim();
         str = str.replace("^[^\\w^<]*", "");
         return str;
     }
-    
+
     private boolean isXML(String str) {
-        
+
         if (str.startsWith("<")) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -369,9 +368,9 @@ public class TextoResource {
 
         return null;
     }
-    
+
     private String getArticulacaoPlainText(String articulacaoXML) {
-        
+
         //cria a articulação em plain text
         RendererPlainText rpt = new RendererPlainText();
         try {
@@ -379,7 +378,7 @@ public class TextoResource {
         } catch (Exception ex) {
             log.log(Level.SEVERE, null, ex);
         }
-        
+
         return null;
     }
 }

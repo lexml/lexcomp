@@ -38,6 +38,13 @@ public class ComentarioImpl extends IdentificavelImpl implements Comentario, Ser
 
     public void setTipo(TipoComentario tipo) {
         this.tipo = tipo;
+        this.refTipo = new RefTipoImpl(tipo.name());
+    }
+
+    @Override
+    public void setRefTipo(RefTipoImpl refTipo) {
+        this.refTipo = refTipo;
+        this.tipo = TipoComentario.valueOf(refTipo.getNomeTipo());
     }
 
     @Override
