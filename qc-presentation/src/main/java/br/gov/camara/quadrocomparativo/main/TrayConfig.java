@@ -20,134 +20,133 @@ import javax.swing.JOptionPane;
 
 public class TrayConfig {
 
-	private static final Logger logger = Logger.getLogger(TrayConfig.class.getName());
-	
-	private final String url;
-	
-	public TrayConfig(String url) {
-		this.url = url;
-	}
-	
-	/**
-	 * Configura o ambiente tray
-	 * @param url
-	 */
-	public void configurarTray(){
-		final TrayIcon trayIcon; 
+    private static final Logger logger = Logger.getLogger(TrayConfig.class.getName());
 
-		if (SystemTray.isSupported()) {
+    private final String url;
 
-			SystemTray tray = SystemTray.getSystemTray();
+    public TrayConfig(String url) {
+        this.url = url;
+    }
 
+    /**
+     * Configura o ambiente tray
+     *
+     * @param url
+     */
+    public void configurarTray() {
+        final TrayIcon trayIcon;
 
-			Image imageICO = null;
-			try {
-				imageICO = ImageIO.read(AppMainTray.class.getResource("/tray.jpg"));
-			} catch (IOException e) {
-				logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.", e);
-			} finally {
-				if (imageICO == null){
-					logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.");
-				}
-			}
-			
+        if (SystemTray.isSupported()) {
 
-			// Criamos um listener para escutar os eventos de mouse
-			MouseListener mouseListener = new MouseListener() {
+            SystemTray tray = SystemTray.getSystemTray();
 
-				public void mouseClicked(MouseEvent e) {
-					abrirJanelaPrincipal();
-				}
+            Image imageICO = null;
+            try {
+                imageICO = ImageIO.read(AppMainTray.class.getResource("/tray.png"));
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.", e);
+            } finally {
+                if (imageICO == null) {
+                    logger.log(Level.SEVERE, "Não foi possível obter ícone do formulário principal.");
+                }
+            }
 
-				public void mouseEntered(MouseEvent e) {
+            // Criamos um listener para escutar os eventos de mouse
+            MouseListener mouseListener = new MouseListener() {
 
-				}
+                public void mouseClicked(MouseEvent e) {
+                    abrirJanelaPrincipal();
+                }
 
-				public void mouseExited(MouseEvent e) {
+                public void mouseEntered(MouseEvent e) {
 
-				}
+                }
 
-				public void mousePressed(MouseEvent e) {
+                public void mouseExited(MouseEvent e) {
 
-				}
+                }
 
-				public void mouseReleased(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
 
-				}
+                }
 
-			};
+                public void mouseReleased(MouseEvent e) {
 
-			// Criando um objeto PopupMenu
-			PopupMenu popup = new PopupMenu();
+                }
 
-			// criando itens do menu
-			MenuItem mostramsg = new MenuItem("Abrir endereço do Lexcomp");
-			mostramsg.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					abrirJanelaPrincipal();
-				}
-			});
+            };
 
-			MenuItem defaultItem = new MenuItem("Sair da aplicação");
-			defaultItem.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					//JOptionPane.showMessageDialog(null, "Saindo...");
-					System.exit(0);
-				}
-			});
+            // Criando um objeto PopupMenu
+            PopupMenu popup = new PopupMenu();
 
-			// Adicionando itens ao PopupMenu
-			popup.add(mostramsg);
+            // criando itens do menu
+            MenuItem mostramsg = new MenuItem("Abrir endereço do Lexcomp");
+            mostramsg.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    abrirJanelaPrincipal();
+                }
+            });
 
-			// adiconando um separador
-			popup.addSeparator();
+            MenuItem defaultItem = new MenuItem("Sair da aplicação");
+            defaultItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //JOptionPane.showMessageDialog(null, "Saindo...");
+                    System.exit(0);
+                }
+            });
 
-			popup.add(defaultItem);
+            // Adicionando itens ao PopupMenu
+            popup.add(mostramsg);
 
-			// criando um objeto do tipo TrayIcon
-			trayIcon = new TrayIcon(imageICO, "Lexcomp", popup);
-			ActionListener actionListener = new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					trayIcon.displayMessage("Action Event", "Um Evento foi disparado", TrayIcon.MessageType.INFO);
-				}
-			};
+            // adiconando um separador
+            popup.addSeparator();
 
-			// Na linha a seguir a imagem a ser utilizada como icone sera redimensionada
-			trayIcon.setImageAutoSize(true);
+            popup.add(defaultItem);
 
-			// Seguida adicionamos os actions listeners
-			trayIcon.addActionListener(actionListener);
-			trayIcon.addMouseListener(mouseListener);
+            // criando um objeto do tipo TrayIcon
+            trayIcon = new TrayIcon(imageICO, "Lexcomp", popup);
+            ActionListener actionListener = new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    trayIcon.displayMessage("Action Event", "Um Evento foi disparado", TrayIcon.MessageType.INFO);
+                }
+            };
 
-			// Tratamento de erros
-			try {
-				tray.add(trayIcon);
-			} catch (AWTException e) {
-				logger.log(Level.SEVERE, "Erro, TrayIcon não será adicionado.", e);
-			}
-			
-			//abrir a janela principal
-			abrirJanelaPrincipal();
-			
-		} else {
-			// Caso o item System Tray não for suportado
-			JOptionPane.showMessageDialog(null, "Não é possível abrir o Lexcomp no seu sistema. Por favor, procure apoio técnico.");
-		}
-	}
-	
-	private void abrirJanelaPrincipal(){
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainTrayWindow frame = new MainTrayWindow(url);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		System.out.println("Tray Icon - O Mouse foi pressionado!");
-	}
-	
+            // Na linha a seguir a imagem a ser utilizada como icone sera redimensionada
+            trayIcon.setImageAutoSize(true);
+
+            // Seguida adicionamos os actions listeners
+            trayIcon.addActionListener(actionListener);
+            trayIcon.addMouseListener(mouseListener);
+
+            // Tratamento de erros
+            try {
+                tray.add(trayIcon);
+            } catch (AWTException e) {
+                logger.log(Level.SEVERE, "Erro, TrayIcon não será adicionado.", e);
+            }
+
+            //abrir a janela principal
+            abrirJanelaPrincipal();
+
+        } else {
+            // Caso o item System Tray não for suportado
+            JOptionPane.showMessageDialog(null, "Não é possível abrir o Lexcomp no seu sistema. Por favor, procure apoio técnico.");
+        }
+    }
+
+    private void abrirJanelaPrincipal() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    MainTrayWindow frame = new MainTrayWindow(url);
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        System.out.println("Tray Icon - O Mouse foi pressionado!");
+    }
+
 }
