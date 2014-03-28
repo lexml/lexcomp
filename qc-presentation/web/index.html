@@ -70,7 +70,7 @@
         <!-- Modal -->
         <div id="modalForm" style="display: none;">
             <form id="formLegislacao" method="GET" action="/api/urn">
-            <table id="tblLegislacao" width="100%" cellpadding="0" cellspacing="8">
+            <table id="tblLegislacao" width="100%" cellpadding="0" cellspacing="8" style="margin: 10px;">
                    <tr>
                     <td><b>Categoria:</b></td>
                         <td><select id="Categorias" name="categorias" onchange="javascript:acaoCategorias(this.value);"><option value="">-- Selecione --</option></select></td>
@@ -158,13 +158,7 @@
                            </table>
                         </td>
                     </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>
-                            <input type="button" class="btnAcao" id="sbLegislacao" value="  Adicionar Texto  ">                            
-                        </td>                        
-                    </tr>
+                    
                 </table>
             </form>
             <br>
