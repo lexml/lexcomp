@@ -82,7 +82,7 @@ function getHeaderColuna(coluna, boundary) {
                <div class="dragtable-drag-handle">&nbsp;</div>';
     //header+='<input type="radio" name="principal"  onclick="javascript:definirColunaPrincipal(\'' + coluna.id + '\');" class="checkColunaPrincipal"  ' + checkedC + '  title="Definir como coluna principal." value="' + coluna.id + '">&nbsp;';
     header += '<!--img src="images/edit_c.png" width="15"/--><span id="editme1" class="col_title" col-id="' + coluna.id + '" style="color:#666; text-align:center;" title="Clique sobre o nome da coluna, para poder editá-lo.">' + titulo + '</span>';
-    header += '<span style="text-decoration: none;  font-weight: normal;  font-size: 12px;  color: #666;"><br><input type="radio" name="principal"  onclick="javascript:definirColunaPrincipal(\'' + coluna.id + '\');" class="checkColunaPrincipal"  ' + checkedC + '  title="Definir como coluna principal." value="' + coluna.id + '">&nbsp;Definir como coluna principal</span>';
+    //header += '<span style="text-decoration: none;  font-weight: normal;  font-size: 12px;  color: #666;"><br><input type="radio" name="principal"  onclick="javascript:definirColunaPrincipal(\'' + coluna.id + '\');" class="checkColunaPrincipal"  ' + checkedC + '  title="Definir como coluna principal." value="' + coluna.id + '">&nbsp;Definir como coluna principal</span>';
 
     header += '<a href="" id="addColumn" col-id="' + coluna.id + '"><span style="font-size: 1.8em; float: right; margin-right: 6px;">+</span></a>';
     header += '</th>';
@@ -391,7 +391,7 @@ function configuraQuadro() {
                     saveQuadro();
 
                 } else {
-                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN no quadro.");
                 }
             }
 
@@ -587,7 +587,7 @@ function configuraQuadro() {
         //configura o dialog da janela
         $('a#linkImportaTexto').click(function(event) {
             event.preventDefault();
-            searchText(urn, true);
+            searchText(urn, false);
         });
         $("#dialog-edit-text").dialog({
             resizable: false,
@@ -644,7 +644,7 @@ function configuraQuadro() {
 
 
                             });
-                
+
                 },
                 "Cancelar": function() {
                     $(this).dialog("close");
@@ -846,69 +846,76 @@ function removeText(params) {
 }
 
 //Abre Janela Modal - Criação de URNs para os textos
-function formModalOpen(urn, isEdit, onCloseCallback){
-    
+function formModalOpen(urn, isEdit, onCloseCallback) {
+
     $('#formLegislacao')[0].reset();
-    
+
     var urnAntiga = urn;
-    
+
     $("#modalForm").dialog({
-        resizable: false, 
-        modal:true, 
-        draggable:false, 
-        width: 550, 
-        height:400, 
-        title:'Montagem da URN do Texto',
+        resizable: false,
+        modal: true,
+        draggable: false,
+        width: 550,
+        height: 400,
+        title: 'Montagem da URN do Texto',
         buttons: {
-            "Salvar": function () {
+            "Salvar": function() {
                 $.ajax({
                     url: '/api/urn?' + $('#formLegislacao').serialize(),
                     type: 'GET',
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
-                    success: function(texto) {
+                    
+                }).done(function(texto) {
 
-                        if (textoAtualModal) {
-                            var textoEditado = getTextoByURN(quadro, textoAtualModal.urn);
-                            texto.preambulo = textoEditado.preambulo;
-                            texto.articulacao = textoEditado.articulacao;
-                            texto.articulacaoXML = textoEditado.articulacaoXML;
-                            texto.fecho = textoEditado.fecho;
-                            texto.order = textoEditado.order;
-                            texto.documento = textoEditado.documento;
-                            replaceTexto(quadro, textoAtualModal.urn, texto);
-                            textoAtualModal = texto;
+                    if (textoAtualModal) {
+                        var textoEditado = getTextoByURN(quadro, textoAtualModal.urn);
+                        texto.preambulo = textoEditado.preambulo;
+                        texto.articulacao = textoEditado.articulacao;
+                        texto.articulacaoXML = textoEditado.articulacaoXML;
+                        texto.fecho = textoEditado.fecho;
+                        texto.order = textoEditado.order;
+                        texto.documento = textoEditado.documento;
+                        replaceTexto(quadro, textoAtualModal.urn, texto);
+                        textoAtualModal = texto;
 
-                        } else {
+                    } else {
 
-                            texto.incluidoVisualizacao = true;
-                            textoAtualModal = texto;
+                        texto.incluidoVisualizacao = true;
+                        textoAtualModal = texto;
 
-                            $.each(quadro.colunas, function(icol, coluna) {
+                        $.each(quadro.colunas, function(icol, coluna) {
 
-                                if (coluna.id === colunaAtual) {
+                            if (coluna.id === colunaAtual) {
 
-                                    if (!quadro.colunas[icol].textos) {
-                                        quadro.colunas[icol].textos = [];
-                                    }
-
-                                    quadro.colunas[icol].textos.push(texto);
-
+                                if (!quadro.colunas[icol].textos) {
+                                    quadro.colunas[icol].textos = [];
                                 }
-                            });
-                        }
+
+                                quadro.colunas[icol].textos.push(texto);
+
+                            }
+                        });
+                    }
+                    
+                    if ($("#" + textoAtualModal.urnIdDIV).length === 0) {
                         saveQuadro();
                         $("#modalForm").dialog("close");
-
-                    },
-                    error: function(res) {
-                        alert("Bad thing happend! " + res.statusText);
+                        
+                    } else {
+                        showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN no quadro.");
+                        
                     }
+                    
+
+                }).fail(function() {
+                    showAlertDialog("Falha ao buscar URN");
                 });
             }
         },
         open: function(event, ui) {
-          
+
             if (textoAtualModal) {
                 $("#Categorias").val(textoAtualModal.categorias);
                 $("#Categorias").change();
@@ -928,30 +935,30 @@ function formModalOpen(urn, isEdit, onCloseCallback){
                 $("#dataAssinatura").change();
                 $("#ComponenteDocumento").val(textoAtualModal.componenteDocumento);
                 $("#ComponenteDocumento").change();
-                
+
                 $("#numeroComponente").val(textoAtualModal.numeroComponente);
                 $("#anoComponente").val(textoAtualModal.anoComponente);
                 $("#SiglaColegiado").val(textoAtualModal.siglaColegiado);
                 $("#versao").val(textoAtualModal.versao);
                 $("#versao").change();
                 $("#dataVigente").val(textoAtualModal.dataVigente);
-                
+
                 $("#Evento").val(textoAtualModal.evento);
                 $("#Evento").change();
                 $("#dataEvento").val(textoAtualModal.dataEvento);
             }
         },
-        close: function(event, ui) {           
-          
+        close: function(event, ui) {
+
             if (onCloseCallback) {
                 onCloseCallback();
             }
-            
-            if(textoAtualModal){
-                
+
+            if (textoAtualModal) {
+
                 //Só adiciona um novo texto se não existir uma URN igual
-                if($("#"+textoAtualModal.urnIdDIV).length === 0){
-                    
+                if ($("#" + textoAtualModal.urnIdDIV).length === 0) {
+
                     var urnIdDIVAntiga = parse_divURN(urnAntiga);
 
                     //Modifica o ID do Texto originário
@@ -959,35 +966,35 @@ function formModalOpen(urn, isEdit, onCloseCallback){
                         $("#" + urnIdDIVAntiga).attr("id", textoAtualModal.urnIdDIV);
                         atualizaIdConexoes(urnIdDIVAntiga, textoAtualModal.urnIdDIV);
                         atualizaIdCorrelacao(quadro.id, urnAntiga, textoAtualModal.urn);
-                        
+
                     } else {
-                        $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV); 
+                        $("#URNTEXTONOVO").attr("id", textoAtualModal.urnIdDIV);
                     }
-                    
-                    $("#"+ textoAtualModal.urnIdDIV).attr({urn: textoAtualModal.urn});
-                    
+
+                    $("#" + textoAtualModal.urnIdDIV).attr({urn: textoAtualModal.urn});
+
                     //Adiciona os Endpoints do Plumb na criação do novo texto
-                    addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5],[0, 0.2, 1, 0.5]]);
-                    
+                    addEndpoints(textoAtualModal.urnIdDIV, [[1, 0.2, 1, 0.5], [0, 0.2, 1, 0.5]]);
+
                     //Seta urn ao atributo URN da DIV
-                    $("#"+textoAtualModal.urnIdDIV).attr("urn", textoAtualModal.urn); 
+                    $("#" + textoAtualModal.urnIdDIV).attr("urn", textoAtualModal.urn);
 
                     //Modifica o título do novo texto
-                    $("#"+textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo);
-                    
+                    $("#" + textoAtualModal.urnIdDIV + " h2").html(textoAtualModal.titulo);
+
                     //Modifica o link do lexml
-                    $("#"+textoAtualModal.urnIdDIV + " .linkLexml").attr("href",
-                        "http://www.lexml.gov.br/urn/" + textoAtualModal.urn);
-                    
+                    $("#" + textoAtualModal.urnIdDIV + " .linkLexml").attr("href",
+                            "http://www.lexml.gov.br/urn/" + textoAtualModal.urn);
+
                 } else if (!isEdit) {
-                    $("#URNTEXTONOVO").remove();                    
-                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN.");
+                    $("#URNTEXTONOVO").remove();
+                    showAlertDialog("Não foi possível adicionar o Texto. Já existe um texto com esta URN no quadro.");
                 }
-                
+
             }
-            
-            
-              
+
+
+
         }
     });
 }
@@ -1042,7 +1049,7 @@ jsPlumb.ready(function() {
             if (acao === "remover") {
 
                 $.each(quadro.conexoes, function(index, conn) {
-                    
+
                     if (conexao.sourceId !== conn.sourceId
                             || conexao.targetId !== conn.targetId) {
 

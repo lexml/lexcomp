@@ -100,9 +100,12 @@ public class QuadroComparativoResource {
 
             for (File f : files) {
                 QuadroComparativo qc = QuadroComparativoController.getQuadroComparativoFromFile(f);
-                QuadroComparativo qcEnvio = new QuadroComparativo(qc.getId(), qc.getTitulo());
-                qcEnvio.setDataModificacao2(new Date(f.lastModified()));
-                quadros.add(qcEnvio);
+                
+                if (qc != null) {
+                    QuadroComparativo qcEnvio = new QuadroComparativo(qc.getId(), qc.getTitulo());
+                    qcEnvio.setDataModificacao2(new Date(f.lastModified()));
+                    quadros.add(qcEnvio);
+                }
             }
         }
 
