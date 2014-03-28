@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 import br.gov.camara.quadrocomparativo.model.Coluna;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
-import br.gov.camara.quadrocomparativo.model.RelacaoImpl;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.symbolicobject.Comentario;
 import br.gov.lexml.symbolicobject.Documento;
@@ -24,6 +23,8 @@ import br.gov.lexml.symbolicobject.indexer.Indexer;
 import br.gov.lexml.symbolicobject.table.ColumnSpec;
 import br.gov.lexml.symbolicobject.table.OpcoesVisualizacao;
 import br.gov.lexml.symbolicobject.table.Visualizacao;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 @Path("/visualizacao/")
 public class VisualizacaoResource {
@@ -42,7 +43,27 @@ public class VisualizacaoResource {
                 .getQuadroComparativo(request, idQuadro);
 
         if (qc == null) {
-            return "Falha ao obter o quadro comparativo.";
+            //return "Falha ao obter o quadro comparativo.";
+            throw new WebApplicationException(Response.serverError().entity(
+                    "Falha ao obter o quadro comparativo.").build());
+        
+        } else if (qc.getCorrelacoes() == null || qc.getCorrelacoes().isEmpty()) {
+            throw new WebApplicationException(Response.serverError().entity(
+                    "Não existem correlações a serem visualizadas.").build());
+        
+        } else {
+            boolean hasCorrel = false;
+            for (Correlacao c: qc.getCorrelacoes()) {
+                
+                if (c.getRelacoes() != null && !c.getRelacoes().isEmpty()) {
+                    hasCorrel = true;
+                }
+            }
+            
+            if (!hasCorrel) {
+                throw new WebApplicationException(Response.serverError().entity(
+                    "Não existem correlações a serem visualizadas.").build());
+            }
         }
 
         // monta as colunas nos documentos

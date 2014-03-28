@@ -54,39 +54,38 @@
 
 
 
-                <div id="htmlVisualizacaoServidor">
+                <div id="htmlVisualizacaoServidor" style="display: none;">
 
 		    <!-- INCIO SERVIDOR -->
                     <table class="css-vis-table" border="0" cellspacing="0"> 
                         <tbody>
                             <tr>
-                                <td colspan="2" id="os-29" class="css-vis-texto-obj-simbolico css-vis-os-articulacao"><span>{articulacao}</span></td>
+                                <td colspan="2" id="os-29" class="css-vis-texto-obj-simbolico css-vis-os-articulacao"><span></span></td>
                             </tr>
                             <tr>
-                                <td colspan="2" id="os-31" class="css-vis-texto-obj-simbolico css-vis-os-os_artigo"><span>{art;1}</span></td>
+                                <td colspan="2" id="os-31" class="css-vis-texto-obj-simbolico css-vis-os-os_artigo"><span></span></td>
                             </tr>
                             <tr>
-                                <td colspan="2" id="os-32" class="css-vis-texto-obj-simbolico css-vis-os-os_caput"><span>{cpt}</span></td>
+                                <td colspan="2" id="os-32" class="css-vis-texto-obj-simbolico css-vis-os-os_caput"><span></span></td>
                             </tr>
                             <tr>
                                 <td colspan="2" id="tf-33" class="css-vis-texto-formatado">
-                                    Os <span xlink:href="urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.lexml.gov.br/1.0">incisos I</span> e <span xlink:href="urn:lex:br:federal:lei:1990-03-13;8001!art1_cpt_inc2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.lexml.gov.br/1.0">II do art. 1º da Lei nº 8.001, de 13 de março de 1990</span>, passam a vigorar com a seguinte redação:</td>
-                                <td colspan="2" id="tf-46" class="css-vis-texto-formatado">Esta Lei entra em vigor na data de sua publicação.</td>
+                                </td>
                             </tr>
                             
                             <tr>
                                 <td colspan="1">                                    
                                 </td>
-                                <td colspan="2" class="css-vis-diff"><span>diff</span></td>
+                                <td colspan="2" class="css-vis-diff"><span></span></td>
                             </tr>
                             <tr>
-                                <td colspan="2" id="os-34" class="css-vis-texto-obj-simbolico css-vis-os-os_artigo"><span>{art;2}</span></td>
+                                <td colspan="2" id="os-34" class="css-vis-texto-obj-simbolico css-vis-os-os_artigo"><span></span></td>
                             </tr>
                             <tr>
-                                <td colspan="2" id="os-35" class="css-vis-texto-obj-simbolico css-vis-os-os_caput"><span>{cpt}</span></td>
+                                <td colspan="2" id="os-35" class="css-vis-texto-obj-simbolico css-vis-os-os_caput"><span></span></td>
                             </tr>
                             <tr>
-                                <td colspan="2" id="tf-36" class="css-vis-texto-formatado">Esta Lei entra em vigor na data de sua publicação.</td>
+                                <td colspan="2" id="tf-36" class="css-vis-texto-formatado"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -104,55 +103,11 @@
 
         <div id="dialog-confirm" title="Confirmação">
             <div id="confirm-text"></div>
-        </div>        
-            
-
-        <script>
-            // parametros criados em menu.js
-            var qcid = getURLParameter('qcid');
-            var porcentagem = getURLParameter('porcentagem');
-            
-            function adjustTable(tbl) {
-                //var tbl = document.getElementById(tableId);
-                var row = tbl.rows[0];
-                var maxWidth = $("body").width() / ($(row).find("td").length);
-                /*for ( var i = 0; i < row.childNodes.length; i++ ) {
-                  var width = row.childNodes[i].offsetWidth;
-                  if(width && width > maxWidth) { maxWidth = width; } 
-                }*/
-                for ( var i = 0; i < row.childNodes.length; i++ ) {
-                    if (row.childNodes[i].style) {
-                        row.childNodes[i].style.width = maxWidth + "px"; 
-                    }
-                }
-                
-                $(".css-vis-texto-formatado").width(maxWidth);
-                $(".css-vis-diff-vazio").width(maxWidth/2);
-                $(".css-vis-diff").width(maxWidth);
-                $(".css-vis-empty-right").width(maxWidth/2);
-                
-            }
-            
-            $(document).ready(function() {
-
-                getVisualizacao(qcid, porcentagem, function(tableVisualizacao) {
-                    //var table = $("div").html(tableVisualizacao).find("table:first");
-                    
-                    $("#htmlVisualizacaoServidor").html(tableVisualizacao);
-                    $('#htmlVisualizacaoServidor').show();
-                    
-                    adjustTable($(".css-vis-table").get(0));
-                    
-                    //Encerra loading
-                    $('#loading').hide();
-                    $('#fade').hide();
-
-                });
-
-            });
-            
-        </script>
+        </div>
         
-        
+        <div id="dialog-alert" title="Alerta">
+            <div id="alert-text"></div>
+        </div>
+
     </body>
 </html>
