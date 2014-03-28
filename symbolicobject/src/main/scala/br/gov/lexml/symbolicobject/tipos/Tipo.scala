@@ -76,6 +76,9 @@ object Tipos {
   final val Proveniencia = newTipo("proveniencia","Proveniencia");
   final val ProvenienciaUsuario = newTipo("proveniencia_usuario","Proveniente do Usuário");
   final val ProvenienciaSistema = newTipo("proveniencia_sistema","Proveniente do Sistema");
+  final val Comentario = newTipo("comentario", "Comentário");
+  final val Nota = newTipo("nota", "Nota", Comentario);
+  final val Observacao = newTipo("observacao", "Observação", Comentario);
   //relações
   
   final val Relacao = newTipo("relacao", "Relação")
