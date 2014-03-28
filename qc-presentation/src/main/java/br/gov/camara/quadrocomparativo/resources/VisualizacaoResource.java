@@ -72,13 +72,13 @@ public class VisualizacaoResource {
             List<Documento> documentos = new ArrayList<Documento>();
             for (Texto t : c.getTextos()) {
                 if (t != null) {
-                    if (t.getIncluidoVisualizacao() || true) {
+                    if (t.getIncluidoVisualizacao()) {
                         documentos.add(t.getDocumento());
+                        ColumnSpec cs = new ColumnSpec(c.getTitulo(), documentos);
+                        colunas.add(cs);
                     }
                 }
             }
-            ColumnSpec cs = new ColumnSpec(c.getTitulo(), documentos);
-            colunas.add(cs);
         }
 
         // montando colunas
@@ -105,17 +105,13 @@ public class VisualizacaoResource {
         List<Integer> res = new ArrayList<Integer>();
 
         for (int i = qc.getColunas().size() - 1; i >= 0; i--) {
-            res.add(i);
+        	for (Texto t : qc.getColunas().get(i).getTextos()){
+        		if (t.getIncluidoVisualizacao()){
+        			res.add(i);
+        			break;
+        		}
+        	}
         }
-        /*for (int i = 0; i < qc.getColunas().size(); i++) {
-         if (qc.getColunas().get(i).getColunaPrincipal()) {
-         res.add(i);
-         }
-         }
-
-         if (res.isEmpty()) {
-         res.add(0);
-         }*/
 
         return res;
     }
