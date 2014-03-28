@@ -139,7 +139,7 @@ function print_menu() {
                     </div>');
 
     //formulário da visualização
-    document.write('<div id="dialog-visualizacao" title="Configuração Visualização" style="display: none;">\
+    document.write('<div id="dialog-visualizacao" title="Configuração da visualização" style="display: none;">\
             <form action="" id="formVisualizacao" method="POST">\
                 <table style="width: 100%;">\
                     <tr>\

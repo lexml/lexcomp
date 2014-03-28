@@ -940,7 +940,7 @@ function getStrRotulo(rotulo) {
 
             } else if (rotulo.nomeRole === "par") { //Tratamento Parágrafo
 
-                if (rotulo.classificacao === "unico") {
+                if (rotulo.classificacao && rotulo.classificacao[0] === "unico") {
                     strRotulo += "Parágrafo único. ";
 
                 } else if (rotulo.posicaoRole && rotulo.posicaoRole[0] < 10) {

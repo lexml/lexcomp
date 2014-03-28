@@ -23,7 +23,7 @@ function fortext(cond, func) {
     if (typeof (cond) === "string") {
         var urn = cond;
         cond = function(t) {
-            return t.urn == urn;
+            return t.urn === urn;
         };
     } else {
         // cond nao eh string
@@ -291,7 +291,7 @@ function configuraQuadro() {
                 // ordenando colunas...
                 $.each(quadro.colunas, function(ic, coluna) {
 
-                    if (coluna.id == item) {
+                    if (coluna.id === item) {
                         coluna.order = index;
                     }
 
@@ -336,7 +336,7 @@ function configuraQuadro() {
 
                         $.each(coluna.textos, function(it, texto) {
 
-                            if (texto.urnIdDIV == div_texto.attr("id")) {
+                            if (texto.urnIdDIV === div_texto.attr("id")) {
                                 texto.order = index;
                             }
                         });
@@ -375,7 +375,7 @@ function configuraQuadro() {
             if (textoAtualModal) {
 
 
-                if ($("#" + textoAtualModal.urnIdDIV).length == 0) {
+                if ($("#" + textoAtualModal.urnIdDIV).length === 0) {
 
                     //Cria novo texto para a coluna
                     var novoTextoVazio = htmlTexto(urnTextoNovo, urnTextoNovo, "Novo texto", true);
@@ -769,7 +769,7 @@ function removeColumn(params) {
 
                     $.each(quadro.conexoes, function(icon, conexao) {
 
-                        if (conexao.sourceId != urn && conexao.targetId != urn) {
+                        if (conexao.sourceId !== urn && conexao.targetId !== urn) {
                             //alert(urn + " ---- " + conexao.targetId);
                             conexoes.push(conexao);
                         }
@@ -816,13 +816,13 @@ function removeText(params) {
 
                 var urn = texto.urnIdDIV;
 
-                if (urn != textId) {
+                if (urn !== textId) {
                     textos.push(texto);
                 }
 
             });
 
-            if (coluna.textos.length != textos.length) {
+            if (coluna.textos.length !== textos.length) {
                 coluna.textos = textos;
             }
 
@@ -831,7 +831,7 @@ function removeText(params) {
 
     $.each(quadro.conexoes, function(i, conexao) {
 
-        if (conexao.sourceId != textId && conexao.targetId != textId) {
+        if (conexao.sourceId !== textId && conexao.targetId !== textId) {
             //alert(urn + " ---- " + conexao.targetId);
             conexoes.push(conexao);
         }
@@ -886,18 +886,18 @@ jsPlumb.ready(function() {
 
         var conexoes = [];
 
-        if (conexao && acao != "") {
+        if (conexao && acao !== "") {
 
-            if (acao == "adicionar") {
+            if (acao === "adicionar") {
                 quadro.conexoes.push(conexao);
             }
 
-            if (acao == "remover") {
+            if (acao === "remover") {
 
                 $.each(quadro.conexoes, function(index, conn) {
                     
-                    if (conexao.sourceId != conn.sourceId
-                            || conexao.targetId != conn.targetId) {
+                    if (conexao.sourceId !== conn.sourceId
+                            || conexao.targetId !== conn.targetId) {
 
                         conexoes.push(conn);
                     }
