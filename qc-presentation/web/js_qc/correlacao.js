@@ -280,12 +280,14 @@ function initObjs() {
 
     //Porcentagem Correlações
     $("#slider").slider({
-        value: 10,
+        value: 50,
         min: 10,
         max: 100,
         step: 10,
         slide: function(event, ui) {
             $("#porcentagem").val(ui.value + "%");
+            $("#visualizacao-porcentagem").val(ui.value + "%");
+            $("#sliderVisualizacao").slider("value", ui.value);
         }
     });
     $("#porcentagem").val($("#slider").slider("value") + "%");
