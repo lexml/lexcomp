@@ -128,7 +128,7 @@ function print_menu() {
         <a id="linkConfiguracao" href="#"><img src="images/config_rel.png" border="0" style="height:53px;" class="rollover"/></a>\
         </div>\
         <div id="menuBack" style="display: none;">\
-        <a id="linkBack" href="javascript:history.back();"><img src="images/back.png" title="Retornar à tela de correlações" border="0" style="height:53px;" class="rollover"/></a>\
+        <a id="linkBack" href="javascript:history.back();"><img src="images/back.png" title="Retornar à tela anterior" border="0" style="height:53px;" class="rollover"/></a>\
         </div>\
     	<div id="divLogo" class="logo"><img src="images/icone_lexcomp_50x.png"></div>\
     </div>');
