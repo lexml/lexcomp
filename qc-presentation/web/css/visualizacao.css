@@ -91,12 +91,8 @@ div.css-vis-table-title {
 	font-weight: bold;
 }
 
-/*
-.rotuloContexto:before {
-	content: "[";
+.css-vis-diff-comentario, .css-vis-comentario {
+	font-style: italic;
+	text-align: right;
+	border-top: none;	
 }
-
-.rotuloContexto:after {
-	content: "]";
-}
-*/
