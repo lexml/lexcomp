@@ -10,6 +10,12 @@
 .css-vis-table td {
 	padding: 10px;
         border: 1px solid black;
+        /*
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-top: 1px solid black;
+        */
+        border-bottom: none;
 }
 
 .css-vis-table thead td {
@@ -91,8 +97,16 @@ div.css-vis-table-title {
 	font-weight: bold;
 }
 
-.css-vis-diff-comentario, .css-vis-comentario {
+td.css-vis-diff-comentario {
+	border-top: none;
+	
 	font-style: italic;
 	text-align: right;
-	border-top: none;	
+}
+
+td.css-vis-comentario {
+	border-top: none;
+	
+	font-style: italic;
+	text-align: right;
 }
