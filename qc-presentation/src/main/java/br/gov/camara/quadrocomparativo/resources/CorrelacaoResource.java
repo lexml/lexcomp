@@ -44,7 +44,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/correlacao")
-public class CorrelacaoResource {
+public class CorrelacaoResource extends AbstractResource {
 
     @Context
     HttpServletRequest request; 	//System.out.println("request: "+request.getSession(true).getId());
@@ -58,7 +58,7 @@ public class CorrelacaoResource {
     public Correlacao getCorrelacao(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = getExistingQuadro(qcId);
+        QuadroComparativo qc = getExistingQuadro(qcId, request);
 
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
@@ -96,7 +96,7 @@ public class CorrelacaoResource {
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2,
             @PathParam("alvo") Long alvo) {
 
-        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2, request);
         
         if (correlacao == null) {
             return new ArrayList<Comentario>();
@@ -112,7 +112,7 @@ public class CorrelacaoResource {
             @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
             @PathParam("urn2") String urn2) {
         
-        QuadroComparativo qc = getExistingQuadro(qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid, request);
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
         
         if (correlacao == null) {
@@ -199,7 +199,7 @@ public class CorrelacaoResource {
     public List<Relacao> getRelacoes(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2, request);
 
         if (correlacao == null) {
             return new ArrayList<Relacao>();
@@ -217,7 +217,7 @@ public class CorrelacaoResource {
 
         relacao.setProveniencia(new ProvenienciaUsuarioImpl());
 
-        QuadroComparativo qc = getExistingQuadro(qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid, request);
 
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
@@ -263,7 +263,7 @@ public class CorrelacaoResource {
             @PathParam("qcid") String qcid, @PathParam("urn1") String urn1,
             @PathParam("urn2") String urn2) {
 
-        QuadroComparativo qc = getExistingQuadro(qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid, request);
         Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
 
         if (correlacao == null) {
@@ -301,7 +301,7 @@ public class CorrelacaoResource {
     public ConfiguracaoImpl getConfiguracao(@PathParam("qcid") String qcId,
             @PathParam("urn1") String urn1, @PathParam("urn2") String urn2) {
 
-        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
+        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2, request);
 
         if (correlacao == null) {
             throw new NotFoundException();
@@ -319,7 +319,7 @@ public class CorrelacaoResource {
             @PathParam("urn2") String urn2,
             @PathParam("porcentagem") final int slider) {
 
-        QuadroComparativo qc = getExistingQuadro(qcid);
+        QuadroComparativo qc = getExistingQuadro(qcid, request);
 
         Documento leftDoc = qc.getTexto(urn1).getDocumento();
         Documento rightDoc = qc.getTexto(urn2).getDocumento();
@@ -360,40 +360,6 @@ public class CorrelacaoResource {
         }
 
         return Response.ok().build();
-    }
-
-    private Correlacao getExistingCorrelacao(String qcId, String urn1, String urn2) {
-        
-        QuadroComparativo qc = getExistingQuadro(qcId);
-
-        Correlacao correlacao = qc.getCorrelacao(urn1, urn2);
-
-        if (correlacao == null) {
-            throw new WebApplicationException(Status.NOT_FOUND);
-        }
-        
-        return correlacao;
-    }
-
-    private QuadroComparativo getExistingQuadro(String qcId) {
-        QuadroComparativo qc = QuadroComparativoController.getQuadroComparativo(request, qcId);
-
-        if (qc == null) {
-            throw new WebApplicationException(Status.NOT_FOUND);
-        }
-        
-        return qc;
-    }
-
-    private Relacao getExistingRelacao(String qcId, String urn1, String urn2, Long relacaoId) {
-        Correlacao correlacao = getExistingCorrelacao(qcId, urn1, urn2);
-        Relacao relacao = correlacao.getRelacao(relacaoId);
-        
-        if (relacao == null) {
-            throw new WebApplicationException(Status.NOT_FOUND);
-        }
-        
-        return relacao;
     }
 
 }

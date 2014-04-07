@@ -37,7 +37,7 @@ import br.gov.lexml.symbolicobject.TextoPuro;
 	@JsonSubTypes.Type(value=TextoPuroImpl.class,name="textoPuro"),
 	@JsonSubTypes.Type(value=TextoFormatadoImpl.class,name="textoFormatado")
 })
-abstract class ObjetoSimbolicoImpl extends IdentificavelImpl implements ObjetoSimbolico, Serializable {
+public abstract class ObjetoSimbolicoImpl extends IdentificavelImpl implements ObjetoSimbolico, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

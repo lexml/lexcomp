@@ -277,6 +277,20 @@ function initObjs() {
             editaComentario(id);
         }
     });
+    
+    $("#divMenuContexto .linkEditaTexto").click(function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        if (objMenuContextoAtual) {
+            var id = objMenuContextoAtual.replace("objA_", "").replace("objB_", "");
+            var urn = objMenuContextoAtual.indexOf("objA") >= 0 ? urn1 : urn2;
+            var idObj = objMenuContextoAtual;
+            
+            editaTexto(urn, id, $("#" + objMenuContextoAtual).html(), function (texto) {
+                $("#" + idObj).html(texto);
+            });
+        }
+    });
 
     //Porcentagem Correlações
     $("#slider").slider({
@@ -729,6 +743,44 @@ function editaComentario(alvo) {
 
 }
 
+function editaTexto(urn, objId, texto, callback) {
+
+    $("#dialog-texto").dialog({
+        modal: true,
+        draggable: false,
+        width: 600, height: 320,
+        buttons: {
+            "Salvar": function() {
+                _this = $(this);
+
+                var novo_texto = $("#dialog-texto .texto").val();
+
+                if (!novo_texto) {
+                    // alert campo obrigatorio
+                    showAlertDialog("O campo \"texto\" é obrigatório.");
+                    return;
+                }
+
+                saveObjetoSimbolico(qcid, urn, objId, novo_texto, function() {
+                    if (callback) {
+                        callback(novo_texto);
+                    }
+                    _this.dialog("close");
+                });
+            },
+            "Cancelar": function() {
+                $(this).dialog("close");
+            }
+        },
+        open: function() {
+
+            //$("#dialog-texto").attr("comentarioId", comentario.id);
+            $("#dialog-texto .texto").val(texto);
+        }
+    });
+
+}
+
 function editaTipoRelacao(src, relacao_id) {
 
     var relacao;
@@ -870,9 +922,8 @@ function printObjetoSimbolico(obj, rotulo, coluna) {
             var novoId = 'obj' + coluna + "_" + obj.id;
             strDiv = '<div class="objTexto objDocumento" id=' + novoId + '>';
             strDiv += obj.representacao;
-            strDiv += '<div class="divComentario">\
-             <a href="#" class="linkEditaComentario"><img src="images/comentario.png" width="16"/></a>\
-             </div>';
+            strDiv += '</div><div class="divComentario">\
+             <a href="#" class="linkEditaComentario"><img src="images/comentario.png" width="16"/></a>';
         }
 
         if (obj.posicoes) {
@@ -1225,10 +1276,32 @@ function saveRelacao(qcid, urn1, urn2, relacao, callback) {
 
     }).fail(function() {
         //alert("Bad thing happend! " + res.statusText);
-    }).always(function() {
+    }).always(function(res) {
         if (callback) {
-            callback();
+            callback(res);
         }
+    });
+
+}
+
+function saveObjetoSimbolico(qcid, urn, objId, novo_texto, callback) {
+
+    $.ajax({
+        url: '/api/texto/objeto-simbolico/' + qcid + '/' + urn + '/' + objId,
+        type: 'POST',
+        //data: JSON.stringify(novo_texto),
+        data: novo_texto,
+        dataType: "html",
+        contentType: "application/json; charset=utf-8"
+
+    }).done(function(res) {
+        if (callback) {
+            callback(res);
+        }
+    }).fail(function() {
+        showAlertDialog("Não foi possível alterar o texto.");
+    }).always(function() {
+        
     });
 
 }

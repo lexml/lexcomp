@@ -17,6 +17,7 @@ import br.gov.camara.quadrocomparativo.lexml.ConfiguracaoUrn;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import br.gov.lexml.symbolicobject.Posicao;
 
 
 
@@ -54,6 +55,7 @@ public class Texto implements Serializable {
     private boolean incluidoVisualizacao;
     @XmlTransient
     private boolean documentoParseado;
+    private boolean editado = false;
 
     /**
      * Texto não parseado
@@ -522,6 +524,14 @@ public class Texto implements Serializable {
     public void setIncluidoVisualizacao(boolean incluidoVisualizacao) {
         this.incluidoVisualizacao = incluidoVisualizacao;
     }
+
+    public boolean isEditado() {
+        return editado;
+    }
+
+    public void setEditado(boolean editado) {
+        this.editado = editado;
+    }
     
     public void geraTitulo() {
              
@@ -553,12 +563,6 @@ public class Texto implements Serializable {
               e.printStackTrace();
           }
       }
-      
-       
-       
-       
-       
-      
        
       Versao versao = ConfiguracaoUrn.getInstance().getVersao(getVersao());
       if(versao!=null){
@@ -620,6 +624,39 @@ public class Texto implements Serializable {
     @Override
     public String toString() {
     	return ToStringBuilder.reflectionToString(this);
+    }
+    
+    public ObjetoSimbolicoImpl getObjetoSimbolico(Long id) {
+        
+        if (documento != null) {
+            
+            return getObjetoSimbolico((ObjetoSimbolicoImpl) documento.getObjetoSimbolico(), id);
+        }
+        
+        return null;
+    }
+    
+    private ObjetoSimbolicoImpl getObjetoSimbolico(ObjetoSimbolicoImpl obj, Long id) {
+        
+        if (obj != null) {
+            
+            if (obj.getId() == id) {
+                return obj;
+            
+            } else if (obj instanceof ObjetoSimbolicoComplexoImpl) {
+                ObjetoSimbolicoComplexoImpl objComplexo = (ObjetoSimbolicoComplexoImpl) obj;
+                
+                for (Posicao pos : objComplexo.getPosicoes()) {
+                    ObjetoSimbolicoImpl _obj = getObjetoSimbolico(((PosicaoImpl) pos).getObjetoSimbolicoImpl(), id);
+                    
+                    if (_obj != null) {
+                        return _obj;
+                    }
+                }
+            }
+        }
+        
+        return null;
     }
 }  
     

@@ -33,6 +33,8 @@ import br.gov.camara.quadrocomparativo.lexml.LexmlFile;
 import br.gov.camara.quadrocomparativo.model.Correlacao;
 import br.gov.camara.quadrocomparativo.model.DocumentoImpl;
 import br.gov.camara.quadrocomparativo.model.QuadroComparativo;
+import br.gov.camara.quadrocomparativo.model.ObjetoSimbolicoImpl;
+import br.gov.camara.quadrocomparativo.model.ObjetoSimbolicoSimplesImpl;
 import br.gov.camara.quadrocomparativo.model.Texto;
 import br.gov.lexml.parser.pl.ArticulacaoParser;
 import br.gov.lexml.renderer.plaintext.RendererPlainText;
@@ -50,7 +52,7 @@ import com.sun.jersey.api.NotFoundException;
 // text, XML and HTML. 
 // The browser requests per default the HTML MIME type.
 @Path("/texto")
-public class TextoResource {
+public class TextoResource extends AbstractResource {
 
     @Context
     HttpServletRequest request;
@@ -198,6 +200,30 @@ public class TextoResource {
         }
 
         return Response.status(Status.CREATED).entity(texto).build();
+    }
+    
+    @POST
+    @Path("/objeto-simbolico/{qcid}/{urn}/{objId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response saveObjetoSimbolico(String novoTexto, @PathParam("qcid") String qcId,
+            @PathParam("urn") String urn, @PathParam("objId") Long objId) {
+
+        QuadroComparativo qc = getExistingQuadro(qcId, request);
+        
+        Texto texto = qc.getTexto(urn);
+        
+        ObjetoSimbolicoImpl obj = texto.getObjetoSimbolico(objId);
+        
+        if (obj instanceof ObjetoSimbolicoSimplesImpl) {
+            ((ObjetoSimbolicoSimplesImpl) obj).setRepresentacao(novoTexto);
+            texto.setEditado(true);
+        }
+        
+        if (!QuadroComparativoController.saveQuadroComparativo(request, qc)) {
+            throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
+        }
+
+        return Response.status(Status.CREATED).build();
     }
 
     /*
