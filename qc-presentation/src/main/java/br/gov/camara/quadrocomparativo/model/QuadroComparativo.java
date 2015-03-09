@@ -244,8 +244,8 @@ public class QuadroComparativo implements Serializable, IdSource {
             for (Correlacao cor : getCorrelacoes()) {
 
                 if (cor.getUrn1() != null && cor.getUrn2() != null) {
-                    String urn1 = cor.getUrn1().replaceAll("\\.|;|\\:|@", "_");
-                    String urn2 = cor.getUrn2().replaceAll("\\.|;|\\:|@", "_");
+                    String urn1 = cor.getUrn1().replaceAll("\\-|\\.|;|\\:|@", "_");
+                    String urn2 = cor.getUrn2().replaceAll("\\-|\\.|;|\\:|@", "_");
                     
                     if (conexao.getSourceId().equals(urn1) && conexao.getTargetId().equals(urn2)
                         || conexao.getSourceId().equals(urn2) && conexao.getTargetId().equals(urn1)) {
