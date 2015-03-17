@@ -549,19 +549,11 @@ public class Texto implements Serializable {
       
       
       if(getDataAssinatura()!=null){
-          try {               
-             String dataAssinatura  = getDataAssinatura();
-             dataAssinatura = dataAssinatura.replaceAll("[^a-zA-Z0-9]", "/");
-             novoTitulo.append("/");             
-             novoTitulo.append(dataAssinatura.substring(0, 4));
-             novoTitulo.append("<br><p class=subtitulo>");
-             
-             //System.out.println("#######"+dataAssinatura.toString());
-             //Date data = new SimpleDateFormat("dd/MM/yyyy).parse(dataAssinatura);              
-             //novoTitulo.append(" " + data.toString());
-          } catch (Exception e) {              
-              e.printStackTrace();
-          }
+          String dataAssinatura  = getDataAssinatura();
+          dataAssinatura = dataAssinatura.replaceAll("[^a-zA-Z0-9]", "/");
+          novoTitulo.append("/");
+          novoTitulo.append(dataAssinatura.substring(0, Math.min(4, dataAssinatura.length())));
+          novoTitulo.append("<br><p class=subtitulo>");
       }
        
       Versao versao = ConfiguracaoUrn.getInstance().getVersao(getVersao());
