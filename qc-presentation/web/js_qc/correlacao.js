@@ -1023,7 +1023,7 @@ function getStrRotulo(rotulo) {
                 strRotulo += "Seção " + romano(rotulo.posicaoRole[0]);
 
             } else if (rotulo.nomeRole === "sub") {
-                strRotulo = "<span class='objRotuloagregador'>";
+                strRotulo = "<span class='objRotulo agregador'>";
                 strRotulo += "Subseção " + romano(rotulo.posicaoRole[0]);
 
             } else if (rotulo.nomeRole === "prt") {
