@@ -1,5 +1,7 @@
 package br.gov.lexml.symbolicobject.indexer
 
+import scala.language.postfixOps
+
 import scala.xml.NodeSeq
 import scala.xml.Text
 import br.gov.lexml.{symbolicobject => S}

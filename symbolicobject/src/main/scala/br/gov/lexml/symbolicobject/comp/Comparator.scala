@@ -1,5 +1,7 @@
 package br.gov.lexml.symbolicobject.comp
 
+import scala.language.postfixOps
+
 import scala.Option.option2Iterable
 import scala.collection.mutable.ArrayBuilder
 import scala.collection.mutable.{Map => MMap}

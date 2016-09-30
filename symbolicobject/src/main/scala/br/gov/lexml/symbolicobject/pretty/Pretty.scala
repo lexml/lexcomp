@@ -1,5 +1,8 @@
 package br.gov.lexml.symbolicobject.pretty
 
+import scala.language.postfixOps
+import scala.language.implicitConversions
+
 // --------------------------------------------------------------------------
 // --                         Pretty Print Library                         --
 // --------------------------------------------------------------------------

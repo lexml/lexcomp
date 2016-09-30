@@ -22,7 +22,6 @@ import scala.xml.Text
 import br.gov.lexml.parser.pl.profile.ProjetoDeLeiDoSenadoNoSenado
 import br.gov.lexml.symbolicobject.tipos.STipo
 import br.gov.lexml.symbolicobject.impl.RotuloRole
-import scala.xml._
 import br.gov.lexml.{ symbolicobject => S }
 import br.gov.lexml.symbolicobject.{ tipos => T }
 import java.lang.{ Character => C }

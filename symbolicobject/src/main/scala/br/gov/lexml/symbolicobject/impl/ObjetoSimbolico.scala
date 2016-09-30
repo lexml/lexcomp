@@ -1,5 +1,8 @@
 package br.gov.lexml.symbolicobject.impl
 
+import scala.language.higherKinds
+import scala.language.implicitConversions
+
 import java.io.StringReader
 import scala.collection.{ JavaConversions => JC }
 import br.gov.lexml.{ symbolicobject => I }

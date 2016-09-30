@@ -4,9 +4,11 @@
 *.jar
 *.war
 *.ear
+*.swp
 
 .settings
 .classpath
 .project
 .cache
 target
+

@@ -9,13 +9,14 @@ import Rewriter.Term
 import javax.xml.parsers.DocumentBuilderFactory
 import org.w3c.dom.ls.DOMImplementationLS
 import org.w3c.dom.DocumentFragment
+import scala.collection.immutable.Seq
 
 abstract sealed class WrappedXML[T <: WrappedXML[T]] extends Rewritable {
   type Term = Any
   final override def arity = 1
-  final override def deconstruct : Seq[Term] = asText
+  final override def deconstruct = asText
   
-  final override def reconstruct (components : Array[Term]) : Term = {
+  final override def reconstruct (components : Seq[Any]) : Any = {
     val x = buildXMLString(components(0).asInstanceOf[String])
     val e = XML.loadString(x)
     buildFromParsedElem(e)           

@@ -1,5 +1,8 @@
 package br.gov.lexml.symbolicobject
 
+import scala.language.higherKinds
+import scala.language.implicitConversions
+
 import java.util.{List => JList, Set => JSet}
 import java.lang.{Long => JLong, Integer => JInteger}
 

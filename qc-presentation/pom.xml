@@ -1,50 +1,53 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>br.gov.lexml</groupId>
-		<artifactId>lexcomp</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../</relativePath>
-	</parent>
-
+    <parent>
+        <groupId>br.gov.lexml</groupId>
+        <artifactId>lexcomp</artifactId>
+        <version>1.2.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
     <artifactId>qc-presentation</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>${project.parent.version}</version>
     <packaging>jar</packaging>
-    
-    
+    <properties>
+        <!-- lexml external repo deps -->
+	<lexml.proxy.vole.version>0.0.2</lexml.proxy.vole.version>
 
-	<scm>
-		<url>https://github.com/lexml/lexcomp/${project.artifactId}</url>
-		<developerConnection>scm:git:https://github.com/lexml/lexcomp/${project.artifactId}.git</developerConnection>
-		<connection>scm:git:https://github.com/lexml/lexcomp/${project.artifactId}.git</connection>
-		<tag>HEAD</tag>
-	</scm>
-	
-	<repositories>
-		<repository>
-			<id>GitHub Repository</id>
-			<url>https://raw.github.com/lexml/mvn-repo/master</url>
-			<releases>
-      			<enabled>true</enabled>
-    		</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
- 
- 		<repository>
+	<!-- jetty version -->
+	<jetty.embedded.version>6.1.26</jetty.embedded.version>
+
+	<!-- jersey versions -->
+	<jersey.bundle.version>1.19.2</jersey.bundle.version>
+	<jersey.server.version>1.19.2</jersey.server.version>
+	<jersey.json.version>1.19.2</jersey.json.version>
+
+    </properties>
+    <scm>
+        <url>https://github.com/lexml/lexcomp/${project.artifactId}</url>
+        <developerConnection>scm:git:https://github.com/lexml/lexcomp/${project.artifactId}.git</developerConnection>
+        <connection>scm:git:https://github.com/lexml/lexcomp/${project.artifactId}.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+    <repositories>
+        <repository>
+            <id>GitHub Repository</id>
+            <url>https://raw.github.com/lexml/mvn-repo/master</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
             <id>googlecode-proxy-autodetect</id>
             <url>https://me-ceap-maven.googlecode.com/svn/maven</url>
-			<releases>
-      			<enabled>true</enabled>
-    		</releases>
-        </repository>		
-	</repositories>
-	
-
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
     <build>
         <resources>
             <resource>
@@ -64,36 +67,31 @@
                 </excludes>
             </resource>
             <resource>
-            	<directory>${basedir}/src/main/resources</directory>
-            	<includes>
-            		<include>**/*</include>
-            	</includes>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
             </resource>
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
             </plugin>
             <plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-source-plugin</artifactId>
-			  <executions>
-			    <execution>
-			      <id>attach-sources</id>
-			      <goals>
-			        <goal>jar</goal>
-			      </goals>
-			    </execution>
-			  </executions>
-			</plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
@@ -121,7 +119,6 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.8.0</version>
                 <executions>
                     <execution>
                         <id>jaxb2-configuracao-urn</id>
@@ -132,23 +129,20 @@
                             <generateDirectory>${project.build.directory}/generated-sources/xjc-configuracaourn</generateDirectory>
                         </configuration>
                         <goals>
-                            <goal>generate</goal>                           
-                        </goals>                        
-                    </execution> 
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
                 </executions>
-
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-       <!--  <dependency>
+        <!--  <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>javafx</artifactId>
             <version>2.0</version>
@@ -158,7 +152,7 @@
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty-embedded</artifactId>
-            <version>6.1.26</version>
+	    <version>${jetty.embedded.version}</version>
         </dependency>
         <!--dependency>
             <groupId>com.sun.jersey</groupId>
@@ -178,27 +172,26 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-bundle</artifactId>
-            <version>1.17.1</version>
+	    <version>${jersey.bundle.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>1.14</version>
+	    <version>${jersey.server.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-            <version>1.14</version>
+	    <version>${jersey.json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.7.1</version>
+            <version>1.9.2</version>
         </dependency>
         <dependency>
             <groupId>br.gov.lexml</groupId>
             <artifactId>symbolicobject</artifactId>
-            <version>0.0.6-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>jdom</groupId>
@@ -208,47 +201,37 @@
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.8.3</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>1.4</version>
         </dependency>
         <dependency>
             <groupId>br.gov.lexml</groupId>
             <artifactId>lexml-renderer-rtf</artifactId>
-            <version>0.3.5</version>
         </dependency>
         <dependency>
-        	<groupId>commons-lang</groupId>
-        	<artifactId>commons-lang</artifactId>
-        	<version>2.6</version>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.1</version>
         </dependency>
         <dependency>
             <groupId>org.scalaz</groupId>
-            <artifactId>scalaz-core_2.10</artifactId>
-            <version>7.0.0</version>
+            <artifactId>scalaz-core_${scala.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>br.gov.lexml.parser.pl</groupId>
             <artifactId>lexml-parser-projeto-lei</artifactId>
-            <version>1.9.0</version>
         </dependency>
-        
         <dependency>
-			<groupId>br.gov.lexml.external</groupId>
-    		<artifactId>proxy-vole-lexml</artifactId>
-    		<version>0.0.2</version>
-    	</dependency>
-        
+            <groupId>br.gov.lexml.external</groupId>
+            <artifactId>proxy-vole-lexml</artifactId>
+            <version>${lexml.proxy.vole.version}</version>
+        </dependency>
     </dependencies>
-    
     <profiles>
         <profile>
             <id>javafx</id>
