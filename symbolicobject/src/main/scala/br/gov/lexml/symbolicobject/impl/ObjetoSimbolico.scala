@@ -112,8 +112,8 @@ abstract sealed class ObjetoSimbolico[+A] extends I.ObjetoSimbolico with Tipado 
   val data: A
   import Strategies._
 
-  def makeStream[T]: ObjetoSimbolico[T] => Stream[ObjetoSimbolico[T]] = collects {
-    case o: ObjetoSimbolico[T] => o
+  def makeStream : Any => Stream[ObjetoSimbolico[A]] = collects {
+    case o: ObjetoSimbolico[A] => o
   }
 
   final def toStream: Stream[ObjetoSimbolico[A]] = makeStream(this)
@@ -121,6 +121,15 @@ abstract sealed class ObjetoSimbolico[+A] extends I.ObjetoSimbolico with Tipado 
 
   def /(rs: RotuloSelector): Query[A] = Query(this, IndexedSeq(rs))
   def changeContext[B](f: ObjetoSimbolico[A] => B): ObjetoSimbolico[B]
+
+  def fold[R](
+        f : (Caminho,Stream[R],ObjetoSimbolico[A]) => R,
+        caminho : Caminho = Caminho()) : R = {
+    f(caminho,Stream(),this)
+  }
+  
+  def childrenSimples : Stream[ObjetoSimbolicoSimples[A]] = Stream()
+
 }
 
 object ObjetoSimbolico {
@@ -129,6 +138,8 @@ object ObjetoSimbolico {
     case os: I.ObjetoSimbolicoSimples => ObjetoSimbolicoSimples.fromObjetoSimbolicoSimples(os)
   }
 }
+
+final case class CaminhoData[+T](caminho : Caminho, data : T)
 
 final case class Posicao[+A](rotulo: Rotulo, objeto: ObjetoSimbolico[A]) extends I.Posicao with Attributable {
   override def getRotulo() = rotulo
@@ -205,12 +216,12 @@ object Rotulo {
       case _ => None
     }
   }
-  
+
   def renderRotuloNormal(r: Rotulo) : String = {
     r match {
       case RotuloOrdenado("texto",n) => "seg. " + n
-      case _ => toRotuloLexml(r).flatMap(LexmlRenderer.renderRotulo).getOrElse("") 
-    }    
+      case _ => toRotuloLexml(r).flatMap(LexmlRenderer.renderRotulo).getOrElse("")
+    }
   }
 }
 
@@ -343,7 +354,7 @@ trait WithProperties[+A] {
   def setProperties(props : Map[String,String]) : A
   final def updateProperties(f : Map[String,String] => Map[String,String]) : A =
     setProperties(f(properties))
-  final def setProperty(key : String, value : String) = 
+  final def setProperty(key : String, value : String) =
     updateProperties { _ + (key -> value)}
   final def getProperty(key : String) = properties.get(key)
   final def clearProperty(key : String) = updateProperties { _ - key }
@@ -354,13 +365,13 @@ trait WithProperties[+A] {
  * Todos excetos os textos
  */
 final case class ObjetoSimbolicoComplexo[+A](
-    id: SymbolicObjectId, 
-    tipo: STipo, 
-    data: A, 
-    posicoes: IndexedSeq[Posicao[A]] = IndexedSeq(), 
+    id: SymbolicObjectId,
+    tipo: STipo,
+    data: A,
+    posicoes: IndexedSeq[Posicao[A]] = IndexedSeq(),
     override val properties : Map[String,String] = Map()
     ) extends ObjetoSimbolico[A] with I.ObjetoSimbolicoComplexo with WithProperties[ObjetoSimbolicoComplexo[A]] {
-  
+
   lazy val objMap: Map[Rotulo, List[ObjetoSimbolico[A]]] = posicoes.groupBy(_.rotulo).mapValues(a => a.toList.map(_.objeto))
   lazy val javaPosicoes = JC.seqAsJavaList(posicoes: Seq[I.Posicao])
   override def getPosicoes() = javaPosicoes
@@ -370,8 +381,21 @@ final case class ObjetoSimbolicoComplexo[+A](
     tipo.nomeTipo :: ("[" + id + "](") :: (if (posicoes.isEmpty) { empty } else { linebreak }) :: (text(data.toString)) :: subels
   }
   override def changeContext[B](f: ObjetoSimbolico[A] => B): ObjetoSimbolico[B] =
-    copy(data = f(this), posicoes = posicoes.map(_.changeContext(f)))  
+    copy(data = f(this), posicoes = posicoes.map(_.changeContext(f)))
   override def setProperties(m : Map[String,String]) = copy(properties = m)
+
+  override def fold[R](
+     f : (Caminho,Stream[R],ObjetoSimbolico[A]) => R,
+     caminho : Caminho = Caminho()) : R = {
+    val pl = for {
+        p <- posicoes.reverse.to[Stream]
+        r <- p.objetoSimbolico.map(_.fold(f,caminho + p.rotulo))
+    } yield { r }
+    f(caminho,pl,this)
+  }
+
+  override def childrenSimples : Stream[ObjetoSimbolicoSimples[A]] =
+   posicoes.collect { case Posicao(_,o : ObjetoSimbolicoSimples[A]) => o }.to[Stream]
 }
 
 object ObjetoSimbolicoComplexo {
@@ -393,7 +417,7 @@ object ObjetoSimbolicoSimples {
   def fromObjetoSimbolicoSimples(os: I.ObjetoSimbolicoSimples): ObjetoSimbolicoSimples[Unit] = os match {
     case tt: I.TextoFormatado => TextoFormatado.fromTextoFormatado(tt)
     case tp: I.TextoPuro => TextoPuro.fromTextoPuro(tp)
-    case o : I.Omissis => Omissis.fromOmissis(o)    
+    case o : I.Omissis => Omissis.fromOmissis(o)
   }
 }
 
@@ -433,9 +457,9 @@ object TextoPuro {
 final case class Omissis[+A](id: SymbolicObjectId, data: A) extends ObjetoSimbolicoSimples[A] with I.TextoPuro {
   override val tipo = T.Omissis
   override def getRepresentacao() = "(...)"
-  override def getTexto() = "..."  
+  override def getTexto() = "..."
   override lazy val pretty = (s"Omissis[${id}]" : P.Doc)
-  
+
   override def changeContext[B](f: ObjetoSimbolico[A] => B): ObjetoSimbolico[B] = copy(data = f(this))
 }
 
@@ -544,7 +568,7 @@ object Relacao {
     case Tipos.RelacaoAusenteNoAlvo => RelacaoAusenteNoAlvo(r.getId, r.getOrigem.iterator().next(), r.getAlvo.iterator().next(),
       Proveniencia.fromProveniencia(r.getProveniencia), ())
     case Tipos.RelacaoDiferenca => RelacaoDiferenca(r.getId, r.getOrigem.iterator().next(), r.getAlvo.iterator().next(), "diff",
-      Proveniencia.fromProveniencia(r.getProveniencia), ()) //FIXME: diff 
+      Proveniencia.fromProveniencia(r.getProveniencia), ()) //FIXME: diff
     case Tipos.RelacaoFusao => RelacaoFusao(r.getId, toScala(r.getOrigem()), r.getAlvo.iterator().next(),
       Proveniencia.fromProveniencia(r.getProveniencia), ())
     case Tipos.RelacaoDivisao => RelacaoDivisao(r.getId, r.getOrigem().iterator().next(), toScala(r.getAlvo),
@@ -661,9 +685,9 @@ final case class Caminho(rotulos: IndexedSeq[Rotulo] = IndexedSeq()) {
       case _ => false
     })
     l1 match {
-      case h :: t => (t.reverse.flatMap(Rotulo.render).mkString(", ").trim,Rotulo.renderRotuloNormal(h)) 
+      case h :: t => (t.reverse.flatMap(Rotulo.render).mkString(", ").trim,Rotulo.renderRotuloNormal(h))
       case Nil => ("","")
-    }    
+    }
   }
 }
 
@@ -755,4 +779,3 @@ final case class RSFromRole(roleName: String) extends RotuloSelector {
     case _ => false
   }
 }
-
