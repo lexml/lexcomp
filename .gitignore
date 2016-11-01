@@ -11,4 +11,5 @@
 .project
 .cache
 target
-
+**/pom.xml.releaseBackup
+**/release.properties
