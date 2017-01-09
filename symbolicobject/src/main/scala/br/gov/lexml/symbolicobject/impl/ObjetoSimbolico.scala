@@ -1,42 +1,16 @@
 package br.gov.lexml.symbolicobject.impl
 
-import scala.language.higherKinds
-import scala.language.implicitConversions
-
-import java.io.StringReader
-import scala.collection.{ JavaConversions => JC }
-import br.gov.lexml.{ symbolicobject => I }
-import br.gov.lexml.symbolicobject.{ pretty => P }
-import br.gov.lexml.symbolicobject.pretty.Doc.braces
-import br.gov.lexml.symbolicobject.pretty.Doc.brackets
-import br.gov.lexml.symbolicobject.pretty.Doc.empty
-import br.gov.lexml.symbolicobject.pretty.Doc.fillSep
-import br.gov.lexml.symbolicobject.pretty.Doc.hang
-import br.gov.lexml.symbolicobject.pretty.Doc.hsep
-import br.gov.lexml.symbolicobject.pretty.Doc.indent
-import br.gov.lexml.symbolicobject.pretty.Doc.linebreak
-import br.gov.lexml.symbolicobject.pretty.Doc.list
-import br.gov.lexml.symbolicobject.pretty.Doc.punctuate
-import br.gov.lexml.symbolicobject.pretty.Doc.semiBraces
-import br.gov.lexml.symbolicobject.pretty.Doc.sep
-import br.gov.lexml.symbolicobject.pretty.Doc.text
-import br.gov.lexml.symbolicobject.pretty.Doc.toDoc
-import br.gov.lexml.symbolicobject.tipos.STipo
-import br.gov.lexml.symbolicobject.tipos.{ Tipos => T }
-import br.gov.lexml.symbolicobject.tipos.Tipos
-import javax.xml.parsers.DocumentBuilderFactory
-import org.kiama.attribution.Attributable
-import br.gov.lexml.symbolicobject.xml._
-import org.w3c.dom.DocumentFragment
-import org.w3c.dom.ls.DOMImplementationLS
-import scala.xml.NodeSeq
-import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
-import scala.xml.XML
-import scala.xml.Elem
 import br.gov.lexml.parser.pl.output.LexmlRenderer
-import java.util.Collections
-import scala.collection.JavaConversions
-import scala.collection.JavaConverters
+import br.gov.lexml.symbolicobject.pretty.Doc.toDoc
+import br.gov.lexml.symbolicobject.tipos.{STipo, Tipos}
+import br.gov.lexml.symbolicobject.xml.WrappedNodeSeq
+import br.gov.lexml.symbolicobject.{pretty => P}
+import br.gov.lexml.{symbolicobject => I}
+import org.kiama.attribution.Attributable
+
+import scala.collection.{JavaConverters, JavaConversions => JC}
+import scala.language.{higherKinds, implicitConversions}
+import scala.xml.{Elem, NodeSeq, XML}
 
 trait PrettyPrintable {
   val pretty: P.Doc
@@ -75,7 +49,6 @@ object Strategies {
 }
 
 object Attributes {
-  import org.kiama._
   import org.kiama.attribution.Attribution._
 
   val caminho: Attributable => Caminho = childAttr {
@@ -226,35 +199,28 @@ object Rotulo {
 }
 
 object NumberRenderer {
-  def ordinal(n: Int) =
+  def ordinal(n: Int): String =
     if (n < 10) {
       n.toString + "º"
     } else {
       n.toString
     }
 
-  def alfa(n: Int) = {
-    val d0 = n % 26
-    val n1 = n / 26
-    def h(x: Int): List[Int] =
-      if (x == 0) { List() }
-      else if (x > 26) { (x % 26) :: h(x / 26) }
-      else { List(x) }
-    val tl = h(n1).reverse.dropWhile(_ == 0)
-    val (first :: rest) = tl :+ d0
-    val ll = if (rest.isEmpty) { first :: rest } else { (first - 1) :: rest }
-    ll.map(n => ('a'.toInt + n).toChar).mkString("")
+  def alfa(n: Int): String = {
+    val q = (n - 1) / 26
+    val r = (n - 1) % 26
+    val letter = ('a'.toInt + r).toChar.toString
+    if (n < 1) "" else if (q == 0) letter else alfa(q) + letter
   }
 
-  def alfaUpper(n: Int) = alfa(n).toUpperCase
-
+  def alfaUpper(n: Int): String = alfa(n).toUpperCase
 }
 
 /**
  *
  */
 final case class RotuloRole(nomeRole: String) extends Rotulo with I.RoleRotulo {
-  override val tipo = T.RotuloRole
+  override val tipo = Tipos.RotuloRole
   override final def getNomeRole() = nomeRole
   override final def getRepresentacao() = "{" + nomeRole + "}"
   override lazy val pretty = {
@@ -279,7 +245,7 @@ object RotuloRole {
  *
  */
 final case class RotuloOrdenado(nomeRole: String, posicaoRole: Int*) extends Rotulo with I.RotuloOrdenado {
-  override val tipo = T.RotuloOrdenado
+  override val tipo = Tipos.RotuloOrdenado
   override final def getNomeRole() = nomeRole
   override def getPosicaoRole() = JC.seqAsJavaList(posicaoRole.map(new java.lang.Integer(_)))
   override final def getRepresentacao() = "{" + nomeRole + posicaoRole.mkString("[", ",", "]") + "}"
@@ -327,7 +293,7 @@ object RotuloOrdenado {
  *
  */
 final case class RotuloClassificado(nomeRole: String, classificacao: String*) extends Rotulo with I.RotuloClassificado {
-  override val tipo = T.RotuloClassificado
+  override val tipo = Tipos.RotuloClassificado
   override def getNomeRole() = nomeRole
   override def getClassificacao() = JC.seqAsJavaList(classificacao)
   override def getRepresentacao() = (nomeRole +: classificacao).mkString(";")
@@ -422,7 +388,7 @@ object ObjetoSimbolicoSimples {
 }
 
 final case class TextoFormatado[+A](id: SymbolicObjectId, frag: WrappedNodeSeq, data: A) extends ObjetoSimbolicoSimples[A] with I.TextoFormatado {
-  override val tipo = T.TextoFormatado
+  override val tipo = Tipos.TextoFormatado
   override def getRepresentacao() = xhtmlFragment
   lazy val xhtmlFragment = frag.toString
   override def getXhtmlFragment() = xhtmlFragment
@@ -439,7 +405,7 @@ object TextoFormatado {
 }
 
 final case class TextoPuro[+A](id: SymbolicObjectId, texto: String, data: A) extends ObjetoSimbolicoSimples[A] with I.TextoPuro {
-  override val tipo = T.TextoFormatado
+  override val tipo = Tipos.TextoFormatado
   override def getRepresentacao() = texto
   override def getTexto() = texto
   override lazy val pretty = {
@@ -455,7 +421,7 @@ object TextoPuro {
 }
 
 final case class Omissis[+A](id: SymbolicObjectId, data: A) extends ObjetoSimbolicoSimples[A] with I.TextoPuro {
-  override val tipo = T.Omissis
+  override val tipo = Tipos.Omissis
   override def getRepresentacao() = "(...)"
   override def getTexto() = "..."
   override lazy val pretty = (s"Omissis[${id}]" : P.Doc)
@@ -553,7 +519,7 @@ abstract sealed class Relacao[+A] extends I.Relacao with Identificavel with Tipa
 }
 
 object Relacao {
-  import scala.collection.{ JavaConverters => JC }
+  import scala.collection.{JavaConverters => JC}
 
   def toScala(a: java.util.Set[java.lang.Long]): Set[SymbolicObjectId] = {
     def s = JC.asScalaSetConverter(a).asScala.toSet
