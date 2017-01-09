@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.gov.lexml</groupId>
     <artifactId>lexcomp</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>symbolicobject</module>
@@ -41,7 +41,7 @@
         <url>https://github.com/lexml/${project.artifactId}</url>
         <developerConnection>scm:git:https://github.com/lexml/${project.artifactId}.git</developerConnection>
         <connection>scm:git:https://github.com/lexml/${project.artifactId}.git</connection>
-        <tag>lexcomp-1.2.1</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>
