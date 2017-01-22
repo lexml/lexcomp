@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.gov.lexml</groupId>
     <artifactId>lexcomp</artifactId>
-    <version>1.2.6-SNAPSHOT</version>
+    <version>1.2.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>symbolicobject</module>
