@@ -8,6 +8,10 @@ class NumberRendererTest extends TestCase {
   def test_render_number_1_to_letter_a() {
     assertEquals(NumberRenderer.alfa(1), "a")
   }
+  
+  def test_render_number_1_to_letter_b() {
+    assertEquals(NumberRenderer.alfa(2), "b")
+  }
 
   def test_render_number_26_to_letter_z() {
     assertEquals(NumberRenderer.alfa(26), "z")

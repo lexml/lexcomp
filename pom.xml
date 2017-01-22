@@ -30,7 +30,7 @@
         <plugin.scala.maven.version>3.2.2</plugin.scala.maven.version>
         <!-- lexml dependency versions -->
 	<!-- <lexml.parser.version>1.9.0</lexml.parser.version> -->
-	<lexml.parser.version>1.10.2</lexml.parser.version>
+	<lexml.parser.version>1.10.5</lexml.parser.version>
         <lexml.diff.version>1.1.0</lexml.diff.version>
         <lexml.renderer.rtf.version>0.3.12</lexml.renderer.rtf.version>
         <!-- symbolic object deps -->
