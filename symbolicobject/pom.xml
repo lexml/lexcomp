@@ -3,7 +3,7 @@
     <parent>
         <groupId>br.gov.lexml</groupId>
         <artifactId>lexcomp</artifactId>
-        <version>1.2.5-SNAPSHOT</version>
+        <version>1.2.4-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>symbolicobject</artifactId>
