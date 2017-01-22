@@ -10,6 +10,8 @@
         <!-- <module>treedistance</module>  -->
     </modules>
     <properties>
+    	<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+    
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
         <github.global.server>github</github.global.server>
